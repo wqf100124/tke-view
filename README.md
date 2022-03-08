@@ -4,12 +4,18 @@
 
 ```shell
 # autotest
+cd autotest/
+
 docker build -t rtwadewang/tke:autotest --no-cache .
 
 # tke:7.4-alpine
+cd alpine/
+
 docker build -t rtwadewang/tke:7.4-alpine --no-cache .
 
 # tke:7.4
+cd ubuntu/
+
 docker build -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
 ```
 
@@ -26,7 +32,7 @@ docker run -d --privileged --restart always --name tke --network tke -p 80:80 -v
 ## 文档构建
 
 ```shell
-cd htdocs
+cd doc/
 
 # 安装依赖
 npm install
@@ -38,6 +44,6 @@ npm run dev
 npm run build
 
 # 迁移文件
-cp -r ./doc/htdocs ./mini/src/htdocs
-cp -r ./doc/htdocs ./ubuntu/src/htdocs
+cp -rf ./htdocs/ ../alpine/src/htdocs/
+cp -rf ./htdocs/ ../ubuntu/src/htdocs/
 ```
