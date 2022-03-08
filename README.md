@@ -6,10 +6,10 @@
 # autotest
 docker build -t rtwadewang/tke:autotest --no-cache .
 
-# mini
-docker build -t rtwadewang/tke:mini --no-cache .
+# tke:7.4-alpine
+docker build -t rtwadewang/tke:7.4-alpine --no-cache .
 
-# php7.4
+# tke:7.4
 docker build -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
 ```
 
