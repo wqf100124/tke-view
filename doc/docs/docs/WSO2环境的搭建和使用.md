@@ -11,7 +11,7 @@ Application: 用来为Api分组以及授权、限流等
 
 ##  搭建本地开发环境
 
-###  1.AM(API Manager)
+###  AM(API Manager)
 
 *部署和管理 API 的工具，提供了 API 整个生命周期所需要的各种控制，包含控制访问权限，访问流量，监控 API 的调用，版本控制等。*
 
@@ -25,7 +25,7 @@ Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publis
 App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications) 	
 账号: admin 密码: admin
 
-### 2.Swagger Editor(API文档编辑器)
+### Swagger Editor(API文档编辑器)
 官方文档: [https://swagger.io/docs/](https://swagger.io/docs/)	     
 官方镜像: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)        	   
 在线编辑: [https://editor.swagger.io/](https://editor.swagger.io/)

@@ -1,10 +1,12 @@
 #   RabbitMQ环境
 
-官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
+*以下操作假设你已经安装并配置好了Docker环境*
 
 ##  搭建环境
 
 ###  创建rabbitmq容器
+
+官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
 ```shell
 docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
@@ -14,8 +16,9 @@ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 567
 账号：guest     
 密码：guest
 
+##  项目配置
 
-###  配置文件夹
+###  mq文件夹
 
 *以USA国家为例，其它国家可作为参考*
 

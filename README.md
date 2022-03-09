@@ -21,7 +21,7 @@ docker build -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
 ### 7.4-alpine
 
 ```shell
-cd autotest/
+cd alpine/
 
 docker build -t rtwadewang/tke:7.4-alpine --no-cache .
 ```

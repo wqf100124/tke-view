@@ -61,6 +61,8 @@ docker run -d --name tke --network tke --ip 172.16.1.80 --restart always -p 80:8
 
 ##  运行Dev/Dev2/RC/Live环境代码
 
+*由于本地和线上环境的代码有着些许差异，所以需要进行以下操作才能正常运行*
+
 ### 1.替换Config配置文件
 
 使用Local环境的config.php文件 替换 Dev/Dev2/RC/Live环境的配置文件
