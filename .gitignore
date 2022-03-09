@@ -13,7 +13,7 @@
 *.sw?
 
 */node_modules
-/mini/src/htdocs
+/alpine/src/htdocs
 /ubuntu/src/htdocs
 /doc/htdocs
 /doc/docs/.vuepress/.cache
