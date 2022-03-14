@@ -54,7 +54,6 @@ npm run dev
 # 生成文档
 npm run build
 
-# 迁移文件
-cp -rf ./htdocs/ ../alpine/src/htdocs/
-cp -rf ./htdocs/ ../ubuntu/src/htdocs/
+# 迁移文档
+cp -rf ./htdocs/ ../alpine/src/htdocs/ && cp -rf ./htdocs/ ../ubuntu/src/htdocs/
 ```
