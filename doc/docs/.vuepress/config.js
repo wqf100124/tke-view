@@ -8,6 +8,7 @@ module.exports = {
     repo: 'wqf100124/tke-view',
     contributors: false,
     lastUpdated: false,
+    editLink: false,
     logo: '/images/tke_logo.png',
     navbar: [
       {

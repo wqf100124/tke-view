@@ -3,7 +3,7 @@
     // --c-brand: #3aa675;
     // --c-brand-light: #349469;
     --c-brand: #7000bd;
-    --c-brand-light: #7000bd;
+    --c-brand-light: #923fc9;
   
     // background colors
     --c-bg: #ffffff;
@@ -26,7 +26,7 @@
     --c-border-dark: #dfe2e5;
   
     // custom container colors
-    --c-tip: #42b983;
+    --c-tip: #42b983;`
     --c-tip-bg: var(--c-bg-light);
     --c-tip-title: var(--c-text);
     --c-tip-text: var(--c-text);
@@ -136,8 +136,8 @@
 
   html.dark {
     // brand colors
-    --c-brand: #7000bd;
-    --c-brand-light: #7000bd;
+    --c-brand: #cc83ff;
+    --c-brand-light: #deb0ff;
   
     // background colors
     --c-bg: #22272e;
