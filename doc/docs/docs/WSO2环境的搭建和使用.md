@@ -240,7 +240,7 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 SVN地址
 
 ```
-# 测试环境
+# Dev/Dev2/Opt环境
 svn://10.251.68.174/view_repos/fos/GatewayDev
 # RC环境
 svn://10.251.68.174/view_repos/fos/GatewayStaging
@@ -250,19 +250,20 @@ svn://10.251.68.174/view_repos/fos/GatewayStaging
 
 #### 创建App配置文件
 
-在 CommonAssets/ApplicationSetting/EA 目录下创建App配置文件
+*注意：原则上一个BU对应一个Application，如果该Application已经存在，使用现有的即可。*
 
-命名规范：VIEW_<国家名称>_<App名称>_APPLICATION.xml
+示例：
+在 CommonAssets/ApplicationSetting/AP 目录下创建App配置文件
 
-示例：VIEW_EA_DEMO_APPLICATION.xml	
+VIEW_AP_APPLICATION.xml	
  ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <applicationConfig>
-    <name>VIEW_EA_DEMO_APPLICATION</name>
+    <name>VIEW_AP_APPLICATION</name>
 	<throttlingPolicy>Unlimited</throttlingPolicy>  
 	<description>For VIEW AP WSO2 API APPLICATION</description>
 	<tokenType>Client_Credentials</tokenType>
-	<notificationUser>samwang@rayootech.com,boydzhang@rayootech.com,janms@rayootech.com</notificationUser>
+	<notificationUser>samwang@rayootech.com,wadewang@rayootech.com,janms@rayootech.com</notificationUser>
 </applicationConfig>
 ```
 
@@ -287,8 +288,8 @@ RC环境:
 需要让运维在对应的环境中添加App的配置信息（.restfulapi.authentication.ini文件）
 格式：
 ```ini
-[VIEW_EA_DEMO_APPLICATION]
-name="VIEW_EA_DEMO_APPLICATION"
+[VIEW_AP_APPLICATION]
+name="VIEW_AP_APPLICATION"
 consumerKey="<Key>"
 consumerSecret="<Secret>"
 ```
@@ -341,12 +342,12 @@ apiConfig.xml 文件示例
     <!-- VIEW->WSO2/WSO2->VIEW : 1:All API of each country under same bu share same application.                                                               --> 
     <!-- ExternalSystem->WSO2 :  2:Different API of Same System under same country share same application.                                                     --> 
 	<applicationInfo>
-		<bindApplication>VIEW_EA_DEMO_APPLICATION</bindApplication>
+		<bindApplication>VIEW_AP_APPLICATION</bindApplication>
 		<!-- The application subscription policies of the API. Available setting: Unlimited/Gold(5000)/Silver(2000)/Brozen(1000).Default is Unlimited -->
 		<!--<applicationPolicies>10</applicationPolicies>-->
 	</applicationInfo>
     <!-- Decide which BU this API will apply to. Could apply to multiple BU,use "," as separator.Available value:AP/NA/EA/SA   -->
-    <applyBU>EA</applyBU>
+    <applyBU>AP</applyBU>
 	<!-- The realted endpoint config file folder of this api,under path "CommonAssets\Enterprise_integrator\{BU}\EndPoint"     --> 
     <!-- {BU} related to config value of line64 "applyBU",multiple use "," as separator -->
     <endPointConfig>Oz</endPointConfig>
@@ -482,7 +483,33 @@ demo.auth.basic.password <密码>
 ## 线上环境测试
 
 ### Dev环境
-获取AccessToken: [https://apieadev.tkeview.com/token](https://apieadev.tkeview.com/token)	  
-API接口: [https://apieadev.tkeview.com](https://apieadev.tkeview.com)
 
+```
+# AP	
+https://apiapdev.fos.tkeasia.com
+# EA
+https://apieadev.tkeview.com
+# NA
+https://apinadev.tkeview.com
+# SA
+https://apisadev.tkeview.com
+```
+
+### live环境
+
+```
+# AP	
+https://apiap.fos.tkeasia.com
+# EA
+https://apiea.tkeview.com
+# NA
+https://apina.tkeview.com
+# SA
+https://apisa.tkeview.com
+```
+
+已AP国家为例
+
+获取AccessToken: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
+API接口: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
 ![](/images/screenshots/wso2/deploy/5.png)
