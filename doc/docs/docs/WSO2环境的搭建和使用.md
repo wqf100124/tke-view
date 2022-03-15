@@ -292,8 +292,9 @@ RC环境:
 name="VIEW_AP_APPLICATION"
 consumerKey="<Key>"
 consumerSecret="<Secret>"
+gatewayAuthUrl="https://apiapdev.fos.tkeasia.com"
+gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 ```
-
 
 ### 2.创建并部署Api
 
@@ -508,8 +509,9 @@ https://apina.tkeview.com
 https://apisa.tkeview.com
 ```
 
-已AP国家为例
+以AP国家为例:
 
 获取AccessToken: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
 API接口: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
+
 ![](/images/screenshots/wso2/deploy/5.png)
