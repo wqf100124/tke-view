@@ -9,7 +9,7 @@
 官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
 ```shell
-docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
+$ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
 ```
 
 管理端: [http://localhost:15672](http://localhost:15672)    
@@ -25,7 +25,7 @@ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 567
 复制国家下的mq文件夹到**core**目录下
 
 ```shell
-cp ./usa/mq/ ./core/mq
+$ cp ./usa/mq/ ./core/mq
 ```
 
 ###  ViewLogger配置
@@ -33,12 +33,12 @@ cp ./usa/mq/ ./core/mq
 复制国家下的ViewLoggerConfig.php文件到**core**目录下
 
 ```shell
-cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
+$ cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
 ```
 
 ###  Amqp配置
 
-修改Amqp配置文件: mq/RabbitMQConfig.php     
+修改Amqp配置文件: mq/RabbitMQConfig.php
 
 配置示例：
 
@@ -98,9 +98,9 @@ $rabbitMQConfig = [
 }
 ```
 
-##  MQ的使用
+##  代码示例
 
-###  生产者（示例）
+###  生产者
 
 文件路径：core/web/amqp.php
 
@@ -138,7 +138,7 @@ try {
 }
 ```
 
-###  消费者（示例）
+###  消费者
 
 文件路径：core/sys/libs/logic/Amqp/ExampleQueueHandler.php
 
@@ -182,34 +182,34 @@ class ExampleQueueHandler implements MessageHandler
 ```
 
 
-##  MQ的基本命令
+##  基本命令
 
 ### 开发环境
 
 创建队列(以preview环境为例)
 ```shell
-docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
+$ docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
 ```
 消费队列(以preview环境为例)
 ```shell
-docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/MessageProcessor.php usa ExampleTopicKey
+$ docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/MessageProcessor.php usa ExampleTopicKey
 ```
 
 ### 生产环境
 
 创建队列
 ```shell
-allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
+$ allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
 ```
 
 启动服务
 ```shell
-usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:ExampleTopicKey
+$ usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:ExampleTopicKey
 ```
 
 停止服务
 ```shell
-usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:ExampleTopicKey
+$ usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:ExampleTopicKey
 ```
 
 ##  常见问题

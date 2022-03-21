@@ -11,21 +11,22 @@
 参考文档: [https://github.com/SeleniumHQ/docker-selenium](https://github.com/SeleniumHQ/docker-selenium)
 
 ```shell
-docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=3 --shm-size="2g" selenium/standalone-edge
+$ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=3 --shm-size="2g" selenium/standalone-edge
 ```
 
 ### 创建autotest容器
 
-注意：需要替换你本地的autotest项目路径
+*注意：需要替换你本地的autotest路径*
+
 ```shell
-docker run -d --name autotest --network tke -v <本机autotest目录>:/home/tke/autotest rtwadewang/tke:autotest
+$ docker run -d --name autotest --network tke -v <本机autotest目录>:/home/tke/autotest rtwadewang/tke:autotest
 ```
 
 ## 项目配置
 
 ###  修改hostUrl
 
-以默认国家的config文件为例，其它国家修改其对应的配置文件即可。
+以默认国家的config文件为例，其它国家修改对应的配置文件即可。
 
 autotest/selenium/config.xml
 
@@ -42,7 +43,7 @@ autotest/selenium/config.xml
 </element>
 ```
 
-###  修改底层代码(以支持Linux环境)
+###  修改底层代码
 
 *由于当前底层代码仅支持Window环境，需要自己修改后才能支持Linux环境*
 
@@ -74,7 +75,7 @@ if($isServer){
 提示：后期测试时仅执行下面的测试命令即可（注意替换tagName）
 
 ```shell
-docker exec -it autotest vendor/bin/behat --tags <tagName>
+$ docker exec -it autotest vendor/bin/behat --tags <tagName>
 ```
 
 ## 使用web服务
@@ -90,7 +91,7 @@ docker exec -it autotest vendor/bin/behat --tags <tagName>
 解决办法: 修改项目权限
 
 ```shell
-docker exec autotest chmod 755 /home/tke/autotest/selenium
+$ docker exec autotest chmod 755 /home/tke/autotest/selenium
 ```
 
 ### 容器中代码格式未对齐
