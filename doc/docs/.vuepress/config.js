@@ -12,10 +12,6 @@ module.exports = {
     logo: '/images/tke_logo.png',
     navbar: [
       {
-        text: "参考文档",
-        link: "/docs/View本地开发环境.md",
-      },
-      {
         text: 'Docker镜像',
         link: 'https://hub.docker.com/r/rtwadewang/tke',
       }
