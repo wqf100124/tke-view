@@ -41,11 +41,12 @@ apk add --no-cache \
     php7-sysvsem \
     php7-tokenizer \
     php7-zip
-
 # ---------- init ----------
+mkdir /var/data
+mv /tmp/phpunit.tar.gz /var/data/phpunit.tar.gz
 mv /tmp/entrypoint.sh /run/entrypoint.sh
-chmod +x /run/entrypoint.sh
-chmod -R 755 /home/tke/autotest
+mv /tmp/phpunit.sh /run/phpunit.sh
+chmod +x /run/entrypoint.sh /run/phpunit.sh
 touch /var/log/error.log
 # ---------- clear works ----------
 rm -rf /var/cache/apk/* /root/.cache /tmp/*
