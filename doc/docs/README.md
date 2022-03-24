@@ -14,7 +14,7 @@ features:
 - title: 平台
   details: 无论你是在Windows、macOS或是Linux环境下开发，它都能完美的支持。
 - title: 生态
-  details: 集成了RebbitMQ/Selenium/WSO2等View开发常用的第三方软件。
+  details: 集成了RebbitMQ/Autotest/WSO2等View开发常用的第三方软件。
 - title: 简洁
   details: 无需繁琐的环境配置和安装流程，仅需要执行几条命令便可轻松搞定。
 - title: 统一

@@ -120,3 +120,10 @@ $user = $db->get("SELECT * FROM `user` WHERE `ActiveDirectoryID` = '80000110' LI
 userLogin($user->id, $user);
 die();
 ```
+
+## 常用命令
+
+```shell
+# 进入容器
+$ docker exec -it view sh
+```

@@ -9,7 +9,6 @@ module.exports = {
     contributors: false,
     lastUpdated: false,
     editLink: false,
-    logo: '/images/tke_logo.png',
     navbar: [
       {
         text: 'Docker镜像',
@@ -22,7 +21,7 @@ module.exports = {
           collapsible: false,
           children: [
             '/docs/View本地开发环境.md',
-            '/docs/Selenium自动化测试环境.md',
+            '/docs/Autotest自动化测试环境.md',
             '/docs/RabbitMQ环境.md',
             '/docs/WSO2环境的搭建和使用.md'
           ],
