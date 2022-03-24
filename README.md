@@ -10,20 +10,20 @@ cd autotest/
 docker build -t rtwadewang/tke:autotest --no-cache .
 ```
 
-### 7.4
+### 7.4-ubuntu
 
 ```shell
 cd ubuntu/
 
-docker build -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
+docker build -t rtwadewang/tke:7.4-ubuntu --no-cache .
 ```
 
-### 7.4-alpine
+### 7.4
 
 ```shell
 cd alpine/
 
-docker build -t rtwadewang/tke:7.4-alpine --no-cache .
+docker build -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
 ```
 
 ## 使用镜像
