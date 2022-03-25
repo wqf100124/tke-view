@@ -7,7 +7,7 @@
 *注意：Selenium和PHPUnit都使用该容器*
 
 ```shell
-$ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/var/tke/dev2 rtwadewang/tke:autotest
+$ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/dev2 rtwadewang/tke:autotest
 ```
 
 ## Selenium
@@ -41,7 +41,7 @@ autotest/selenium/config.xml
 </element>
 ```
 
-注意：如果你的本地View开发环境未使用docker，则hostUrl应修改为 http://127.0.0.1:4444
+注意：如果你的本地View开发环境未使用docker容器，则hostUrl应修改为 http://127.0.0.1:4444
 
 ### 3.修改底层代码
 
@@ -98,7 +98,7 @@ $ vendor/bin/behat --tags <tagName>
 解决办法: 修改项目权限
 
 ```shell
-$ docker exec autotest chmod -R 755 /var/tke/dev2/autotest/selenium/vendor/bin/behat
+$ docker exec autotest chmod -R 755 /home/tke/dev2/autotest/selenium/vendor/bin/behat
 ```
 
 #### 容器中代码格式未对齐
@@ -107,9 +107,9 @@ $ docker exec autotest chmod -R 755 /var/tke/dev2/autotest/selenium/vendor/bin/b
 
 ### 7.辅助工具
 
-View系统自动化测试工具
+View自动化测试工具: [https://testsupport.tkeasia.com/](https://testsupport.tkeasia.com/)
 
-Autotest Support: [https://testsupport.tkeasia.com/](https://testsupport.tkeasia.com/)
+Selenium浏览器插件: [https://microsoftedge.microsoft.com/addons/detail/selenium-ide/ajdpfmkffanmkhejnopjppegokpogffp?hl=zh-CN](https://microsoftedge.microsoft.com/addons/detail/selenium-ide/ajdpfmkffanmkhejnopjppegokpogffp?hl=zh-CN)
 
 ## PHPUnit
 
@@ -133,5 +133,5 @@ $ docker exec -it autotest sh
 $ cd phpunit/sharp
 
 # 执行测试命令
-$ php /var/tke/dev2/autotest/phpunit/vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --filter <testName>
+$ php /home/tke/dev2/autotest/phpunit/vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --filter <testName>
 ```
