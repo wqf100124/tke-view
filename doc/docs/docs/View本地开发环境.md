@@ -125,5 +125,5 @@ die();
 
 ```shell
 # 进入容器
-$ docker exec -it view sh
+$ docker exec -it view bash
 ```

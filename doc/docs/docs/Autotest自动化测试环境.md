@@ -4,7 +4,9 @@
 
 ## Autotest容器
 
-*注意：Selenium和PHPUnit都使用该容器*
+*当前Selenium和PHPUnit都使用该容器*
+
+创建autotest容器(需要替换本机dev2代码目录)
 
 ```shell
 $ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/dev2 rtwadewang/tke:autotest
