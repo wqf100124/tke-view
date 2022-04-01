@@ -28,5 +28,5 @@ footer: Tke development docs
 
 ```shell
 # 本地开发环境
-docker run -d -p 80:80 -v <本机代码>:/home/tke/local rtwadewang/tke
+docker run -d -p 80:80 -v <本机local代码>:/home/tke/local rtwadewang/tke
 ```

@@ -69,14 +69,7 @@ $ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 8
 
 使用Local环境的config.php文件 替换 Preview/Dev2/RC/Live环境的配置文件
 
-以RC环境代码为例：
-
-```ini
-cp local/hk/config.php rc/hk/config.php
-cp local/china/config.php rc/china/config.php
-cp local/global/config.php rc/global/config.php
-...
-```
+local/hk/config.php => preview/hk/config.php
 
 ### 2.修改tke_config.php文件
 
@@ -84,7 +77,6 @@ core/sys/includes/tke_config.php (约24行)
 
 查找如下代码：
 ```php
-// First load the site level config
 require_once(BASE_DIR . "/config.php");
 ```
 
@@ -93,7 +85,6 @@ require_once(BASE_DIR . "/config.php");
 ```php
 $sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], '.'));
 $sPreUrl = $sPreUrl ?: 'hk';
-// First load the site level config
 require_once(BASE_DIR . "/../" . $sPreUrl . "/config.php");
 ```
 
@@ -125,5 +116,11 @@ die();
 
 ```shell
 # 进入容器
-$ docker exec -it view bash
+$ docker exec -it view sh
+
+# 更新包
+$ apk update
+
+# 安装软件(vim)
+$ apk add vim
 ```
