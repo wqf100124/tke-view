@@ -16,6 +16,7 @@
     window.$docsify = {
       // 项目名称
       name: 'View开发文档',
+      nameLink: '#/',
       repo: 'https://github.com/wqf100124/tke-view',
       auto2top: true,
       // 侧边栏支持，默认加载的是项目根目录下的_sidebar.md文件
@@ -25,17 +26,18 @@
       // 最大支持渲染的标题层级
       maxLevel: 5,
       // 自定义侧边栏后默认不会再生成目录，设置生成目录的最大层级（建议配置为2-4）
-      subMaxLevel: 4,
+      subMaxLevel: 3,
       // 小屏设备下合并导航栏到侧边栏
       mergeNavbar: true,
-      homepage: '#/',
-      nameLink: '#/',
+      homepage: './docs/View.md',
+      onlyCover: false,
       // routerMode: 'history',
       copyCode: {
           buttonText : '复制',
           errorText  : '出错了',
           successText: '复制成功'
-        }
+        },
+        themeColor: '#8757d9'
       }
   </script>
   <!-- Docsify v4 -->
