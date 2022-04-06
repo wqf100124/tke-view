@@ -1,13 +1,13 @@
-# View开发环境
+# View本地开发环境
 
 ## 创建镜像
 
-### autotest
+### 7.4-alpine
 
 ```shell
-cd autotest/
+cd alpine/
 
-docker build -t rtwadewang/tke:autotest --no-cache .
+docker build -t rtwadewang/tke:7.4-alpine -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
 ```
 
 ### 7.4-ubuntu
@@ -18,42 +18,24 @@ cd ubuntu/
 docker build -t rtwadewang/tke:7.4-ubuntu --no-cache .
 ```
 
-### 7.4 & latest
+### autotest
 
 ```shell
-cd alpine/
+cd autotest/
 
-docker build -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
-```
-
-## 使用镜像
-
-### 创建网络
-
-```shell
-docker network create --subnet=172.16.1.0/24 tke
-```
-
-### 运行容器
-
-```shell
-docker run -d --privileged --restart always --name tke --network tke -p 80:80 -v /home/tke/preview:/home/tke/preview -v /home/tke/rc:/home/tke/rc rtwadewang/tke
+docker build -t rtwadewang/tke:autotest --no-cache .
 ```
 
 ## 生成文档
 
 ```shell
-cd doc/
-
 # 安装依赖
-npm install
+npm i docsify-cli -g
 
-# 本地开发
-npm run dev
-
-# 生成文档
-npm run build
-
-# 迁移文档
-cp -rf ./htdocs/ ../alpine/src/htdocs/ && cp -rf ./htdocs/ ../ubuntu/src/htdocs/
+# 本地预览
+docsify serve docs
 ```
+
+## 使用方法
+
+参考文档: [https://wqf100124.github.io/tke-view](https://wqf100124.github.io/tke-view/)
