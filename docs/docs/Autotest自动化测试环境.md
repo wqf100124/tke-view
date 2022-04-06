@@ -9,7 +9,7 @@
 创建autotest容器(需要替换本机dev2代码目录)
 
 ```shell
-$ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/dev2 rtwadewang/tke:autotest
+docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/dev2 rtwadewang/tke:autotest
 ```
 
 ## Selenium
@@ -21,7 +21,7 @@ $ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/
 参考文档: [https://github.com/SeleniumHQ/docker-selenium](https://github.com/SeleniumHQ/docker-selenium)
 
 ```shell
-$ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
+docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
 ```
 
 ### 2.修改hostUrl
@@ -78,13 +78,13 @@ if($isServer){
 
 ```shell
 # 进入容器
-$ docker exec -it autotest sh
+docker exec -it autotest sh
 
 # 进入目录
-$ cd selenium
+cd selenium
 
 # 执行测试命令
-$ vendor/bin/behat --tags <tagName>
+vendor/bin/behat --tags <tagName>
 ```
 
 ### 5.使用web服务
@@ -100,7 +100,7 @@ $ vendor/bin/behat --tags <tagName>
 解决办法: 修改项目权限
 
 ```shell
-$ docker exec autotest chmod -R 755 /home/tke/dev2/autotest/selenium/vendor/bin/behat
+docker exec autotest chmod -R 755 /home/tke/dev2/autotest/selenium/vendor/bin/behat
 ```
 
 #### 容器中代码格式未对齐
@@ -120,7 +120,7 @@ Selenium浏览器插件: [https://microsoftedge.microsoft.com/addons/detail/sele
 *注意：该操作会自动修改autotest/phpunit/library/BaseBootstrap.php底层文件*
 
 ```shell
-$ docker exec -it autotest /run/phpunit.sh
+docker exec -it autotest /run/phpunit.sh
 ```
 
 ### 2.运行测试
@@ -129,11 +129,11 @@ $ docker exec -it autotest /run/phpunit.sh
 
 ```shell
 # 进入容器
-$ docker exec -it autotest sh
+docker exec -it autotest sh
 
 # 进入目录
-$ cd phpunit/sharp
+cd phpunit/sharp
 
 # 执行测试命令
-$ php /home/tke/dev2/autotest/phpunit/vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --filter <testName>
+php /home/tke/dev2/autotest/phpunit/vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --filter <testName>
 ```

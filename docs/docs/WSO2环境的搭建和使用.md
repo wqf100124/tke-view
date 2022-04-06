@@ -19,7 +19,7 @@ Application: 用来为Api分组以及授权、限流等
 
 创建并运行AM容器(*容器启动过程大约需要2~3分钟，耐心等待即可。*)
 ```shell
-$ docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
+docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
 ```
 Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
 App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications) 	
@@ -31,7 +31,7 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 在线编辑: [https://editor.swagger.io/](https://editor.swagger.io/)
 
 ```shell
-$ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
+docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
 访问本地编辑器: [http://localhost:8080/](http://localhost:8080/)
 

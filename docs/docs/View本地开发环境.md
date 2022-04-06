@@ -13,7 +13,7 @@
 创建一个docker内部网络，这样可以使View容器可以和外部服务如RabbitMQ、Selenium、WSO2等互联。
 
 ```shell
-$ docker network create --subnet=172.16.1.0/24 tke
+docker network create --subnet=172.16.1.0/24 tke
 ```
 
 ### 2.创建view容器
@@ -21,7 +21,7 @@ $ docker network create --subnet=172.16.1.0/24 tke
 *注意：以下命令仅作为参考，实际运行时按照下面的说明对命令进行修改*
 
 ```shell
-$ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/tke
+docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/tke
 ```
 说明：
 -	对于WSL2开发环境，应使用linux下的项目路径如：/var/web/local，而不是d:/project/local等windows系统路径
@@ -116,11 +116,11 @@ die();
 
 ```shell
 # 进入容器
-$ docker exec -it view sh
+docker exec -it view sh
 
 # 更新包
-$ apk update
+apk update
 
 # 安装软件(vim)
-$ apk add vim
+apk add vim
 ```
