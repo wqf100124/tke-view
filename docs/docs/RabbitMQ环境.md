@@ -4,7 +4,7 @@
 
 ##  搭建环境
 
-###  创建rabbitmq容器
+###  创建rabbitmq服务容器
 
 官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 

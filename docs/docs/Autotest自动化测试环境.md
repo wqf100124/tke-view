@@ -14,7 +14,7 @@ $ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/
 
 ## Selenium
 
-### 1.创建selenium容器
+### 1.创建selenium服务容器
 
 官方镜像: [https://hub.docker.com/r/selenium/standalone-edge](https://hub.docker.com/r/selenium/standalone-edge)
 
