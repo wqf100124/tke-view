@@ -13,8 +13,3 @@
 *.sw?
 
 */node_modules
-/alpine/src/htdocs
-/ubuntu/src/htdocs
-/doc/htdocs
-/doc/docs/.vuepress/.cache
-/doc/docs/.vuepress/.temp
