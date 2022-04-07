@@ -6,7 +6,7 @@
 
 Refer to the image built in the View production environment to ensure the consistency of the development environment and the production environment. Whether you are developing in Windows, macOS or Linux environment, it can be perfectly supported. No need for cumbersome environment configuration and installation process, only need to execute a command like `docker run ...` can be easily done.
 
-See the [Local Development](/enviroment/view.md) guide for more details.
+See the [Quick Start](/enviroment/view.md) guide for more details.
 
 ## Features
 
@@ -14,3 +14,12 @@ See the [Local Development](/enviroment/view.md) guide for more details.
 - Support in Windows/macOS/Linux environment
 - Integrate third-party service such as RebbitMQ/Autotest/WSO2/Solr
 
+
+## How to use
+
+as easy as counting 1, 2, 3
+
+```shell
+# local development enviroment
+docker run -d -p 80:80 -v <local code path>:/home/tke/local rtwadewang/tke
+```
