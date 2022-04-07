@@ -1,7 +1,5 @@
 # View本地开发环境
 
-*以下操作假设你已经安装并配置好了Docker环境*
-
 镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
 集成环境: Apache2/PHP7.4/Memcached/Redis      
 支持代码: Local/Preview/Dev2/RC/Live

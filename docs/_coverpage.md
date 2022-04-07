@@ -7,5 +7,7 @@
 - 支持Local/Preview/Dev2/RC/Live环境代码
 - 集成RebbitMQ/Autotest/WSO2/Solr等服务
 
-[安装Docker](https://www.docker.com/products/docker-desktop)
-[快速开始](./docs/View.md)
+[Docker镜像](https://hub.docker.com/r/rtwadewang/tke)
+[快速开始](/enviroment/view.md)
+
+![color](#c3b3ff)

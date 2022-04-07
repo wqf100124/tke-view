@@ -1,46 +1,44 @@
-#   RabbitMQ环境
+#   RabbitMQ
 
-*以下操作假设你已经安装并配置好了Docker环境*
+##  Create Enviroment
 
-##  搭建环境
+### 1.Create rabbitmq service container
 
-###  创建rabbitmq服务容器
-
-官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
+DockerHub: [https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
 ```shell
 docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
 ```
 
-管理端: [http://localhost:15672](http://localhost:15672)    
-账号：guest     
-密码：guest
+The console page: [http://localhost:15672](http://localhost:15672)    
+username: guest     
+password: guest
 
-##  项目配置
+##  Amqp Config
 
-###  mq文件夹
+###  mq folder
 
-*以USA国家为例，其它国家可作为参考*
+*Take USA as an example, other countries can be used as a reference*
 
-复制国家下的mq文件夹到**core**目录下
+Copy the mq folder under the country to the **core** directory
 
 ```shell
 cp ./usa/mq/ ./core/mq
 ```
 
-###  ViewLogger配置
+###  Logger Config
 
-复制国家下的ViewLoggerConfig.php文件到**core**目录下
+Copy the ViewLoggerConfig.php file under the country to the **core** directory
 
 ```shell
 cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
 ```
 
-###  Amqp配置
+###  Amqp Config
 
-修改Amqp配置文件: mq/RabbitMQConfig.php
+Modify the Amqp configuration file: mq/RabbitMQConfig.php
 
-配置示例：
+example:
 
 ```php
 <?php
@@ -64,11 +62,11 @@ $rabbitMQConfig = [
 ];
 ```
 
-###  Topic配置
+###  Topic Config
 
-修改Topic配置文件: mq/TopicDeclaration.json
+Modify the Topic configuration file: mq/TopicDeclaration.json
 
-配置示例：
+example:
 
 ```json
 {
@@ -98,11 +96,11 @@ $rabbitMQConfig = [
 }
 ```
 
-##  代码示例
+##  Code Example
 
-###  生产者
+###  Producer
 
-文件路径：core/web/amqp.php
+example file path: core/web/amqp.php
 
 ```php
 <?php
@@ -116,11 +114,11 @@ define('NO_PERMISSION_REQUIRED', true);
 require_once("{$_SERVER["DOCUMENT_ROOT"]}/../sys/libs/init.lib");
 
 try {
-    // 消息处理类型
+    // message type
     $type = in_array($_GET['type'], ['unpredictable', 'retry']) ? $_GET['type'] : 'normal';
 
     foreach (range(1, 3) as $number) {
-        // 构建消息体
+        // message body
         $message = new Message([
             'id'      => $number,
             'type'    => $type,
@@ -128,7 +126,7 @@ try {
             'time'    => time()
         ]);
 
-        // 分发消息到队列
+        // message dispatch
         (MessageDispatcher::getInstance())->dispatch('ExampleTopicKey', $message);
     }
 
@@ -138,9 +136,9 @@ try {
 }
 ```
 
-###  消费者
+###  Consumer
 
-文件路径：core/sys/libs/logic/Amqp/ExampleQueueHandler.php
+file path: core/sys/libs/logic/Amqp/ExampleQueueHandler.php
 
 ```php
 <?php
@@ -155,7 +153,7 @@ use VIEW\Util\MQ\MessageHandler;
 class ExampleQueueHandler implements MessageHandler
 {
     /**
-     * 队列消息处理
+     * Queue Handle
      *
      * @param Message $message
      * @throws AutoRetryException
@@ -163,64 +161,62 @@ class ExampleQueueHandler implements MessageHandler
      */
     public function process($message): void
     {
-        // 消息内容
+        // message body
         $payload = $message->getContent();
 
         switch ($payload['type']) {
             case 'unpredictable':
-                // 将会被扔到死队列(BrokenMessages)
                 throw new UnRecoverableException('Message will be abandoned from the queue.');
 
             case 'retry':
-                // 将会扔回队列3次，3次处理后依旧失败的，不会被扔到死队列(BrokenMessages)，而是直接从队列中移除
                 throw new AutoRetryException('Message need to be reprocessed.', 3);
         }
 
-        // 默认：这条消息将会从队列中移除
+        // Default: this message will be removed from the queue
     }
 }
 ```
 
 
-##  基本命令
+##  Basic Commands
 
-### 开发环境
+### Development enviroment
 
-创建队列(以preview环境为例)
+Create a queue (take the preview environment as an example)
 ```shell
 docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
 ```
-消费队列(以preview环境为例)
+Consume queue (take the preview environment as an example)
 ```shell
 docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/MessageProcessor.php usa ExampleTopicKey
 ```
 
-### 生产环境
+### Production enviroment
 
-创建队列
+Create a queue
 ```shell
 allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
 ```
 
-启动服务
+Start service
 ```shell
 usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:ExampleTopicKey
 ```
 
-停止服务
+Stop service
 ```shell
 usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:ExampleTopicKey
 ```
 
-##  常见问题
+##  Common Question
 
 
-### 队列消费进程出现报错
+### An error occurred in the queue consuming process
 
 core/sys/libs/logic/Util/MQ/MessageProcessor.php
-(约173行)
+(about 173 lines)
 
-查找并注释掉这个方法
+Find and comment out this method
 
 ```php
 pcntl_signal_dispatch();

@@ -1,7 +1,5 @@
 # Autotest自动化测试环境
 
-*以下操作假设你已经安装并配置好了Docker环境*
-
 ## Autotest容器
 
 *当前Selenium和PHPUnit都使用该容器*

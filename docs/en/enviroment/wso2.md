@@ -1,52 +1,50 @@
-#	WSO2环境的搭建和使用
+#	WSO2
 
-*以下操作假设你已经安装并配置好了Docker环境*
+Api: Interface communication services between WSO2 and external systems   
+Application: Used to group APIs, authorize, limit current, etc.
 
-Api: WSO2和外部系统的接口通信服务   
-Application: 用来为Api分组以及授权、限流等
+example:
 
-两者关系示例:
+![](../static/images/screenshots/wso2/WSO2.png)
 
-![](./images/screenshots/wso2/WSO2.png)
-
-##  搭建本地开发环境
+##  Create Enviroment
 
 ###  AM(API Manager)
 
-*部署和管理 API 的工具，提供了 API 整个生命周期所需要的各种控制，包含控制访问权限，访问流量，监控 API 的调用，版本控制等。*
+*Tools for deploying and managing APIs, providing various controls required for the entire life cycle of the API, including controlling access permissions, access traffic, monitoring API calls, version control, etc.*
 
-官方镜像：[https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
+DockerHub: [https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
 
-创建并运行AM容器(*容器启动过程大约需要2~3分钟，耐心等待即可。*)
+Create and run the AM container (*The container startup process takes about 2~3 minutes, just wait patiently.*)
 ```shell
 docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
 ```
-Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
-App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications) 	
-账号: admin 密码: admin
+Api manager: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
+App manager: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications) 	
+username: admin 
+password: admin
 
-### Swagger Editor(API文档编辑器)
-官方文档: [https://swagger.io/docs/](https://swagger.io/docs/)	     
-官方镜像: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)        	   
-在线编辑: [https://editor.swagger.io/](https://editor.swagger.io/)
+### Swagger Editor(API doc editor)
+Office docs: [https://swagger.io/docs/](https://swagger.io/docs/)	     
+DockerHub: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)        	   
+Online editor: [https://editor.swagger.io/](https://editor.swagger.io/)
 
 ```shell
 docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
-访问本地编辑器: [http://localhost:8080/](http://localhost:8080/)
+Use the local editor: [http://localhost:8080/](http://localhost:8080/)
 
 
+##  Local development steps
 
-##  本地开发流程
+###  View system provides API to third parties
 
-###  View系统提供API给第三方
+![](../static/images/screenshots/wso2/provider/mind.png)
 
-![](./images/screenshots/wso2/provider/mind.png)
-
-#### 1.在View中创建接口文件
+#### 1.Create interface file in View
 
 
-示例:
+example:
 core/web/sharp/modules/api/controllers/DemoController.php
 
 ```php
@@ -77,68 +75,68 @@ class Api_DemoController extends Api_RestfulController
 }
 ```
 
-#### 2.跳过本地认证
-修改:
+#### 2.skip local authentication
+Modify the file:
 core/web/sharp/modules/api/controllers/RestfulController.php 文件
 
-![](./images/screenshots/wso2/provider/1.png)
+![](../static/images/screenshots/wso2/provider/1.png)
 
 
-#### 3.接口调试
+#### 3.Interface debugging
 
-接口地址: [http://hk.preview.test/sharp/api/demo](http://hk.preview.test/sharp/api/demo)
+interface url: [http://hk.preview.test/sharp/api/demo](http://hk.preview.test/sharp/api/demo)
 
-![](./images/screenshots/wso2/provider/2.png)
-
-
-###  View系统请求第三方API
-
-![](./images/screenshots/wso2/user/mind.png)
-
-#### 1.在WSO2中创建Api
-
-打开API管理页面: [https://localhost:9443/publisher](https://localhost:9443/publisher)
-
-![](./images/screenshots/wso2/user/3.png)
-![](./images/screenshots/wso2/user/4.png)
-![](./images/screenshots/wso2/user/5.png)
-
-配置第三方接口的认证信息
-![](./images/screenshots/wso2/user/6.png)
-
-#### 2.在WSO2中创建App
-
-App管理页面:[https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
-
-![](./images/screenshots/wso2/user/7.png)
-![](./images/screenshots/wso2/user/8.png)
-
-#### 3.生成OAuth认证密钥
-![](./images/screenshots/wso2/user/oauth-1.png)
-![](./images/screenshots/wso2/user/oauth-2.png)
-![](./images/screenshots/wso2/user/oauth-3.png)
-
-#### 4.绑定Api和App
-![](./images/screenshots/wso2/user/subscribe-1.png)
-![](./images/screenshots/wso2/user/subscribe-2.png)
+![](../static/images/screenshots/wso2/provider/2.png)
 
 
-#### 5.本地创建OAuth配置文件
+###  View system requests third-party API
 
-手动创建: core/.restfulapi.authentication.ini 文件(注意文件名包含.号)，填入如下内容
+![](../static/images/screenshots/wso2/user/mind.png)
+
+#### 1.Create Api in AM
+
+Open the API management page: [https://localhost:9443/publisher](https://localhost:9443/publisher)
+
+![](../static/images/screenshots/wso2/user/3.png)
+![](../static/images/screenshots/wso2/user/4.png)
+![](../static/images/screenshots/wso2/user/5.png)
+
+Configuring Authentication Information for Third-Party Interfaces
+![](../static/images/screenshots/wso2/user/6.png)
+
+#### 2.Create Application in AM
+
+Application management page:[https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
+
+![](../static/images/screenshots/wso2/user/7.png)
+![](../static/images/screenshots/wso2/user/8.png)
+
+#### 3.Generate OAuth authentication key
+![](../static/images/screenshots/wso2/user/oauth-1.png)
+![](../static/images/screenshots/wso2/user/oauth-2.png)
+![](../static/images/screenshots/wso2/user/oauth-3.png)
+
+#### 4.Bind Api and App
+![](../static/images/screenshots/wso2/user/subscribe-1.png)
+![](../static/images/screenshots/wso2/user/subscribe-2.png)
+
+
+#### 5.Create an OAuth configuration file locally
+
+Create file: core/.restfulapi.authentication.ini (Note that the file name contains .)，Fill in the following
 
 ```ini
 [VIEW_DEMO_APPLICATION]
-;WSO2的OAuth认证接口
+;OAuth authentication interface of WSO2
 gatewayAuthUrl="https://172.16.1.94:9443/oauth2"
-;WSO2的Oauth帐号信息
+;Oauth account information for WSO2
 consumerKey="xdv5SZLHEIR4Ux8jc14ugJLWDD4a"
 consumerSecret="kvsoaXylTKa2X9HvCepn9bfrYyoa"
-;WSO2中的API接口地址
+;API interface url in WSO2
 gatewayRecourceUrl="https://172.16.1.94:8243"
 ```
 
-#### 6.在项目中使用
+#### 6.Use in the view system
 
 core/web/wso2.php
 
@@ -158,20 +156,20 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/../sys/libs/logic/Util/Gateway/ViewGat
 
 use VIEW\Util\Gateway\ViewGateway;
 
-// .ini配置文件中配置名称
+// Configuration name in ini configuration file
 CONST CONFIG_NAME = 'VIEW_DEMO_APPLICATION';
-// WSO2中创建的API名称
+// Api name
 CONST API_NAME = 'Demo';
-// API路径
+// Api context
 CONST API_URI = '/demo';
-// API版本
+// Api version
 CONST API_VERSION = '1.0';
 
 try {
 
     $viewGateway = new ViewGateway(CONFIG_NAME, "");
 
-    // 发送请求
+    // send reauest
     $result = $viewGateway->post(API_NAME, [], 0, null, null, API_VERSION, true, 2, API_URI);
     if (!$result) {
         echo 'request fail';
@@ -181,10 +179,10 @@ try {
 }
 ```
 
-#### 7.处理接口返回的数据
-创建处理文件: core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php
+#### 7.Process the data returned by the interface
+Create processing files: core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php
 
-*文件命名规范：<App名称>GatewayBizHandler.php*
+*file naming convention：<App Name>GatewayBizHandler.php*
 
 ```php
 <?php
@@ -222,38 +220,36 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 }
 ```
 
-#### 8.WSO2的接口调试
+#### 8.Interface debugging of WSO2
 
-获取AccessToken的接口
-![](./images/screenshots/wso2/user/14.png)
-![](./images/screenshots/wso2/user/15.png)
+Get the AccessToken
+![](../static/images/screenshots/wso2/user/14.png)
+![](../static/images/screenshots/wso2/user/15.png)
 
-在View中测试
-![](./images/screenshots/wso2/user/16.png)
+Test in View
+![](../static/images/screenshots/wso2/user/16.png)
 
-##  线上环境部署
+##  Deployment steps
 
-部署流程：
+![](../static/images/screenshots/wso2/deploy/WSO2部署流程.png)
 
-![](./images/screenshots/wso2/deploy/WSO2部署流程.png)
-
-SVN地址
+Svn address
 
 ```ini
-# Dev/Dev2/Opt环境
+# Dev/Dev2/Opt
 svn://10.251.68.174/view_repos/fos/GatewayDev
-# RC环境
+# RC
 svn://10.251.68.174/view_repos/fos/GatewayStaging
 ```
 
-### 1.创建并部署App
+### 1.Create and deploy apps
 
-#### 创建App配置文件
+#### Create App Profile
 
-*注意：原则上一个BU对应一个Application，如果该Application已经存在，使用现有的即可。*
+*Note: In principle, one BU corresponds to one Application. If the Application already exists, use the existing one.*
 
-示例：
-在 CommonAssets/ApplicationSetting/AP 目录下创建App配置文件
+example：
+Create an App configuration file in the CommonAssets/ApplicationSetting/AP directory
 
 VIEW_AP_APPLICATION.xml	
  ```xml
@@ -267,26 +263,26 @@ VIEW_AP_APPLICATION.xml
 </applicationConfig>
 ```
 
-#### 使用Jenkins部署App
+#### Deploy the App using Jenkins
 
-*需要运维开启对应帐号的部署权限*
+*You need to enable the deployment permission of the corresponding account for operation and maintenance*
 
-Dev环境:
+Dev enviroment:
 [https://jenkins.tkeasia.com/view/WSO2_DEPLOY/job/WSO2%20Deploy%20Dev/](https://jenkins.tkeasia.com/view/WSO2_DEPLOY/job/WSO2%20Deploy%20Dev/)
 
-RC环境:
+RC enviroment:
 [https://jenkins.tkeasia.com/view/WSO2_DEPLOY/job/WSO2%20Deploy%20Staging/](https://jenkins.tkeasia.com/view/WSO2_DEPLOY/job/WSO2%20Deploy%20Staging/)
 
-部署页面
+deploy page
 
-![](./images/screenshots/wso2/deploy/1.png)
+![](../static/images/screenshots/wso2/deploy/1.png)
 
-部署成成功后，application的账号信息会发送到上面配置文件中的用户邮箱里。
+After the deployment is successful, the account information of the application will be sent to the user mailbox in the above configuration file.
 
-![](./images/screenshots/wso2/deploy/2.png)
+![](../static/images/screenshots/wso2/deploy/2.png)
 
-需要让运维在对应的环境中添加App的配置信息（.restfulapi.authentication.ini文件）
-格式：
+You need to let the operation and maintenance add the configuration information of the App in the corresponding environment (.restfulapi.authentication.ini）
+Format:
 ```ini
 [VIEW_AP_APPLICATION]
 name="VIEW_AP_APPLICATION"
@@ -296,16 +292,16 @@ gatewayAuthUrl="https://apiapdev.fos.tkeasia.com"
 gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 ```
 
-### 2.创建并部署Api
+### 2.Create and deploy APIs
 
-在根目录创建如下两个文件
+Create the following two files in the root directory
 
 Demo/API_Managment/V1/apiConfig.xml	
 Demo/API_Managment/V1/swagger.json
 
-![](./images/screenshots/wso2/deploy/3.png)
+![](../static/images/screenshots/wso2/deploy/3.png)
 
-apiConfig.xml 文件示例
+apiConfig.xml file example
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <apiConfig>
@@ -331,7 +327,7 @@ apiConfig.xml 文件示例
 	<endpointInfo>
 		<!-- The endpoint url info of the API,default is the EI path of the value set in context.  -->
 		<!-- Or you can set as:{EI_URL}/Maintenancecntry  to connect to other path of the EI,or set the full path of other endpoint,like:<url>https://www.baidu.com/Maintenancecntry</url> -->
-		<url>第三方接口地址</url>
+		<url>Third-party interface url</url>
 		<!-- The endpoint Auth type,None:means no Auth, Basic:means use basic Auth, Oauth:means Oauth -->
 		<authInfo>Basic</authInfo>
 		<!-- The endpoint Auth info,if set "Basic" in authInfo will use as basic Auth username & password, "Oauth" will use as Oauth client-id&client-secret  -->
@@ -355,7 +351,7 @@ apiConfig.xml 文件示例
 </apiConfig>
 ```
 
-swagger.json 文件示例
+swagger.json file example
 
 ```json
 {
@@ -473,17 +469,17 @@ swagger.json 文件示例
 }
 ```
 
-在使用jenkins部署这两个文件之前，必须先让运维配置第三方API的帐号信息	（从Tke Leader处获取）        
-配置格式：   
-demo.auth.basic.username <帐号>	  
-demo.auth.basic.password <密码>
+Before deploying these two files with jenkins, you must let the operation and maintenance configure the account information of the third-party API (obtained from Tke Leader)           
+Format:   
+demo.auth.basic.username username   
+demo.auth.basic.password password
 
-![](./images/screenshots/wso2/deploy/4.png)
+![](../static/images/screenshots/wso2/deploy/4.png)
 
 	
-## 线上环境测试
+## Online environment test
 
-### Dev环境
+### Dev environment
 
 ```ini
 # AP	
@@ -496,7 +492,7 @@ https://apinadev.tkeview.com
 https://apisadev.tkeview.com
 ```
 
-### live环境
+### live environment
 
 ```ini
 # AP	
@@ -509,9 +505,9 @@ https://apina.tkeview.com
 https://apisa.tkeview.com
 ```
 
-以AP国家为例:
+Take AP countries as an example:
 
-获取AccessToken: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
-API接口: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
+Get the AccessToken: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
+Api test url: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
 
-![](./images/screenshots/wso2/deploy/5.png)
+![](../static/images/screenshots/wso2/deploy/5.png)
