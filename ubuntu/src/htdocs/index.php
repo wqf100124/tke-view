@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Tke local development environment.</title>
+    <title>View local development environment.</title>
     <link href="/static/css/weui.min.css" rel="stylesheet">
     <style>
         .container {
@@ -45,14 +45,14 @@
         <div class="weui-msg__text-area">
             <h2 class="weui-msg__title">Successful</h2>
             <p class="weui-msg__desc">
-                Tke local development environment.
+                View local development environment.
             </p>
             <p class="weui-msg__desc">
-                <a href="phpinfo.php" target="_blank">PHP Version <?php echo substr(PHP_VERSION, 0, 6); ?></a>
+                <a href="phpinfo.php" target="_blank">PHP <?php echo substr(PHP_VERSION, 0, 6); ?></a>
             </p>
             <p class="weui-msg__desc small">
                 <a href="https://wqf100124.github.io/tke-view" target="_blank">
-                    Getting Started ->
+                    Docs
                 </a>
             </p>
         </div>

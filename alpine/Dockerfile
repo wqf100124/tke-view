@@ -1,6 +1,6 @@
 FROM alpine:3.15
 LABEL author="rt.wadewang"
-LABEL description="Tke local development environment."
+LABEL description="View local development environment."
 WORKDIR /home/tke
 COPY ./src /tmp
 RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
