@@ -73,6 +73,6 @@ module.exports = {
       pure: true
     }),
   ],
-  base: '/tke-view/',
+  base: '/',
   dest: './dist'
 }
