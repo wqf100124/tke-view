@@ -6,9 +6,6 @@ actions:
   - text: 快速开始 ->
     link: /guide/view.md
     type: primary
-  - text: 安装Docker
-    link: https://www.docker.com/products/docker-desktop
-    type: secondary
 features:
 - title: 环境
   details: 支持运行Local/Preview/Dev2/RC/Live等环境的代码，方便本地开发和测试。
