@@ -1,21 +1,23 @@
-## View Docker Image
-
-> 一个基于Docker搭建的View系统本地开发环境
-
-## 说明
-
-参照View生产环境构建的镜像，保证了开发环境和生产环境的一致性。无论你是在Windows、macOS或是Linux环境下开发，它都能完美的支持。无需繁琐的环境配置和安装流程，仅需要执行例如`docker run ...`的命令便可轻松搞定。
-
-浏览 [快速开始](/enviroment/view.md) 查看详细使用文档.
-
-## 特性
-
-- 支持Local/Dev/Dev2/RC/Live环境的代码
-- 支持Windows/macOS/Linux环境下开发
-- 集成RebbitMQ/Autotest/WSO2/Solr等第三方服务
-
-
-## 使用
+---
+home: true
+heroText: View开发环境
+tagline: 基于Docker搭建的View系统本地开发环境
+actions:
+  - text: 快速开始 ->
+    link: /guide/view.md
+    type: primary
+  - text: 安装Docker
+    link: https://www.docker.com/products/docker-desktop
+    type: secondary
+features:
+- title: 环境
+  details: 支持运行Local/Preview/Dev2/RC/Live等环境的代码，方便本地开发和测试。
+- title: 平台
+  details: 无论你是在Windows、macOS或是Linux环境下开发，它都能完美的支持。
+- title: 生态
+  details: 集成RebbitMQ/Autotest/WSO2/Solr等View开发常用的第三方服务。
+footer: View Docs
+---
 
 像数 1, 2, 3 一样容易
 
@@ -23,4 +25,3 @@
 # 本地开发环境
 docker run -d -p 80:80 -v <本机local代码>:/home/tke/local rtwadewang/tke
 ```
-
