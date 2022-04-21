@@ -45,10 +45,10 @@ autotest/selenium/config.xml
 
 ### 3.修改底层代码
 
-*由于当前底层代码仅支持Window环境，需要自己修改后才能支持Linux环境*
+*由于当前底层代码仅支持Window环境，需要修改以下文件后才能正常运行*
 
-autotest/selenium/library/FeatureContext.php
-autotest/selenium/library/GlobalContext.php(global环境)
+- autotest/selenium/library/FeatureContext.php
+- autotest/selenium/library/GlobalContext.php(global环境)
 
 修改前：
 ```php

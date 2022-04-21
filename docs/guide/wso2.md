@@ -238,9 +238,9 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 SVN地址
 
 ```ini
-# Dev/Dev2/Opt环境
+# dev环境代码(用于部署Dev/Dev2/Opt环境)
 svn://10.251.68.174/view_repos/fos/GatewayDev
-# RC环境
+# dev2代码(用于部署RC和Live环境)
 svn://10.251.68.174/view_repos/fos/GatewayStaging
 ```
 
