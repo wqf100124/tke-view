@@ -41,5 +41,6 @@ module.exports = {
       pure: true
     }),
   ],
-  base: '/tke-view/'
+  base: '/tke-view/',
+  dest: '.vuepress/dist'
 }
