@@ -30,10 +30,10 @@ docker build -t rtwadewang/tke:autotest --no-cache .
 
 ```shell
 # 安装依赖
-npm i docsify-cli -g
+yarn install
 
 # 本地预览
-docsify serve docs
+yarn docs:dev
 ```
 
 ## 使用方法

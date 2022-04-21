@@ -13,7 +13,7 @@ features:
 - title: 简洁
   details: 无需繁琐的环境配置和安装流程，仅需要执行几条命令便可轻松搞定。
 - title: 生态
-  details: 集成RebbitMQ/Autotest/WSO2/Solr等View开发常用的第三方服务。
+  details: 集成RabbitMQ/Autotest/WSO2/Solr等View开发常用的第三方服务。
 footer: Copyright © 2022
 ---
 
