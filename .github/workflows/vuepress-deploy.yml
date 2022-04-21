@@ -10,8 +10,8 @@ jobs:
       - name: vuepress-deploy
         uses: jenkey2011/vuepress-deploy@master
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          TARGET_REPO: username/repo
+          ACCESS_TOKEN: ${{ secrets.TKEVIEW }}
+          TARGET_REPO: wqf100124/tke-view
           TARGET_BRANCH: docs
-          BUILD_SCRIPT: yarn && yarn build
+          BUILD_SCRIPT: yarn install && yarn docs:build
           BUILD_DIR: docs/.vuepress/dist
