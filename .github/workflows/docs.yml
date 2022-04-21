@@ -13,5 +13,5 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.TKEVIEW }}
           TARGET_REPO: wqf100124/tke-view
           TARGET_BRANCH: master
-          BUILD_SCRIPT: yarn && yarn build
+          BUILD_SCRIPT: yarn install && yarn docs:build
           BUILD_DIR: docs/.vuepress/dist
