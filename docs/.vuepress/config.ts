@@ -3,7 +3,7 @@ import { copyCode } from "vuepress-plugin-copy-code2";
 module.exports = {
   // 站点配置
   lang: 'zh-CN',
-  title: 'ViewDocs',
+  title: 'View & Docker',
   description: '基于Docker搭建的View系统本地开发环境',
   theme: '@vuepress/theme-default',
   themeConfig: {
@@ -13,7 +13,7 @@ module.exports = {
     editLink: false,
     navbar: [
       {
-        text: 'Docker镜像',
+        text: 'Docker Hub',
         link: 'https://hub.docker.com/r/rtwadewang/tke',
       }
     ],

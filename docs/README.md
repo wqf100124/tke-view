@@ -8,12 +8,12 @@ actions:
     link: /guide/view.md
     type: primary
 features:
-- title: 环境
+- title: 全环境
   details: 支持运行Local/Preview/Dev2/RC/Live等环境的代码，方便本地开发和测试。
-- title: 简洁
-  details: 无需繁琐的环境配置和安装流程，仅需要执行几条命令便可轻松搞定。
-- title: 生态
-  details: 集成RabbitMQ/Autotest/WSO2/Solr等View开发常用的第三方服务。
+- title: 超简洁
+  details: 无需繁琐的环境配置和安装流程，仅需要几条命令便可轻松搞定。
+- title: 多生态
+  details: 集成RabbitMQ/Autotest/WSO2/Solr等开发常用的第三方服务。
 footer: Copyright © 2022
 ---
 

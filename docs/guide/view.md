@@ -8,7 +8,7 @@
 
 ### 1.创建tke网络
 
-首先，创建一个docker内部网络，这样可以使View容器可以和外部服务如`RabbitMQ`、`Selenium`、`WSO2`、`Solr`等互联。
+首先，创建一个docker内部网络，这样可以使View容器可以和第三方服务如`RabbitMQ`、`Selenium`、`WSO2`、`Solr`等进行交互。
 
 ```shell
 docker network create --subnet=172.16.1.0/24 tke
@@ -25,7 +25,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 - 对于WSL2开发环境，应使用linux下的项目路径如：`/var/web/local`
 - 本地不使用的项目请删除映射目录，以免影响IO速度。例如不使用live环境，则应删除命令中的 `-v <本机live代码目录>:/home/tke/live`
 
-测试容器是否创建成功: [http://localhost/](http://localhost/)	
+测试容器是否创建成功: [http://localhost](http://localhost)	
 
 ### 3.配置host
 
@@ -58,7 +58,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 127.0.0.1       global.live.test
 ```
 
-至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test/](http://hk.local.test/)
+至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
 
 ##  搭建Preview/Dev2/RC/Live环境
 
@@ -129,12 +129,12 @@ apk add vim
 
 ## 常见问题
 
-### 执行php脚本时的报错
+### 执行php脚本时报错
 
-通常，在运行php脚本如`php sys/lib/test.php`时会执行失败，这是因为这些脚本的代码中使用了类似于`$_ENV['HOME']`的系统环境变量。这时候我们可以使用 **特定用户** 进入容器，以preview环境代码为例:
+通常，在运行php脚本如`php sys/lib/test.php`时会执行失败，这是因为这些脚本的代码中大部分都使用了类似于`$_ENV['HOME']`的系统环境变量。这时候我们可以使用 **特定用户** 进入容器，以preview用户为例:
 
 ```shell
-# 以preview用户的身份进入容器
+# 进入容器
 docker exec --user preview -it view sh
 
 # 查看当前的系统环境变量，(将会输出/home/tke/preview/core)

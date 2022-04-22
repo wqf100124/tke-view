@@ -184,34 +184,37 @@ class ExampleQueueHandler implements MessageHandler
 
 ### 开发环境
 
-创建队列(以preview环境为例)
+以preview环境为例:
+
 ```shell
-docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
-```
-消费队列(以preview环境为例)
-```shell
-docker exec --user preview -w /home/tke/preview/core tke php sys/libs/logic/Util/MQ/MessageProcessor.php usa ExampleTopicKey
+# 进入容器
+docker exec --user preview -w /home/tke/preview/core -it view sh
+
+# 创建队列
+php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
+
+# 消费队列
+php sys/libs/logic/Util/MQ/MessageProcessor.php usa ExampleTopicKey
 ```
 
 ### 生产环境
 
 创建队列
-```shell
+```
 allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
 ```
 
 启动服务
-```shell
+```
 usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:ExampleTopicKey
 ```
 
 停止服务
-```shell
+```
 usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:ExampleTopicKey
 ```
 
 ##  常见问题
-
 
 ### 队列消费进程出现报错
 

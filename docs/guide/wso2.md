@@ -20,8 +20,9 @@ Application: 用来为Api分组以及授权、限流等
 docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
 ```
 Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
-App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications) 	
-账号: `admin` 
+App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
+
+账号: `admin`     
 密码: `admin`
 
 ### Swagger Editor(API文档编辑器)
