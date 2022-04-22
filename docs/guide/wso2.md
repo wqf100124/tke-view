@@ -21,7 +21,8 @@ docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9
 ```
 Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
 App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications) 	
-账号: admin 密码: admin
+账号: `admin` 
+密码: `admin`
 
 ### Swagger Editor(API文档编辑器)
 官方文档: [https://swagger.io/docs/](https://swagger.io/docs/)	     
@@ -33,8 +34,6 @@ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
 访问本地编辑器: [http://localhost:8080/](http://localhost:8080/)
 
-
-
 ##  本地开发流程
 
 ###  View系统提供API给第三方
@@ -44,8 +43,7 @@ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 #### 1.在View中创建接口文件
 
 
-示例:
-core/web/sharp/modules/api/controllers/DemoController.php
+示例: `core/web/sharp/modules/api/controllers/DemoController.php`
 
 ```php
 <?php
@@ -76,8 +74,7 @@ class Api_DemoController extends Api_RestfulController
 ```
 
 #### 2.跳过本地认证
-修改:
-core/web/sharp/modules/api/controllers/RestfulController.php 文件
+修改: `core/web/sharp/modules/api/controllers/RestfulController.php` 文件
 
 ![](../static/images/screenshots/wso2/provider/1.png)
 
@@ -123,7 +120,7 @@ App管理页面:[https://localhost:9443/devportal/applications](https://localhos
 
 #### 5.本地创建OAuth配置文件
 
-手动创建: core/.restfulapi.authentication.ini 文件(注意文件名包含.号)，填入如下内容
+手动创建: `core/.restfulapi.authentication.ini` 文件(注意文件名包含.号)，填入如下内容
 
 ```ini
 [VIEW_DEMO_APPLICATION]
@@ -138,7 +135,7 @@ gatewayRecourceUrl="https://172.16.1.94:8243"
 
 #### 6.在项目中使用
 
-core/web/wso2.php
+`core/web/wso2.php`
 
 ```php
 <?php
@@ -180,7 +177,7 @@ try {
 ```
 
 #### 7.处理接口返回的数据
-创建处理文件: core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php
+创建处理文件: `core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
 
 *文件命名规范：<App名称>GatewayBizHandler.php*
 
@@ -251,7 +248,7 @@ svn://10.251.68.174/view_repos/fos/GatewayStaging
 *注意：原则上一个BU对应一个Application，如果该Application已经存在，使用现有的即可。*
 
 示例：
-在 CommonAssets/ApplicationSetting/AP 目录下创建App配置文件
+在 `CommonAssets/ApplicationSetting/AP` 目录下创建App配置文件
 
 VIEW_AP_APPLICATION.xml	
  ```xml
@@ -283,7 +280,7 @@ RC环境:
 
 ![](../static/images/screenshots/wso2/deploy/2.png)
 
-需要让运维在对应的环境中添加App的配置信息（.restfulapi.authentication.ini文件）
+需要让运维在对应的环境中添加App的配置信息`.restfulapi.authentication.ini`文件
 格式：
 ```ini
 [VIEW_AP_APPLICATION]
@@ -298,12 +295,12 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 
 在根目录创建如下两个文件
 
-Demo/API_Managment/V1/apiConfig.xml	
-Demo/API_Managment/V1/swagger.json
+`Demo/API_Managment/V1/apiConfig.xml`
+`Demo/API_Managment/V1/swagger.json`
 
 ![](../static/images/screenshots/wso2/deploy/3.png)
 
-apiConfig.xml 文件示例
+`apiConfig.xml` 文件示例
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <apiConfig>
@@ -353,7 +350,7 @@ apiConfig.xml 文件示例
 </apiConfig>
 ```
 
-swagger.json 文件示例
+`swagger.json` 文件示例
 
 ```json
 {
@@ -473,8 +470,8 @@ swagger.json 文件示例
 
 在使用jenkins部署这两个文件之前，必须先让运维配置第三方API的帐号信息	（从Tke Leader处获取）        
 配置格式：   
-demo.auth.basic.username <帐号>	  
-demo.auth.basic.password <密码>
+`demo.auth.basic.username <帐号>`	  
+`demo.auth.basic.password <密码>`
 
 ![](../static/images/screenshots/wso2/deploy/4.png)
 

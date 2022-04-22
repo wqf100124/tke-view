@@ -11,8 +11,8 @@ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 567
 ```
 
 管理端: [http://localhost:15672](http://localhost:15672)    
-账号：guest     
-密码：guest
+账号：`guest`    
+密码：`guest`
 
 ##  项目配置
 
@@ -28,7 +28,7 @@ cp ./usa/mq/ ./core/mq
 
 ###  ViewLogger配置
 
-复制国家下的ViewLoggerConfig.php文件到**core**目录下
+复制国家下的`ViewLoggerConfig.php`文件到**core**目录下
 
 ```shell
 cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
@@ -36,7 +36,7 @@ cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
 
 ###  Amqp配置
 
-修改Amqp配置文件: mq/RabbitMQConfig.php
+修改Amqp配置文件: `mq/RabbitMQConfig.php`
 
 配置示例：
 
@@ -64,7 +64,7 @@ $rabbitMQConfig = [
 
 ###  Topic配置
 
-修改Topic配置文件: mq/TopicDeclaration.json
+修改Topic配置文件: `mq/TopicDeclaration.json`
 
 配置示例：
 
@@ -100,7 +100,7 @@ $rabbitMQConfig = [
 
 ###  生产者
 
-文件路径：core/web/amqp.php
+文件路径：`core/web/amqp.php`
 
 ```php
 <?php
@@ -138,7 +138,7 @@ try {
 
 ###  消费者
 
-文件路径：core/sys/libs/logic/Amqp/ExampleQueueHandler.php
+文件路径：`core/sys/libs/logic/Amqp/ExampleQueueHandler.php`
 
 ```php
 <?php
@@ -215,8 +215,7 @@ usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:ExampleTopicKey
 
 ### 队列消费进程出现报错
 
-core/sys/libs/logic/Util/MQ/MessageProcessor.php
-(约173行)
+`core/sys/libs/logic/Util/MQ/MessageProcessor.php`(约173行)
 
 查找并注释掉这个方法
 

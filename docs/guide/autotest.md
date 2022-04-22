@@ -26,7 +26,7 @@ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 790
 
 以默认国家的config文件为例，其它国家修改对应的配置文件即可。
 
-autotest/selenium/config.xml
+`autotest/selenium/config.xml`
 
 ```xml
 <element id="hostUrl">
@@ -47,8 +47,8 @@ autotest/selenium/config.xml
 
 *由于当前底层代码仅支持Window环境，需要修改以下文件后才能正常运行*
 
-- autotest/selenium/library/FeatureContext.php
-- autotest/selenium/library/GlobalContext.php(global环境)
+- `autotest/selenium/library/FeatureContext.php`
+- `autotest/selenium/library/GlobalContext.php`(global环境)
 
 修改前：
 ```php
@@ -94,7 +94,7 @@ vendor/bin/behat --tags <tagName>
 ### 6.常见问题
 
 #### operation not permitted
-报错信息: OCI runtime exec failed: exec failed: container_linux.go:xxx: starting container process caused: operation not permitted: unknown
+报错信息: `OCI runtime exec failed: exec failed: container_linux.go:xxx: starting container process caused: operation not permitted: unknown`
 
 解决办法: 修改项目权限
 

@@ -8,7 +8,7 @@
 
 ### 1.创建tke网络
 
-创建一个docker内部网络，这样可以使View容器可以和外部服务如RabbitMQ、Selenium、WSO2等互联。
+首先，创建一个docker内部网络，这样可以使View容器可以和外部服务如`RabbitMQ`、`Selenium`、`WSO2`、`Solr`等互联。
 
 ```shell
 docker network create --subnet=172.16.1.0/24 tke
@@ -22,13 +22,14 @@ docker network create --subnet=172.16.1.0/24 tke
 docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/tke
 ```
 说明：
--	对于WSL2开发环境，应使用linux下的项目路径如：/var/web/local，而不是d:/project/local等windows系统路径
--	本地不使用的项目请删除映射目录，以免影响IO速度。例如不使用live环境，则应删除命令中的 -v <本机live代码目录>:/home/tke/live
-
+- 对于WSL2开发环境，应使用linux下的项目路径如：`/var/web/local`
+- 本地不使用的项目请删除映射目录，以免影响IO速度。例如不使用live环境，则应删除命令中的 `-v <本机live代码目录>:/home/tke/live`
 
 测试容器是否创建成功: [http://localhost/](http://localhost/)	
 
 ### 3.配置host
+
+根据自己的需求去配置host
 
 ```ini
 # Local站点
@@ -67,11 +68,11 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 使用Local环境的config.php文件 替换 Preview/Dev2/RC/Live环境的配置文件
 
-local/hk/config.php => preview/hk/config.php
+`local/hk/config.php` => `preview/hk/config.php`
 
 ### 2.修改tke_config.php文件
 
-core/sys/includes/tke_config.php (约24行)
+`core/sys/includes/tke_config.php` (约24行)
 
 查找如下代码：
 ```php
@@ -95,7 +96,7 @@ require_once(BASE_DIR . "/../" . $sPreUrl . "/config.php");
 
 ### 3.修改登录逻辑
 
-core/web/login.php (约15行)
+`core/web/login.php` (约15行)
 
 查找如下代码：
 ```php
@@ -114,7 +115,10 @@ die();
 
 ```shell
 # 进入容器
-docker exec -it view sh
+docker exec -it view sh 
+
+# 进入容器(当你使用了Ubuntu镜像时)
+docker exec -it view sh 
 
 # 更新包
 apk update
@@ -122,3 +126,27 @@ apk update
 # 安装软件(vim)
 apk add vim
 ```
+
+## 常见问题
+
+### 执行php脚本时的报错
+
+通常，在运行php脚本如`php sys/lib/test.php`时会执行失败，这是因为这些脚本的代码中使用了类似于`$_ENV['HOME']`的系统环境变量。这时候我们可以使用 **特定用户** 进入容器，以preview环境代码为例:
+
+```shell
+# 以preview用户的身份进入容器
+docker exec --user preview -it view sh
+
+# 查看当前的系统环境变量，(将会输出/home/tke/preview/core)
+echo $HOME
+```
+
+下面列出了当前镜像中已存在的用户和其对应的目录
+
+| 用户名     | 用户目录                   |
+|---------|------------------------|
+| local   | /home/tke/local/core   |
+| preview | /home/tke/preview/core |
+| dev2    | /home/tke/dev2/core    |
+| rc      | /home/tke/rc/core      |
+| live    | /home/tke/live/core    |
