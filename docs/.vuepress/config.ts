@@ -3,10 +3,11 @@ import { copyCode } from "vuepress-plugin-copy-code2";
 module.exports = {
   // 站点配置
   lang: 'zh-CN',
-  title: 'View & Docker',
+  // title: 'View & Docker',
   description: '基于Docker搭建的View系统本地开发环境',
   theme: '@vuepress/theme-default',
   themeConfig: {
+    logo: '/logo.png',
     repo: 'wqf100124/tke-view',
     contributors: false,
     lastUpdated: true,
