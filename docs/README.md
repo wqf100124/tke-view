@@ -4,7 +4,7 @@ pageClass: home-page
 heroText: View本地开发，可以更简单
 tagline: 基于Docker构建的本地开发环境，为你提供更好的开发体验。
 actions:
-  - text: 快速开始 ->
+  - text: 开始使用 ->
     link: /guide/view.md
     type: primary
 features:
