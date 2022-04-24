@@ -7,7 +7,8 @@ module.exports = {
   description: '基于Docker搭建的View系统本地开发环境',
   theme: '@vuepress/theme-default',
   themeConfig: {
-    logo: '/logo.png',
+    logo: '/assets/images/logo.png',
+    logoDark: '/assets/images/logo-dark.png',
     repo: 'wqf100124/tke-view',
     contributors: false,
     lastUpdated: true,

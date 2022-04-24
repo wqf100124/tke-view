@@ -140,8 +140,8 @@
 
 html.dark {
   // brand colors
-  --c-brand: #aa5ae3;
-  --c-brand-light: #c488ef;
+  --c-brand: #bf83ea;
+  --c-brand-light: #a46fc9;
 
   // background colors
   --c-bg: #1e2124;
@@ -196,6 +196,10 @@ html.dark .DocSearch {
 
 .theme-container.home-page .home .hero h1 {
   font-size: 4rem;
+}
+
+html.dark .home .hero .action-button.primary {
+  color: #e6e6e6;
 }
 
 #main-title {
