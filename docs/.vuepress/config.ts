@@ -5,7 +5,7 @@ module.exports = {
   lang: 'zh-CN',
   title: 'View & Docker',
   description: '基于Docker搭建的View系统本地开发环境',
-  head: [['link', { rel: 'shortcut icon', href: '/assets/images/logo.png' }]],
+  head: [['link', { rel: 'shortcut icon', href: '/tke-view/assets/images/logo.png' }]],
   theme: '@vuepress/theme-default',
   themeConfig: {
     logo: '/assets/images/logo.png',

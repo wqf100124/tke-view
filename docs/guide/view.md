@@ -1,10 +1,10 @@
-# View本地开发环境
+# 本地开发环境
 
 镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
 集成环境: Apache2/PHP7.4/Memcached/Redis      
 支持代码: Local/Preview/Dev2/RC/Live
 
-## 搭建Local环境
+## 基础环境
 
 ### 1.创建tke网络
 
@@ -27,7 +27,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 测试容器是否创建成功: [http://localhost](http://localhost)	
 
-### 3.配置host
+### 3.配置站点host
 
 根据自己的需求去配置host
 
@@ -60,13 +60,13 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
 
-##  搭建Preview/Dev2/RC/Live环境
+## 运行Preview/Dev2/RC/Live代码
 
 *由于本地和线上环境的代码有着些许差异，需要进行以下操作才能正常运行*
 
-### 1.替换Config配置文件
+### 1.替换config.php配置文件
 
-使用Local环境的config.php文件 替换 Preview/Dev2/RC/Live环境的配置文件
+使用Local环境的config.php文件 **替换** 线上环境的配置文件
 
 `local/hk/config.php` => `preview/hk/config.php`
 
@@ -117,8 +117,8 @@ die();
 # 进入容器
 docker exec -it view sh 
 
-# 进入容器(当你使用了Ubuntu镜像时)
-docker exec -it view sh 
+# 进入容器(当你使用了7.4-ubuntu镜像时)
+docker exec -it view bash 
 
 # 更新包
 apk update
@@ -141,7 +141,7 @@ docker exec --user preview -it view sh
 echo $HOME
 ```
 
-下面列出了当前镜像中已存在的用户和其对应的目录
+当前镜像中已经存在的用户和其用户目录
 
 | 用户名     | 用户目录                   |
 |---------|------------------------|
