@@ -188,7 +188,7 @@ class ExampleQueueHandler implements MessageHandler
 
 ```shell
 # 进入容器
-docker exec --user preview -w /home/tke/preview/core -it view sh
+docker exec --user preview -w /home/tke/preview/core -it view bash
 
 # 创建队列
 php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue

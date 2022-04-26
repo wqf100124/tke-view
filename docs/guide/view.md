@@ -115,16 +115,10 @@ die();
 
 ```shell
 # 进入容器
-docker exec -it view sh 
-
-# 进入容器(当你使用了7.4-ubuntu镜像时)
 docker exec -it view bash 
 
-# 更新包
-apk update
-
-# 安装软件(vim)
-apk add vim
+# 进入容器(仅在当你使用了7.4-alpine镜像时使用)
+docker exec -it view sh
 ```
 
 ## 常见问题
@@ -135,7 +129,7 @@ apk add vim
 
 ```shell
 # 进入容器
-docker exec --user preview -it view sh
+docker exec --user preview -it view bash
 
 # 查看当前的系统环境变量，(将会输出/home/tke/preview/core)
 echo $HOME
