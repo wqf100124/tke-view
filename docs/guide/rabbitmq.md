@@ -2,12 +2,11 @@
 
 > RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）
 
-## 搭建环境
-
-### 创建rabbitmq服务容器
+## 创建容器
 
 官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
+创建一个名称为rabbitmq的服务容器
 ```shell
 docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
 ```
@@ -78,14 +77,14 @@ $rabbitMQConfig = [
         "ExampleTopicKey": {
             "JSONSchema": "",
             "Producer": {
-                "Route": "ExampleQueue",
+                "Route": "QueueRoute",
                 "IsConfirmMode": 1,
                 "GatewayScopes": ["Dispatcher"],
                 "DefaultTransformations": "",
                 "DefaultValidators": ""
             },
             "Consumer": {
-                "BindingQueue": "ExampleQueue",
+                "BindingQueue": "QueueName",
                 "PoolSize": 1,
                 "SleepSeconds": 60,
                 "Handlers": [
@@ -186,34 +185,36 @@ class ExampleQueueHandler implements MessageHandler
 
 ### 开发环境
 
-以preview环境为例:
-
+进入容器(这里假设你的本地使用的是`preview`环境的代码，其它环境请替换`--user`和`-w`参数)
 ```shell
-# 进入容器
 docker exec --user preview -w /home/tke/preview/core -it view bash
+```
 
-# 创建队列
-php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
+创建队列
+```shell
+php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
+```
 
-# 消费队列
-php sys/libs/logic/Util/MQ/MessageProcessor.php usa ExampleTopicKey
+消费队列
+```shell
+php sys/libs/logic/Util/MQ/MessageProcessor.php usa TopicKey
 ```
 
 ### 生产环境
 
 创建队列
 ```
-allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php ExampleQueue ExampleQueue
+allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
 ```
 
 启动服务
 ```
-usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:ExampleTopicKey
+usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:TopicKey
 ```
 
 停止服务
 ```
-usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:ExampleTopicKey
+usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:TopicKey
 ```
 
 ##  常见问题
