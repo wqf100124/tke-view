@@ -18,6 +18,8 @@ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tk
 
 参考文档: [https://github.com/SeleniumHQ/docker-selenium](https://github.com/SeleniumHQ/docker-selenium)
 
+Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/latest/)
+
 ```shell
 docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
 ```

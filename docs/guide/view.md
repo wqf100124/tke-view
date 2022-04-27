@@ -1,8 +1,8 @@
-# 本地开发环境
+# View开发环境
 
-镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
-集成环境: Apache2/PHP7.4/Memcached/Redis      
-支持代码: Local/Preview/Dev2/RC/Live
+> 镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
+> 集成环境: Apache2/PHP7.4/Memcached/Redis      
+> 支持代码: Local/Preview/Dev2/RC/Live
 
 ## 基础环境
 
@@ -58,7 +58,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 127.0.0.1       global.live.test
 ```
 
-至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
+:ghost: 至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
 
 ## 运行Preview/Dev2/RC/Live代码
 

@@ -1,5 +1,17 @@
-# 常用开发工具推荐
+# 开发工具推荐
 
 ## 命令行工具
 
-Hyper: [https://hyper.is/](https://hyper.is/)
+[Hyper](https://hyper.is/)
+
+## API接口工具
+
+[Postman](https://www.postman.com/downloads/)
+
+## VPN客户端
+[FortiClient VPN](https://downloads.qsgit.com/forticlient-vpn/)
+
+## 代码插件
+强大的代码补全工具: [Tabnine](https://www.tabnine.com/)
+
+:thinking: 欢迎大家一起来完善
