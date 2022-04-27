@@ -20,7 +20,7 @@ features:
 footer: Copyright © 2022
 ---
 
-像数 1, 2, 3 一样容易
+像数 1, 2, 3 一样容易 :nerd_face:
 
 ```shell
 # 本地开发环境
