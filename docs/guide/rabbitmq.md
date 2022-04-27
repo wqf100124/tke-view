@@ -219,7 +219,16 @@ usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:TopicKey
 
 ##  常见问题
 
-### 队列消费进程出现报错
+### 提示没有权限
+
+执行消费命令时出现 `Fatal error: Uncaught RuntimeException: The file could not be opened. Check permissions.`
+
+设置日志目录权限即可
+```shell
+docker exec view chmod -R 777 /var/log/View
+```
+
+### 消费进程报错
 
 `core/sys/libs/logic/Util/MQ/MessageProcessor.php`(约173行)
 
