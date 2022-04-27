@@ -60,6 +60,11 @@ module.exports = {
                 },
             ],
         },
+        tip: '提示：',
+        warning: '警告：',
+        danger: '错误：',
+        notFound: ['页面不存在', '页面找不到了'],
+        backToHome: '返回首页'
     },
     markdown: {
         EmojiPluginOptions: true,
