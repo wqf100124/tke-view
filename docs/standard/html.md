@@ -4,59 +4,106 @@
 hidden、radio、checkbox等input以及select标签，必须使用封装的API写法
 :::
 
+参考文件: `core/sys/libs/ngcore/form.lib`
+
+## Button
+
+```php
+print NGForm::button(
+    'id',
+    [
+		'class'    => 'className',
+		'onchange' => 'onchange(this)'
+    ],
+    html_xlate("Button")
+);
+```
+
 ## Text input
 ```php
-NGForm::textbox(
+print NGForm::textbox(
 	'id',
 	[
 		'class'    => 'className',
 		'onchange' => 'onchange(this)'
 	],
-	$value
+	'value'
 );
 ```
 
 ## Textarea
 ```php
-// Example
-NGForm::textarea(
+print NGForm::textarea(
 	'id',
 	[
 		'class'    => 'className',
-		'onchange' => 'onInclusionTriggerChange(this)',
-		'style'    => 'width: 260px;'
+		'onchange' => 'onchange(this)',
 	],
-	$value
+	'value'
 );
 ```
 
 ## Hidden input
 ```php
-NGForm::hidden($name, $attributes=NULL, $value = NULL);
+print NGForm::hidden(
+    'id',
+	[
+		'class'    => 'className',
+		'onchange' => 'onChange(this)'
+	],
+	'value'
+);
 ```
 
 ## Radio
 ```php
-NGForm::radiobutton($name, $attributes=[], $checked = NULL);
+print NGForm::radiobutton(
+    'id',
+	[
+		'class'    => 'className',
+		'onchange' => 'onChange(this)',
+		'value'    => '1'
+	],
+	true
+);
 ```
 
 ## Checkbox
 ```php
-NGForm::checkbox($name, $attributes=NULL, $checked = NULL);
+print NGForm::checkbox(
+    'id',
+	[
+		'class'    => 'className',
+		'onchange' => 'onChange(this)',
+		'value'    => '1'
+	],
+	true
+);
 ```
 
 ## Select
 ```php
-NGForm::dropbox($name, $attributes=NULL, $value = NULL);
-
-// Example
 NGForm::dropbox(
 	'id',
 	$optionList,
 	[
-		'class'    => 'InclusionSelect',
-		'onchange' => 'onInclusionRequiredChange(this)'
+		'class'    => 'className',
+		'onchange' => 'onChange(this)'
 	],
-	$row->InclusionTypeId
+	'value'
 );
+```
+
+## 多语言翻译
+
+参考文件: `core/sys/libs/multilingual.lib`
+
+仅翻译
+```php
+xlate("Hello World!");
+```
+
+翻译的同时会将字符串中的特殊字符转成HTML字符实体(htmlspecialchars())
+```php
+html_xlate("Hello &lt;b&gt;This&lt;/b&gt; World!");
 ```

@@ -1,4 +1,4 @@
-# Solr环境
+# Solr
 
 ## Solr 介绍
 什么是 Solr？   

@@ -17,8 +17,24 @@ module.exports = {
         editLink: false,
         navbar: [
             {
-                text: '开发规范',
+                text: '开发环境',
+                children: [
+                    '/guide/view.md',
+                    '/guide/autotest.md',
+                    '/guide/rabbitmq.md',
+                    '/guide/wso2.md',
+                    '/guide/solr.md',
+                ],
+            },
+            {
+                text: '代码规范',
                 link: '/standard/html.md',
+                children: [
+                    '/standard/html.md',
+                    '/standard/ui.md',
+                    '/standard/component.md',
+                    '/standard/db.md',
+                ],
             },
             {
                 text: '工具推荐',
@@ -61,7 +77,7 @@ module.exports = {
             ],
         },
         tip: '提示：',
-        warning: '警告：',
+        warning: '注意：',
         danger: '错误：',
         notFound: ['页面不存在', '页面找不到了'],
         backToHome: '返回首页'

@@ -4,7 +4,7 @@
 > 集成环境: Apache2/PHP7.4/Memcached/Redis      
 > 支持代码: Local/Preview/Dev2/RC/Live
 
-## 基础环境
+## 搭建本地环境
 
 ### 1.创建tke网络
 

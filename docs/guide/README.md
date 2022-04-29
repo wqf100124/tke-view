@@ -1,6 +1,6 @@
-# 安装Docker环境
+# 安装Docker
 
-##  Docker是什么？
+## Docker是什么？
 
 > Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台。
 
@@ -8,7 +8,7 @@
 
 官方网站: [https://www.docker.com/](https://www.docker.com/)
 
-##  核心概念
+## 核心概念
 
 -   镜像（Image）
     类似于虚拟机中的镜像，是一个包含有文件系统的面向Docker引擎的**只读模板**，镜像为应用程序提供运行环境。例如Ubuntu20.04就是一个包含Ubuntu操作系统环境的模板，在该镜像上装上Apache软件，就可以称为Apache镜像。
@@ -34,7 +34,7 @@ Windows下的两种运行方式:
 
 *提示：由于View系统当前的版本管理工具使用的是SVN而不是Git，如果你习惯了使用类似于[TortoiseSVN](https://tortoisesvn.net/downloads.html)的图形化管理工具，那么我建议你选择hyper-v的运行方式，相反，如果你的shell命令使用的比较熟练，那么建议你尝试使用WSL2，因为它可以显著的提高代码运行效率*
 
-##    常用命令
+## 常用命令
 
 #### 拉取镜像
 ```shell
