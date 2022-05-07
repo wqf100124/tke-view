@@ -123,7 +123,22 @@ docker exec -it view sh
 
 ## 常见问题
 
-### 执行php脚本时报错
+### 1.Warning: array_multisort()
+访问报错 `Warning: array_multisort(): Argument #1 is expected to be an array or a sort flag in /home/tke/preview/core/sys/libs/multilingual.lib on line 98
+Oops, unexpected error happened`
+
+解决办法:
+
+修改`core/sys/libs/Log4php/configurators/LoggerConfiguratorDefault.php`文件(约475行)
+
+```php
+private function warn($message) {
+    // 注释下面的方法
+    // trigger_error("log4php: $message", E_USER_WARNING);
+}
+```
+
+### 2.执行php脚本时报错
 
 通常，在运行php脚本如`php sys/lib/test.php`时会执行失败，这是因为这些脚本的代码中大部分都使用了类似于`$_ENV['HOME']`的系统环境变量。这时候我们可以使用 **特定用户** 进入容器，以preview用户为例:
 
