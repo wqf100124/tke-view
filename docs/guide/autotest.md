@@ -20,6 +20,11 @@ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tk
 
 Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/latest/)
 
+::: warning
+如果你的本地没有配置[View开发环境](./view.md)，那么你应该先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建一个network。
+:::
+
+创建容器
 ```shell
 docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
 ```
