@@ -180,12 +180,12 @@ class ExampleQueueHandler implements MessageHandler
 }
 ```
 
-
 ##  基本命令
 
 ### 开发环境
 
 进入容器(这里假设你的本地使用的是`preview`环境的代码，其它环境请替换`--user`和`-w`参数)
+
 ```shell
 docker exec --user preview -w /home/tke/preview/core -it view bash
 ```
@@ -200,22 +200,37 @@ php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
 php sys/libs/logic/Util/MQ/MessageProcessor.php usa TopicKey
 ```
 
-### 生产环境
+### 测试环境
 
-创建队列
-```
-allcountry:::sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
-```
+::: warning
+如果你更新了消费的代码，一定要记得去重启MQ的消费者服务进程！
+:::
 
-启动服务
+在jenkins中使用`Build with Parameters`来执行一次性脚本命令
+
+启动进程
 ```
 usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:TopicKey
 ```
 
-停止服务
+停止进程
 ```
 usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:TopicKey
 ```
+
+查看进程
+```
+ps -ef | grep TopicKey
+```
+
+Jenkins一次性脚本
+
+Dev环境:
+[https://jenkins.tkeasia.com/job/Dev_For_Once_Scripts/build](https://jenkins.tkeasia.com/job/Dev_For_Once_Scripts/build)
+
+Dev2环境:
+[https://jenkins.tkeasia.com/job/Dev2%20Deploy%20For%20Once%20Scripts/build](https://jenkins.tkeasia.com/job/Dev2%20Deploy%20For%20Once%20Scripts/build)
+
 
 ##  常见问题
 
