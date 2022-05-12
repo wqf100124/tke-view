@@ -2,7 +2,7 @@
 
 ## Autotest容器
 
-*当前Selenium和PHPUnit都使用该容器*
+> Selenium和PHPUnit都使用该容器
 
 创建autotest容器(需要替换本机dev2代码目录)
 
@@ -80,7 +80,7 @@ if($isServer){
 
 ### 4.运行测试命令
 
-提示：后期测试时仅执行下面的测试命令即可（注意替换tagName）
+*提示：后期测试时仅执行下面的测试命令即可（注意替换tagName）*
 
 ```shell
 # 进入容器
@@ -91,6 +91,12 @@ cd selenium
 
 # 执行测试命令
 vendor/bin/behat --tags <tagName>
+```
+
+如果觉得上面的命令比较繁琐，你也可以直接运行下面的命令：
+
+```shell
+docker exec -it -w /home/tke/dev2/autotest/selenium autotest vendor/bin/behat --tags <tagName>
 ```
 
 ### 5.使用web服务
