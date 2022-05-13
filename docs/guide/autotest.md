@@ -1,16 +1,16 @@
 # Autotest自动化测试
 
-## Autotest容器
-
-> Selenium和PHPUnit都使用该容器
+## 基础环境
 
 创建autotest容器(需要替换本机dev2代码目录)
+
+> Selenium和PHPUnit都使用该容器
 
 ```shell
 docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/dev2 rtwadewang/tke:autotest
 ```
 
-## Selenium
+## 运行Selenium
 
 ### 1.创建selenium服务容器
 
@@ -125,7 +125,7 @@ View自动化测试工具: [https://testsupport.tkeasia.com/](https://testsuppor
 
 Selenium浏览器插件: [https://microsoftedge.microsoft.com/addons/detail/selenium-ide/ajdpfmkffanmkhejnopjppegokpogffp?hl=zh-CN](https://microsoftedge.microsoft.com/addons/detail/selenium-ide/ajdpfmkffanmkhejnopjppegokpogffp?hl=zh-CN)
 
-## PHPUnit
+## 运行PHPUnit
 
 ### 1.项目初始化
 

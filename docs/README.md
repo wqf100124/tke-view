@@ -18,12 +18,11 @@ features:
   details: 无需繁琐的环境配置和安装流程，仅需要几条命令便可轻松搞定。
 - title: 多生态
   details: 集成RabbitMQ/Autotest/WSO2/Solr等开发常用的第三方服务。
-footer: Copyright © 2022
+footer: view & docker
 ---
 
-像数 1, 2, 3 一样容易 :nerd_face:
+:surfing_man: 运行本地开发环境
 
 ```shell
-# 本地开发环境
 docker run -d -p 80:80 -v <本机local代码>:/home/tke/local rtwadewang/tke
 ```

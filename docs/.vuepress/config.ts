@@ -12,7 +12,7 @@ module.exports = {
         // logoDark: '/assets/images/logo-dark.png',
         // repo: 'wqf100124/tke-view',
         contributors: false,
-        lastUpdated: true,
+        lastUpdated: false,
         lastUpdatedText: '最近更新',
         editLink: false,
         navbar: [
