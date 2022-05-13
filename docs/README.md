@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /assets/images/战胜疫情.png
+heroImage: /assets/images/战胜疫情.svg
 pageClass: home-page
 heroText: View本地开发，可以更简单
 tagline: 基于Docker构建的本地开发环境，为你提供更好的开发体验。
