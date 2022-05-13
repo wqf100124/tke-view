@@ -9,8 +9,8 @@ module.exports = {
     theme: '@vuepress/theme-default',
     themeConfig: {
         logo: '/assets/images/logo.png',
-        logoDark: '/assets/images/logo-dark.png',
-        repo: 'wqf100124/tke-view',
+        // logoDark: '/assets/images/logo-dark.png',
+        // repo: 'wqf100124/tke-view',
         contributors: false,
         lastUpdated: true,
         lastUpdatedText: '最近更新',

@@ -82,7 +82,7 @@ Code Path:
 
 ```php
 print textbox("frm_unit_id", "size:=45, readonly:=1")
-. 
+
 button("op", "onclick:=popup('/common/unit_list.php?openerFormElementName=frm_unit_id',550,400); return false;", xlate("Choose"));
 ```
 
@@ -96,6 +96,6 @@ Code Path:
 
 ```php
 print textbox("frm_employee_id", "size:=45, readonly:=1")
-. 
+
 button("op", "onclick:=popup('/common/employee_list.php?openerFormElementName=frm_employee_id',550,400); return false;", xlate("Choose"));
 ```
