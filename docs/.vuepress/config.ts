@@ -8,7 +8,7 @@ module.exports = {
     head: [['link', {rel: 'shortcut icon', href: '/tke-view/assets/images/favicon.ico'}]],
     theme: '@vuepress/theme-default',
     themeConfig: {
-        logo: '/assets/images/logo.svg',
+        logo: '/assets/images/logo.png',
         // logoDark: '/assets/images/logo-dark.svg',
         // repo: 'wqf100124/tke-view',
         contributors: false,
