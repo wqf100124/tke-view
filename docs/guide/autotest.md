@@ -21,7 +21,7 @@ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tk
 Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/latest/)
 
 ::: warning
-如果你的本地没有配置[View开发环境](./view.md)，那么你应该先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建一个network。
+如果你的本地没有配置[View本地环境](./view.md)，那么你应该先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建一个network。
 :::
 
 创建容器
@@ -47,8 +47,6 @@ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 790
     <value>http://172.16.1.44:4444</value>
 </element>
 ```
-
-注意：如果你的本地View开发环境未使用docker容器，则hostUrl应修改为 http://127.0.0.1:4444
 
 ### 3.修改底层代码
 

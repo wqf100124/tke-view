@@ -5,11 +5,11 @@ module.exports = {
     lang: 'zh-CN',
     title: 'View & Docker',
     description: '基于Docker搭建的View系统本地开发环境',
-    head: [['link', {rel: 'shortcut icon', href: '/tke-view/assets/images/赞.svg'}]],
+    head: [['link', {rel: 'shortcut icon', href: '/tke-view/assets/images/favicon.ico'}]],
     theme: '@vuepress/theme-default',
     themeConfig: {
-        logo: '/assets/images/赞.svg',
-        // logoDark: '/assets/images/logo-dark.png',
+        logo: '/assets/images/logo.svg',
+        // logoDark: '/assets/images/logo-dark.svg',
         // repo: 'wqf100124/tke-view',
         contributors: false,
         lastUpdated: false,
@@ -37,8 +37,12 @@ module.exports = {
                 ],
             },
             {
-                text: '工具推荐',
-                link: '/tools/recommend.md',
+                text: '常用站点',
+                link: '/sites/',
+            },
+            {
+                text: '开发工具',
+                link: '/tools/',
             },
             {
                 text: 'Docker Hub',
@@ -71,7 +75,14 @@ module.exports = {
             '/tools/': [
                 {
                     children: [
-                        '/tools/recommend.md',
+                        '/tools/',
+                    ],
+                },
+            ],
+            '/sites/': [
+                {
+                    children: [
+                        '/sites/README.md',
                     ],
                 },
             ],

@@ -1,33 +1,35 @@
-# View开发环境
+# View本地环境
+
+本镜像是基于Linux系统，并参照了View生产环境所构建的镜像，保证了开发环境和生产环境的一致性。
 
 > 镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
 > 集成环境: Apache2/PHP7.4/Memcached/Redis      
 > 支持代码: Local/Preview/Dev2/RC/Live
 
-## 搭建本地环境
+## 创建Tke网络
 
-### 1.创建tke网络
-
-首先，创建一个docker内部网络，这样可以使View容器可以和第三方服务如`RabbitMQ`、`Selenium`、`WSO2`、`Solr`等进行交互。
+由于Docker容器之间是相互隔离的，所以我们需要创建一个docker内部网络，以便使View容器可以和第三方服务容器如`RabbitMQ`、`Selenium`等进行交互。
 
 ```shell
 docker network create --subnet=172.16.1.0/24 tke
 ```
 
-### 2.创建view容器
+## 创建View容器
+
+创建一个名称为view的docker容器，同时将本机代码映射到了容器中，该容器中集成了View运行所需要的基础环境。
 
 *注意：以下命令仅作为参考，实际运行时按照下面的说明对命令进行修改*
 
 ```shell
-docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/tke
+docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc rtwadewang/tke
 ```
 说明：
+- 本地不使用的项目请删除映射目录，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
 - 对于WSL2开发环境，应使用linux下的项目路径如：`/var/web/local`
-- 本地不使用的项目请删除映射目录，以免影响IO速度。例如不使用live环境，则应删除命令中的 `-v <本机live代码目录>:/home/tke/live`
 
 测试容器是否创建成功: [http://localhost](http://localhost)	
 
-### 3.配置站点host
+## 配置站点Host
 
 根据自己的需求去配置host
 

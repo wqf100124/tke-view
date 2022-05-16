@@ -13,9 +13,13 @@ Application: 用来为Api分组以及授权、限流等
 
 ###  AM(API Manager)
 
-*部署和管理 API 的工具，提供了 API 整个生命周期所需要的各种控制，包含控制访问权限，访问流量，监控 API 的调用，版本控制等。*
+*部署和管理 API 的工具，提供了 API 整个生命周期所需要的各种控制，包含控制访问权限，访问流量，监控 API 的调用，版本控制等，最新的4.1.0版本已经集成了MI(Micro Integrator)。*
 
-官方镜像：[https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
+> WSO2 API Manager 4.1.0 is shipped with an integration runtime (Micro Integrator) with comprehensive enterprise integration capabilities. Therefore, you can now use WSO2 API Manager to develop complex integration services and expose them as managed APIs in an API marketplace. This allows you to enable API-led connectivity across your business using a single platform.<br>
+> 译文: <br>
+> WSO2 API Manager 4.1.0 附带了集成运行时（Micro Integrator），具有全面的企业集成功能。因此，您现在可以使用 WSO2 API Manager 来开发复杂的集成服务，并在 API 市场中将其公开为托管 API。这允许您使用单个平台在整个企业中启用 API 主导的连接。
+
+官方镜像: [https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
 
 创建并运行AM容器(*容器启动过程大约需要2~3分钟，耐心等待即可。*)
 ```shell
@@ -26,6 +30,8 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 
 账号: `admin`     
 密码: `admin`
+
+官方镜像: [https://hub.docker.com/r/wso2/wso2mi](https://hub.docker.com/r/wso2/wso2mi)
 
 ### Swagger Editor(API文档编辑器)
 官方文档: [https://swagger.io/docs/](https://swagger.io/docs/)	     
