@@ -66,13 +66,13 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 *由于本地和线上环境的代码有着些许差异，需要进行以下操作才能正常运行*
 
-### 1.替换config.php配置文件
+### 1.替换config.php
 
 使用Local环境的config.php文件 **替换** 线上环境的配置文件
 
 `local/hk/config.php` => `preview/hk/config.php`
 
-### 2.修改tke_config.php文件
+### 2.修改tke_config.php
 
 `core/sys/includes/tke_config.php` (约24行)
 
@@ -112,6 +112,13 @@ $user = $db->get("SELECT * FROM `user` WHERE `ActiveDirectoryID` = '80000110' LI
 userLogin($user->id, $user);
 die();
 ```
+
+### 4.复制日志配置文件
+
+复制国家下的`ViewLoggerConfig.php`到`core`目录
+
+`preview/hk/ViewLoggerConfig.php` => `preview/core/ViewLoggerConfig.php`
+
 
 ## 常用命令
 
