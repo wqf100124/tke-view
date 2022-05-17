@@ -71,6 +71,10 @@ mv /tmp/vhost/* /etc/apache2/sites-enabled
 chmod -R 777 /var/log
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 chmod +x /run/entrypoint.sh
+# ---------- init ----------
+mv /tmp/init /run/init
+mv /tmp/init.sh /run/init.sh
+chmod +x /run/init.sh
 # ---------- clear works ----------
 apt-get remove --yes software-properties-common
 apt-get autoremove --yes

@@ -1,6 +1,6 @@
 # View本地环境
 
-本镜像是基于Linux系统，并参照了View生产环境所构建的镜像，保证了开发环境和生产环境的一致性。
+本镜像基于Linux系统构建，并参照了View生产环境的配置信息，保证了开发和生产环境的一致性。
 
 > 镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
 > 集成环境: Apache2/PHP7.4/Memcached/Redis      
@@ -16,7 +16,7 @@ docker network create --subnet=172.16.1.0/24 tke
 
 ## 创建View容器
 
-创建一个名称为view的docker容器，同时将本机代码映射到了容器中，该容器中集成了View运行所需要的基础环境。
+创建一个名称为view的docker容器，同时将本机代码映射到了容器中，该容器集成了View运行所需要的基础环境。
 
 *注意：以下命令仅作为参考，实际运行时按照下面的说明对命令进行修改*
 
@@ -24,14 +24,14 @@ docker network create --subnet=172.16.1.0/24 tke
 docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc rtwadewang/tke
 ```
 说明：
-- 本地不使用的项目请删除映射目录，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
-- 对于WSL2开发环境，应使用linux下的项目路径如：`/var/web/local`
+- 不使用的代码请删除目录映射，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
+- 对于WSL2开发环境，应该使用linux下的项目路径如：`/var/web/local`
 
 测试容器是否创建成功: [http://localhost](http://localhost)	
 
 ## 配置站点Host
 
-根据自己的需求去配置host
+根据自己的需求去配置
 
 ```ini
 # Local站点
@@ -70,55 +70,25 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 使用Local环境的config.php文件 **替换** 线上环境的配置文件
 
-`local/hk/config.php` => `preview/hk/config.php`
+以preview代码例如:
 
-### 2.修改tke_config.php
+`local/hk/config.php` => `preview/hk/config.php`    
+`local/china/config.php` => `preview/china/config.php`  
+`local/global/config.php` => `preview/global/config.php`    
+...<br>
+需要运行哪个国家直接替换config.php即可
 
-`core/sys/includes/tke_config.php` (约24行)
+### 2.运行初始化命令
 
-查找如下代码：
-```php
-require_once(BASE_DIR . "/config.php");
+::: warning
+该命令会修改`core/web/login.php`,`core/sys/includes/tke_config.php`等核心文件，这些文件仅用于你的本地开发环境，切勿提交到svn
+:::
+
+以preview代码为例: *(注意替换你自己的8ID，这里的8ID将会被用于站点的自动登录)*
+
+```shell
+docker exec -it view /run/init.sh preview 80000110
 ```
-
-替换为：
-
-```php
-$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], '.'));
-$sPreUrl = $sPreUrl ?: 'hk';
-require_once(BASE_DIR . "/../" . $sPreUrl . "/config.php");
-```
-
-同时删除该文件结尾的php结束符（修复excel导出乱码的问题）
-
-```php
-// 删除php结束符
-?>
-```
-
-### 3.修改登录逻辑
-
-`core/web/login.php` (约15行)
-
-查找如下代码：
-```php
-use SystemAdmin\User\Service\UserInformationService as UserInformationService;
-```
-在该行下面添加以下代码:
-
-```php
-// 使用固定8ID自动登录
-$user = $db->get("SELECT * FROM `user` WHERE `ActiveDirectoryID` = '80000110' LIMIT 1");
-userLogin($user->id, $user);
-die();
-```
-
-### 4.复制日志配置文件
-
-复制国家下的`ViewLoggerConfig.php`到`core`目录
-
-`preview/hk/ViewLoggerConfig.php` => `preview/core/ViewLoggerConfig.php`
-
 
 ## 常用命令
 

@@ -89,13 +89,13 @@ apk add --no-cache redis
 # ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 # echo "root:123456" | chpasswd
 # ---------- project directory ----------
-mv /tmp/init /run/init
-mv /tmp/init.sh /run/init.sh
-chmod +x /run/init.sh
-
 mv /tmp/htdocs /var/www/htdocs
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 chmod +x /run/entrypoint.sh
 chmod -R 777 /var/log
+# ---------- init ----------
+mv /tmp/init /run/init
+mv /tmp/init.sh /run/init.sh
+chmod +x /run/init.sh
 # ---------- clear works ----------
 rm -rf /var/cache/apk/* /root/.cache /tmp/*
