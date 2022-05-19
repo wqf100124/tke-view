@@ -81,7 +81,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 ### 2.运行初始化命令
 
 ::: warning
-该命令会修改`core/web/login.php`,`core/sys/includes/tke_config.php`等核心文件，这些文件仅用于你的本地开发环境，切勿提交到svn
+该命令会修改`login.php`、`tke_config.php`、`error.phtml`、`ErrorController.php`等核心文件，这些文件仅可用于你的本地开发环境，切勿提交到svn！
 :::
 
 以preview代码为例: *(注意替换你自己的8ID，这里的8ID将会被用于站点的自动登录)*

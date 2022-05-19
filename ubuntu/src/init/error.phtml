@@ -1,0 +1,39 @@
+<!--  Warning: This file is only for local development and testing, do not commit to svn -->
+<link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/atom-one-light.min.css">
+<div class="content-wrapper">
+    <section class="content">
+        <h2><?php echo $this->message ?></h2>
+
+        <?php if ('development' == APPLICATION_ENV): ?>
+            <h2>Exception information:</h2>
+            <h3>Message:</h3>
+            <p>
+                <code class="language-plaintext">
+                    <?php echo $this->exception->getMessage() ?>
+                </code>
+            </p>
+
+            <h3>Stack trace:</h3>
+            <p>
+                <code class="language-plaintext">
+                    <?php echo $this->exception->getTraceAsString() ?>
+                </code>
+            </p>
+
+            <h3>Request Parameters:</h3>
+            <p>
+                <code class="language-plaintext">
+                    <?php echo var_export($this->request->getParams(), true) ?>
+                </code>
+            </p>
+        <?php endif ?>
+    </section>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+<script>
+    document.querySelectorAll('code').forEach(el => {
+        // then highlight each
+        hljs.highlightElement(el);
+    });
+</script>

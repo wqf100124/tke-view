@@ -36,6 +36,14 @@ cp /run/init/login.php ${corePath}/web/login.php
 sed -i "s/{8ID}/\$userId/g" ${corePath}/web/login.php
 echo "edit ${corePath}/web/login.php";
 
+# ErrorController.php
+cp /run/init/ErrorController.php ${corePath}/web/sharp/modules/default/controllers/ErrorController.php
+echo "edit ${corePath}/web/sharp/modules/default/controllers/ErrorController.php";
+
+# error.phtml
+cp /run/init/error.phtml ${corePath}/web/sharp/modules/default/views/scripts/error/error.phtml
+echo "edit ${corePath}/web/sharp/modules/default/views/scripts/error/error.phtml";
+
 # ViewLoggerConfig.php
 cp /run/init/ViewLoggerConfig.php ${corePath}/ViewLoggerConfig.php
 echo "new ${corePath}/ViewLoggerConfig.php";
