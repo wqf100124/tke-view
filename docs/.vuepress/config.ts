@@ -1,4 +1,5 @@
 import {copyCode} from "vuepress-plugin-copy-code2";
+const { docsearchPlugin } = require('@vuepress/plugin-docsearch');
 
 module.exports = {
     // 站点配置
@@ -101,6 +102,21 @@ module.exports = {
     },
     plugins: [
         copyCode({
+        }),
+        docsearchPlugin({
+            // 配置项
+            apiKey: 'd0f222e3bebb69442f1388e8b432b3a6',
+            indexName: 'tke-view',
+            locales: {
+                '/': {
+                    placeholder: '搜索文档',
+                    translations: {
+                        button: {
+                            buttonText: '搜索文档',
+                        },
+                    },
+                }
+            },
         }),
     ],
     base: '/tke-view/'

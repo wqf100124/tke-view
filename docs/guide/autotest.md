@@ -42,7 +42,7 @@ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 790
 ```
 
 修改为：
-```xml
+```xml{2}
 <element id="hostUrl">
     <value>http://172.16.1.44:4444</value>
 </element>
@@ -65,7 +65,7 @@ if($isServer){
 }
 ```
 修改后：
-```php
+```php{6-7}
 if($isServer){
 	$desired_capabilities->setCapability("webdriver.edge.driver", "/data/autotest/MicrosoftWebDriver");
 	$desired_capabilities->setCapability("platform", "Linux");
