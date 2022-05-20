@@ -105,6 +105,7 @@ module.exports = {
         }),
         docsearchPlugin({
             // 配置项
+            appId: 'O4VL4CD63V',
             apiKey: 'd0f222e3bebb69442f1388e8b432b3a6',
             indexName: 'tke-view',
             locales: {

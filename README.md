@@ -5,25 +5,19 @@
 ### 7.4-alpine
 
 ```shell
-cd alpine/
-
-docker build -t rtwadewang/tke:7.4-alpine --no-cache .
+docker build -t rtwadewang/tke:7.4-alpine --no-cache ./alpine
 ```
 
 ### 7.4-ubuntu
 
 ```shell
-cd ubuntu/
-
-docker build -t rtwadewang/tke:7.4-ubuntu -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache .
+docker build -t rtwadewang/tke:7.4-ubuntu -t rtwadewang/tke:7.4 -t rtwadewang/tke:latest --no-cache ./ubuntu
 ```
 
 ### autotest
 
 ```shell
-cd autotest/
-
-docker build -t rtwadewang/tke:autotest --no-cache .
+docker build -t rtwadewang/tke:autotest --no-cache ./autotest
 ```
 
 ## 生成文档

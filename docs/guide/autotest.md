@@ -7,7 +7,7 @@
 > Selenium和PHPUnit都使用该容器
 
 ```shell
-docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/dev2 rtwadewang/tke:autotest
+docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/code rtwadewang/tke:autotest
 ```
 
 ## 运行Selenium
@@ -80,21 +80,9 @@ if($isServer){
 
 *提示：后期测试时仅执行下面的测试命令即可（注意替换tagName）*
 
+执行测试命令
 ```shell
-# 进入容器
-docker exec -it autotest sh
-
-# 进入目录
-cd selenium
-
-# 执行测试命令
-vendor/bin/behat --tags <tagName>
-```
-
-如果觉得上面的命令比较繁琐，你也可以直接运行下面的命令：
-
-```shell
-docker exec -it -w /home/tke/dev2/autotest/selenium autotest vendor/bin/behat --tags <tagName>
+docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags <tagName>
 ```
 
 ### 5.使用web服务
@@ -103,15 +91,6 @@ docker exec -it -w /home/tke/dev2/autotest/selenium autotest vendor/bin/behat --
 - 管理页面: [http://localhost:4444](http://localhost:4444)
 
 ### 6.常见问题
-
-#### operation not permitted
-报错信息: `OCI runtime exec failed: exec failed: container_linux.go:xxx: starting container process caused: operation not permitted: unknown`
-
-解决办法: 修改项目权限
-
-```shell
-docker exec autotest chmod -R 755 /home/tke/dev2/autotest/selenium/vendor/bin/behat
-```
 
 #### 容器中代码格式未对齐
 
@@ -127,7 +106,7 @@ Selenium浏览器插件: [https://microsoftedge.microsoft.com/addons/detail/sele
 
 ### 1.项目初始化
 
-*注意：该操作会自动修改autotest/phpunit/library/BaseBootstrap.php底层文件*
+*注意：该操作会自动修改`autotest/phpunit/library/BaseBootstrap.php`底层文件*
 
 ```shell
 docker exec -it autotest /run/phpunit.sh
@@ -145,5 +124,5 @@ docker exec -it autotest sh
 cd phpunit/sharp
 
 # 执行测试命令
-php /home/tke/dev2/autotest/phpunit/vendor/phpunit/phpunit/phpunit --configuration phpunit.xml --filter <testName>
+phpunit --configuration phpunit.xml --filter <testName>
 ```

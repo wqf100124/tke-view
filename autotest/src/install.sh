@@ -41,9 +41,17 @@ apk add --no-cache \
     php7-sysvsem \
     php7-tokenizer \
     php7-zip
+# ---------- behat ----------
+mv /tmp/bin/behat.phar /usr/bin/behat
+chmod +x /usr/bin/behat
+# ---------- phpunit ----------
+mkdir -p /usr/local/src/phpunit
+mv /tmp/phpunit.tar.gz /usr/local/src/phpunit.tar.gz
+tar -xzvf /usr/local/src/phpunit.tar.gz -C /usr/local/src/phpunit
+ln -s /usr/local/src/phpunit/phpunit/phpunit/phpunit /usr/bin/phpunit
+chmod +x /usr/bin/phpunit
+rm /usr/local/src/phpunit.tar.gz
 # ---------- init ----------
-mkdir /var/data
-mv /tmp/phpunit.tar.gz /var/data/phpunit.tar.gz
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 mv /tmp/phpunit.sh /run/phpunit.sh
 chmod +x /run/entrypoint.sh /run/phpunit.sh
