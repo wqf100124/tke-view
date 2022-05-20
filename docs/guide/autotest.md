@@ -1,4 +1,4 @@
-# Autotest自动化测试
+# Auto Testing
 
 ## 基础环境
 
@@ -10,9 +10,9 @@
 docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/code rtwadewang/tke:autotest
 ```
 
-## 运行Selenium
+## Selenium
 
-### 1.创建selenium服务容器
+### 1.创建selenium服务
 
 官方镜像: [https://hub.docker.com/r/selenium/standalone-edge](https://hub.docker.com/r/selenium/standalone-edge)
 
@@ -24,7 +24,6 @@ Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/lates
 如果你的本地没有配置[View本地环境](./view.md)，那么你应该先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建一个network。
 :::
 
-创建容器
 ```shell
 docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
 ```
@@ -92,6 +91,10 @@ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags <tagNa
 
 ### 6.常见问题
 
+#### 运行RC的自动化测试代码
+
+使用Dev2的`autotest/selenium/library`来替换RC的`autotest/selenium/library`目录，其它配置参照上面的步骤即可。
+
 #### 容器中代码格式未对齐
 
 设置编辑器: 使用4个空格代替tab键
@@ -102,7 +105,7 @@ View自动化测试工具: [https://testsupport.tkeasia.com/](https://testsuppor
 
 Selenium浏览器插件: [https://microsoftedge.microsoft.com/addons/detail/selenium-ide/ajdpfmkffanmkhejnopjppegokpogffp?hl=zh-CN](https://microsoftedge.microsoft.com/addons/detail/selenium-ide/ajdpfmkffanmkhejnopjppegokpogffp?hl=zh-CN)
 
-## 运行PHPUnit
+## PHPUnit
 
 ### 1.项目初始化
 
