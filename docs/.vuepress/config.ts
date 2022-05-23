@@ -1,5 +1,7 @@
-import {copyCode} from "vuepress-plugin-copy-code2";
+import { copyCodePlugin } from "vuepress-plugin-copy-code2";
 const { docsearchPlugin } = require('@vuepress/plugin-docsearch');
+const { defaultTheme } = require('@vuepress/theme-default');
+const { prismjsPlugin } = require('@vuepress/plugin-prismjs');
 
 module.exports = {
     // 站点配置
@@ -7,11 +9,17 @@ module.exports = {
     title: 'View & Docker',
     description: '基于Docker搭建的View系统本地开发环境',
     head: [['link', {rel: 'shortcut icon', href: '/tke-view/assets/images/favicon.ico'}]],
-    theme: '@vuepress/theme-default',
-    themeConfig: {
+    base: '/tke-view/',
+    markdown: {
+        EmojiPluginOptions: true,
+        code: {
+            lineNumbers: 5
+        }
+    },
+    theme: defaultTheme({
         logo: '/assets/images/logo.png',
         // logoDark: '/assets/images/logo-dark.svg',
-        // repo: 'wqf100124/tke-view',
+        repo: 'wqf100124/tke-view',
         contributors: false,
         lastUpdated: false,
         lastUpdatedText: '最近更新',
@@ -38,7 +46,7 @@ module.exports = {
                 ],
             },
             {
-                text: '常用站点',
+                text: '站点导航',
                 link: '/sites/',
             },
             {
@@ -93,16 +101,16 @@ module.exports = {
         danger: '错误：',
         notFound: ['页面不存在', '页面找不到了'],
         backToHome: '返回首页'
-    },
-    markdown: {
-        EmojiPluginOptions: true,
-        code: {
-            lineNumbers: 10
-        }
-    },
+    }),
     plugins: [
-        copyCode({
+        copyCodePlugin({
+            // 是否生成样式纯净的小而简单的复制按钮。
+            pure: false,
         }),
+        prismjsPlugin({
+            // 配置项
+            preloadLanguages: ['markdown', 'jsdoc', 'yaml', 'php', 'editorconfig', 'ini']
+          }),
         docsearchPlugin({
             // 配置项
             appId: 'O4VL4CD63V',
@@ -119,6 +127,5 @@ module.exports = {
                 }
             },
         }),
-    ],
-    base: '/tke-view/'
+    ]
 }

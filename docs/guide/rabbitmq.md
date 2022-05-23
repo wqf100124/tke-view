@@ -2,7 +2,7 @@
 
 > RabbitMQ是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）
 
-## 创建容器
+## 创建MQ服务
 
 官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 

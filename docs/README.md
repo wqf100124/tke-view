@@ -12,11 +12,11 @@ actions:
   link: /guide/
   type: secondary
 features:
-- title: 全环境
+- title: 完整
   details: 支持运行Local/Preview/Dev2/RC/Live等环境的代码，方便本地开发和测试。
-- title: 超简洁
+- title: 简洁
   details: 无需繁琐的环境配置和安装流程，仅需要几条命令便可轻松搞定。
-- title: 多生态
+- title: 多态
   details: 集成RabbitMQ/Autotest/WSO2/Solr等开发常用的第三方服务。
 footer: view & docker
 ---

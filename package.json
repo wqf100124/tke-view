@@ -1,7 +1,7 @@
 {
   "name": "tke-view",
   "version": "1.0.0",
-  "description": "tke view system local development enviroment.",
+  "description": "View local development enviroment.",
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -12,7 +12,8 @@
   "repository": "git@github.com:wqf100124/tke-view.git",
   "devDependencies": {
     "@vuepress/plugin-docsearch": "^2.0.0-beta.45",
-    "vuepress": "^2.0.0-beta.39",
-    "vuepress-plugin-copy-code2": "^2.0.0-beta.45"
+    "@vuepress/plugin-prismjs": "^2.0.0-beta.45",
+    "vuepress": "^2.0.0-beta.45",
+    "vuepress-plugin-copy-code2": "^2.0.0-beta.71"
   }
 }

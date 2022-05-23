@@ -1,10 +1,10 @@
-# Auto Testing
+# AutoTesting
 
-## 基础环境
-
-创建autotest容器(需要替换本机dev2代码目录)
+## 创建容器
 
 > Selenium和PHPUnit都使用该容器
+
+*注意：需要替换本机dev2代码目录*
 
 ```shell
 docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/code rtwadewang/tke:autotest
@@ -21,7 +21,7 @@ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tk
 Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/latest/)
 
 ::: warning
-如果你的本地没有配置[View本地环境](./view.md)，那么你应该先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建一个network。
+如果你的本地没有使用[Local环境](./view.md)，那么你应该先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建一个network。
 :::
 
 ```shell
@@ -117,15 +117,17 @@ docker exec -it autotest /run/phpunit.sh
 
 ### 2.运行测试
 
-以sharp模块为例：
-
+进入容器
 ```shell
-# 进入容器
 docker exec -it autotest sh
+```
 
-# 进入目录
+进入目录(以sharp模块为例)
+```shell
 cd phpunit/sharp
+```
 
-# 执行测试命令
+执行测试命令
+```shell
 phpunit --configuration phpunit.xml --filter <testName>
 ```

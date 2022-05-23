@@ -1,10 +1,10 @@
-# 安装Docker
+# Docker
 
 ## Docker是什么？
 
 > Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台。
 
-以Tke的运行环境为例，它使用了诸如Apache、PHP、Mysql、Redis、Memcached、Rabbitmq等服务。Docker可以将这些所有服务和代码打包成为一个镜像，然后部署到开发/生产环境中。
+以View系统的运行环境为例，它的基础环境包含了Apache、PHP、Mysql、Memcached、Redis、Rabbitmq等服务。Docker可以将这些所有服务和代码打包成为一个镜像，然后部署到开发/生产环境中。
 
 官方网站: [https://www.docker.com/](https://www.docker.com/)
 
@@ -32,7 +32,7 @@ Windows下的两种运行方式:
     - 将 WSL 2 设置为默认值
     - 下载并安装 Ubuntu/Centos/Alpine 等Linux分发
 
-*提示：由于View系统当前的版本管理工具使用的是SVN而不是Git，如果你习惯了使用类似于[TortoiseSVN](https://tortoisesvn.net/downloads.html)的图形化管理工具，那么我建议你选择hyper-v的运行方式，相反，如果你的shell命令使用的比较熟练，那么建议你尝试使用WSL2，因为它可以显著的提高代码运行效率*
+*提示：由于View系统当前的版本管理工具使用的是SVN而不是Git，如果你习惯了使用类似于[TortoiseSVN](https://tortoisesvn.net/downloads.html)的图形化管理工具，那么建议选择hyper-v的运行方式，相反，如果你的shell命令使用的比较熟练，那么建议尝试使用WSL2，因为它可以显著的提高代码运行效率*
 
 ## 常用命令
 
