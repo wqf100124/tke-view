@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /assets/images/hero.svg
+heroImage: /assets/images/cooperation.svg
 pageClass: home-page
 heroText: View本地开发，可以更简单
 tagline: 基于Docker构建的本地开发环境，为你提供更好的开发体验。
