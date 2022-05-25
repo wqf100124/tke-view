@@ -1,12 +1,12 @@
 # Docker
 
+官方网站: [https://www.docker.com](https://www.docker.com)
+
 ## Docker是什么？
 
-> Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台。
+> Docker是一个用于开发、打包和运行应用程序的开放平台。它可以将应用程序与基础架构分离。docker的虚拟容器，能够将你的开发环境、配置文件、代码等一并打包成镜像，然后去快速的发布、测试和部署。利用docker，可以显著减少从代码开发到上线运行之间的时间。
 
-以View系统的运行环境为例，它的基础环境包含了Apache、PHP、Mysql、Memcached、Redis、Rabbitmq等服务。Docker可以将这些所有服务和代码打包成为一个镜像，然后部署到开发/生产环境中。
-
-官方网站: [https://www.docker.com/](https://www.docker.com/)
+以View系统为例，它的运行环境可能包含了Apache、PHP、Mysql、Memcached、MongoDB、Redis、Rabbitmq等服务。Docker可以将这些服务和代码打包成为一个或多个镜像，然后部署到开发/生产环境中。
 
 ## 核心概念
 
@@ -18,10 +18,10 @@
     类似于代码仓库，这里是镜像仓库，是Docker用来集中存放镜像文件的地方，每个镜像利用tag进行区分，比如Ubuntu仓库存放有多个版本（20.04、16.04等）的Ubuntu镜像。
 
 ## 安装
-下载安装包: [Docker Desktop (Windows/Mac/Linux)](https://www.docker.com/get-started)
+下载安装包: [Docker Desktop (Windows/MacOs/Linux)](https://www.docker.com/get-started)
 
-Windows下的两种运行方式:
-- [Hyper-V (Windows 10 上的虚拟机)](https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v "在 Windows 10 上安装 Hyper-V")
+在Windows下的两种运行方式:
+- [Hyper-V (Windows自带的虚拟机)](https://docs.microsoft.com/zh-cn/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v "在 Windows 10 上安装 Hyper-V")
     - Windows 10 企业版、专业版或教育版
     - 具有二级地址转换 (SLAT) 的 64 位处理器
     - CPU 支持 VM 监视器模式扩展（Intel CPU 上的 VT-c）
@@ -61,34 +61,7 @@ docker {start|stop|rm} <container ID>
 docker ps
 ```
 
-#### 进入容器内部
+#### 进入容器
 ```shell
 docker exec -it <container ID> bash
 ```
-
-## 镜像加速
-
-*如果官方源速度较慢，可尝试配置国内源*
-
-具体配置流程
-
-- 1.进入Docker设置页面
-- 2.选择Docker Engine
-- 3.修改registry-mirrors的配置项
-
-配置示例:
-```json
-{
-  "registry-mirrors": [
-      "https://hub-mirror.c.163.com/"
-  ],
-}
-```
-
-配置完后重新启动Docker即可
-
-国内源:
-- 中科大：https://docker.mirrors.ustc.edu.cn/
-- 网易云：https://hub-mirror.c.163.com/
-- 阿里云：https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
-- 七牛云：https://reg-mirror.qiniu.com
