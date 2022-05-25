@@ -24,5 +24,5 @@ footer: 学习如春起之苗，不见其长，日有所长。
 :surfing_man: 运行本地开发环境
 
 ```shell
-docker run -d -p 80:80 -v <本机local代码>:/home/tke/local rtwadewang/tke
+docker run -d -p 80:80 -v <本机local代码>:/home/tke/local rtwadewang/view
 ```

@@ -55,7 +55,7 @@ module.exports = {
             },
             {
                 text: 'Docker Hub',
-                link: 'https://hub.docker.com/r/rtwadewang/tke',
+                link: 'https://hub.docker.com/u/rtwadewang',
             }
         ],
         sidebar: {

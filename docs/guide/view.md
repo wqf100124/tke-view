@@ -1,10 +1,11 @@
 # Local环境
 
-基于Linux系统构建，并参照了View生产环境的配置信息，保证开发和生产环境的一致性。
+镜像地址: [https://hub.docker.com/r/rtwadewang/view](https://hub.docker.com/r/rtwadewang/view)
 
-> 镜像地址: [https://hub.docker.com/r/rtwadewang/tke](https://hub.docker.com/r/rtwadewang/tke)     
 > 集成环境: Apache2/PHP7.4/Memcached/Redis      
 > 支持代码: Local/Preview/Dev2/RC/Live
+
+*基于Linux系统构建，并参照了View生产环境的配置信息，保证开发和生产环境的一致性。*
 
 ## 创建网络
 
@@ -19,7 +20,7 @@ docker network create --subnet=172.16.1.0/24 tke
 *注意：需要修改你的本机代码路径，同时确认本机上的Apache服务已经关闭。*
 
 ```shell
-docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/tke
+docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/view
 ```
 
 - 不使用的代码请删除目录映射，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`

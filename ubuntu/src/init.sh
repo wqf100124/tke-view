@@ -20,18 +20,15 @@ if [ ! "$(ls -A $corePath)" ]; then
 fi
 
 # tke_config.php
-if [ ! -f ${corePath}/sys/includes/tke_config.php ]; then
-    echo "${corePath}/sys/includes/tke_config.php文件不存在";
-    exit 1;
-fi
 cp /run/init/tke_config.php ${corePath}/sys/includes/tke_config.php
 echo "edit ${corePath}/sys/includes/tke_config.php";
 
+# http.lib
+rm ${corePath}/sys/libs/http.lib
+cp /run/init/http.lib ${corePath}/sys/libs/http.lib
+echo "edit ${corePath}/sys/libs/http.lib";
+
 # login.php
-if [ ! -f ${corePath}/web/login.php ]; then
-    echo "${corePath}/web/login.php文件不存在";
-    exit 1;
-fi
 cp /run/init/login.php ${corePath}/web/login.php
 sed -i "s/{8ID}/\$userId/g" ${corePath}/web/login.php
 echo "edit ${corePath}/web/login.php";
@@ -48,4 +45,7 @@ echo "edit ${corePath}/web/sharp/modules/default/views/scripts/error/error.phtml
 cp /run/init/ViewLoggerConfig.php ${corePath}/ViewLoggerConfig.php
 echo "new ${corePath}/ViewLoggerConfig.php";
 
-echo "success!";
+echo "操作成功!";
+echo "警告：以上文件仅可用于本地开发，切勿提交到SVN!!!";
+echo "警告：以上文件仅可用于本地开发，切勿提交到SVN!!!";
+echo "警告：以上文件仅可用于本地开发，切勿提交到SVN!!!";
