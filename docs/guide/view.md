@@ -61,7 +61,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 :ghost: 至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
 
-## 运行线上代码
+## 运行Preview/Dev2/RC/Live代码
 
 *由于本地和线上环境的代码有着些许差异，需要进行以下操作才能正常运行*
 
@@ -83,7 +83,7 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 该命令会修改`login.php`、`tke_config.php`、`error.phtml`、`ErrorController.php`等核心文件，这些文件仅可用于你的本地开发环境，切勿提交到svn！
 :::
 
-以preview代码为例: *(注意替换你自己的8ID，这里的8ID将会被用于站点的自动登录)*
+以preview代码为例: *(注意替换你自己的8ID，这里的8ID用于站点的自动登录)*
 
 ```shell
 docker exec -it view /run/init.sh preview 80000570
@@ -116,7 +116,7 @@ docker exec --user preview -it view bash
 echo $HOME
 ```
 
-当前镜像中已经存在的用户和其用户目录
+已经存在的用户和其对应的目录
 
 | 用户名     | 用户目录                   |
 |---------|------------------------|
