@@ -1,7 +1,9 @@
-import { copyCodePlugin } from "vuepress-plugin-copy-code2";
-const { docsearchPlugin } = require('@vuepress/plugin-docsearch');
-const { defaultTheme } = require('@vuepress/theme-default');
-const { prismjsPlugin } = require('@vuepress/plugin-prismjs');
+import {copyCodePlugin} from "vuepress-plugin-copy-code2";
+
+const {docsearchPlugin} = require('@vuepress/plugin-docsearch');
+const {defaultTheme} = require('@vuepress/theme-default');
+const {prismjsPlugin} = require('@vuepress/plugin-prismjs');
+const {searchPlugin} = require('@vuepress/plugin-search');
 
 module.exports = {
     // 站点配置
@@ -110,59 +112,70 @@ module.exports = {
         prismjsPlugin({
             // 配置项
             preloadLanguages: ['markdown', 'jsdoc', 'yaml', 'php', 'editorconfig', 'ini']
-          }),
-        docsearchPlugin({
-            // 配置项
-            appId: 'O4VL4CD63V',
-            apiKey: 'd0f222e3bebb69442f1388e8b432b3a6',
-            indexName: 'tke-view',
-            locales: {
-                '/': {
-                    placeholder: '输入关键词搜索',
-                    translations: {
-                        button: {
-                            buttonText: '搜索文档',
-                            buttonAriaLabel: '搜索文档',
-                        },
-                        modal: {
-                            searchBox: {
-                                resetButtonTitle: '清除查询内容',
-                                resetButtonAriaLabel: '清除查询内容',
-                                cancelButtonText: '取消',
-                                cancelButtonAriaLabel: '取消',
-                            },
-                            startScreen: {
-                                recentSearchesTitle: 'Recent',
-                                noRecentSearchesText: '暂无内容',
-                                saveRecentSearchButtonTitle: '保存搜索记录',
-                                removeRecentSearchButtonTitle: '从历史记录中删除',
-                                favoriteSearchesTitle: '收藏',
-                                removeFavoriteSearchButtonTitle: '移除收藏',
-                            },
-                            errorScreen: {
-                                titleText: '获取搜索结果失败',
-                                helpText: '请检查你的网络连接是否正常.',
-                            },
-                            footer: {
-                                selectText: '搜索',
-                                selectKeyAriaLabel: '输入关键词',
-                                navigateText: '移动',
-                                navigateUpKeyAriaLabel: '向上',
-                                navigateDownKeyAriaLabel: '向下',
-                                closeText: '关闭',
-                                closeKeyAriaLabel: 'Escape 键',
-                                searchByText: '搜索引擎基于',
-                            },
-                            noResultsScreen: {
-                                noResultsText: '没有匹配的内容',
-                                suggestedQueryText: '尝试搜索',
-                                reportMissingResultsText: '确认该搜索有结果?',
-                                reportMissingResultsLinkText: '让我们知道.',
-                            },
-                        },
-                    },
-                }
-            },
         }),
+
+        // searchPlugin({
+        //     locales: {
+        //         '/': {
+        //             placeholder: 'Search',
+        //         },
+        //         '/zh/': {
+        //             placeholder: '搜索',
+        //         },
+        //     },
+        // }),
+        // docsearchPlugin({
+        //     // 配置项
+        //     appId: 'O4VL4CD63V',
+        //     apiKey: 'd0f222e3bebb69442f1388e8b432b3a6',
+        //     indexName: 'tke-view',
+        //     locales: {
+        //         '/': {
+        //             placeholder: '输入关键词搜索',
+        //             translations: {
+        //                 button: {
+        //                     buttonText: '搜索文档',
+        //                     buttonAriaLabel: '搜索文档',
+        //                 },
+        //                 modal: {
+        //                     searchBox: {
+        //                         resetButtonTitle: '清除查询内容',
+        //                         resetButtonAriaLabel: '清除查询内容',
+        //                         cancelButtonText: '取消',
+        //                         cancelButtonAriaLabel: '取消',
+        //                     },
+        //                     startScreen: {
+        //                         recentSearchesTitle: 'Recent',
+        //                         noRecentSearchesText: '暂无内容',
+        //                         saveRecentSearchButtonTitle: '保存搜索记录',
+        //                         removeRecentSearchButtonTitle: '从历史记录中删除',
+        //                         favoriteSearchesTitle: '收藏',
+        //                         removeFavoriteSearchButtonTitle: '移除收藏',
+        //                     },
+        //                     errorScreen: {
+        //                         titleText: '获取搜索结果失败',
+        //                         helpText: '请检查你的网络连接是否正常.',
+        //                     },
+        //                     footer: {
+        //                         selectText: '搜索',
+        //                         selectKeyAriaLabel: '输入关键词',
+        //                         navigateText: '移动',
+        //                         navigateUpKeyAriaLabel: '向上',
+        //                         navigateDownKeyAriaLabel: '向下',
+        //                         closeText: '关闭',
+        //                         closeKeyAriaLabel: 'Escape 键',
+        //                         searchByText: '搜索引擎基于',
+        //                     },
+        //                     noResultsScreen: {
+        //                         noResultsText: '没有匹配的内容',
+        //                         suggestedQueryText: '尝试搜索',
+        //                         reportMissingResultsText: '确认该搜索有结果?',
+        //                         reportMissingResultsLinkText: '让我们知道.',
+        //                     },
+        //                 },
+        //             },
+        //         }
+        //     },
+        // }),
     ]
 }

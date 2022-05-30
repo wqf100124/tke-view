@@ -20,17 +20,19 @@ if [ ! "$(ls -A $corePath)" ]; then
 fi
 
 # tke_config.php
-cp /run/init/tke_config.php ${corePath}/sys/includes/tke_config.php
+configCode='$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], "."));\n    $sPreUrl = $sPreUrl ?: "hk";\n    require_once(BASE_DIR . "\/..\/" . $sPreUrl . "\/config.php");'
+sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/sys/includes/tke_config.php
+sed -i '$s/?>/''/' ${corePath}/sys/includes/tke_config.php
 echo "edit ${corePath}/sys/includes/tke_config.php";
 
 # http.lib
 rm ${corePath}/sys/libs/http.lib
-cp /run/init/http.lib ${corePath}/sys/libs/http.lib
+echo "<?php include('./ngcore/http.lib');" >> ${corePath}/sys/libs/http.lib
 echo "edit ${corePath}/sys/libs/http.lib";
 
 # login.php
-cp /run/init/login.php ${corePath}/web/login.php
-sed -i "s/{8ID}/\$userId/g" ${corePath}/web/login.php
+loginCode="\    // Use custom 8id automatic login\n    \$user = \$db->get(\"SELECT * FROM \`user\` WHERE \`ActiveDirectoryID\` = '${userId}' LIMIT 1\");\n    userLogin(\$user->id, \$user);\n    die();"
+sed -i "/UserInformationService as UserInformationService;/a\ \n${loginCode}" ${corePath}/web/login.php
 echo "edit ${corePath}/web/login.php";
 
 # ErrorController.php
