@@ -1,6 +1,32 @@
 # 数据库的操作
 
-### Restriction
+## 添加子菜单/权限(permission)
+
+级别: `all_center`
+
+以 Service Database => Timesheet => Cost Correction Report 菜单为例:
+
+```sql
+-- Cost Correction Report
+SET @rank := (SELECT max(`Rank`) + 1 FROM permission);
+SET @pc := (SELECT `id` FROM permissioncategory WHERE Name = "Timesheet");
+
+INSERT INTO `permission`
+SET `Name`                 = 'Cost Correction Report',
+    `PermissionCategoryID` = @pc,
+    `URL`                  = '/sharp/ServiceActivity/CostCorrectionReport',
+    `ShowInMenu`           = 1,
+    `RequireTKGlobal`      = 1,
+    `GlobalVisible`        = 1,
+    `SiteVisible`          = 0,
+    `BranchVisible`        = 0,
+    `Rank`                 = @rank,
+    `onClick`              = NULL,
+    `DevelopmentOnly`      = 0,
+    `SuperUserOnly`        = NULL;
+```
+
+## 添加字段控制(restriction)
 
 级别: `all_country`
 
@@ -18,7 +44,7 @@ IGNORE INTO `restriction_regex` (`RestrictionID`, `Regex`, `RegexDefine`, `IsVis
 VALUES ((SELECT id FROM restriction WHERE FieldName = 'SLAPenaltyPenalty' AND URL = '/service/contracts.php'), NULL, NULL, 0, 0, 0, NULL, NULL, NOW(), 0, NOW(), 0, 0);
 ```
 
-### System Setting
+## 添加开关(system setting)
 
 级别: `all_country`
 
@@ -38,10 +64,11 @@ SET `Name`         = 'Service tender won integration',
     `GroupID`      = @SettingGroupId,
     `FieldType`    = 'checkbox',
     `Description`  = 'Ticket to create a SNOW ticket when win a service tender.',
+    `ItcmNumber`   = '88888888',
     `Rank`         = 0;
 ```
 
-### General Options
+## 添加下拉列表(general options)
 
 级别: `all_country`
 
@@ -52,22 +79,24 @@ INSERT
 IGNORE INTO `general_options` (`OptionType`, `DefineSymbol`, `Title_en`, `Title_local`, `DateAdded`, `DateModified`) VALUES ('CONTRACT_SERVICE_EXTRA_INCLUSION_TYPE', 'Exclusion', 'Exclusion', 'Exclusion', NOW(), NOW());
 ```
 
-### 添加字段
+## 添加字段
 
 ```sql
 CALL AddColumn('contract_branch_unit_extra_service', 'ExtraInclusionId', 'int(10) DEFAULT 0 AFTER `ContractId`');
 ```
 
-### 添加翻译
+## 添加翻译
 
 级别: `all_center`
 
 ```sql
-INSERT
-IGNORE INTO `staticcatalogue` (`Source`,`Val_en`,CreatedDate) VALUES('Service Opportunities', 'Service Opportunities', NOW());
+INSERT IGNORE INTO `staticcatalogue`
+SET `Source`      = 'Multi language translation',
+    `Val_en`      = 'Multi language translation',
+    `CreatedDate` = NOW();
 ```
 
-### 创建表
+## 创建表
 
 CREATE TABLE IF NOT EXISTS `table_name`
 
@@ -89,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `contract_extra_visit`
   DEFAULT CHARSET = utf8;
 ```
 
-### 删除表
+## 删除表
 
 ```sql
 DROP TABLE IF EXISTS `contract_extra_visit`;
