@@ -8,8 +8,8 @@
 
 ```sql
 -- Cost Correction Report
-SET @rank := (SELECT max(`Rank`) + 1 FROM permission);
-SET @pc := (SELECT `id` FROM permissioncategory WHERE Name = "Timesheet");
+SET @rank:=(SELECT max(`Rank`) + 1 FROM `permission`);
+SET @pc:=(SELECT `id` FROM `permissioncategory` WHERE Name = "Timesheet");
 
 INSERT INTO `permission`
 SET `Name`                 = 'Cost Correction Report',
