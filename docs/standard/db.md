@@ -1,6 +1,6 @@
 # 数据库的操作
 
-## 添加子菜单/权限(permission)
+## 添加子菜单及权限(permission)
 
 级别: `all_center`
 
@@ -8,10 +8,11 @@
 
 ```sql
 -- Cost Correction Report
+
 SET @pc := (
     SELECT pc.id AS id
     FROM `permissioncategory` pc
-      LEFT JOIN `permissionsection` ps ON ps.id = pc.PermissionSectionID
+             LEFT JOIN `permissionsection` ps ON ps.id = pc.PermissionSectionID
     WHERE ps.`Name` = 'Service Database'
       AND pc.`Name` = 'Timesheet'
 );
@@ -20,6 +21,7 @@ SET @rank := (
     FROM `permission`
 );
 
+-- permission
 INSERT INTO `permission`
 SET `Name`                   = 'Cost Correction Report',
     `PermissionCategoryID`   = @pc,
@@ -36,6 +38,16 @@ SET `Name`                   = 'Cost Correction Report',
     `RequiredConstant`       = '',
     `PermissionSubCategoryID`= 0,
     `ManualURL`= '';
+
+SET @permissionId := (SELECT `id` FROM permission WHERE `Name` = 'Cost Correction Report' AND `PermissionCategoryID` = @pc);
+
+-- permission action
+INSERT IGNORE INTO permissionaction(`Name`, `DefineSymbol`, `PermissionID`, `IsVisible`)
+VALUES ('View', 'VIEW_COST_CORRECTION_REPORT', @permissionId, 1);
+
+-- multi language
+INSERT IGNORE INTO `staticcatalogue` (`Source`, `Val_en`, `PermissionID`, `ModuleID`, `IsMaster`, `CreatedDate`)
+VALUES ('Cost Correction Report', 'Cost Correction Report', @permissionId, '1', '1', NOW());
 ```
 
 ## 添加字段控制(restriction)
