@@ -8,22 +8,34 @@
 
 ```sql
 -- Cost Correction Report
-SET @rank:=(SELECT max(`Rank`) + 1 FROM `permission`);
-SET @pc:=(SELECT `id` FROM `permissioncategory` WHERE Name = "Timesheet");
+SET @pc := (
+    SELECT pc.id AS id
+    FROM `permissioncategory` pc
+      LEFT JOIN `permissionsection` ps ON ps.id = pc.PermissionSectionID
+    WHERE ps.`Name` = 'Service Database'
+      AND pc.`Name` = 'Timesheet'
+);
+SET @rank := (
+    SELECT max(`Rank`) + 1
+    FROM `permission`
+);
 
 INSERT INTO `permission`
-SET `Name`                 = 'Cost Correction Report',
-    `PermissionCategoryID` = @pc,
-    `URL`                  = '/sharp/ServiceActivity/CostCorrectionReport',
-    `ShowInMenu`           = 1,
-    `RequireTKGlobal`      = 1,
-    `GlobalVisible`        = 1,
-    `SiteVisible`          = 0,
-    `BranchVisible`        = 0,
-    `Rank`                 = @rank,
-    `onClick`              = NULL,
-    `DevelopmentOnly`      = 0,
-    `SuperUserOnly`        = NULL;
+SET `Name`                   = 'Cost Correction Report',
+    `PermissionCategoryID`   = @pc,
+    `URL`                    = '/sharp/ServiceActivity/CostCorrectionReport',
+    `ShowInMenu`             = 1,
+    `RequireTKGlobal`        = 0,
+    `GlobalVisible`          = 0,
+    `SiteVisible`            = 1,
+    `BranchVisible`          = 1,
+    `Rank`                   = @rank,
+    `onClick`                = NULL,
+    `DevelopmentOnly`        = 0,
+    `SuperUserOnly`          = NULL,
+    `RequiredConstant`       = '',
+    `PermissionSubCategoryID`= 0,
+    `ManualURL`= '';
 ```
 
 ## 添加字段控制(restriction)
