@@ -1,0 +1,2 @@
+import{_ as e,c as a}from"./app.2840f606.js";const s={},n=a(`<p>\u{1F3C4}\u200D\u2642\uFE0F \u8FD0\u884C\u672C\u5730\u5F00\u53D1\u73AF\u5883</p><div class="language-bash ext-sh"><pre class="language-bash"><code><span class="token function">docker</span> run -d -p <span class="token number">80</span>:80 -v <span class="token operator">&lt;</span>\u672C\u673Alocal\u4EE3\u7801<span class="token operator">&gt;</span>:/home/tke/local rtwadewang/view
+</code></pre></div>`,2);function t(c,o){return n}var p=e(s,[["render",t],["__file","index.html.vue"]]);export{p as default};
