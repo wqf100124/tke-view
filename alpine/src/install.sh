@@ -78,6 +78,9 @@ sed -i "s/enable_dl = Off/enable_dl = On/g" /etc/php7/php.ini
 sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 150M/g" /etc/php7/php.ini
 mv /tmp/php_pdflib.so /usr/lib/php7/modules/pdflib.so
 echo "extension=pdflib.so" >> /etc/php7/conf.d/00_pdflib.ini
+# ---------- composer ----------
+php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+php composer-setup.php --install-dir=/usr/bin --filename=composer;
 # ---------- memcached ----------
 apk add --no-cache memcached
 # ---------- redis ----------

@@ -61,6 +61,9 @@ sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 150M/g" /etc/php/${1}/a
 mv /tmp/php_pdflib_740_nts.so /usr/lib/php/20190902/pdflib.so
 echo "extension=pdflib.so" >> /etc/php/${1}/apache2/php.ini
 ln --force /etc/php/${1}/apache2/php.ini /etc/php/${1}/cli/php.ini
+# ---------- composer ----------
+php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
+php composer-setup.php --install-dir=/usr/bin --filename=composer;
 # ---------- redis ----------
 apt-get install -y redis-server
 # ---------- project directory ----------

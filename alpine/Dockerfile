@@ -3,8 +3,7 @@ LABEL author="rt.wadewang"
 LABEL description="View local development environment."
 WORKDIR /home/tke
 COPY ./src /tmp
-RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
-    && apk update \
+RUN apk update \
     && adduser -G root -D -h /home/tke/local/core local \
     && adduser -G root -D -h /home/tke/preview/core preview \
     && adduser -G root -D -h /home/tke/dev2/core dev2 \
