@@ -7,8 +7,8 @@
 官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
 创建一个名称为rabbitmq的服务容器
-```shell
-docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
+```sh
+$ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
 ```
 
 管理端: [http://localhost:15672](http://localhost:15672)    
@@ -23,16 +23,16 @@ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 567
 
 复制国家下的mq文件夹到**core**目录下
 
-```shell
-cp ./usa/mq/ ./core/mq
+```sh
+$ cp ./usa/mq/ ./core/mq
 ```
 
 ###  ViewLogger配置
 
 复制国家下的`ViewLoggerConfig.php`文件到**core**目录下
 
-```shell
-cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
+```sh
+$ cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
 ```
 
 ###  Amqp配置
@@ -186,18 +186,18 @@ class ExampleQueueHandler implements MessageHandler
 
 进入容器(这里假设你的本地使用的是`preview`环境的代码，其它环境请替换`--user`和`-w`参数)
 
-```shell
-docker exec --user preview -w /home/tke/preview/core -it view bash
+```sh
+$ docker exec --user preview -w /home/tke/preview/core -it view bash
 ```
 
 创建队列
-```shell
-php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
+```sh
+$ php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
 ```
 
 消费队列
-```shell
-php sys/libs/logic/Util/MQ/MessageProcessor.php usa TopicKey
+```sh
+$ php sys/libs/logic/Util/MQ/MessageProcessor.php usa TopicKey
 ```
 
 ### 测试环境
@@ -239,8 +239,8 @@ Dev2环境:
 执行消费命令时出现 `Fatal error: Uncaught RuntimeException: The file could not be opened. Check permissions.`
 
 设置日志目录权限即可
-```shell
-docker exec view chmod -R 777 /var/log/View
+```sh
+$ docker exec view chmod -R 777 /var/log/View
 ```
 
 ### 消费进程报错

@@ -12,8 +12,8 @@
 
 官方镜像: [https://hub.docker.com/_/solr](https://hub.docker.com/_/solr)
 
-```shell
-docker run -d --name solr --network tke --ip 172.16.1.89 -p 8983:8983 solr solr-precreate view
+```sh
+$ docker run -d --name solr --network tke --ip 172.16.1.89 -p 8983:8983 solr solr-precreate view
 ```
 
 Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)

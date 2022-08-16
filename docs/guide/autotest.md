@@ -8,8 +8,8 @@
 
 *注意：需要替换本机dev2代码目录*
 
-```shell
-docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/code rtwadewang/autotest
+```sh
+$ docker run -d --name autotest --network tke -v <本机dev2代码目录>:/home/tke/code rtwadewang/autotest
 ```
 
 ## Selenium
@@ -28,8 +28,8 @@ Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/lates
 
 接着运行下面这条命令
 
-```shell
-docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
+```sh
+$ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
 ```
 
 ### 2.修改hostUrl
@@ -84,8 +84,8 @@ if($isServer){
 *提示：后期测试时仅执行下面的测试命令即可（注意替换tagName）*
 
 执行测试命令
-```shell
-docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags <tagName>
+```sh
+$ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags <tagName>
 ```
 
 ### 5.使用web服务
@@ -115,23 +115,23 @@ Selenium浏览器插件: [https://microsoftedge.microsoft.com/addons/detail/sele
 
 *注意：该操作会自动修改`autotest/phpunit/library/BaseBootstrap.php`底层文件*
 
-```shell
-docker exec -it autotest /run/phpunit.sh
+```sh
+$ docker exec -it autotest /run/phpunit.sh
 ```
 
 ### 2.运行测试
 
 进入容器
-```shell
-docker exec -it autotest sh
+```sh
+$ docker exec -it autotest sh
 ```
 
 进入目录(以sharp模块为例)
-```shell
-cd phpunit/sharp
+```sh
+$ cd phpunit/sharp
 ```
 
 执行测试命令
-```shell
-phpunit --configuration phpunit.xml --filter <testName>
+```sh
+$ phpunit --configuration phpunit.xml --filter <testName>
 ```

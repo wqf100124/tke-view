@@ -24,8 +24,8 @@ Application: 用来为Api分组以及授权、限流等
 > WSO2 API Manager 4.1.0 附带了集成运行时（Micro Integrator），具有全面的企业集成功能。因此，您现在可以使用 WSO2 API Manager 来开发复杂的集成服务，并在 API 市场中将其公开为托管 API。这允许您使用单个平台在整个企业中启用 API 主导的连接。
 
 创建并运行AM容器(*容器启动过程大约需要2~3分钟，耐心等待即可。*)
-```shell
-docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
+```sh
+$ docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
 ```
 Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
 App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
@@ -44,8 +44,8 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 官方文档: [https://swagger.io/docs/](https://swagger.io/docs/)	      	   
 在线编辑: [https://editor.swagger.io/](https://editor.swagger.io/)
 
-```shell
-docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
+```sh
+$ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
 访问本地编辑器: [http://localhost:8080/](http://localhost:8080/)
 

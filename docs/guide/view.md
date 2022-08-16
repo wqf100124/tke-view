@@ -11,16 +11,16 @@
 
 由于Docker容器之间是相互隔离的，所以我们需要创建一个docker内部网络，以便使View容器可以和第三方服务容器如`RabbitMQ`、`Selenium`等进行交互。
 
-```shell
-docker network create --subnet=172.16.1.0/24 tke
+```sh
+$ docker network create --subnet=172.16.1.0/24 tke
 ```
 
 ## 创建容器
 
 *注意：需要修改你的本机代码路径，同时确认本机上的Apache服务已经关闭。*
 
-```shell
-docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/view
+```sh
+$ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/view
 ```
 
 - 不使用的代码请删除目录映射，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
@@ -85,20 +85,20 @@ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:
 
 以preview代码为例: *(注意替换你自己的8ID，这里的8ID用于站点的自动登录)*
 
-```shell
-docker exec -it view /run/init.sh preview 80000570
+```sh
+$ docker exec -it view /run/init.sh preview 80000570
 ```
 
 ## 常用命令
 
 进入容器
-```shell
-docker exec -it view bash
+```sh
+$ docker exec -it view bash
 ```
 
 进入容器(仅在当你使用了 7.4-alpine 镜像时使用)
-```shell
-docker exec -it view sh
+```sh
+$ docker exec -it view sh
 ```
 
 ## 常见问题
@@ -108,12 +108,12 @@ docker exec -it view sh
 在运行php脚本如`php sys/lib/test.php`时会报错，这是因为这些脚本的代码中大部分都使用了类似于`$_ENV['HOME']`的环境变量。这时可以使用 **特定用户** 进入容器，以preview用户为例:
 
 进入容器
-```shell
-docker exec --user preview -it view bash
+```sh
+$ docker exec --user preview -it view bash
 ```
 查看当前的系统环境变量，(将会输出/home/tke/preview/core)
-```shell
-echo $HOME
+```sh
+$ echo $HOME
 ```
 
 已经存在的用户和其对应的目录

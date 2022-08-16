@@ -1,19 +1,18 @@
 {
   "name": "tke-view",
   "version": "1.0.0",
-  "description": "View local development enviroment.",
+  "description": "View local development environment.",
   "main": "index.js",
-  "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
-  },
   "author": "rt.wadewang@rayootech.com",
   "license": "ISC",
   "repository": "git@github.com:wqf100124/tke-view.git",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
   "devDependencies": {
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.45",
-    "@vuepress/plugin-prismjs": "^2.0.0-beta.45",
-    "vuepress": "^2.0.0-beta.45",
-    "vuepress-plugin-copy-code2": "^2.0.0-beta.71"
+    "vitepress": "^1.0.0-alpha.5",
+    "vue": "^3.2.37"
   }
 }
