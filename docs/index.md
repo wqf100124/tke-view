@@ -2,6 +2,9 @@
 layout: home
 
 hero:
+  image:
+    src: /image/hero.svg
+    alt: logo
   name: View & Docker
   text: 基于Docker构建的View本地开发环境
   tagline: 为你提供更好的开发体验
