@@ -6,17 +6,18 @@ export default defineConfig({
     lang: 'zh-CN',
     base: '/tke-view/',
     head: [
-        ['link', {rel: 'shortcut icon', href: '/logo.svg'}]
+        ['link', {rel: 'shortcut icon', href: '/image/logo.svg'}]
     ],
     markdown: {
         theme: 'github-dark',
         lineNumbers: false
     },
+    ignoreDeadLinks: true,
     themeConfig: {
         editLink: false,
         logo: {
-            light: '/logo.svg',
-            dark: '/logo-dark.svg',
+            light: '/image/logo.svg',
+            dark: '/image/logo-dark.svg',
         },
         socialLinks: [
             {icon: 'github', link: 'https://github.com/wqf100124/tke-view'},

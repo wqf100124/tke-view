@@ -26,7 +26,7 @@ Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)
 在目录`/core/sys/libs/SearchEngine/schema/solr`中创建项目目录，同时在该目录中创建`scope.properties`、`managed-schema.tmpl.xml`、`db-data-config.tmpl.xml`3个文件
 
 示例:
-![](../static/images/screenshots/solr/2.png)
+![](/image/screenshots/solr/2.png)
 
 #### db-data-config.tmpl.xml
 该文件用于配置集合的数据源和字段。

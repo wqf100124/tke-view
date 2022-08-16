@@ -107,8 +107,8 @@
     --vp-c-text-code: var(--vp-c-indigo-soft);
 
     --vp-c-brand: #00a497;
-    --vp-c-brand-light: #04b2a4;
-    --vp-c-brand-lighter: #03c1b2;
+    --vp-c-brand-light: #08b7a9;
+    --vp-c-brand-lighter: #0dcebe;
     --vp-c-brand-dark: #029488;
     --vp-c-brand-darker: #03877d;
 
@@ -382,7 +382,11 @@
     display: inline-block;
 }
 
-.VPHomeHero .name, .VPHomeHero .tagline {
+.VPHomeHero .name, .VPHomeHero .text, .VPHomeHero .tagline {
     margin: auto;
     text-align: center;
+}
+
+.VPHomeHero .text {
+    font-size: 28px;
 }

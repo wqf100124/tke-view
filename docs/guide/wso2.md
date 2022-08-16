@@ -7,7 +7,7 @@ Application: 用来为Api分组以及授权、限流等
 
 两者关系示例:
 
-![](../static/images/screenshots/wso2/WSO2.png)
+![](/image/screenshots/wso2/WSO2.png)
 
 ##  本地开发环境
 
@@ -53,7 +53,7 @@ $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 
 ###  View系统提供API给第三方
 
-![](../static/images/screenshots/wso2/provider/mind.png)
+![](/image/screenshots/wso2/provider/mind.png)
 
 #### 1.在View中创建接口文件
 
@@ -91,46 +91,46 @@ class Api_DemoController extends Api_RestfulController
 #### 2.跳过本地认证
 修改: `core/web/sharp/modules/api/controllers/RestfulController.php` 文件
 
-![](../static/images/screenshots/wso2/provider/1.png)
+![](/image/screenshots/wso2/provider/1.png)
 
 
 #### 3.接口调试
 
 接口地址: [http://hk.preview.test/sharp/api/demo](http://hk.preview.test/sharp/api/demo)
 
-![](../static/images/screenshots/wso2/provider/2.png)
+![](/image/screenshots/wso2/provider/2.png)
 
 
 ###  View系统请求第三方API
 
-![](../static/images/screenshots/wso2/user/mind.png)
+![](/image/screenshots/wso2/user/mind.png)
 
 #### 1.在WSO2中创建Api
 
 打开API管理页面: [https://localhost:9443/publisher](https://localhost:9443/publisher)
 
-![](../static/images/screenshots/wso2/user/3.png)
-![](../static/images/screenshots/wso2/user/4.png)
-![](../static/images/screenshots/wso2/user/5.png)
+![](/image/screenshots/wso2/user/3.png)
+![](/image/screenshots/wso2/user/4.png)
+![](/image/screenshots/wso2/user/5.png)
 
 配置第三方接口的认证信息
-![](../static/images/screenshots/wso2/user/6.png)
+![](/image/screenshots/wso2/user/6.png)
 
 #### 2.在WSO2中创建App
 
 App管理页面:[https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
 
-![](../static/images/screenshots/wso2/user/7.png)
-![](../static/images/screenshots/wso2/user/8.png)
+![](/image/screenshots/wso2/user/7.png)
+![](/image/screenshots/wso2/user/8.png)
 
 #### 3.生成OAuth认证密钥
-![](../static/images/screenshots/wso2/user/oauth-1.png)
-![](../static/images/screenshots/wso2/user/oauth-2.png)
-![](../static/images/screenshots/wso2/user/oauth-3.png)
+![](/image/screenshots/wso2/user/oauth-1.png)
+![](/image/screenshots/wso2/user/oauth-2.png)
+![](/image/screenshots/wso2/user/oauth-3.png)
 
 #### 4.绑定Api和App
-![](../static/images/screenshots/wso2/user/subscribe-1.png)
-![](../static/images/screenshots/wso2/user/subscribe-2.png)
+![](/image/screenshots/wso2/user/subscribe-1.png)
+![](/image/screenshots/wso2/user/subscribe-2.png)
 
 
 #### 5.本地创建OAuth配置文件
@@ -235,17 +235,17 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 #### 8.WSO2的接口调试
 
 获取AccessToken的接口
-![](../static/images/screenshots/wso2/user/14.png)
-![](../static/images/screenshots/wso2/user/15.png)
+![](/image/screenshots/wso2/user/14.png)
+![](/image/screenshots/wso2/user/15.png)
 
 在View中测试
-![](../static/images/screenshots/wso2/user/16.png)
+![](/image/screenshots/wso2/user/16.png)
 
 ##  线上环境部署
 
 部署流程：
 
-![](../static/images/screenshots/wso2/deploy/WSO2部署流程.png)
+![](/image/screenshots/wso2/deploy/WSO2部署流程.png)
 
 SVN地址
 
@@ -289,11 +289,11 @@ RC环境:
 
 部署页面
 
-![](../static/images/screenshots/wso2/deploy/1.png)
+![](/image/screenshots/wso2/deploy/1.png)
 
 部署成成功后，application的账号信息会发送到上面配置文件中的用户邮箱里。
 
-![](../static/images/screenshots/wso2/deploy/2.png)
+![](/image/screenshots/wso2/deploy/2.png)
 
 需要让运维在对应的环境中添加App的配置信息`.restfulapi.authentication.ini`文件
 格式：
@@ -313,7 +313,7 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 `Demo/API_Managment/V1/apiConfig.xml`
 `Demo/API_Managment/V1/swagger.json`
 
-![](../static/images/screenshots/wso2/deploy/3.png)
+![](/image/screenshots/wso2/deploy/3.png)
 
 `apiConfig.xml` 文件示例
 ```xml
@@ -488,7 +488,7 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 `demo.auth.basic.username <帐号>`	  
 `demo.auth.basic.password <密码>`
 
-![](../static/images/screenshots/wso2/deploy/4.png)
+![](/image/screenshots/wso2/deploy/4.png)
 
 	
 ## 线上环境测试
@@ -524,4 +524,4 @@ https://apisa.tkeview.com
 获取AccessToken: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
 API接口: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
 
-![](../static/images/screenshots/wso2/deploy/5.png)
+![](/image/screenshots/wso2/deploy/5.png)

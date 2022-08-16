@@ -3,7 +3,8 @@ layout: home
 
 hero:
   name: View & Docker
-  tagline: 基于Docker构建的View本地开发环境。
+  text: 基于Docker构建的View本地开发环境
+  tagline: 为你提供更好的开发体验
   actions:
     - theme: brand
       text: 开始使用 ->
@@ -14,12 +15,12 @@ hero:
 
 features:
   - icon: 💯
-    title: 完整
-    details: 支持Local/Dev/Dev2/RC/Live等环境的代码，方便本地开发和测试。
+    title: 环境一致
+    details: 参照View生产环境构建，确保开发和生产环境的一致性，支持运行Local/Dev/Dev2/RC/Live的代码。
   - icon: ⚡️
-    title: 快捷
+    title: 简洁易用
     details: 无需繁琐的环境配置和安装流程，仅需要几条命令便可轻松搞定。
   - icon: 🏄‍
-    title: 多态
-    details: 集成RabbitMQ/Autotest/WSO2/Solr等开发常用的第三方服务。
+    title: 轻松扩展
+    details: 可集成RabbitMQ/Autotest/WSO2/Solr等开发中常用的第三方服务。
 ---
