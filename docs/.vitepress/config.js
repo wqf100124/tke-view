@@ -6,7 +6,7 @@ export default defineConfig({
     lang: 'zh-CN',
     base: '/tke-view/',
     head: [
-        ['link', {rel: 'shortcut icon', href: '/image/logo.svg'}]
+        ['link', {rel: 'shortcut icon', href: '/tke-view/image/logo.svg'}]
     ],
     ignoreDeadLinks: true,
     themeConfig: {
