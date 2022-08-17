@@ -206,8 +206,8 @@
     --vp-code-line-highlight-color: rgba(0, 0, 0, 0.5);
     --vp-code-line-number-color: var(--vp-c-text-dark-3);
 
-    --vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.1);
-    --vp-code-copy-code-active-text: var(--vp-c-green-light);
+    --vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
+    --vp-code-copy-code-active-text: var(--vp-c-text-dark-2);
 }
 
 .dark {
@@ -361,30 +361,19 @@
 
 .VPHomeHero .VPButton {
     border: none !important;
+    transition: color 0.25s, border-color 0.25s, background-color 0.25s, background 0.25s;
 }
 
 .VPHomeHero .VPButton.brand {
-    background-image: linear-gradient(315deg, var(--vp-c-brand) 0, var(--vp-c-brand-lighter) 100%) !important;
+    background: linear-gradient(315deg, #6f27c0 0, #14d4b4 100%);
+}
+
+.VPHomeHero .VPButton.brand:hover {
+    background: linear-gradient(315deg, #843bd5 0, #2ae2c4 100%);
 }
 
 .VPHomeHero .VPButton.alt {
     color: var(--vp-c-brand) !important;
-}
-
-.VPHomeHero .actions {
-    display: block !important;
-    flex-wrap: unset !important;
-    margin: 0 !important;
-    text-align: left;
-}
-
-.VPHomeHero .actions .action {
-    display: inline-block;
-}
-
-.VPHomeHero .name, .VPHomeHero .text, .VPHomeHero .tagline {
-    /*margin: auto;*/
-    text-align: left;
 }
 
 .VPHomeHero .name {
@@ -392,7 +381,7 @@
 }
 
 .VPHomeHero .text {
-    font-size: 30px;
+    font-size: 32px;
 }
 
 .VPHomeHero .tagline {

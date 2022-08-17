@@ -2,7 +2,7 @@ import {defineConfig} from 'vitepress';
 
 export default defineConfig({
     title: 'View & Docker',
-    description: '基于Docker搭建的View系统本地开发环境',
+    description: '基于Docker构建的View系统本地开发环境',
     lang: 'zh-CN',
     base: '/tke-view/',
     head: [
@@ -92,11 +92,6 @@ export default defineConfig({
                 }
             ]
         },
-        footer: {
-            message: 'Released under the MIT License.',
-            copyright: 'Copyright © 2022-present Wade Wang'
-        },
-
         algolia: {
             appId: 'UX50ABTIAM',
             apiKey: '0130e0698793aef5074149337d077b36',
@@ -151,6 +146,10 @@ export default defineConfig({
                     },
                 }
             },
+        },
+        footer: {
+            message: 'Released under the MIT License.',
+            copyright: 'Copyright © 2022-present Evan Sun'
         },
     }
 });
