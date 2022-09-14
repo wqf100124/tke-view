@@ -207,7 +207,7 @@
     --vp-code-line-number-color: var(--vp-c-text-dark-3);
 
     --vp-code-copy-code-hover-bg: rgba(255, 255, 255, 0.05);
-    --vp-code-copy-code-active-text: var(--vp-c-text-dark-2);
+    --vp-code-copy-code-active-text: var(--vp-c-green-lighter);
 }
 
 .dark {
@@ -353,7 +353,7 @@
 
 :root {
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #8007c2, #07e8b2);
+    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #07e8b2, #b24ee8);
 
     --vp-home-hero-image-background-image: none;
     --vp-home-hero-image-filter: transparent;
@@ -362,14 +362,6 @@
 .VPHomeHero .VPButton {
     border: none !important;
     transition: color 0.25s, border-color 0.25s, background-color 0.25s, background 0.25s;
-}
-
-.VPHomeHero .VPButton.brand {
-    background: linear-gradient(315deg, #6f27c0 0, #14d4b4 100%);
-}
-
-.VPHomeHero .VPButton.brand:hover {
-    background: linear-gradient(315deg, #843bd5 0, #2ae2c4 100%);
 }
 
 .VPHomeHero .VPButton.alt {

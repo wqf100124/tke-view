@@ -34,6 +34,33 @@
 
 *提示：由于View系统当前的版本管理工具使用的是SVN而不是Git，如果你习惯了使用类似于[TortoiseSVN](https://tortoisesvn.net/downloads.html)的图形化管理工具，那么建议选择hyper-v的运行方式，相反，如果你的shell命令使用的比较熟练，那么建议尝试使用WSL2，因为它可以显著的提高代码运行效率*
 
+
+## 常见问题
+
+### 1.Windows系统运行Docker Desktop，启动Hyper-V实例失败
+
+![](/image/screenshots/docker/errors/1.png)
+
+原因：可能禁用了Hyper-V 或 未运行Hypervisor代理。
+
+#### 解决方案A（如果Hyper-V完全禁用或未安装）
+
+以管理员身份打开PowerShell，启用Hyper-V
+
+```sh
+dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+```
+
+#### 解决方案B（如果已启用Hyper-V功能但不起作用）
+
+以管理员身份打开PowerShell，启用Hypervisor
+
+```sh
+bcdedit /set hypervisorlaunchtype auto
+```
+
+重启系统即可。
+
 ## 常用命令
 
 #### 拉取镜像
