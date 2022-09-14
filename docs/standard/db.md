@@ -1,5 +1,34 @@
 # 数据库操作
 
+## 创建表
+
+CREATE TABLE IF NOT EXISTS `table_name`
+
+```sql
+CREATE TABLE IF NOT EXISTS `table_name`
+(
+    `Id`               int(10) NOT NULL AUTO_INCREMENT,
+    `HoursPerVisit`    decimal(3, 1) DEFAULT '0.0',
+    `UnitTypeId`       int(10)       DEFAULT '0',				
+    `Description`      varchar(255)  DEFAULT NULL,	
+    `Comments`         text          DEFAULT NULL,
+    `CreatedBy`        int(10)       DEFAULT NULL,
+    `CreatedDate`      datetime      DEFAULT NULL,
+    `LastModifiedBy`   int(10)       DEFAULT NULL,
+    `LastModifiedDate` datetime      DEFAULT NULL,
+    `IsActive`         tinyint(1)    DEFAULT '1',
+    `IsDeleted`        tinyint(1)    DEFAULT '0',
+    PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8;
+```
+
+## 删除表
+
+```sql
+DROP TABLE IF EXISTS `table_name`;
+```
+
 ## 添加子菜单及权限(permission)
 
 级别: `all_center`
@@ -97,53 +126,31 @@ SET `Name`         = 'Service tender won integration',
 级别: `all_country`
 
 ```sql
-INSERT
-IGNORE INTO `general_options` (`OptionType`, `DefineSymbol`, `Title_en`, `Title_local`, `DateAdded`, `DateModified`) VALUES ('CONTRACT_SERVICE_EXTRA_INCLUSION_TYPE', 'Inclusion', 'Inclusion', 'Inclusion', NOW(), NOW());
-INSERT
-IGNORE INTO `general_options` (`OptionType`, `DefineSymbol`, `Title_en`, `Title_local`, `DateAdded`, `DateModified`) VALUES ('CONTRACT_SERVICE_EXTRA_INCLUSION_TYPE', 'Exclusion', 'Exclusion', 'Exclusion', NOW(), NOW());
+-- general options
+DELETE FROM general_optiontypes WHERE `TypeName` = 'EXAMPLE_DROPDOWN';
+DELETE FROM general_options WHERE `OptionType` = 'EXAMPLE_DROPDOWN';
+
+INSERT IGNORE INTO `general_optiontypes` (`TypeName`, `Title_en`, `Title_local`, `Description`, `IsMaintable`, `IsOptionDefineSymbolEditable`, `IsSupportDefault`, `PermissionActionId`)
+VALUES ('EXAMPLE_DROPDOWN', 'Example Dropdown', 'Example Dropdown', 'Example Dropdown', 1, 1, 0, 0);
+
+INSERT IGNORE INTO `general_options` ( `OptionType`, `DefineSymbol`, `Title_en`, `Title_local`, `Rank`, `DateAdded`, `DateModified`)
+VALUES ('EXAMPLE_DROPDOWN', 'Option1', 'Option1', 'Option1', 0, NOW(), NOW());
+INSERT IGNORE INTO `general_options` ( `OptionType`, `DefineSymbol`, `Title_en`, `Title_local`, `Rank`, `DateAdded`, `DateModified`)
+VALUES ('EXAMPLE_DROPDOWN', 'Option2', 'Option2', 'Option2', 0, NOW(), NOW());
 ```
 
-## 添加字段
+## 添加新字段
 
 ```sql
-CALL AddColumn('contract_branch_unit_extra_service', 'ExtraInclusionId', 'int(10) DEFAULT 0 AFTER `ContractId`');
+CALL AddColumn('table_name', 'ColumnName', 'int(10) DEFAULT 0 AFTER `Id`');
 ```
 
-## 添加翻译
+## 添加多语言翻译
 
 级别: `all_center`
 
 ```sql
-INSERT IGNORE INTO `staticcatalogue`
-SET `Source`      = 'Multi language translation',
-    `Val_en`      = 'Multi language translation',
-    `CreatedDate` = NOW();
-```
-
-## 创建表
-
-CREATE TABLE IF NOT EXISTS `table_name`
-
-```sql
-CREATE TABLE IF NOT EXISTS `contract_extra_visit`
-(
-    `Id`               int(10) NOT NULL AUTO_INCREMENT,
-    `Frequency`        int(10)       DEFAULT '0',
-    `HoursPerVisit`    decimal(3, 1) DEFAULT '0.0',
-    `UnitTypeId`       int(10)       DEFAULT '0',
-    `Comments`         text          DEFAULT NULL,
-    `CreatedBy`        int(10)       DEFAULT NULL,
-    `CreatedDate`      datetime      DEFAULT NULL,
-    `LastModifiedBy`   int(10)       DEFAULT NULL,
-    `LastModifiedDate` datetime      DEFAULT NULL,
-    `IsActive`         tinyint(1)    DEFAULT '1',
-    PRIMARY KEY (`Id`) USING BTREE
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8;
-```
-
-## 删除表
-
-```sql
-DROP TABLE IF EXISTS `contract_extra_visit`;
+-- multi language
+INSERT IGNORE INTO `staticcatalogue` (`Source`, `Val_en`, `ModuleID`, `CreatedDate`)
+VALUES ('This is a multilingual message.', 'This is a multilingual message.', 0, NOW());
 ```
