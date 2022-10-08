@@ -47,6 +47,11 @@ echo "edit ${corePath}/web/sharp/modules/default/views/scripts/error/error.phtml
 cp /run/init/ViewLoggerConfig.php ${corePath}/ViewLoggerConfig.php
 echo "new ${corePath}/ViewLoggerConfig.php";
 
+# dbg.lib
+dbgCode='\n    echo <<<END\n    <div style="width: 60%;margin: 3rem auto;padding: 1rem 1.5rem;word-break: break-all;font-size: 14px;border-radius: 10px;background: #fff;box-shadow: 0px 4px 10px 1px rgb(123 123 123 / 15%);"><h1>数据库异常</h1>\n    <h3>错误代码:</h3><p>{$db->errno()}</p>\n    <h3>报错信息:</h3><p style="padding: 1rem;background-color: #fff6f6;color: #9f3a38;border-radius: 4px;">{$db->error()}</p>\n    <h3>SQL语句:</h3><pre style="word-break: break-word;white-space: break-spaces;background: #f8f8f9;padding: 1rem;border-radius: 4px;"><code>{$db->getLastSql()}</code></pre>\n    </div>\n    END;\n    die();'
+sed -i "/\$iMessageId = errorMessageInfo (\$message,\$type=DBG_USER,\$dbInfor,\$info);/a\ \n${dbgCode}" ${corePath}/sys/libs/dbg.lib
+echo "edit ${corePath}/sys/libs/dbg.lib";
+
 echo "操作成功!";
 echo "警告：以上文件仅可用于本地开发，切勿提交到SVN!!!";
 echo "警告：以上文件仅可用于本地开发，切勿提交到SVN!!!";
