@@ -24,7 +24,7 @@ $ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5
 复制国家下的mq文件夹到**core**目录下
 
 ```sh
-$ cp ./usa/mq/ ./core/mq
+$ cp -r ./usa/mq/ ./core/mq/
 ```
 
 ###  ViewLogger配置
