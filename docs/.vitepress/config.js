@@ -36,6 +36,7 @@ export default defineConfig({
             {
                 text: '代码规范',
                 items: [
+                    {text: '开发规范(Toolbox)', link: '/standard/toolbox'},
                     {text: 'Html标签', link: '/standard/html'},
                     {text: 'UI标准', link: '/standard/ui'},
                     {text: '公共组件', link: '/standard/component'},
@@ -72,6 +73,7 @@ export default defineConfig({
                 {
                     text: '代码规范',
                     items: [
+                        {text: '开发规范(Toolbox)', link: '/standard/toolbox'},
                         {text: 'Html标签', link: '/standard/html'},
                         {text: 'UI标准', link: '/standard/ui'},
                         {text: '公共组件', link: '/standard/component'},
@@ -142,7 +144,7 @@ export default defineConfig({
         },
         footer: {
             message: 'Released under the MIT License.',
-            copyright: 'Copyright © 2022-present Evan Sun'
+            copyright: 'Copyright © 2022-present rt.evan'
         },
     }
 });

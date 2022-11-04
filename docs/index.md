@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: 安装Docker
       link: /guide/
+    - theme: alt
+      text: VIEW develop team toolbox talk(v1.4)
+      link: /standard/toolbox
 
 features:
   - icon: 💯
