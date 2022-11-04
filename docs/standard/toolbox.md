@@ -87,9 +87,6 @@ if ($yes) {
 - 删除不必要的注释
 - 注释必须使用**英文**
 
-示例：
-![](/image/screenshots/toolbox/comment.png)
-
 ## 4.错误处理和日志记录(Error process and Logging)
 
 > 用户报告了错误，但不能提供更详细的信息，该如何处理?
@@ -117,9 +114,6 @@ if ($yes) {
 - 一个开关应该只控制一个逻辑，不要把太大的范围和不相关的逻辑放在一个设置中
 - 提供有意义的开关名称和描述信息(针对于BA和TKE)，并且要在技术文档/Review中体现出来
 - 注意`system setting`表中的`IsTestConfigRequired`属性（是否要求在测试环境中配置）
-
-示例：
-![](/image/screenshots/toolbox/system-setting.png)
 
 ## 7.数据库设计(DATABASE DESIGN)
 
@@ -224,13 +218,11 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 - VIEW环境数据库架构
   `Tkglobal`, `tkcountry`以及复制机制
 
-![](/image/screenshots/toolbox/enviroment.png)
-
 ## 14.安全(Security)
 
 > 安全相关的点
 
 - 避免SQL注入，在SQL语句中使用占位符(参数)
 - 避免XSS注入，应该使用[NGForm](./html.md)封装的组件(例如: `text`、`textarea`、`select`…)
-- 按照规则将外部帐户存放在单独的文件中(例如: `.restfulapi.authentication.ini`文件等)
+- 按照规则将外部帐户存放在单独的文件中
 
