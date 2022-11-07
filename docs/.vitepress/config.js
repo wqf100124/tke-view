@@ -9,6 +9,7 @@ export default defineConfig({
         ['link', {rel: 'shortcut icon', href: '/tke-view/image/logo.svg'}]
     ],
     ignoreDeadLinks: true,
+    lastUpdated: true,
     themeConfig: {
         editLink: false,
         logo: {
@@ -22,6 +23,8 @@ export default defineConfig({
             prev: '上一条',
             next: '下一条'
         },
+        lastUpdatedText: '更新时间',
+        outlineTitle: '本页目录',
         nav: [
             {
                 text: '开发环境',

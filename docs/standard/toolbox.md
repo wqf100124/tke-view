@@ -1,8 +1,8 @@
-# VIEW develop team toolbox talk v1.4
+# VIEW develop team toolbox talk <Badge type="tip" text="v1.4" />
 
 > 本文档的目的是简单地回顾开发规范，能让开发人员注意到那些在日常工作中很重要但又经常被忽略的点。为了达到这一目标，我们要求开发团队负责人在每次会议开始时与开发人员一起审阅文档中的主题，以加强开发规范。
 
-在线文档: [VIEW develop team toolbox talk v1.4](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards/VIEW%20develop%20team%20toolbox%20talk%20v1.4.pptx?d=wf3ae10c2fb114ee8b5855301a37c6a61&csf=1&web=1&e=dskURI)
+在线文档: [VIEW develop team toolbox talk v1.4.pptx](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards/VIEW%20develop%20team%20toolbox%20talk%20v1.4.pptx?d=wf3ae10c2fb114ee8b5855301a37c6a61&csf=1&web=1&e=dskURI)
 
 ## 1.命名规范(Naming Convention)
 
