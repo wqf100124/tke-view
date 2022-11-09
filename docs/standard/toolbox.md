@@ -120,7 +120,7 @@ if ($yes) {
 > 在VIEW这样的操作系统中，数据结构是最重要的，应该遵循什么基本规则?
 
 - 总是包含自增字段`Id`，且将它作为主键
-- 总是包含标准字段`CreatedBy`, `CreatedDate(UTC)`， `LastModifiedBy`, `LastModifiedDate (UTC)`
+- 总是包含`CreatedBy`, `CreatedDate(UTC)`, `LastModifiedBy`, `LastModifiedDate(UTC)`等标准字段
 - 考虑是否需要状态字段(`IsDeleted`, `isActivated`...)，根据表的设计酌情使用软删除
 - 设置**外键索引**来保持数据一致性(除非有性能方面的要求)
 
