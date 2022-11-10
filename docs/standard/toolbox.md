@@ -18,7 +18,16 @@
 
 小驼峰
 
-`createUnit()` `createBuilding()` **`activitydataAction()`**
+`createUnit()` `createBuilding()`
+
+**注意：Controller中的action写法**
+
+```php
+public function showactivitylistAction()
+{
+    // ...
+}
+```
 
 ### 类名
 
@@ -52,9 +61,9 @@
 
 描述文字: 首字母大写
 
-`Translation may take few minutes to be effective`
+`Translation may take few minutes to be effective.`
 
-::: warning
+::: warning 注意
 避免在PHP代码和MySql中使用任何关键字，如`date`等。
 :::
 
@@ -62,9 +71,9 @@
 
 > 如何使代码更漂亮?
 
-- 使用4个空格进行缩进（切勿使用tab键）
+- 使用4个空格缩进，切勿使用tab键（在编辑器中设置）
 - 在变量和语句之间使用适当的空格
-- 在提交代码前，使用格式化工具进行格式化代码
+- 在提交代码前，使用格式化工具进行代码格式化
 
 示例:
 
@@ -80,10 +89,10 @@ if ($yes) {
 
 ## 3.注释(Comment)
 
-> 代码是最好的技术文档，注释是代码的一部分。如何使代码易于解释和维护?
+> 代码是最好的文档，注释是代码的一部分。如何使代码易于理解和维护?
 
-- 为`类`、`方法`、`逻辑块`、`if/else语句`甚至`变量`添加足够的注释
-- 使用适当的标签对`类`、`方法`进行注释，生成技术文档(API文档)
+- 为`类`、`方法`、`逻辑块`、`条件语句`甚至`变量`添加足够的注释
+- 使用适当的标签对`类`、`方法`进行注释，生成技术文档([API文档](https://apidocjs.com/))
 - 删除不必要的注释
 - 注释必须使用**英文**
 
@@ -92,16 +101,14 @@ if ($yes) {
 > 用户报告了错误，但不能提供更详细的信息，该如何处理?
 
 - 不要在没有任何逻辑(处理日志和错误消息)的情况下捕获错误
-- 如果系统不知道如何处理，则显示通用的错误页面，并退出异常便进一步调查(log4php->Zabbix/Centralized error dashboard, debug table)
-- 注意区分日志级别：`debug`、`info`、`warning`、`error/critical`
-- 尽可能提前对数据做验证，在相关页面提醒用户如：`必填项`，`格式`，`数值/日期范围`等....
-- :new: 记录日志时，使用正确的信息和参数(不要在`message`中包含数据信息，而是使用`additionInfo`，注意标识符`identifier`参数，可以去快速定位错误)
+- 如果系统不知道如何处理，应该显示通用的错误页面，并退出异常以便进一步调查(log4php->Zabbix/Centralized error dashboard, debug table)
+- 注意区分日志的级别：`debug`、`info`、`warning`、`error/critical`
+- 尽可能的提前去对数据进行校验（前端），并在页面上提醒用户如：`必填项`，`格式`，`数值/日期范围`等....
+- :new: 日志记录的规范：不要在`message`中包含任何数据信息，数据应该放在`additionInfo`参数中，同时注意添加标识符`identifier`，方便去快速的定位错误)
 
 ## 5.删除未使用的代码(REMOVE UNUSED CODE)
 
-::: warning
-删除不必要的代码以保持代码整洁。这些删除的代码可以通过SVN日志找到。
-:::
+> 删除不必要的代码以保持代码整洁。被删除的代码可以通过SVN日志找到。
 
 - 一旦逻辑不再使用，就删除不使用的代码，以保持代码文件的整洁
 
@@ -109,42 +116,46 @@ if ($yes) {
 
 > 保持系统的灵活性，我们能把所有东西都设置成可配置的吗? 
 
-- 避免在代码中使用硬编码，而应该使用可配置的`system setting`
+- 避免在代码中使用硬编码，应该使用可配置的`system setting`
 - 尽可能的去协调代码逻辑，减少创建新的`system setting`，使系统逻辑简单
-- 一个开关应该只控制一个逻辑，不要把太大的范围和不相关的逻辑放在一个设置中
+- 一个开关应该只控制一个逻辑，不要把太大的范围和不相关的逻辑放在一个开关中
 - 提供有意义的开关名称和描述信息(针对于BA和TKE)，并且要在技术文档/Review中体现出来
-- 注意`system setting`表中的`IsTestConfigRequired`属性（是否要求在测试环境中配置）
+- 注意`system setting`表中的`IsTestConfigRequired`属性（如果开启，则不会把live中的配置同步到测试环境中）
+
+  ::: details 举个栗子
+  dev2的 BU_SITE_URL 配置为 https://dev2.fos.tkeasia.com ，在数据reload后，它的配置依然是 https://dev2.fos.tkeasia.com，而不是live环境的 https://apac.fos.tkeasia.com
+  :::
 
 ## 7.数据库设计(DATABASE DESIGN)
 
 > 在VIEW这样的操作系统中，数据结构是最重要的，应该遵循什么基本规则?
 
-- 总是包含自增字段`Id`，且将它作为主键
+- 总是包含自增字段`Id`，并且将它作为主键
 - 总是包含`CreatedBy`, `CreatedDate(UTC)`, `LastModifiedBy`, `LastModifiedDate(UTC)`等标准字段
 - 考虑是否需要状态字段(`IsDeleted`, `isActivated`...)，根据表的设计酌情使用软删除
-- 设置**外键索引**来保持数据一致性(除非有性能方面的要求)
+- 如果没有性能方面的要求，应该使用 **外键索引** 来保持数据一致性
 
 ## 8.SQL语句(SQL STATEMENT)
 
-> SQL在功能上消耗的时间最多，如何去提高系统性能？
+> SQL在业务中消耗的时间最多，如何去提高系统性能？
 
 - Group by 规则
-- 如果使用了任何一个索引，应该使用explain去分析sql语句
-- 考虑数据量，评估1年、3年、5年后的性能(特别是report)
+- 如果sql中用到了索引，应该使用explain去分析sql语句
+- 查询时需要考虑数据量，评估1年、3年、5年后的性能(特别是report)
 - 使用slave(从库)进行导出操作
-- 必要时应该缓存数据，以提高的sql性能
+- 必要时应该对查询的数据进行缓存，以提高的sql性能
 - 在更新子表数据时不要这样写: 删除所有，然后再插入，这是一种有风险的方法，因为一些字段的数据可能被删除，无法再恢复
-- :new: 当sql中有更新或删除操作时，在部署patch的时候应该经过**特殊的team leader**的批准，避免由于错误的sql语句导致大量数据出现问题。例如：大部分用户组被删除
+- :new: 当sql中有更新或删除操作时，在部署patch的时候应该经过 **特殊的team leader** 的批准，避免由于错误的sql语句导致大量数据出现问题。例如：大部分用户组被删除
 
 ## 9.UI设计(UI DESIGN)
 
 > 如何让用户乐于使用我们开发的功能?
 
-- 按照VIEW标准UI模板设计新页面，具体使用请参考: [VIEW_UI_standard_web](https://tech.tkeasia.com/tk_VIEW_UI_standard_web_2.53/formelements.html)
-- 注意所有UI元素的对齐方式(数字-右，字符串-左)
+- 按照VIEW标准UI模板设计新页面，具体可以参考: [VIEW_UI_standard_web](https://tech.tkeasia.com/tk_VIEW_UI_standard_web_2.53/formelements.html)
+- 注意页面上元素的对齐方式(数字-右，字符串-左)
 - 遵循`system setting`的日期和货币格式(十进制，千位分隔符)，以支持全球化
 - 在一次操作中尽可能地计算和保存单击次数
-- 新页面的设计和review应该让UI设计师参与
+- 新页面的设计和Review应该让UI设计师参与
 
 ## 10.VIEW公共组件和库(GENERIC VIEW COMPONENT AND LIBRARIES)
 
@@ -159,9 +170,9 @@ if ($yes) {
 - Controller/Drive Type/Model/Manufacture/Factory chooser
 - 公共页面
    - 404
-   - Unauthorized access
-   - Exception
-- Branch pilot(Branch级别的控制，某个功能在某个branch可以优先使用或者只能在country或者branch级别显示，通过设置日期来实现)
+   - Unauthorized access(403未授权)
+   - Exception(通用错误页面)
+- Branch pilot(某个功能在某个branch可以优先使用或者只能在country或者branch级别显示，通过设置日期来实现)
 - 如果新代码或逻辑块可以作为组件实现并且可能被其他人重用，就需要考虑构建它
 - 引入公共的第三方库，新库或新版本需经过SHARP团队的批准
   - TCPDF/SPOUT/PHPOffice/etc…
@@ -184,14 +195,14 @@ if ($yes) {
 
 错误示例：
 
-1.对日期进行操作
+1.对日期的加减操作
 ```js
 day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).getTime() + 24 * 60 * 60 * 1000), 'YYYY-MM-DD', false);
 ```
 
 ## 12.开发和部署(DEVOPS AND DEPLOYMENT)
 
-如何使部署和(dev2, rc)reload更加流畅和高效?
+如何使部署和reload(dev2, rc)更加稳定和高效?
 
 - 不要在测试环境中进行调试，确定需要调试的话应该采用适当的方法
 - 使用devops工具进行部署(文件差异对比工具，reload机制等)
@@ -207,12 +218,12 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 
 ## 13.VIEW开发环境和结构体系(VIEW ENVIRONMENT AND ARCHITECTURE)
 
-> 查看环境和结构体系相关的点
+> View环境和架构体系相关的点
 
-- VIEW当前使用的环境: `dev`、 `dev2/opt/opt2`、 `rc`、 `live`
+- VIEW当前使用的环境有: `dev`、`dev2/opt/opt2`、`rc`、`live`
 - VIEW环境Reload机制
   - 数据库从`live`中Reload
-  - Reload后会重新部署patch中的sql脚本（前提是你的patch已经勾选了`Is-Auto-Redeploy`并且勾选了需要部署的sql）
+  - Reload后会重新部署patch中的sql脚本（自动部署的前提是你的patch选择了`Is-Auto-Redeploy`，并且勾选了需要部署的sql版本）
 - VIEW环境Reload周期：Dev -> 半年, dev2 -> 2周, rc -> 每天
 
 - VIEW环境数据库架构
