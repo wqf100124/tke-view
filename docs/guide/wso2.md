@@ -9,19 +9,23 @@ Application: 用来为Api分组以及授权、限流等
 
 ![](/image/screenshots/wso2/WSO2.png)
 
-##  本地开发环境
+## 搭建本地环境
 
-###  AM(API Manager)
+需要的镜像/软件
+
+- AM(API管理工具)
+- Swagger Editor(文档工具)
+- Integration Studio(拖放式图形开发工具)
+
+### AM(API Manager)
 
 官方镜像: [https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
 
 *部署和管理 API 的工具，提供了 API 整个生命周期所需要的各种控制，包含控制访问权限，访问流量，监控 API 的调用，版本控制等，最新的4.1.0版本已经集成了MI(Micro Integrator)。*
 
-> WSO2 API Manager 4.1.0 is shipped with an integration runtime (Micro Integrator) with comprehensive enterprise integration capabilities. Therefore, you can now use WSO2 API Manager to develop complex integration services and expose them as managed APIs in an API marketplace. This allows you to enable API-led connectivity across your business using a single platform.<br>
-
-译文: <br>
-
-> WSO2 API Manager 4.1.0 附带了集成运行时（Micro Integrator），具有全面的企业集成功能。因此，您现在可以使用 WSO2 API Manager 来开发复杂的集成服务，并在 API 市场中将其公开为托管 API。这允许您使用单个平台在整个企业中启用 API 主导的连接。
+::: tip 温馨提示
+如果你的本地没有使用[Local环境](./view.md)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
+:::
 
 创建并运行AM容器(*容器启动过程大约需要2~3分钟，耐心等待即可。*)
 ```sh
@@ -33,11 +37,15 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 账号: `admin`     
 密码: `admin`
 
-[//]: # ()
-[//]: # (### MI&#40;Micro Integrator&#41;)
+### Integration Studio
 
-[//]: # ()
-[//]: # (官方镜像: [https://hub.docker.com/r/wso2/wso2mi]&#40;https://hub.docker.com/r/wso2/wso2mi&#41;)
+> 设计、开发、调试、测试和部署工具
+
+官方下载地址: [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/)
+
+::: warning 注意：
+仅当你的项目需要根据业务去对API数据进行转换(格式、字段等)，才需要使用本软件，一般业务无需安装。
+:::
 
 ### Swagger Editor(API文档编辑器)
 官方镜像: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)       
@@ -47,16 +55,13 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 ```sh
 $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
-访问本地编辑器: [http://localhost:8080/](http://localhost:8080/)
+使用本地编辑器: [http://localhost:8080/](http://localhost:8080/)
 
-##  本地开发流程
-
-###  View系统提供API给第三方
+## View提供API给第三方
 
 ![](/image/screenshots/wso2/provider/mind.png)
 
-#### 1.在View中创建接口文件
-
+### 1.在View中创建接口文件
 
 示例: `core/web/sharp/modules/api/controllers/DemoController.php`
 
@@ -88,24 +93,24 @@ class Api_DemoController extends Api_RestfulController
 }
 ```
 
-#### 2.跳过本地认证
+### 2.跳过本地认证
 修改: `core/web/sharp/modules/api/controllers/RestfulController.php` 文件
 
 ![](/image/screenshots/wso2/provider/1.png)
 
 
-#### 3.接口调试
+### 3.接口调试
 
 接口地址: [http://hk.preview.test/sharp/api/demo](http://hk.preview.test/sharp/api/demo)
 
 ![](/image/screenshots/wso2/provider/2.png)
 
 
-###  View系统请求第三方API
+## View请求第三方API
 
 ![](/image/screenshots/wso2/user/mind.png)
 
-#### 1.在WSO2中创建Api
+### 1.在WSO2中创建Api
 
 打开API管理页面: [https://localhost:9443/publisher](https://localhost:9443/publisher)
 
@@ -116,24 +121,24 @@ class Api_DemoController extends Api_RestfulController
 配置第三方接口的认证信息
 ![](/image/screenshots/wso2/user/6.png)
 
-#### 2.在WSO2中创建App
+### 2.在WSO2中创建App
 
 App管理页面:[https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
 
 ![](/image/screenshots/wso2/user/7.png)
 ![](/image/screenshots/wso2/user/8.png)
 
-#### 3.生成OAuth认证密钥
+### 3.生成OAuth认证密钥
 ![](/image/screenshots/wso2/user/oauth-1.png)
 ![](/image/screenshots/wso2/user/oauth-2.png)
 ![](/image/screenshots/wso2/user/oauth-3.png)
 
-#### 4.绑定Api和App
+### 4.绑定Api和App
 ![](/image/screenshots/wso2/user/subscribe-1.png)
 ![](/image/screenshots/wso2/user/subscribe-2.png)
 
 
-#### 5.本地创建OAuth配置文件
+### 5.本地创建OAuth配置文件
 
 手动创建: `core/.restfulapi.authentication.ini` 文件(注意文件名包含.号)，填入如下内容
 
@@ -148,7 +153,7 @@ consumerSecret="kvsoaXylTKa2X9HvCepn9bfrYyoa"
 gatewayRecourceUrl="https://172.16.1.94:8243"
 ```
 
-#### 6.在项目中使用
+### 6.在项目中使用
 
 `core/web/wso2.php`
 
@@ -191,7 +196,7 @@ try {
 }
 ```
 
-#### 7.处理接口返回的数据
+### 7.处理接口返回的数据
 创建处理文件: `core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
 
 *文件命名规范：<App名称>GatewayBizHandler.php*
@@ -232,7 +237,7 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 }
 ```
 
-#### 8.WSO2的接口调试
+### 8.WSO2的接口调试
 
 获取AccessToken的接口
 ![](/image/screenshots/wso2/user/14.png)
@@ -241,13 +246,19 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 在View中测试
 ![](/image/screenshots/wso2/user/16.png)
 
-##  线上环境部署
+## API数据转换(EI)
+
+请确保已安装 **Integration Studio** 工具
+
+待更新...
+
+## 部署
 
 部署流程：
 
 ![](/image/screenshots/wso2/deploy/WSO2部署流程.png)
 
-SVN地址
+SVN地址:
 
 ```ini
 # dev环境代码(用于部署Dev/Dev2/Opt环境)
@@ -315,7 +326,8 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 
 ![](/image/screenshots/wso2/deploy/3.png)
 
-`apiConfig.xml` 文件示例
+::: details apiConfig.xml 文件示例
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <apiConfig>
@@ -364,8 +376,9 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
     <endPointConfig>Oz</endPointConfig>
 </apiConfig>
 ```
+:::
 
-`swagger.json` 文件示例
+::: details swagger.json 文件示例
 
 ```json
 {
@@ -483,6 +496,9 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 }
 ```
 
+:::
+
+
 在使用jenkins部署这两个文件之前，必须先让运维配置第三方API的帐号信息	（从Tke Leader处获取）        
 配置格式：   
 `demo.auth.basic.username <帐号>`	  
@@ -491,7 +507,7 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 ![](/image/screenshots/wso2/deploy/4.png)
 
 	
-## 线上环境测试
+## 线上测试环境地址
 
 ### Dev环境
 
@@ -521,7 +537,7 @@ https://apisa.tkeview.com
 
 以AP国家为例:
 
-获取AccessToken: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
+获取Token: [https://apiapdev.fos.tkeasia.com/token](https://apiapdev.fos.tkeasia.com/token)	  
 API接口: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
 
 ![](/image/screenshots/wso2/deploy/5.png)

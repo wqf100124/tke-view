@@ -6,7 +6,12 @@
 
 官方镜像：[https://hub.docker.com/_/rabbitmq](https://hub.docker.com/_/rabbitmq)
 
-创建一个名称为rabbitmq的服务容器
+::: tip 温馨提示
+如果你的本地没有使用[Local环境](./view.md)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
+:::
+
+创建rabbitmq服务容器
+
 ```sh
 $ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine
 ```

@@ -12,6 +12,12 @@
 
 官方镜像: [https://hub.docker.com/_/solr](https://hub.docker.com/_/solr)
 
+::: tip 温馨提示
+如果你的本地没有使用[Local环境](./view.md)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
+:::
+
+创建solr服务容器
+
 ```sh
 $ docker run -d --name solr --network tke --ip 172.16.1.89 -p 8983:8983 solr solr-precreate view
 ```
@@ -38,8 +44,7 @@ Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)
 
 > 脚本`/core/sys/bin/RebuildSolrCollections.php`会在每天的23:00去批量更新集合数据的`deltaQuery`和`deltaImportQuery`。`deltaQuery`会搜索需要更新的数据，`deltaImportQuery`会将搜索结果更新到集合中。
 
-
-文件示例:
+::: details 文件示例:
 ```xml
 <dataConfig>
     <document>
@@ -107,6 +112,7 @@ Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)
     </document>
 </dataConfig>
 ```
+:::
 
 #### managed-schema.tmpl.xml
 
@@ -177,7 +183,7 @@ field配置参数说明:
 
 `Queries`包括一个或多个`query`，每个`query`表示搜索集合
 
-Collections.xml文件示例:
+::: details Collections.xml文件示例:
 ```xml
 <collections>
     <collection name="unit" category="country" registedPlainObjectClassName="Unit" registedPlainObjectClassPath="/../sys/libs/logic/Unit/Bo/Unit.php">
@@ -226,8 +232,9 @@ Collections.xml文件示例:
     </collection>
 </collections>
 ```
+:::
 
-Bo文件示例:
+::: details Bo文件示例:
 ```php
 <?php
 
@@ -264,6 +271,7 @@ class Unit extends \ViewBaseBO
     }
 }
 ```
+:::
 
 ### 3.使用集合
 
