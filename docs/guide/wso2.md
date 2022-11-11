@@ -1,9 +1,11 @@
 # WSO2
 
-> WSO2的应用服务器是一个轻量级，高性能和高集成的Web服务的中间件平台。
+> WSO2是一个轻量级，高性能和高集成的Web服务中间件平台。
 
-Api: WSO2和外部系统的接口通信服务   
-Application: 用来为Api分组以及授权、限流等
+核心概念
+
+- Api: WSO2和外部系统的接口通信服务   
+- Application: 用来为Api分组以及授权、限流等
 
 两者关系示例:
 
@@ -11,51 +13,46 @@ Application: 用来为Api分组以及授权、限流等
 
 ## 搭建本地环境
 
-需要的镜像/软件
+### 1.安装AM(API Manager)
 
-- AM(API管理工具)
-- Swagger Editor(文档工具)
-- Integration Studio(拖放式图形开发工具)
-
-### AM(API Manager)
+> API Manager是一个用于部署和管理API的工具，提供了API整个生命周期所需要的各种控制，包含访问权限，访问流量，监控API的调用，版本控制等。
 
 官方镜像: [https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
 
-*部署和管理 API 的工具，提供了 API 整个生命周期所需要的各种控制，包含控制访问权限，访问流量，监控 API 的调用，版本控制等，最新的4.1.0版本已经集成了MI(Micro Integrator)。*
+创建并运行AM容器
 
 ::: tip 温馨提示
 如果你的本地没有使用[Local环境](./view.md)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
 :::
 
-创建并运行AM容器(*容器启动过程大约需要2~3分钟，耐心等待即可。*)
 ```sh
-$ docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name api-manager wso2/wso2am
+$ docker run -d --network tke --ip 172.16.1.94 -p 8280:8280 -p 8243:8243 -p 9443:9443 --name am wso2/wso2am:4.1.0
 ```
+
+*容器启动过程大约需要2~3分钟，耐心等待即可。*
+
 Api管理: [https://localhost:9443/publisher/apis](https://localhost:9443/publisher/apis)	  
 App管理: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
 
 账号: `admin`     
 密码: `admin`
 
-### Integration Studio
+### 2.安装API文档编辑器
 
-> 设计、开发、调试、测试和部署工具
+> 用于编写API文档
 
-官方下载地址: [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/)
+#### Swagger Editor
 
-::: warning 注意：
-仅当你的项目需要根据业务去对API数据进行转换(格式、字段等)，才需要使用本软件，一般业务无需安装。
-:::
-
-### Swagger Editor(API文档编辑器)
 官方镜像: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)       
-官方文档: [https://swagger.io/docs/](https://swagger.io/docs/)	      	   
-在线编辑: [https://editor.swagger.io/](https://editor.swagger.io/)
+使用文档: [https://swagger.io/docs/](https://swagger.io/docs/)	    
 
 ```sh
 $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
+
 使用本地编辑器: [http://localhost:8080/](http://localhost:8080/)
+
+也可以使用在线编辑器: [https://editor.swagger.io/](https://editor.swagger.io/)
 
 ## View提供API给第三方
 
@@ -246,9 +243,62 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 在View中测试
 ![](/image/screenshots/wso2/user/16.png)
 
-## API数据转换(EI)
+## EI开发文档
 
-请确保已安装 **Integration Studio** 工具
+#### MI(Micro Integrator)
+
+官方镜像: [https://hub.docker.com/r/wso2/wso2mi](https://hub.docker.com/r/wso2/wso2mi)
+
+::: warning 温馨提示
+仅当你的项目需要用到EI开发时，才需要使用该容器。
+:::
+
+创建并运行MI容器，注意替换你的 *本机EI导出目录* 例如: `D:/tke/wso2/carbonapps`
+
+```sh
+$ docker run -v <本机EI导出目录>:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps -d --network tke --ip 172.16.1.90 -it -p 8290:8290 -p 8253:8253 -p 9164:9164 --name mi wso2/wso2mi:4.1.0
+```
+
+::: warning 温馨提示
+Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工具任选其一即可。
+:::
+
+#### Integration Studio
+
+> 设计、开发、调试、测试和部署工具
+
+官方下载地址: [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/)
+
+#### Visual Studio Code
+
+安装 [Visual Studio Code](https://code.visualstudio.com/)
+
+在 Visual Studio Code 中添加 [WSO2 Enterprise Integrator](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei) 扩展
+
+
+#### 转换加密密钥
+
+进入mi容器
+
+```sh
+$ docker exec -it mi sh
+```
+
+查看密钥
+
+```sh
+$ cat /home/wso2carbon/wso2mi-4.1.0/conf/deployment.toml
+```
+
+运行命令
+```sh
+$ /home/wso2carbon/wso2mi-4.1.0/bin/ciphertool.sh -Dconfigure
+```
+输入密码: `wso2carbon`
+
+### 请求测试
+
+测试地址: [http://localhost:8290/demo](http://localhost:8290/demo)
 
 待更新...
 
@@ -541,3 +591,8 @@ https://apisa.tkeview.com
 API接口: [https://apiapdev.fos.tkeasia.com](https://apiapdev.fos.tkeasia.com)
 
 ![](/image/screenshots/wso2/deploy/5.png)
+
+## 参考文档
+
+- [AM](https://apim.docs.wso2.com/en/latest/)
+- [Enterprise Integrator](https://ei.docs.wso2.com/en/latest/)
