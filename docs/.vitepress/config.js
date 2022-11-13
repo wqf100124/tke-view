@@ -9,7 +9,7 @@ export default defineConfig({
         ['link', {rel: 'shortcut icon', href: '/tke-view/image/logo.svg'}]
     ],
     ignoreDeadLinks: true,
-    lastUpdated: true,
+    lastUpdated: false,
     themeConfig: {
         editLink: false,
         logo: {

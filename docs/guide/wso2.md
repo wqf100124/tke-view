@@ -271,10 +271,49 @@ Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工
 
 #### Visual Studio Code
 
-安装 [Visual Studio Code](https://code.visualstudio.com/)
+##### 准备工作
 
-在 Visual Studio Code 中添加 [WSO2 Enterprise Integrator](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei) 扩展
+1.安装`Java JDK`并配置`JAVA_HOME`
+<br>
+2.安装 [Maven](https://maven.apache.org/download.cgi)
+<br>
+3.安装 [Visual Studio Code](https://code.visualstudio.com/)
+<br>
+4.在 Visual Studio Code 中添加 [WSO2 Enterprise Integrator](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei) 和 [Synapse](https://marketplace.visualstudio.com/items?itemName=nexure.synapse-executor) 扩展
 
+##### 操作命令
+
+打开命令面板（macOS 上的 `[Command]` + `[Shift]` + `[P]`，Windows/Linux 上的 `[Ctrl]` + `[Shift]` + `[P]`）
+
+| Command                                        | Description                                                                                                                |
+|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| WSO2EI: Activate WSO2 EI Tooling               | Activate WSO2 EI Tooling.                                                                                                  |
+| WSO2EI: Change Language to SynapseXml	         | Change language mode to SynapseXml.                                                                                        |
+| WSO2EI: Create New Integration Project         | Create new integration project which consists ESB Configs, Composite Exporter, Registry Resources, and Connector Exporter. |
+| WSO2EI: Create New ESB Project                 | Create a new WSO2 ESB project.                                                                                             |
+| WSO2EI: Create New Composite Exporter Project  | Create a new WSO2 ESB Composite Exporter project.                                                                          |
+| WSO2EI: Create New Registry Resources Project	 | Create a new WSO2 Registry Resources project.                                                                              |
+| WSO2EI: Create New Connector Exporter Project	 | Create a new WSO2 Connector Exporter project.                                                                              |
+| WSO2EI: Create New Data Service Project        | Create a new WSO2 Data Service project.                                                                                    |
+| WSO2EI: Create New Mediator Project            | Create a new WSO2 Mediator project.                                                                                        |
+| WSO2EI: Create New API Artifact                | Create a new API artifact in the project.                                                                                  |
+| WSO2EI: Create New Proxy Artifact              | Create a new proxy artifact in the project.                                                                                |
+| WSO2EI: Create New Endpoint Artifact           | Create a new endpoint artifact in the project.                                                                             |
+| WSO2EI: Create New Inbound-Endpoint Artifact   | Create a new inbound-endpoint artifact in the project.                                                                     |
+| WSO2EI: Create New Local-Entry Artifact        | Create a new local-entry artifact in the project.                                                                          |
+| WSO2EI: Create New Message-Store Artifact      | Create a new message-store artifact in the project.                                                                        |
+| WSO2EI: Create New Message-Processor Artifact  | Create a new message-processor artifact in the project.                                                                    |
+| WSO2EI: Create New Template Artifact           | Create a new template artifact in the project.                                                                             |
+| WSO2EI: Create New Sequence Artifact           | Create a new sequence artifact in the project.                                                                             |
+| WSO2EI: Create New Task                        | Create a new scheduled task artifact in the ESB project.                                                                   |
+| WSO2EI: Create New Registry Resource           | Create a registry resource artifact in the Registry Resources project.                                                     |
+| WSO2EI: Add New Connector	                     | Download and add a new connector to the Connector Exporter Project.                                                        |
+| WSO2EI: Import Connector From File System	     | Import a new connector from the file system.                                                                               |
+| WSO2EI: Build Integration Project	             | Create the deployable .car file from the opened Integration project.                                                       |
+| WSO2EI: Build Integration Project from CApp    | Build a WSO2 integration project from a .car archive.                                                                      |
+| WSO2EI: Import Integration Project             | Import WSO2 integration project into VS Code workspace.                                                                    |
+| WSO2EI: Create Zip Archive                     | Create ZIP archive from WSO2 integration project.                                                                          |
+| WSO2EI: Import Zip Archive                     | Extract WSO2 integration project from ZIP archive.                                                                         |
 
 #### 转换加密密钥
 
