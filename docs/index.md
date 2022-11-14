@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: 开始使用 ->
-      link: /development/local/
+      link: /local/
     - theme: alt
       text: 安装Docker
-      link: /development/docker/
+      link: /docker/
 
 features:
   - icon: 💯
