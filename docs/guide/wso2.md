@@ -4,7 +4,7 @@
 
 核心概念
 
-- Api: WSO2和外部系统的接口通信服务   
+- Api: WSO2和外部系统的接口通信服务
 - Application: 用来为Api分组以及授权、限流等
 
 两者关系示例:
@@ -13,11 +13,9 @@
 
 ## 搭建本地环境
 
-### 1.安装AM(API Manager)
+### 1.安装AM
 
-> API Manager是一个用于部署和管理API的工具，提供了API整个生命周期所需要的各种控制，包含访问权限，访问流量，监控API的调用，版本控制等。
-
-官方镜像: [https://hub.docker.com/r/wso2/wso2am](https://hub.docker.com/r/wso2/wso2am)
+> [API Manager(AM)](https://hub.docker.com/r/wso2/wso2am) 是一个用于部署和管理API的工具，提供了API整个生命周期所需要的各种控制，包含访问权限，访问流量，监控API的调用，版本控制等。
 
 创建并运行AM容器
 
@@ -44,7 +42,7 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 #### Swagger Editor
 
 官方镜像: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)       
-使用文档: [https://swagger.io/docs/](https://swagger.io/docs/)	    
+使用文档: [https://swagger.io/docs/](https://swagger.io/docs/)
 
 ```sh
 $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
@@ -54,7 +52,9 @@ $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 
 也可以使用在线编辑器: [https://editor.swagger.io/](https://editor.swagger.io/)
 
-## View提供API给第三方
+## 服务提供者
+
+> View 通过 WSO2 提供 API 给第三方使用
 
 ![](/image/screenshots/wso2/provider/mind.png)
 
@@ -102,8 +102,9 @@ class Api_DemoController extends Api_RestfulController
 
 ![](/image/screenshots/wso2/provider/2.png)
 
+## 服务消费者
 
-## View请求第三方API
+> View 通过 WSO2 请求第三方 API
 
 ![](/image/screenshots/wso2/user/mind.png)
 
@@ -243,21 +244,25 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 在View中测试
 ![](/image/screenshots/wso2/user/16.png)
 
-## EI开发文档
+## EI开发
 
-#### MI(Micro Integrator)
+> [Enterprise Integration(EI)](https://wso2.com/enterprise-integrator/6.6.0) 是以 API 为中心的云原生分布式集成平台。
 
-官方镜像: [https://hub.docker.com/r/wso2/wso2mi](https://hub.docker.com/r/wso2/wso2mi)
+### 开发环境
 
-::: warning 温馨提示
-仅当你的项目需要用到EI开发时，才需要使用该容器。
-:::
+<br>
 
-创建并运行MI容器，注意替换你的 *本机EI导出目录* 例如: `D:/tke/wso2/carbonapps`
+#### 安装 [Micro Integrator(MI)](https://hub.docker.com/r/wso2/wso2mi)
+
+> Micro Integrator 是一个开源、轻量级、快速、可扩展的分布式微服务集成层，是 Enterprise Integration 的云原生发行版
+
+创建并运行MI容器，注意替换你的 **本机EI导出目录** 例如: `D:/tke/wso2/carbonapps`
 
 ```sh
 $ docker run -v <本机EI导出目录>:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps -d --network tke --ip 172.16.1.90 -it -p 8290:8290 -p 8253:8253 -p 9164:9164 --name mi wso2/wso2mi:4.1.0
 ```
+
+### 开发工具
 
 ::: warning 温馨提示
 Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工具任选其一即可。
@@ -271,75 +276,129 @@ Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工
 
 #### Visual Studio Code
 
+<br>
+
 ##### 准备工作
 
-1.安装`Java JDK`并配置`JAVA_HOME`
+1.安装 [Visual Studio Code](https://code.visualstudio.com/)
 <br>
-2.安装 [Maven](https://maven.apache.org/download.cgi)
+2.在 Visual Studio Code 中添加 [WSO2 Enterprise Integrator](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei) 和 [Synapse](https://marketplace.visualstudio.com/items?itemName=nexure.synapse-executor) 扩展
 <br>
-3.安装 [Visual Studio Code](https://code.visualstudio.com/)
+3.安装`Java JDK`并配置`JAVA_HOME`
 <br>
-4.在 Visual Studio Code 中添加 [WSO2 Enterprise Integrator](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei) 和 [Synapse](https://marketplace.visualstudio.com/items?itemName=nexure.synapse-executor) 扩展
+4.安装 [Maven](https://maven.apache.org/download.cgi)
+<br>
 
 ##### 操作命令
 
 打开命令面板（macOS 上的 `[Command]` + `[Shift]` + `[P]`，Windows/Linux 上的 `[Ctrl]` + `[Shift]` + `[P]`）
 
-| Command                                        | Description                                                                                                                |
-|------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| WSO2EI: Activate WSO2 EI Tooling               | Activate WSO2 EI Tooling.                                                                                                  |
-| WSO2EI: Change Language to SynapseXml	         | Change language mode to SynapseXml.                                                                                        |
-| WSO2EI: Create New Integration Project         | Create new integration project which consists ESB Configs, Composite Exporter, Registry Resources, and Connector Exporter. |
-| WSO2EI: Create New ESB Project                 | Create a new WSO2 ESB project.                                                                                             |
-| WSO2EI: Create New Composite Exporter Project  | Create a new WSO2 ESB Composite Exporter project.                                                                          |
-| WSO2EI: Create New Registry Resources Project	 | Create a new WSO2 Registry Resources project.                                                                              |
-| WSO2EI: Create New Connector Exporter Project	 | Create a new WSO2 Connector Exporter project.                                                                              |
-| WSO2EI: Create New Data Service Project        | Create a new WSO2 Data Service project.                                                                                    |
-| WSO2EI: Create New Mediator Project            | Create a new WSO2 Mediator project.                                                                                        |
-| WSO2EI: Create New API Artifact                | Create a new API artifact in the project.                                                                                  |
-| WSO2EI: Create New Proxy Artifact              | Create a new proxy artifact in the project.                                                                                |
-| WSO2EI: Create New Endpoint Artifact           | Create a new endpoint artifact in the project.                                                                             |
-| WSO2EI: Create New Inbound-Endpoint Artifact   | Create a new inbound-endpoint artifact in the project.                                                                     |
-| WSO2EI: Create New Local-Entry Artifact        | Create a new local-entry artifact in the project.                                                                          |
-| WSO2EI: Create New Message-Store Artifact      | Create a new message-store artifact in the project.                                                                        |
-| WSO2EI: Create New Message-Processor Artifact  | Create a new message-processor artifact in the project.                                                                    |
-| WSO2EI: Create New Template Artifact           | Create a new template artifact in the project.                                                                             |
-| WSO2EI: Create New Sequence Artifact           | Create a new sequence artifact in the project.                                                                             |
-| WSO2EI: Create New Task                        | Create a new scheduled task artifact in the ESB project.                                                                   |
-| WSO2EI: Create New Registry Resource           | Create a registry resource artifact in the Registry Resources project.                                                     |
-| WSO2EI: Add New Connector	                     | Download and add a new connector to the Connector Exporter Project.                                                        |
-| WSO2EI: Import Connector From File System	     | Import a new connector from the file system.                                                                               |
-| WSO2EI: Build Integration Project	             | Create the deployable .car file from the opened Integration project.                                                       |
-| WSO2EI: Build Integration Project from CApp    | Build a WSO2 integration project from a .car archive.                                                                      |
-| WSO2EI: Import Integration Project             | Import WSO2 integration project into VS Code workspace.                                                                    |
-| WSO2EI: Create Zip Archive                     | Create ZIP archive from WSO2 integration project.                                                                          |
-| WSO2EI: Import Zip Archive                     | Extract WSO2 integration project from ZIP archive.                                                                         |
+| Command                                     | Description                                                                                |
+|---------------------------------------------|--------------------------------------------------------------------------------------------|
+| WSO2EI: Activate WSO2 EI Tooling            | 激活WSO2 EI工具                                                                                |
+| WSO2EI: Change Language to SynapseXml	      | 将语言模式更改为SynapseXml.                                                                        |
+| WSO2EI: Create New Integration Project      | 创建新的EI项目，其中包含`ESB Configs`、`Composite Exporter`、`Registry Resources`、`Connector Exporter`. |
+| WSO2EI: Create New ESB Project              | 创建一个新的 `ESB` 项目。                                                                           |
+| WSO2EI: Build Integration Project	          | 从打开的EI项目创建可部署的`.car`文件。                                                                    |
+| WSO2EI: Build Integration Project from CApp | 使用`.car`文件构建EI项目.                                                                          |
+| WSO2EI: Import Integration Project          | 将EI项目导入到VS Code工作区。                                                                        |
+| WSO2EI: Create Zip Archive                  | 将EI项目导出为`ZIP`文件.                                                                           |
+| WSO2EI: Import Zip Archive                  | 从`ZIP`文件中导入EI项目。                                                                           |
 
-#### 转换加密密钥
+这里仅列出了一些常用的命令，其它命令可以参考 [官方使用手册](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei)
 
-进入mi容器
+### 基础操作
+
+<br>
+
+#### 对明文密码的加密
+
+1.进入MI容器
 
 ```sh
 $ docker exec -it mi sh
 ```
 
-查看密钥
+2.查看密钥(`key_password`配置项的值)
 
 ```sh
 $ cat /home/wso2carbon/wso2mi-4.1.0/conf/deployment.toml
 ```
 
-运行命令
+示例：
+
+```ini{8}
+[server]
+hostname = "localhost"
+
+[keystore.tls]  # IMPORTANT! Be sure to change this heading to [keystore.primary] when you use the product.
+file_name = "wso2carbon.jks"
+password = "wso2carbon"
+alias = "wso2carbon"
+key_password = "wso2carbon"
+
+# ...
+```
+
+3.运行加密命令
 ```sh
 $ /home/wso2carbon/wso2mi-4.1.0/bin/ciphertool.sh -Dconfigure
 ```
-输入密码: `wso2carbon`
+输入密钥: 即`key_password`配置项的值，默认为: `wso2carbon`
 
-### 请求测试
+### EI代码
 
-测试地址: [http://localhost:8290/demo](http://localhost:8290/demo)
+REST API
 
-待更新...
+每个 API 必须指定唯一的名称`API_NAME`和唯一的URI`URI_PATH_OF_API`。API 由一个或多个`resource`组成，`resource`是 API 的逻辑组件，可以通过特定的 HTTP `methods`来访问。将请求调度到`resource`后，它将通过`resource`的`inSequence`进行调解。在`inSequence`结束时，可以将请求转发到后端应用程序进行进一步处理。来自后端系统的任何响应都通过资源的`outSequence`进行调解。还可以定义`faultSequence`来处理通过资源调解消息时可能发生的任何错误。
+
+```xml
+<api name="API_NAME" context="URI_PATH_OF_API" [hostname="HOST_NAME_OF_SERVER"]  [port="PORT_NUMBER"]>
+    <resource [methods="GET|POST|PUT|DELETE|OPTIONS|HEAD|PATCH"] [uri-template="URI_TEMPLATE"|url-mapping="URL_MAPPING"]>
+      <inSequence>
+         // 对请求参数进行处理
+      </inSequence>
+      <outSequence>
+         // 对响应参数进行处理
+      </outSequence>
+      <faultSequence>
+         // 异常处理
+      </faultSequence>
+    </resource>
+</api>
+```
+
+示例 API：
+
+```xml
+<api name="API_1" context="/order">
+    <resource url-mapping="/list" inSequence="seq1" outSequence="seq2"/>
+</api>
+  
+<api name="API_2" context="/user">
+    <resource url-mapping="/list" methods="GET" inSequence="seq3" outSequence="seq4"/>
+    <resource uri-template="/edit/{userId}" methods="PUT POST" inSequence="seq5" outSequence="seq6"/>
+</api>
+ 
+<api name="API_3" context="/payments">
+    <resource url-mapping="/list" methods="GET" inSequence="seq7" outSequence="seq8"/>
+    <resource uri-template="/edit/{userId}" methods="PUT POST" outSequence="seq9">
+        <inSequence>
+             <log/>
+             <send>
+                 <endpoint key="BackendService"/>
+             </send>
+        </inSequence>
+    </resource>
+    <resource inSequence="seq10" outSequence="seq11"/>
+</api>
+```
+
+### 测试EI请求
+
+请求地址: `http://localhost:8290/<URI_PATH_OF_API>`
+
+示例: `http://localhost:8290/demo`
 
 ## 部署
 
@@ -365,15 +424,15 @@ svn://10.251.68.174/view_repos/fos/GatewayStaging
 示例：
 在 `CommonAssets/ApplicationSetting/AP` 目录下创建App配置文件
 
-VIEW_AP_APPLICATION.xml	
+VIEW_AP_APPLICATION.xml
  ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <applicationConfig>
     <name>VIEW_AP_APPLICATION</name>
-	<throttlingPolicy>Unlimited</throttlingPolicy>  
-	<description>For VIEW AP WSO2 API APPLICATION</description>
-	<tokenType>Client_Credentials</tokenType>
-	<notificationUser>samwang@rayootech.com,wadewang@rayootech.com,janms@rayootech.com</notificationUser>
+    <throttlingPolicy>Unlimited</throttlingPolicy>
+    <description>For VIEW AP WSO2 API APPLICATION</description>
+    <tokenType>Client_Credentials</tokenType>
+    <notificationUser>samwang@rayootech.com,wadewang@rayootech.com,janms@rayootech.com</notificationUser>
 </applicationConfig>
 ```
 
@@ -426,41 +485,41 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
     <version>1.0</version>
     <!-- The request path of the API (needed)  -->
     <context>/suburi</context>
-	<!-- The rateLimit info of the API -->
-	<rateLimit>
-		<!-- The speed limit of the API. Available setting: Unlimited/10000/20000/50000.Default is Unlimited -->
-		<!-- <policies>Unlimited</policies> -->
-		<!-- The TPS(Maximum back-end transactions per second in integers) of the API. default is Unlimited-->
-		<!--<TPS>Unlimited</TPS>       -->
-		<!-- The subscription policies of the API. Available setting: Unlimited/Gold(5000)/Silver(2000)/Brozen(1000).Default is Unlimited -->
-		<!--                           -->
-		<!--<subscriptionPolicies>Unlimited</subscriptionPolicies>-->
-		<!-- If the endpoint is VIEW, if Y, will force set rate limit to 50.Available Value:Y/N.Default is Y -->
-		<isViewEndPoint>Y</isViewEndPoint>
-	</rateLimit>
-	<!-- The endpoint info of the API-->
-	<endpointInfo>
-		<!-- The endpoint url info of the API,default is the EI path of the value set in context.  -->
-		<!-- Or you can set as:{EI_URL}/Maintenancecntry  to connect to other path of the EI,or set the full path of other endpoint,like:<url>https://www.baidu.com/Maintenancecntry</url> -->
-		<url>第三方接口地址</url>
-		<!-- The endpoint Auth type,None:means no Auth, Basic:means use basic Auth, Oauth:means Oauth -->
-		<authInfo>Basic</authInfo>
-		<!-- The endpoint Auth info,if set "Basic" in authInfo will use as basic Auth username & password, "Oauth" will use as Oauth client-id&client-secret  -->
-		<authName>demo.auth.basic.username</authName>
-		<authPwd>demo.auth.basic.password</authPwd>
-	</endpointInfo>
-    <!-- The bind application of this API.One API could bind to multiple application.Value get from CommonAssets\ApplicationSetting,File name in each BU folder. If bind to multiple application,add this section.--> 
-    <!-- Rules:  --> 
-    <!-- VIEW->WSO2/WSO2->VIEW : 1:All API of each country under same bu share same application.                                                               --> 
-    <!-- ExternalSystem->WSO2 :  2:Different API of Same System under same country share same application.                                                     --> 
-	<applicationInfo>
-		<bindApplication>VIEW_AP_APPLICATION</bindApplication>
-		<!-- The application subscription policies of the API. Available setting: Unlimited/Gold(5000)/Silver(2000)/Brozen(1000).Default is Unlimited -->
-		<!--<applicationPolicies>10</applicationPolicies>-->
-	</applicationInfo>
+    <!-- The rateLimit info of the API -->
+    <rateLimit>
+        <!-- The speed limit of the API. Available setting: Unlimited/10000/20000/50000.Default is Unlimited -->
+        <!-- <policies>Unlimited</policies> -->
+        <!-- The TPS(Maximum back-end transactions per second in integers) of the API. default is Unlimited-->
+        <!--<TPS>Unlimited</TPS>       -->
+        <!-- The subscription policies of the API. Available setting: Unlimited/Gold(5000)/Silver(2000)/Brozen(1000).Default is Unlimited -->
+        <!--                           -->
+        <!--<subscriptionPolicies>Unlimited</subscriptionPolicies>-->
+        <!-- If the endpoint is VIEW, if Y, will force set rate limit to 50.Available Value:Y/N.Default is Y -->
+        <isViewEndPoint>Y</isViewEndPoint>
+    </rateLimit>
+    <!-- The endpoint info of the API-->
+    <endpointInfo>
+        <!-- The endpoint url info of the API,default is the EI path of the value set in context.  -->
+        <!-- Or you can set as:{EI_URL}/Maintenancecntry  to connect to other path of the EI,or set the full path of other endpoint,like:<url>https://www.baidu.com/Maintenancecntry</url> -->
+        <url>第三方接口地址</url>
+        <!-- The endpoint Auth type,None:means no Auth, Basic:means use basic Auth, Oauth:means Oauth -->
+        <authInfo>Basic</authInfo>
+        <!-- The endpoint Auth info,if set "Basic" in authInfo will use as basic Auth username & password, "Oauth" will use as Oauth client-id&client-secret  -->
+        <authName>demo.auth.basic.username</authName>
+        <authPwd>demo.auth.basic.password</authPwd>
+    </endpointInfo>
+    <!-- The bind application of this API.One API could bind to multiple application.Value get from CommonAssets\ApplicationSetting,File name in each BU folder. If bind to multiple application,add this section.-->
+    <!-- Rules:  -->
+    <!-- VIEW->WSO2/WSO2->VIEW : 1:All API of each country under same bu share same application.                                                               -->
+    <!-- ExternalSystem->WSO2 :  2:Different API of Same System under same country share same application.                                                     -->
+    <applicationInfo>
+        <bindApplication>VIEW_AP_APPLICATION</bindApplication>
+        <!-- The application subscription policies of the API. Available setting: Unlimited/Gold(5000)/Silver(2000)/Brozen(1000).Default is Unlimited -->
+        <!--<applicationPolicies>10</applicationPolicies>-->
+    </applicationInfo>
     <!-- Decide which BU this API will apply to. Could apply to multiple BU,use "," as separator.Available value:AP/NA/EA/SA   -->
     <applyBU>AP</applyBU>
-	<!-- The realted endpoint config file folder of this api,under path "CommonAssets\Enterprise_integrator\{BU}\EndPoint"     --> 
+    <!-- The realted endpoint config file folder of this api,under path "CommonAssets\Enterprise_integrator\{BU}\EndPoint"     -->
     <!-- {BU} related to config value of line64 "applyBU",multiple use "," as separator -->
     <endPointConfig>Oz</endPointConfig>
 </apiConfig>
@@ -595,7 +654,7 @@ gatewayRecourceUrl="https://apiapdev.fos.tkeasia.com"
 
 ![](/image/screenshots/wso2/deploy/4.png)
 
-	
+
 ## 线上测试环境地址
 
 ### Dev环境

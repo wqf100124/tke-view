@@ -9,15 +9,15 @@ CREATE TABLE IF NOT EXISTS `table_name`
 (
     `Id`               int(10) NOT NULL AUTO_INCREMENT,
     `HoursPerVisit`    decimal(3, 1) DEFAULT '0.0',
-    `UnitTypeId`       int(10)       DEFAULT '0',				
-    `Description`      varchar(255)  DEFAULT NULL,	
+    `UnitTypeId`       int(10)       DEFAULT '0',
+    `Description`      varchar(255)  DEFAULT NULL,
     `Comments`         text          DEFAULT NULL,
-    `CreatedBy`        int(10)       DEFAULT NULL,
-    `CreatedDate`      datetime      DEFAULT NULL,
-    `LastModifiedBy`   int(10)       DEFAULT NULL,
-    `LastModifiedDate` datetime      DEFAULT NULL,
     `IsActive`         tinyint(1)    DEFAULT '1',
     `IsDeleted`        tinyint(1)    DEFAULT '0',
+    `CreatedBy`        int(10)       DEFAULT NULL,
+    `CreatedDate`      DATETIME      DEFAULT CURRENT_TIMESTAMP,
+    `LastModifiedBy`   int(10)       DEFAULT NULL,
+    `LastModifiedDate` DATETIME      DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`Id`) USING BTREE
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -152,5 +152,5 @@ CALL AddColumn('table_name', 'ColumnName', 'int(10) DEFAULT 0 AFTER `Id`');
 ```sql
 -- multi language
 INSERT IGNORE INTO `staticcatalogue` (`Source`, `Val_en`, `ModuleID`, `CreatedDate`)
-VALUES ('This is a multilingual message.', 'This is a multilingual message.', 0, NOW());
+VALUES ('This is a multilingual message.', 'This is a multilingual message.', 1, NOW());
 ```
