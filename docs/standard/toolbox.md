@@ -122,7 +122,7 @@ if ($yes) {
 - 提供有意义的开关名称和描述信息(针对于BA和TKE)，并且要在技术文档/Review中体现出来
 - 注意`system setting`表中的`IsTestConfigRequired`属性（如果开启，则不会把live中的配置同步到测试环境中）
 
-  ::: details 举个栗子
+  ::: details 举例说明
   dev2的 BU_SITE_URL 配置为 https://dev2.fos.tkeasia.com ，在数据reload后，它的配置依然是 https://dev2.fos.tkeasia.com，而不是live环境的 https://apac.fos.tkeasia.com
   :::
 
@@ -134,6 +134,16 @@ if ($yes) {
 - 总是包含`CreatedBy`, `CreatedDate(UTC)`, `LastModifiedBy`, `LastModifiedDate(UTC)`等标准字段
 - 考虑是否需要状态字段(`IsDeleted`, `isActivated`...)，根据表的设计酌情使用软删除
 - 如果没有性能方面的要求，应该使用 **外键索引** 来保持数据一致性
+
+`CreatedDate` 和 `LastModifiedDate` 字段规范
+```sql
+-- 错误
+`CreatedDate` DATETIME DEFAULT NULL,
+`LastModifiedDate` DATETIME DEFAULT NULL,
+-- 正确
+`CreatedDate` DATETIME DEFAULT CURRENT_TIMESTAMP,
+`LastModifiedDate` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+```
 
 ## 8.SQL语句(SQL STATEMENT)
 
