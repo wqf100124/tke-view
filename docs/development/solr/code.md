@@ -1,40 +1,13 @@
-# Solr
+# 在View中的用法
 
-## Solr 介绍
-什么是 Solr？   
-> Solr 采用 Java5 开发，是建立在 Apache Lucene™上的流行的、快速的开源企业搜索平台。   
-> Solr 具有高度可靠、可伸缩和容错能力，提供分布式索引、复制和负载平衡查询、自动故障转移和恢复、集中配置等功能。   
-> Solr 为世界上许多最大的互联网站点的搜索和导航功能提供了动力。
-
-## 搭建环境
-
-### 1.创建solr服务容器
-
-官方镜像: [https://hub.docker.com/_/solr](https://hub.docker.com/_/solr)
-
-::: tip 温馨提示
-如果你的本地没有使用[Local环境](./view.md)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
-:::
-
-创建solr服务容器
-
-```sh
-$ docker run -d --name solr --network tke --ip 172.16.1.89 -p 8983:8983 solr solr-precreate view
-```
-
-Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)
-
-
-## 在View中使用
-
-### 1.配置数据源
+## 1.配置数据源
 
 在目录`/core/sys/libs/SearchEngine/schema/solr`中创建项目目录，同时在该目录中创建`scope.properties`、`managed-schema.tmpl.xml`、`db-data-config.tmpl.xml`3个文件
 
 示例:
 ![](/image/screenshots/solr/2.png)
 
-#### db-data-config.tmpl.xml
+### db-data-config.tmpl.xml
 该文件用于配置集合的数据源和字段。
 
 - `Query`中的`sql`是集合的数据源，`pk`是集合的主键。
@@ -114,20 +87,20 @@ Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)
 ```
 :::
 
-#### managed-schema.tmpl.xml
+### managed-schema.tmpl.xml
 
 该文件用于配置集合的属性，其中的`field`字段应该和`db-data-config.tmpl.xml`文件中的字段保持一致
 
 *字段配置参数说明*
 
-| 属性 | 是否必填 | 描述 |
-| --- | --- | ----------- |
-| name  | 是 |  字段名称 |
-| type	| 是 |  字段类型 |
-| indexed   | 是 |  是否建立索引（可搜索和排序） |
-| stored    | 是 |  是否应该检索该字段 |
-| required  | 否 |  该字段是否为必需的。如果该值不存在，将抛出错误 |
-| multivalued   | 否 |  该字段是否可能包含多个值 |
+| 属性          | 是否必填 | 描述                      |
+|-------------|------|-------------------------|
+| name        | 是    | 字段名称                    |
+| type	       | 是    | 字段类型                    |
+| indexed     | 是    | 是否建立索引（可搜索和排序）          |
+| stored      | 是    | 是否应该检索该字段               |
+| required    | 否    | 该字段是否为必需的。如果该值不存在，将抛出错误 |
+| multivalued | 否    | 该字段是否可能包含多个值            |
 
 文件示例:
 ```xml
@@ -146,7 +119,7 @@ Solr管理控制台: [http://localhost:8983/](http://localhost:8983/)
 </schema>
 ```
 
-#### scope.properties
+### scope.properties
 该文件用于配置多语言字段。
 
 如果`nameEn`和`nameLocal`是多语言字段，配置内容为: `multilingual.fields=nameEn,nameLocal`
@@ -160,7 +133,7 @@ concept.scope=country
 ; multilingual.fields=PremisesLocal
 ```
 
-### 2.配置Bo文件
+## 2.配置Bo文件
 
 在`/core/sys/libs/SearchEngine/Collections.xml`文件的`collections`中添加新的`collection`
 
@@ -273,7 +246,7 @@ class Unit extends \ViewBaseBO
 ```
 :::
 
-### 3.使用集合
+## 3.使用集合
 
 代码示例:
 ```php
@@ -318,8 +291,3 @@ class UnitService extends \ViewBaseService
     }
 }
 ```
-
-## 部署
-
-在配置文件提交svn部署完之后,确认没有问题找运维用脚本创建.
-(Dev找mason, 其他环境找Mars).

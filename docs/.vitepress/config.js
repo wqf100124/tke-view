@@ -29,11 +29,26 @@ export default defineConfig({
             {
                 text: '开发环境',
                 items: [
-                    {text: 'Local环境', link: '/guide/view'},
-                    {text: 'AutoTesting', link: '/guide/autotest'},
-                    {text: 'RabbitMQ', link: '/guide/rabbitmq'},
-                    {text: 'WSO2', link: '/guide/wso2'},
-                    {text: 'Solr', link: '/guide/solr'},
+                    {
+                        text: 'Local环境',
+                        link: '/development/local/'
+                    },
+                    {
+                        text: 'AutoTesting',
+                        link: '/development/autotest/'
+                    },
+                    {
+                        text: 'RabbitMQ',
+                        link: '/development/rabbitmq/'
+                    },
+                    {
+                        text: 'WSO2',
+                        link: '/development/wso2/'
+                    },
+                    {
+                        text: 'Solr',
+                        link: '/development/solr/'
+                    },
                 ],
             },
             {
@@ -60,18 +75,161 @@ export default defineConfig({
             }
         ],
         sidebar: {
-            '/guide/': [
+            '/development/docker/': [
                 {
-                    text: '开发环境',
+                    text: 'Docker开发环境',
                     items: [
-                        {text: 'Local环境', link: '/guide/view'},
-                        {text: 'AutoTesting', link: '/guide/autotest'},
-                        {text: 'RabbitMQ', link: '/guide/rabbitmq'},
-                        {text: 'WSO2', link: '/guide/wso2'},
-                        {text: 'Solr', link: '/guide/solr'},
+                        {
+                            text: '介绍',
+                            link: '/development/docker/'
+                        },
+                        {
+                            text: '安装',
+                            link: '/development/docker/setup'
+                        },
+                        {
+                            text: '基础命令',
+                            link: '/development/docker/command'
+                        },
+                        {
+                            text: '常见问题',
+                            link: '/development/docker/question'
+                        },
                     ]
                 }
             ],
+            '/development/local/': [
+                {
+                    text: 'Local环境',
+                    items: [
+                        {
+                            text: '运行Local代码',
+                            link: '/development/local/'
+                        },
+                        {
+                            text: '运行Preview/Dev2/RC/Live代码',
+                            link: '/development/local/live'
+                        },
+                        {
+                            text: '基础命令',
+                            link: '/development/local/command'
+                        },
+                        {
+                            text: '常见问题',
+                            link: '/development/local/question'
+                        },
+                    ]
+                }
+            ],
+            '/development/autotest/': [
+                {
+                    text: 'Autotest自动化测试',
+                    items: [
+                        {
+                            text: '基础环境',
+                            link: '/development/autotest/'
+                        },
+                        {
+                            text: 'Selenium',
+                            link: '/development/autotest/selenium'
+                        },
+                        {
+                            text: 'Phpunit',
+                            link: '/development/autotest/phpunit'
+                        },
+                    ]
+                }
+            ],
+            '/development/rabbitmq/': [
+                {
+                    text: 'Rabbitmq消息队列',
+                    items: [
+                        {
+                            text: '创建MQ服务',
+                            link: '/development/rabbitmq/'
+                        },
+                        {
+                            text: '项目配置',
+                            link: '/development/rabbitmq/config'
+                        },
+                        {
+                            text: '代码示例',
+                            link: '/development/rabbitmq/code'
+                        },
+                        {
+                            text: '基本命令',
+                            link: '/development/rabbitmq/command'
+                        },
+                        {
+                            text: '部署',
+                            link: '/development/rabbitmq/deploy'
+                        },
+                        {
+                            text: '常见问题',
+                            link: '/development/rabbitmq/question'
+                        },
+                    ]
+                }
+            ],
+            '/development/wso2/': [
+                {
+                    text: 'WSO2服务',
+                    items: [
+                        {
+                            text: '介绍',
+                            link: '/development/wso2/'
+                        },
+                        {
+                            text: '搭建环境',
+                            link: '/development/wso2/setup'
+                        },
+                        {
+                            text: '服务提供者',
+                            link: '/development/wso2/producer'
+                        },
+                        {
+                            text: '服务消费者',
+                            link: '/development/wso2/consumer'
+                        },
+                        {
+                            text: 'EI开发',
+                            link: '/development/wso2/ei'
+                        },
+                        {
+                            text: '部署',
+                            link: '/development/wso2/deploy'
+                        },
+                        {
+                            text: '测试',
+                            link: '/development/wso2/test'
+                        },
+                        {
+                            text: '参考文档',
+                            link: '/development/wso2/docs'
+                        },
+                    ]
+                }
+            ],
+            '/development/solr/': [
+                {
+                    text: 'Solr全文搜索',
+                    items: [
+                        {
+                            text: '基础环境',
+                            link: '/development/solr/'
+                        },
+                        {
+                            text: '如何使用',
+                            link: '/development/solr/code'
+                        },
+                        {
+                            text: '部署',
+                            link: '/development/solr/deploy'
+                        },
+                    ]
+                }
+            ],
+
             '/standard/': [
                 {
                     text: '代码规范',

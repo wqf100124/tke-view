@@ -12,13 +12,10 @@ hero:
   actions:
     - theme: brand
       text: 开始使用 ->
-      link: /guide/view
+      link: /development/local/
     - theme: alt
       text: 安装Docker
-      link: /guide/
-    - theme: alt
-      text: VIEW develop team toolbox talk(v1.4)
-      link: /standard/toolbox
+      link: /development/docker/
 
 features:
   - icon: 💯

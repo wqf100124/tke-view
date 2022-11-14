@@ -26,7 +26,7 @@ $ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 8
 - 不使用的代码请删除目录映射，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
 - 对于WSL2开发环境，应该使用linux下的项目路径如：`/var/web/local`，具体可以参考:[https://docs.docker.com/desktop/windows/wsl/](https://docs.docker.com/desktop/windows/wsl/)
 
-测试容器是否创建成功: [http://localhost](http://localhost)	
+测试容器是否创建成功: [http://localhost](http://localhost)
 
 ## 配置站点
 
@@ -60,68 +60,3 @@ $ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 8
 ```
 
 :ghost: 至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
-
-## 运行Preview/Dev2/RC/Live代码
-
-*由于本地和线上环境的代码有着些许差异，需要进行以下操作才能正常运行*
-
-### 1.替换config.php
-
-使用Local环境的config.php文件 **替换** 线上环境的配置文件
-
-以preview代码例如:
-
-`local/hk/config.php` => `preview/hk/config.php`    
-`local/china/config.php` => `preview/china/config.php`  
-`local/global/config.php` => `preview/global/config.php`    
-...<br>
-需要运行哪个国家直接替换config.php即可
-
-### 2.运行初始化命令
-
-::: warning
-该命令会修改`login.php`、`tke_config.php`、`error.phtml`、`ErrorController.php`等核心文件，这些文件仅可用于你的本地开发环境，切勿提交到svn！
-:::
-
-以preview代码为例: *(注意替换你自己的8ID，这里的8ID用于站点的自动登录)*
-
-```sh
-$ docker exec -it view /run/init.sh preview 80000570
-```
-
-## 常用命令
-
-进入容器
-```sh
-$ docker exec -it view bash
-```
-
-进入容器(仅在当你使用了 7.4-alpine 镜像时使用)
-```sh
-$ docker exec -it view sh
-```
-
-## 常见问题
-
-### 1.执行php脚本时报错
-
-在运行php脚本如`php sys/lib/test.php`时会报错，这是因为这些脚本的代码中大部分都使用了类似于`$_ENV['HOME']`的环境变量。这时可以使用 **特定用户** 进入容器，以preview用户为例:
-
-进入容器
-```sh
-$ docker exec --user preview -it view bash
-```
-查看当前的系统环境变量，(将会输出/home/tke/preview/core)
-```sh
-$ echo $HOME
-```
-
-已经存在的用户和其对应的目录
-
-| 用户名     | 用户目录                   |
-|---------|------------------------|
-| local   | /home/tke/local/core   |
-| preview | /home/tke/preview/core |
-| dev2    | /home/tke/dev2/core    |
-| rc      | /home/tke/rc/core      |
-| live    | /home/tke/live/core    |
