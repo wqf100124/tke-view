@@ -24,9 +24,9 @@ $ wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-
 $ tar xzvf apache-maven-3.8.6-bin.tar.gz
 ```
 
-4.编辑 `~/.bash_profile` 文件
+4.编辑 `~/.zshrc` 文件
 ```sh
-$ vim ~/.bash_profile
+$ vim ~/.zshrc
 ```
 
 5.添加到环境变量
@@ -36,7 +36,7 @@ export PATH=/opt/apache-maven-3.8.6/bin:$PATH
 
 6.让配置立即生效
 ```sh
-$ source ~/.bash_profile
+$ source ~/.zshrc
 ```
 
 7.验证是否安装成功
