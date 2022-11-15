@@ -38,9 +38,9 @@ Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工
 <br>
 2.在 Visual Studio Code 中添加 [WSO2 Enterprise Integrator](https://marketplace.visualstudio.com/items?itemName=WSO2.wso2ei) 和 [Synapse](https://marketplace.visualstudio.com/items?itemName=nexure.synapse-executor) 扩展
 <br>
-3.安装`Java JDK`并配置`JAVA_HOME`
+3.安装`Java JDK`并配置`JAVA_HOME` (参考笔记: [配置 Java 环境](/notes/java.md))
 <br>
-4.安装 [Maven](https://maven.apache.org/download.cgi)
+4.安装 [Maven](https://maven.apache.org/download.cgi) (参考笔记: [安装并配置 Maven](/notes/maven.md))
 <br>
 
 ### 操作命令

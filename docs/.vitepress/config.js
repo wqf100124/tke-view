@@ -62,6 +62,10 @@ export default defineConfig({
                 ],
             },
             {
+                text: '开发笔记',
+                link: '/notes/',
+            },
+            {
                 text: '站点导航',
                 link: '/sites/',
             },
@@ -225,6 +229,21 @@ export default defineConfig({
                         {
                             text: '部署',
                             link: '/solr/deploy'
+                        },
+                    ]
+                }
+            ],
+            '/notes/': [
+                {
+                    text: '开发笔记',
+                    items: [
+                        {
+                            text: '配置 Java 环境',
+                            link: '/notes/java'
+                        },
+                        {
+                            text: '安装并配置 Maven',
+                            link: '/notes/maven'
                         },
                     ]
                 }
