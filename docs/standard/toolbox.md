@@ -103,12 +103,27 @@ if ($yes) {
 - 不要在没有任何逻辑(处理日志和错误消息)的情况下捕获错误
 - 如果系统不知道如何处理，应该显示通用的错误页面，并退出异常以便进一步调查(log4php->Zabbix/Centralized error dashboard, debug table)
 - 注意区分日志的级别：`debug`、`info`、`warning`、`error/critical`
-- 尽可能的提前去对数据进行校验（前端），并在页面上提醒用户如：`必填项`，`格式`，`数值/日期范围`等....
+- 尽可能地提前去对数据进行校验（前端），并在页面上提醒用户如：`必填项`，`格式`，`数值/日期范围`等....
 - :new: 日志记录的规范：不要在`message`中包含任何数据信息，数据应该放在`additionInfo`参数中，同时注意添加标识符`identifier`，方便去快速的定位错误)
+
+当前系统中可用的日志记录方法: <br>
+`logger_debug`、`logger_warn`、`logger_info`、`logger_error`、`logger_integrationError`、`logger_fatal`
+
+例如: 当 ContractId 为 88888888 的合同数据推送到MQ队列失败时
+```php
+logger_error(
+  'Description Failed to push to the MQ queue',
+  'reference id',
+  888888,
+  'Service Sales',
+  'Service Sales Management',
+  ['ContractId' => 88888888, 'ConformDate' => '2022-10-10'],
+)
+```
 
 ## 5.删除未使用的代码(REMOVE UNUSED CODE)
 
-> 删除不必要的代码以保持代码整洁。被删除的代码可以通过SVN日志找到。
+> 删除不必要的代码以保持代码整洁。删除的代码可以通过SVN日志找到。
 
 - 一旦逻辑不再使用，就删除不使用的代码，以保持代码文件的整洁
 
@@ -117,7 +132,7 @@ if ($yes) {
 > 保持系统的灵活性，我们能把所有东西都设置成可配置的吗? 
 
 - 避免在代码中使用硬编码，应该使用可配置的`system setting`
-- 尽可能的去协调代码逻辑，减少创建新的`system setting`，使系统逻辑简单
+- 尽可能地去协调代码逻辑，减少创建新的`system setting`，使系统逻辑简单
 - 一个开关应该只控制一个逻辑，不要把太大的范围和不相关的逻辑放在一个开关中
 - 提供有意义的开关名称和描述信息(针对于BA和TKE)，并且要在技术文档/Review中体现出来
 - 注意`system setting`表中的`IsTestConfigRequired`属性（如果开启，则不会把live中的配置同步到测试环境中）
@@ -245,5 +260,5 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 
 - 避免SQL注入，在SQL语句中使用占位符(参数)
 - 避免XSS注入，应该使用[NGForm](./html.md)封装的组件(例如: `text`、`textarea`、`select`…)
-- 按照规则将外部帐户存放在单独的文件中
+- 按照规则将外部账户存放在单独的文件中
 
