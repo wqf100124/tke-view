@@ -2,22 +2,22 @@
 
 ## 创建镜像
 
-### 7.4-alpine
+### Ubuntu
 
 ```shell
-docker build -t rtwadewang/view:7.4-alpine --no-cache ./alpine
+docker build -t rtwadewang/view:1.0.0 -t rtwadewang/view:latest --no-cache ./ubuntu
 ```
 
-### 7.4-ubuntu
+### Alpine
 
 ```shell
-docker build -t rtwadewang/view:7.4-ubuntu -t rtwadewang/view:latest --no-cache ./ubuntu
+docker build -t rtwadewang/view:1.0.0-alpine -t rtwadewang/view:alpine --no-cache ./alpine
 ```
 
 ### autotest
 
 ```shell
-docker build -t rtwadewang/autotest:latest --no-cache ./autotest
+docker build -t rtwadewang/autotest:1.0.0 -t rtwadewang/autotest:latest --no-cache ./autotest
 ```
 
 ## 生成文档
