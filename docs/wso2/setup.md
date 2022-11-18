@@ -7,7 +7,7 @@
 创建并运行AM容器
 
 ::: tip 温馨提示
-如果你的本地没有使用[Local环境](./view.md)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
+如果你的本地没有使用[Local环境](/view/)，请先执行`docker network create --subnet=172.16.1.0/24 tke`命令来创建网络。
 :::
 
 ```sh

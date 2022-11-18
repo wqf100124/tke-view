@@ -6,7 +6,7 @@
 $ docker exec -it view bash
 ```
 
-如果本地使用了 [7.4-alpine](https://hub.docker.com/r/rtwadewang/view/tags) 镜像，应该使用 `sh` 命令进入
+如果本地使用了 [alpine](https://hub.docker.com/r/rtwadewang/view/tags) 镜像，应该使用 `sh` 命令进入
 
 ```sh
 $ docker exec -it view sh

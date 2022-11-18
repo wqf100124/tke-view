@@ -31,7 +31,7 @@ export default defineConfig({
                 items: [
                     {
                         text: 'Local环境',
-                        link: '/local/'
+                        link: '/view/'
                     },
                     {
                         text: 'AutoTesting',
@@ -49,6 +49,10 @@ export default defineConfig({
                         text: 'Solr',
                         link: '/solr/'
                     },
+                    {
+                        text: 'Docker Compose',
+                        link: '/compose'
+                    },
                 ],
             },
             {
@@ -61,18 +65,18 @@ export default defineConfig({
                     {text: '数据库操作', link: '/standard/db'},
                 ],
             },
-            {
-                text: '开发笔记',
-                link: '/notes/',
-            },
-            {
-                text: '站点导航',
-                link: '/sites/',
-            },
-            {
-                text: '开发工具',
-                link: '/tools/',
-            },
+            // {
+            //     text: '开发笔记',
+            //     link: '/notes/',
+            // },
+            // {
+            //     text: '站点导航',
+            //     link: '/sites/',
+            // },
+            // {
+            //     text: '开发工具',
+            //     link: '/tools/',
+            // },
             {
                 text: 'Docker Hub',
                 link: 'https://hub.docker.com/u/rtwadewang',
@@ -102,25 +106,25 @@ export default defineConfig({
                     ]
                 }
             ],
-            '/local/': [
+            '/view/': [
                 {
                     text: 'Local环境',
                     items: [
                         {
                             text: '运行Local代码',
-                            link: '/local/'
+                            link: '/view/'
                         },
                         {
                             text: '运行Dev/Dev2/RC/Live代码',
-                            link: '/local/live'
+                            link: '/view/live'
                         },
                         {
                             text: '基础命令',
-                            link: '/local/command'
+                            link: '/view/command'
                         },
                         {
                             text: '常见问题',
-                            link: '/local/question'
+                            link: '/view/question'
                         },
                     ]
                 }

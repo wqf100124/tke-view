@@ -7,15 +7,15 @@ hero:
     src: /image/hero.svg
     alt: logo
   name: View & Docker
-  text: 基于Docker构建的本地开发环境
-  tagline: 为你提供更好的开发体验
+  text: 基于Docker构建的View本地开发环境
+  tagline: 速度更快、体验更好、开发更高效。
   actions:
     - theme: brand
-      text: 开始使用 ->
-      link: /local/
+      text: 快速开始 ->
+      link: /view/
     - theme: alt
       text: 安装Docker
-      link: /docker/
+      link: /docker/setup
 
 features:
   - icon: 💯

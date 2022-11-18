@@ -1,4 +1,4 @@
-# Local环境
+# 运行Local代码
 
 镜像地址: [https://hub.docker.com/r/rtwadewang/view](https://hub.docker.com/r/rtwadewang/view)
 
@@ -20,7 +20,7 @@ $ docker network create --subnet=172.16.1.0/24 tke
 *注意：需要修改你的本机代码路径，同时确认本机上的Apache服务已经关闭。*
 
 ```sh
-$ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/local -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/view
+$ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/view -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/view
 ```
 
 - 不使用的代码请删除目录映射，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
