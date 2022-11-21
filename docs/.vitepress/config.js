@@ -30,7 +30,7 @@ export default defineConfig({
                 text: '开发环境',
                 items: [
                     {
-                        text: 'Local环境',
+                        text: 'View',
                         link: '/view/'
                     },
                     {
@@ -108,10 +108,10 @@ export default defineConfig({
             ],
             '/view/': [
                 {
-                    text: 'Local环境',
+                    text: 'View',
                     items: [
                         {
-                            text: '运行Local代码',
+                            text: 'Local环境',
                             link: '/view/'
                         },
                         {

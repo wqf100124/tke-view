@@ -1,36 +1,151 @@
-# 运行Local代码
+# Local环境
 
-镜像地址: [https://hub.docker.com/r/rtwadewang/view](https://hub.docker.com/r/rtwadewang/view)
+## 介绍
 
-> 集成环境: Apache2/PHP7.4/Memcached/Redis      
-> 支持代码: Local/Preview/Dev2/RC/Live
+View的代码运行在 [Docker容器](https://hub.docker.com/r/rtwadewang/view) 中，该容器基于Linux系统构建，同时参考了View生产环境的配置信息，确保开发和生产环境一致。
 
-*基于Linux系统构建，并参照了View生产环境的配置信息，保证开发和生产环境的一致性。*
+### 支持服务
 
-## 创建网络
+- Apache2
+- PHP7.4
+- Memcached
+- Redis
 
-由于Docker容器之间是相互隔离的，所以我们需要创建一个docker内部网络，以便使View容器可以和第三方服务容器如`RabbitMQ`、`Selenium`等进行交互。
+### PHP扩展
 
+- amqp
+- ast
+- bcmath
+- bz2
+- calendar
+- Core
+- ctype
+- curl
+- date
+- dom
+- exif
+- FFI
+- fileinfo
+- filter
+- ftp
+- gd
+- gettext
+- gmp
+- hash
+- iconv
+- igbinary
+- imap
+- json
+- ldap
+- libxml
+- mbstring
+- mcrypt
+- memcache
+- memcached
+- msgpack
+- mysqli
+- mysqlnd
+- openssl
+- pcntl
+- pcre
+- PDFlib
+- PDO
+- pdo_mysql
+- pdo_sqlite
+- Phar
+- posix
+- readline
+- redis
+- Reflection
+- session
+- shmop
+- SimpleXML
+- soap
+- sockets
+- sodium
+- solr
+- SPL
+- sqlite3
+- standard
+- sysvmsg
+- sysvsem
+- sysvshm
+- tokenizer
+- xml
+- xmlreader
+- xmlrpc
+- xmlwriter
+- xsl
+- Zend OPcache
+- zip
+- zlib
+
+## Windows
+
+1.打开一个终端窗口（`Win` + `R` 键）
+
+2.使用下面的 `docker network create` 命令在Docker中创建类型为 `bridge` 的网络:
 ```sh
 $ docker network create --subnet=172.16.1.0/24 tke
 ```
 
-## 创建容器
-
-*注意：需要修改你的本机代码路径，同时确认本机上的Apache服务已经关闭。*
-
+3.下载 `rtwadewang/view` 镜像并使用以下 `docker run` 命令将其作为Docker中的容器运行:
 ```sh
-$ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 80:80 -v <本机local代码目录>:/home/tke/view -v <本机preview代码目录>:/home/tke/preview -v <本机dev2代码目录>:/home/tke/dev2 -v <本机rc代码目录>:/home/tke/rc -v <本机live代码目录>:/home/tke/live rtwadewang/view
+$ docker run -d ^
+  --name view ^
+  --network tke ^
+  --ip 172.16.1.80 ^
+  --restart always ^
+  -p 80:80 ^
+  -v <本机local代码目录>:/home/tke/view ^
+  -v <本机preview代码目录>:/home/tke/preview ^
+  -v <本机dev2代码目录>:/home/tke/dev2 ^
+  -v <本机rc代码目录>:/home/tke/rc ^
+  -v <本机live代码目录>:/home/tke/live ^
+  rtwadewang/view
 ```
 
-- 不使用的代码请删除目录映射，以免影响IO速度。例如不使用rc环境，则应删除命令中的 `-v <本机rc代码目录>:/home/tke/rc`
-- 对于WSL2开发环境，应该使用linux下的项目路径如：`/var/web/local`，具体可以参考:[https://docs.docker.com/desktop/windows/wsl/](https://docs.docker.com/desktop/windows/wsl/)
+4.测试容器是否创建成功
 
-测试容器是否创建成功: [http://localhost](http://localhost)
+尝试访问: [http://localhost](http://localhost)
+
+::: tip
+如果运行失败，可以检查本机的80端口是否被占用。<br>
+对于WSL2开发环境，应该使用 linux 中的项目路径如：`/var/web/local`，参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
+:::
+
+## MacOS / Linux
+
+1.打开一个终端窗口
+
+2.使用下面的 `docker network create` 命令在Docker中创建类型为 `bridge` 的网络:
+```sh
+$ docker network create --subnet=172.16.1.0/24 tke
+```
+
+3.下载 `rtwadewang/view` 镜像并使用以下 `docker run` 命令将其作为Docker中的容器运行:
+```sh
+$ docker run -d \
+  --name view \
+  --network tke \
+  --ip 172.16.1.80 \
+  --restart always \
+  -p 80:80 \
+  -v <本机local代码目录>:/home/tke/view \
+  -v <本机preview代码目录>:/home/tke/preview \
+  -v <本机dev2代码目录>:/home/tke/dev2 \
+  -v <本机rc代码目录>:/home/tke/rc \
+  -v <本机live代码目录>:/home/tke/live \
+  rtwadewang/view
+```
+
+4.测试容器是否创建成功
+
+尝试访问: [http://localhost](http://localhost)
 
 ## 配置站点
 
-根据自己的需求去配置
+根据自己的需求配置host
 
 ```ini
 # Local站点
@@ -59,4 +174,4 @@ $ docker run -d --name view --network tke --ip 172.16.1.80 --restart always -p 8
 127.0.0.1       global.live.test
 ```
 
-:ghost: 至此Local环境的站点已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
+至此Local环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)

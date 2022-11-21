@@ -21,5 +21,5 @@ $ docker rm view
 ## 删除镜像
 
 ```sh
-$ docker rmi rtwadewang/tke
+$ docker rmi rtwadewang/view
 ```
