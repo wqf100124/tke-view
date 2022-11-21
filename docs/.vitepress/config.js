@@ -111,8 +111,12 @@ export default defineConfig({
                     text: 'View',
                     items: [
                         {
-                            text: 'Local环境',
+                            text: '介绍',
                             link: '/view/'
+                        },
+                        {
+                            text: '创建Local环境',
+                            link: '/view/local'
                         },
                         {
                             text: '运行Dev/Dev2/RC/Live代码',
