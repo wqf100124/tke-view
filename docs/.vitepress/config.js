@@ -130,6 +130,10 @@ export default defineConfig({
                             text: '常见问题',
                             link: '/view/question'
                         },
+                        {
+                            text: '配合IDE使用',
+                            link: '/view/ide'
+                        },
                     ]
                 }
             ],

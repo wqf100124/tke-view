@@ -4,7 +4,7 @@
 
 ![](/image/screenshots/wso2/user/mind.png)
 
-## 1.在WSO2中创建Api
+## 1.创建Api
 
 打开API管理页面: [https://localhost:9443/publisher](https://localhost:9443/publisher)
 
@@ -15,7 +15,7 @@
 配置第三方接口的认证信息
 ![](/image/screenshots/wso2/user/6.png)
 
-## 2.在WSO2中创建App
+## 2.创建App
 
 App管理页面:[https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
 
@@ -31,7 +31,7 @@ App管理页面:[https://localhost:9443/devportal/applications](https://localhos
 ![](/image/screenshots/wso2/user/subscribe-1.png)
 ![](/image/screenshots/wso2/user/subscribe-2.png)
 
-## 5.本地创建OAuth配置文件
+## 5.创建OAuth配置文件
 
 手动创建: `core/.restfulapi.authentication.ini` 文件(注意文件名包含.号)，填入如下内容
 
@@ -46,7 +46,7 @@ consumerSecret="kvsoaXylTKa2X9HvCepn9bfrYyoa"
 gatewayRecourceUrl="https://172.16.1.94:8243"
 ```
 
-## 6.在项目中使用
+## 6.发送请求数据
 
 `core/web/wso2.php`
 
@@ -89,7 +89,7 @@ try {
 }
 ```
 
-## 7.处理接口返回的数据
+## 7.处理响应数据
 创建处理文件: `core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
 
 *文件命名规范：<App名称>GatewayBizHandler.php*
@@ -130,7 +130,7 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 }
 ```
 
-## 8.WSO2的接口调试
+## 8.接口调试
 
 获取AccessToken的接口
 ![](/image/screenshots/wso2/user/14.png)

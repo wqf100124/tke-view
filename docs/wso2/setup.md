@@ -1,6 +1,6 @@
 # 搭建本地环境
 
-## 1.安装AM
+## API Manager
 
 > [API Manager(AM)](https://hub.docker.com/r/wso2/wso2am) 是一个用于部署和管理API的工具，提供了API整个生命周期所需要的各种控制，包含访问权限，访问流量，监控API的调用，版本控制等。
 
@@ -22,19 +22,15 @@ App管理: [https://localhost:9443/devportal/applications](https://localhost:944
 账号: `admin`     
 密码: `admin`
 
-## 2.安装API文档编辑器
+## Swagger Editor
 
 > 用于编写API文档
 
-## Swagger Editor
-
-官方镜像: [https://hub.docker.com/r/swaggerapi/swagger-editor/](https://hub.docker.com/r/swaggerapi/swagger-editor/)       
 使用文档: [https://swagger.io/docs/](https://swagger.io/docs/)
 
 ```sh
 $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 ```
 
-使用本地编辑器: [http://localhost:8080/](http://localhost:8080/)
-
-也可以使用在线编辑器: [https://editor.swagger.io/](https://editor.swagger.io/)
+- 本地编辑器: [http://localhost:8080/](http://localhost:8080/)
+- 在线编辑器: [https://editor.swagger.io/](https://editor.swagger.io/)

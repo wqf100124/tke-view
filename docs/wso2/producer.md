@@ -4,7 +4,7 @@
 
 ![](/image/screenshots/wso2/provider/mind.png)
 
-## 1.在View中创建接口文件
+## 1.创建接口文件
 
 示例: `core/web/sharp/modules/api/controllers/DemoController.php`
 

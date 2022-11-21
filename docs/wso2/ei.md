@@ -4,11 +4,9 @@
 
 ## 开发环境
 
-<br>
+### 1.安装 Micro Integrator
 
-## 安装 [Micro Integrator(MI)](https://hub.docker.com/r/wso2/wso2mi)
-
-> Micro Integrator 是一个开源、轻量级、快速、可扩展的分布式微服务集成层，是 Enterprise Integration 的云原生发行版
+> [Micro Integrator(MI)](https://hub.docker.com/r/wso2/wso2mi) 是一个开源、轻量级、快速、可扩展的分布式微服务集成层，是 Enterprise Integration 的云原生发行版
 
 创建并运行MI容器，注意替换你的 **本机EI导出目录** 例如: `D:/tke/wso2/carbonapps`
 
@@ -16,21 +14,19 @@
 $ docker run -v <本机EI导出目录>:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps -d --network tke --ip 172.16.1.90 -it -p 8290:8290 -p 8253:8253 -p 9164:9164 --name mi wso2/wso2mi:4.1.0
 ```
 
-## 开发工具
+### 2.安装开发工具
 
 ::: warning 温馨提示
 Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工具任选其一即可。
 :::
 
-## Integration Studio
+#### Integration Studio
 
 > 设计、开发、调试、测试和部署工具
 
 官方下载地址: [https://wso2.com/integration/integration-studio/](https://wso2.com/integration/integration-studio/)
 
-## Visual Studio Code
-
-<br>
+#### Visual Studio Code
 
 ### 准备工作
 
@@ -63,9 +59,7 @@ Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工
 
 ## 基础操作
 
-<br>
-
-## 对明文密码的加密
+### 对明文密码的加密
 
 1.进入MI容器
 
