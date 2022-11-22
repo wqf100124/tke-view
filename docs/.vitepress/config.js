@@ -115,7 +115,7 @@ export default defineConfig({
                             link: '/view/'
                         },
                         {
-                            text: '创建Local环境',
+                            text: 'Local环境',
                             link: '/view/local'
                         },
                         {

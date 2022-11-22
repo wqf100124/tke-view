@@ -1,15 +1,17 @@
-# 创建Local环境
+# Local环境
 
-## Windows
+## 创建服务
 
-1.打开一个终端窗口（`Win` + `R` 键）
+1.打开一个终端窗口
 
 2.使用下面的 `docker network create` 命令在Docker中创建类型为 `bridge` 的网络:
 ```sh
 $ docker network create --subnet=172.16.1.0/24 tke
 ```
 
-3.下载 `rtwadewang/view` 镜像并使用以下 `docker run` 命令将其作为Docker中的容器运行:
+3.使用下面的 `docker run` 命令将其作为Docker中的容器运行:
+
+Windows
 ```sh
 $ docker run -d ^
   --name view ^
@@ -25,25 +27,7 @@ $ docker run -d ^
   rtwadewang/view
 ```
 
-4.测试容器是否创建成功
-
-尝试访问: [http://localhost](http://localhost)
-
-::: tip
-如果运行失败，可以检查本机的80端口是否被占用。<br>
-对于WSL2开发环境，应该使用 linux 中的项目路径如：`/var/web/local`，参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
-:::
-
-## MacOS / Linux
-
-1.打开一个终端窗口
-
-2.使用下面的 `docker network create` 命令在Docker中创建类型为 `bridge` 的网络:
-```sh
-$ docker network create --subnet=172.16.1.0/24 tke
-```
-
-3.下载 `rtwadewang/view` 镜像并使用以下 `docker run` 命令将其作为Docker中的容器运行:
+MacOS/Linux
 ```sh
 $ docker run -d \
   --name view \
@@ -62,6 +46,11 @@ $ docker run -d \
 4.测试容器是否创建成功
 
 尝试访问: [http://localhost](http://localhost)
+
+::: tip
+如果运行失败，可以检查本机的80端口是否被占用。<br>
+对于WSL2开发环境，应该使用 linux 中的项目路径如：`/var/web/local`，参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
+:::
 
 ## 配置站点
 
