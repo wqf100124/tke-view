@@ -27,6 +27,8 @@ apk add --no-cache \
     php7-ctype \
     php7-curl \
     php7-dom \
+    php7-exif \
+    php7-ffi \
     php7-fileinfo \
     php7-ftp \
     php7-gd \
@@ -40,6 +42,7 @@ apk add --no-cache \
     php7-pecl-mcrypt \
     php7-pecl-memcache \
     php7-pecl-memcached \
+    php7-pecl-msgpack \
     php7-mysqli \
     php7-openssl \
     php7-pcntl \
@@ -50,17 +53,21 @@ apk add --no-cache \
     php7-session \
     php7-shmop \
     php7-simplexml \
+    php7-sockets \
+    php7-sodium \
+    php7-sysvmsg \
     php7-xml \
     php7-xmlrpc \
     php7-xmlreader \
     php7-xmlwriter \
+    php7-xsl \
     php7-pecl-redis \
     php7-soap \
     php7-sqlite3 \
     php7-sysvsem \
     php7-tokenizer \
     php7-zip
-# php7-opcache php7-pecl-ssh2 php7-sockets
+# php7-opcache php7-pecl-ssh2
 # ---------- php.ini ----------
 sed -i "s/;date.timezone =/date.timezone = Asia\/Shanghai/g" /etc/php7/php.ini
 sed -i "s/display_errors = Off/display_errors = On/g" /etc/php7/php.ini
@@ -81,6 +88,7 @@ echo "extension=pdflib.so" >> /etc/php7/conf.d/00_pdflib.ini
 # ---------- composer ----------
 php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
 php composer-setup.php --install-dir=/usr/bin --filename=composer;
+rm composer-setup.php
 # ---------- memcached ----------
 apk add --no-cache memcached
 # ---------- redis ----------

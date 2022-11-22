@@ -64,6 +64,7 @@ ln --force /etc/php/${1}/apache2/php.ini /etc/php/${1}/cli/php.ini
 # ---------- composer ----------
 php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
 php composer-setup.php --install-dir=/usr/bin --filename=composer;
+rm composer-setup.php
 # ---------- redis ----------
 apt-get install -y redis-server
 # ---------- project directory ----------
