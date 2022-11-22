@@ -18,48 +18,38 @@ $ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7
 
 2.修改hostUrl
 
-以默认国家例:
-
-打开 `autotest/selenium/config.xml` 配置文件，找到配置项 `hostUrl`
+以默认国家例，修改 `autotest/selenium/config.xml` 文件中的 `hostUrl` 配置项：
 
 ```xml
 <element id="hostUrl">
-	<value>https://selenium.tkeasia.com/</value>
-</element>
-```
-
-修改为：
-```xml{2}
-<element id="hostUrl">
-    <value>http://172.16.1.44:4444</value>
+	<value>https://selenium.tkeasia.com/</value> // [!code --]
+    <value>http://172.16.1.44:4444</value> // [!code ++]
 </element>
 ```
 
 3.修改底层代码
 
-*由于当前底层代码仅支持Window环境，需要修改以下文件后才能正常运行*
-
 - `autotest/selenium/library/FeatureContext.php`
-- `autotest/selenium/library/GlobalContext.php`(global环境)
+- `autotest/selenium/library/GlobalContext.php` (global环境)
 
-修改前：
+修改 `$isServer` 变量
+```php
+    $isServer = file_exists("/opt/dennis"); // [!code --]
+    $isServer = true; // [!code ++]
+```
+
+注释掉 `require_once('SeleniumDatabase.php');` 方法
 ```php
 if($isServer){
-	$desired_capabilities->setCapability("webdriver.edge.driver", "/data/autotest/MicrosoftWebDriver");
-	$desired_capabilities->setCapability("platform", "Linux");
+    require_once('SeleniumDatabase.php'); // [!code --]
+    // require_once('SeleniumDatabase.php'); // [!code ++]
 }else{
-	$desired_capabilities->setCapability("webdriver.edge.driver", "C:\driver\msedgedriver.exe");
-}
-```
-修改后：
-```php{6-7}
-if($isServer){
-	$desired_capabilities->setCapability("webdriver.edge.driver", "/data/autotest/MicrosoftWebDriver");
-	$desired_capabilities->setCapability("platform", "Linux");
-}else{
-	$desired_capabilities->setCapability("webdriver.edge.driver", "C:\driver\msedgedriver.exe");
-	// 在此处添加Linux平台标识
-	$desired_capabilities->setCapability("platform", "Linux");
+    $arr = $this->seleniumService->getPredefinedConstants();
+    foreach ($arr as $key => $value) {
+        if (!defined($key)) {
+            define($key, $value);
+        }
+    }
 }
 ```
 
@@ -83,6 +73,8 @@ $ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --name 'Exa
 ## 监听调试过程
 
 - 调试窗口: [http://localhost:7900](http://localhost:7900)
+
+提示：如无法访问，请检查selenium容器是否已启动，如果未启动，可以运行 `docker start selenium` 命令来启动selenium服务。
 
 [//]: # (- 管理页面: [http://localhost:4444]&#40;http://localhost:4444&#41;)
 

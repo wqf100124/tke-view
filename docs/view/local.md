@@ -48,7 +48,7 @@ $ docker run -d \
 尝试访问: [http://localhost](http://localhost)
 
 ::: tip
-如果运行失败，可以检查本机的80端口是否被占用。<br>
+如果运行失败，检查本机的80端口是否被占用。<br>
 对于WSL2开发环境，应该使用 linux 中的项目路径如：`/var/web/local`，参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
 :::
 
