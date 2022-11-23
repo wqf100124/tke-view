@@ -19,7 +19,7 @@ $ docker run -d ^
   --ip 172.16.1.80 ^
   --restart always ^
   -p 80:80 ^
-  -v <本机local代码目录>:/home/tke/view ^
+  -v <本机local代码目录>:/home/tke/local ^
   -v <本机preview代码目录>:/home/tke/preview ^
   -v <本机dev2代码目录>:/home/tke/dev2 ^
   -v <本机rc代码目录>:/home/tke/rc ^
@@ -35,7 +35,7 @@ $ docker run -d \
   --ip 172.16.1.80 \
   --restart always \
   -p 80:80 \
-  -v <本机local代码目录>:/home/tke/view \
+  -v <本机local代码目录>:/home/tke/local \
   -v <本机preview代码目录>:/home/tke/preview \
   -v <本机dev2代码目录>:/home/tke/dev2 \
   -v <本机rc代码目录>:/home/tke/rc \
