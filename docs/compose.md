@@ -92,35 +92,35 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: "本机local代码目录如 D:\tke\local"
+      device: D:\tke\local
   preview:
     name: preview
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: "本机preview代码目录"
+      device: D:\tke\preview
   # dev2:
   #   name: dev2
   #   driver: local
   #   driver_opts:
   #     type: none
   #     o: bind
-  #     device: "本机dev2代码目录"
+  #     device: D:\tke\dev2
   # rc:
   #   name: rc
   #   driver: local
   #   driver_opts:
   #     type: none
   #     o: bind
-  #     device: "本机rc代码目录"
+  #     device: D:\tke\rc
   # live:
   #   name: live
   #   driver: local
   #   driver_opts:
   #     type: none
   #     o: bind
-  #     device: "本机live代码目录"
+  #     device: D:\tke\live
 ```
 
 `autotest` 和 `autotest-rc` 容器依赖于 `selenium` 容器
