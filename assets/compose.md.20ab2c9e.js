@@ -78,35 +78,35 @@ import{_ as s,c as n,o as a,a as l}from"./app.95f7b69a.js";const d=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">driver_opts</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">type</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">none</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">o</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">bind</span></span>
-<span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">device</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">\u672C\u673Alocal\u4EE3\u7801\u76EE\u5F55\u5982 D:</span><span style="color:#A6ACCD;">\\t</span><span style="color:#C3E88D;">ke\\local</span><span style="color:#89DDFF;">&quot;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">device</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">D:\\tke\\local</span></span>
 <span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#F07178;">preview</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">preview</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">driver</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">local</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">driver_opts</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">type</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">none</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">o</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">bind</span></span>
-<span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">device</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">\u672C\u673Apreview\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&quot;</span></span>
+<span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">device</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">D:\\tke\\preview</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># dev2:</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   name: dev2</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   driver: local</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   driver_opts:</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     type: none</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     o: bind</span></span>
-<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     device: &quot;\u672C\u673Adev2\u4EE3\u7801\u76EE\u5F55&quot;</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     device: D:\\tke\\dev2</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># rc:</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   name: rc</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   driver: local</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   driver_opts:</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     type: none</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     o: bind</span></span>
-<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     device: &quot;\u672C\u673Arc\u4EE3\u7801\u76EE\u5F55&quot;</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     device: D:\\tke\\rc</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># live:</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   name: live</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   driver: local</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#   driver_opts:</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     type: none</span></span>
 <span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     o: bind</span></span>
-<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     device: &quot;\u672C\u673Alive\u4EE3\u7801\u76EE\u5F55&quot;</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;">#     device: D:\\tke\\live</span></span>
 <span class="line"></span></code></pre></div><p><code>autotest</code> \u548C <code>autotest-rc</code> \u5BB9\u5668\u4F9D\u8D56\u4E8E <code>selenium</code> \u5BB9\u5668</p><p>2.\u5728\u7EC8\u7AEF\u4E2D\u5207\u6362\u5230 <code>docker-compose.yml</code> \u6587\u4EF6\u6240\u5728\u76EE\u5F55\uFF0C\u4F8B\u5982\uFF1A</p><div class="language-sh"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki"><code><span class="line"><span style="color:#A6ACCD;">$ </span><span style="color:#82AAFF;">cd</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">~</span><span style="color:#A6ACCD;">/Desktop/</span></span>
 <span class="line"></span></code></pre></div><p>3.\u8FD0\u884C\u547D\u4EE4\uFF08\u521B\u5EFA\u5BB9\u5668\u540C\u65F6\u5728\u540E\u53F0\u8FD0\u884C\uFF09</p><div class="language-sh"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki"><code><span class="line"><span style="color:#A6ACCD;">$ docker compose up -d</span></span>
 <span class="line"></span></code></pre></div><h2 id="\u5E38\u7528\u547D\u4EE4" tabindex="-1">\u5E38\u7528\u547D\u4EE4 <a class="header-anchor" href="#\u5E38\u7528\u547D\u4EE4" aria-hidden="true">#</a></h2><p>\u67E5\u770B\u6B63\u5728\u8FD0\u884C\u7684\u5BB9\u5668</p><div class="language-sh"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki"><code><span class="line"><span style="color:#A6ACCD;">$ docker compose ps</span></span>
