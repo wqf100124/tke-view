@@ -7,7 +7,8 @@
 1.在本地创建新的 `docker-compose.yml` 文件，写入以下内容。
 
 ::: tip 温馨提示
-默认配置只会创建 view 容器，如需创建其它容器，从配置项 `service` 中去掉对应的注释即可。
+1.根据业务需求修改配置，需要启用的服务，在配置项 `service` 中去掉对应的注释即可。<br>
+2.在 `volumes` 配置项中修改代码目录。
 :::
 
 ```yaml{2}
@@ -17,17 +18,16 @@ services:
     image: rtwadewang/view
     container_name: view
     volumes:
-      - <本机local代码目录>:/home/tke/view
-      - <本机preview代码目录>:/home/tke/preview
-      - <本机dev2代码目录>:/home/tke/dev2
-      - <本机rc代码目录>:/home/tke/rc
-      - <本机live代码目录>:/home/tke/live
+      - local:/home/tke/local
+      - preview:/home/tke/preview
+      # - dev2:/home/tke/dev2
+      # - rc:/home/tke/rc
+      # - live:/home/tke/live
     networks:
       tke:
         ipv4_address: 172.16.1.80
     ports:
       - "80:80"
-
   # selenium:
   #   image: selenium/standalone-edge
   #   container_name: selenium
@@ -40,27 +40,24 @@ services:
   #   ports:
   #     - "4444:4444"
   #     - "7900:7900"
-
   # autotest:
   #   image: rtwadewang/autotest
   #   container_name: autotest
   #   networks:
   #     - tke
   #   volumes:
-  #     - <本机dev2代码目录>:/home/tke/code
+  #     - dev2:/home/tke/code
   #   depends_on:
   #     - selenium
-
   # autotest-rc:
   #   container_name: autotest-rc
   #   image: rtwadewang/autotest
   #   networks:
   #     - tke
   #   volumes:
-  #     - <本机rc代码目录>:/home/tke/code
+  #     - rc:/home/tke/code
   #   depends_on:
   #     - selenium
-
   # rabbitmq:
   #   image: rabbitmq:3.9-management-alpine
   #   container_name: rabbitmq
@@ -70,7 +67,6 @@ services:
   #   ports:
   #     - "5672:5672"
   #     - "15672:15672"
-
   # solr:
   #   image: solr
   #   container_name: solr
@@ -88,6 +84,43 @@ networks:
       driver: default
       config:
         - subnet: 172.16.1.0/24
+
+volumes:
+  local:
+    name: local
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "本机local代码目录如 D:\tke\local"
+  preview:
+    name: preview
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "本机preview代码目录"
+  # dev2:
+  #   name: dev2
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: "本机dev2代码目录"
+  # rc:
+  #   name: rc
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: "本机rc代码目录"
+  # live:
+  #   name: live
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: "本机live代码目录"
 ```
 
 `autotest` 和 `autotest-rc` 容器依赖于 `selenium` 容器
