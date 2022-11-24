@@ -1,0 +1,79 @@
+# 介绍
+
+View的代码运行在 [Docker容器](https://hub.docker.com/r/rtwadewang/view) 中，该容器基于Linux系统构建，同时参考了View生产环境的配置信息，确保开发和生产环境一致。
+
+## 支持服务
+
+- Apache2
+- PHP7.4
+- Memcached
+- Redis
+
+## PHP扩展
+
+- amqp
+- ast
+- bcmath
+- bz2
+- calendar
+- Core
+- ctype
+- curl
+- date
+- dom
+- exif
+- FFI
+- fileinfo
+- filter
+- ftp
+- gd
+- gettext
+- gmp
+- hash
+- iconv
+- igbinary
+- imap
+- json
+- ldap
+- libxml
+- mbstring
+- mcrypt
+- memcache
+- memcached
+- msgpack
+- mysqli
+- mysqlnd
+- openssl
+- pcntl
+- pcre
+- PDFlib
+- PDO
+- pdo_mysql
+- pdo_sqlite
+- Phar
+- posix
+- readline
+- redis
+- Reflection
+- session
+- shmop
+- SimpleXML
+- soap
+- sockets
+- sodium
+- solr
+- SPL
+- sqlite3
+- standard
+- sysvmsg
+- sysvsem
+- sysvshm
+- tokenizer
+- xml
+- xmlreader
+- xmlrpc
+- xmlwriter
+- xsl
+- Zend OPcache
+- zip
+- zlib

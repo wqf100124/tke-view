@@ -111,24 +111,20 @@ export default defineConfig({
                     text: 'View',
                     items: [
                         {
-                            text: '介绍',
-                            link: '/view/'
-                        },
-                        {
                             text: 'Local环境',
-                            link: '/view/local'
+                            link: '/view/'
                         },
                         {
                             text: '运行Dev/Dev2/RC/Live代码',
                             link: '/view/live'
                         },
                         {
-                            text: '基础命令',
-                            link: '/view/command'
-                        },
-                        {
                             text: '常见问题',
                             link: '/view/question'
+                        },
+                        {
+                            text: '基础命令',
+                            link: '/view/command'
                         },
                         {
                             text: '配合IDE使用',
