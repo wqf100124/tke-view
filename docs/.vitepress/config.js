@@ -50,7 +50,7 @@ export default defineConfig({
                         link: '/solr/'
                     },
                     {
-                        text: 'Docker Compose',
+                        text: 'View Docker Compose',
                         link: '/compose'
                     },
                 ],
@@ -130,6 +130,10 @@ export default defineConfig({
                             text: '配合IDE使用',
                             link: '/view/ide'
                         },
+                        {
+                            text: 'Docker Compose',
+                            link: '/view/compose'
+                        },
                     ]
                 }
             ],
@@ -148,6 +152,10 @@ export default defineConfig({
                         {
                             text: 'Phpunit',
                             link: '/autotest/phpunit'
+                        },
+                        {
+                            text: 'Docker Compose',
+                            link: '/autotest/compose'
                         },
                     ]
                 }

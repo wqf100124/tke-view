@@ -15,7 +15,7 @@ include_once(dirname(__FILE__) . '/RestfulController.php');
 
 class Api_DemoController extends Api_RestfulController
 {
-    protected string $scope = 'Demo';
+    protected $scope = 'Demo';
 
     /**
      *
@@ -28,10 +28,13 @@ class Api_DemoController extends Api_RestfulController
             return $this->error('invalid phone number.', 422);
         }
 
-        return $this->success([
-            'id'   => 888,
-            'name' => 'Demo'
-        ], 'success');
+        return $this->success(
+            [
+                'id'   => 888,
+                'name' => 'Demo'
+            ],
+            'success'
+        );
     }
 }
 ```
