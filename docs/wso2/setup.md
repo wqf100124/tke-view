@@ -52,8 +52,7 @@ $ docker run -d -p 8080:8080 --name swagger-editor swaggerapi/swagger-editor
 
 > 使用 [Docker Compose](https://docs.docker.com/compose/) 工具，可以快速创建wso2开发环境。
 
-1.在本地创建新的 `docker-compose.yml` 文件，写入以下内容。
-
+1.在本地创建新的 `wso2.yml` 文件，写入以下内容。
 ```yaml
 version: "3"
 services:
@@ -71,6 +70,13 @@ services:
       - hk.preview.test:172.16.1.80
       - china.preview.test:172.16.1.80
       - global.preview.test:172.16.1.80
+  sw:
+    image: swaggerapi/swagger-editor
+    container_name: sw
+    networks:
+      - tke
+    ports:
+      - "8080:8080"
   mi:
     image: wso2/wso2mi:4.1.0
     container_name: mi
@@ -96,12 +102,12 @@ networks:
         - subnet: 172.16.1.0/24
 ```
 
-2.在终端中切换到 `docker-compose.yml` 文件所在目录，例如：
+2.在终端中切换到 `wso2.yml` 文件所在目录，例如：
 ```sh
 $ cd ~/Desktop/
 ```
 
 3.运行命令（创建容器同时在后台运行）
 ```sh
-$ docker compose up -d
+$ docker-compose -p wso2 -f ./wso2.yml up -d
 ```

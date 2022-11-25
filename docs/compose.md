@@ -4,7 +4,7 @@
 
 ## 创建环境
 
-1.在本地创建新的 `docker-compose.yml` 文件，写入以下内容。
+1.在本地创建新的 `view.yml` 文件，写入以下内容。
 
 ::: tip 温馨提示
 1.根据业务需求修改配置，需要启用的服务，在配置项 `service` 中去掉对应的注释即可。<br>
@@ -125,14 +125,14 @@ volumes:
 
 `autotest` 和 `autotest-rc` 容器依赖于 `selenium` 容器
 
-2.在终端中切换到 `docker-compose.yml` 文件所在目录，例如：
+2.在终端中切换到 `view.yml` 文件所在目录，例如：
 ```sh
 $ cd ~/Desktop/
 ```
 
 3.运行命令（创建容器同时在后台运行）
 ```sh
-$ docker compose up -d
+$ docker-compose -p view -f ./view.yml up -d
 ```
 
 ## 常用命令
