@@ -192,7 +192,7 @@ export default defineConfig({
                             link: '/wso2/'
                         },
                         {
-                            text: '搭建环境',
+                            text: '本地开发环境',
                             link: '/wso2/setup'
                         },
                         {
