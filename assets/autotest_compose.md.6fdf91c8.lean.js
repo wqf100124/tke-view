@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as p}from"./app.d6995509.js";const i=JSON.parse('{"title":"Docker Compose","description":"","frontmatter":{},"headers":[],"relativePath":"autotest/compose.md"}'),l={name:"autotest/compose.md"},o=p("",8),e=[o];function c(t,r,D,y,C,A){return a(),n("div",null,e)}const d=s(l,[["render",c]]);export{i as __pageData,d as default};
