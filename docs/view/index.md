@@ -1,59 +1,95 @@
-# Local环境
+# 本地环境
 
-## 创建环境
+## 创建 View 容器
 
-1.打开一个终端窗口
-
-2.使用下面的 `docker network create` 命令在Docker中创建类型为 `bridge` 的网络:
-```sh
-$ docker network create --subnet=172.16.1.0/24 tke
+1.在本地创建一个名为 `tke.yml` 的文件，并复制粘贴以下内容。
+```yaml{32,39,46,53,60}
+version: "3"
+services:
+  view:
+    image: rtwadewang/view
+    container_name: view
+    volumes:
+      - local:/home/tke/local
+      - preview:/home/tke/preview
+      # - dev2:/home/tke/dev2
+      # - rc:/home/tke/rc
+      # - live:/home/tke/live
+    networks:
+      tke:
+        ipv4_address: 172.16.1.80
+    ports:
+      - "80:80"
+    restart: always
+networks:
+  tke:
+    name: tke
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.1.0/24
+volumes:
+  local:
+    name: local
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: D:\tke\local
+  preview:
+    name: preview
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: D:\tke\preview
+  # dev2:
+  #   name: dev2
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: D:\tke\dev2
+  # rc:
+  #   name: rc
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: D:\tke\rc
+  # live:
+  #   name: live
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: D:\tke\live
 ```
 
-3.使用下面的 `docker run` 命令将其作为Docker中的容器运行:
+- 注意替换代码路径。
+- 对于 [WSL2](https://learn.microsoft.com/zh-cn/windows/wsl/) 开发环境，应该使用 linux 中的项目路径如：`/var/tke/local`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
 
-Windows
+2.打开终端工具，并切换到 `tke.yml` 文件所在的目录。例如：
 ```sh
-$ docker run -d ^
-    --name view ^
-    --network tke ^
-    --ip 172.16.1.80 ^
-    --restart always ^
-    -p 80:80 ^
-    -v <本机local代码目录>:/home/tke/local ^
-    -v <本机preview代码目录>:/home/tke/preview ^
-    -v <本机dev2代码目录>:/home/tke/dev2 ^
-    -v <本机rc代码目录>:/home/tke/rc ^
-    -v <本机live代码目录>:/home/tke/live ^
-    rtwadewang/view
+$ cd ~/Desktop/
 ```
 
-MacOS/Linux
+3.创建并启动服务（`-d`参数可以让服务在后台运行）。
 ```sh
-$ docker run -d \
-    --name view \
-    --network tke \
-    --ip 172.16.1.80 \
-    --restart always \
-    -p 80:80 \
-    -v <本机local代码目录>:/home/tke/local \
-    -v <本机preview代码目录>:/home/tke/preview \
-    -v <本机dev2代码目录>:/home/tke/dev2 \
-    -v <本机rc代码目录>:/home/tke/rc \
-    -v <本机live代码目录>:/home/tke/live \
-    rtwadewang/view
+$ docker-compose -p Tke -f ./tke.yml up -d
 ```
 
-4.测试容器是否创建成功
+4.验证服务是否创建成功。
 
-尝试访问: [http://localhost](http://localhost)
+访问本地站点: [http://localhost](http://localhost)
 
-::: tip
-如果运行失败，检查本机的80端口是否被占用。<br>
-对于WSL2开发环境，应该使用 linux 中的项目路径如：`/var/web/local`，参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
+::: tip 提示：
+如果运行失败，请检查本机的80端口是否被占用。
 :::
 
 ## 配置站点
 
+打开本机的 hosts 配置文件，并复制粘贴以下内容。
 ```ini
 # Local站点
 127.0.0.1       hk.local.test
@@ -81,4 +117,4 @@ $ docker run -d \
 127.0.0.1       global.live.test
 ```
 
-至此Local环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
+至此 Local 环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)

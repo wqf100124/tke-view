@@ -1,24 +1,16 @@
 # Selenium
 
-> Selenium 是支持 web 浏览器自动化的一系列工具和库的综合项目。它可以直接运行在浏览器中，就像真正的用户在操作一样。
-
-官方镜像: [https://hub.docker.com/r/selenium/standalone-edge](https://hub.docker.com/r/selenium/standalone-edge)
+> [Selenium](https://www.selenium.dev/zh-cn/) 是支持 web 浏览器自动化的一系列工具和库的综合项目。它可以直接运行在浏览器中，就像真正的用户在操作一样。
 
 参考文档: [https://github.com/SeleniumHQ/docker-selenium](https://github.com/SeleniumHQ/docker-selenium)
 
 Behat语法: [https://docs.behat.org/en/latest/](https://docs.behat.org/en/latest/)
 
-## 搭建环境
+## 准备工作
 
-1.创建selenium服务
+1.修改hostUrl
 
-```sh
-$ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7900:7900 -e VNC_NO_PASSWORD=1 -e SE_NODE_MAX_SESSIONS=5 --shm-size="2g" selenium/standalone-edge
-```
-
-2.修改hostUrl
-
-以默认国家例，修改 `autotest/selenium/config.xml` 文件中的 `hostUrl` 配置项：
+以默认配置为例，修改 `autotest/selenium/config.xml` 文件中的 `hostUrl` 配置项：
 
 ```xml
 <element id="hostUrl">
@@ -27,7 +19,7 @@ $ docker run -d --name selenium --network tke --ip 172.16.1.44 -p 4444:4444 -p 7
 </element>
 ```
 
-3.修改底层代码
+2.修改底层代码
 
 - `autotest/selenium/library/FeatureContext.php`
 - `autotest/selenium/library/GlobalContext.php` (global环境)
@@ -53,19 +45,21 @@ if($isServer){
 }
 ```
 
-## 运行测试命令
+## 测试命令
 
-使用 `.feature` 文件路径作为参数
+下面的几种方式都可以运行测试脚本
+
+1.运行文件路径为 `features/Example.feature` 的测试脚本
 ```sh
 $ docker exec -it -w /home/tke/code/autotest/selenium autotest behat 'features/Example.feature'
 ```
 
-使用 `tag` 名称作为参数
+2.运行包含 `@Example` 标签的测试脚本
 ```sh
 $ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags 'Example'
 ```
 
-使用 `feature` 名称作为参数
+3.运行 `feature` 名称为 `Example` 的测试脚本
 ```sh
 $ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --name 'Example'
 ```
@@ -74,7 +68,7 @@ $ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --name 'Exa
 
 - 调试窗口: [http://localhost:7900](http://localhost:7900)
 
-提示：如无法访问，请检查selenium容器是否已启动，如果未启动，可以运行 `docker start selenium` 命令来启动selenium服务。
+提示：如无法访问，请检查selenium容器是否在运行。
 
 [//]: # (- 管理页面: [http://localhost:4444]&#40;http://localhost:4444&#41;)
 

@@ -1,26 +1,26 @@
 # 项目配置
 
-## mq文件夹
+## mq 文件夹
 
-*以USA国家为例，其它国家可作为参考*
+*以 `us` 国家为例，其它国家可作为参考*
 
-复制国家下的mq文件夹到**core**目录下
+复制 `us` 文件夹中的 `mq` 文件夹到 `core` 目录
 
 ```sh
 $ cp -r ./usa/mq/ ./core/mq/
 ```
 
-## ViewLogger配置
+## ViewLogger 配置
 
-复制国家下的`ViewLoggerConfig.php`文件到**core**目录下
+复制 `us` 文件夹中的 `ViewLoggerConfig.php` 文件到 `core` 目录
 
 ```sh
 $ cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
 ```
 
-## Amqp配置
+## RabbitMQConfig.php
 
-修改Amqp配置文件: `mq/RabbitMQConfig.php`
+修改配置文件: `mq/RabbitMQConfig.php`
 
 配置示例：
 
@@ -46,7 +46,7 @@ $rabbitMQConfig = [
 ];
 ```
 
-## Topic配置
+## TopicDeclaration.json
 
 修改Topic配置文件: `mq/TopicDeclaration.json`
 

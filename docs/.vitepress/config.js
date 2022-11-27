@@ -24,7 +24,7 @@ export default defineConfig({
             next: '下一条'
         },
         lastUpdatedText: '更新时间',
-        outlineTitle: '本页目录',
+        outlineTitle: '目录',
         nav: [
             {
                 text: '开发环境',
@@ -111,16 +111,12 @@ export default defineConfig({
                     text: 'View',
                     items: [
                         {
-                            text: 'Local环境',
+                            text: '本地环境',
                             link: '/view/'
                         },
                         {
-                            text: '运行Dev/Dev2/RC/Live代码',
+                            text: '运行测试环境代码',
                             link: '/view/live'
-                        },
-                        {
-                            text: '常见问题',
-                            link: '/view/question'
                         },
                         {
                             text: '基础命令',
@@ -131,18 +127,18 @@ export default defineConfig({
                             link: '/view/ide'
                         },
                         {
-                            text: 'Docker Compose',
-                            link: '/view/compose'
+                            text: '常见问题',
+                            link: '/view/question'
                         },
                     ]
                 }
             ],
             '/autotest/': [
                 {
-                    text: 'Autotest自动化测试',
+                    text: 'AutoTesting自动化测试',
                     items: [
                         {
-                            text: '基础环境',
+                            text: '搭建环境',
                             link: '/autotest/'
                         },
                         {
@@ -153,10 +149,6 @@ export default defineConfig({
                             text: 'Phpunit',
                             link: '/autotest/phpunit'
                         },
-                        {
-                            text: 'Docker Compose',
-                            link: '/autotest/compose'
-                        },
                     ]
                 }
             ],
@@ -165,7 +157,7 @@ export default defineConfig({
                     text: 'Rabbitmq消息队列',
                     items: [
                         {
-                            text: '创建MQ服务',
+                            text: '搭建环境',
                             link: '/rabbitmq/'
                         },
                         {
@@ -179,10 +171,6 @@ export default defineConfig({
                         {
                             text: '基本命令',
                             link: '/rabbitmq/command'
-                        },
-                        {
-                            text: '部署',
-                            link: '/rabbitmq/deploy'
                         },
                         {
                             text: '常见问题',
@@ -200,7 +188,7 @@ export default defineConfig({
                             link: '/wso2/'
                         },
                         {
-                            text: '本地开发环境',
+                            text: '搭建环境',
                             link: '/wso2/setup'
                         },
                         {
@@ -235,7 +223,7 @@ export default defineConfig({
                     text: 'Solr全文搜索',
                     items: [
                         {
-                            text: '基础环境',
+                            text: '搭建环境',
                             link: '/solr/'
                         },
                         {
