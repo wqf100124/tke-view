@@ -1,6 +1,6 @@
 # 开发工具推荐
 
-## 命令行工具
+## 终端工具
 - [Hyper](https://hyper.is/)
 
 ## API接口工具
@@ -10,7 +10,7 @@
 - [FortiClient VPN](https://downloads.qsgit.com/forticlient-vpn/)
 
 ## 代码插件
-- 强大的代码补全工具: [Tabnine](https://www.tabnine.com/)
+- [Tabnine(代码自动补全)](https://www.tabnine.com/)
 
 ## 截图小工具
 - [Snipaste](https://zh.snipaste.com/)

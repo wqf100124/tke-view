@@ -368,12 +368,12 @@
     color: var(--vp-c-brand) !important;
 }
 
-.VPHomeHero .name {
-    font-size: 62px;
-}
+/*.VPHomeHero .name {*/
+/*    font-size: 62px;*/
+/*}*/
 
 .VPHomeHero .text {
-    font-size: 32px;
+    font-size: 28px;
 }
 
 .VPHomeHero .tagline {

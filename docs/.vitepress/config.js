@@ -82,6 +82,7 @@ export default defineConfig({
                 link: 'https://hub.docker.com/u/rtwadewang',
             }
         ],
+
         sidebar: {
             '/docker/': [
                 {
@@ -89,15 +90,15 @@ export default defineConfig({
                     items: [
                         {
                             text: '介绍',
-                            link: '/docker/'
+                            link: '/development/docker/'
                         },
                         {
                             text: '安装',
-                            link: '/docker/setup'
+                            link: '/development/docker/setup'
                         },
                         {
                             text: '基础命令',
-                            link: '/docker/command'
+                            link: '/development/docker/command'
                         },
                         {
                             text: '常见问题',
