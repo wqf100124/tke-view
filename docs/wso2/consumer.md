@@ -2,7 +2,16 @@
 
 > View 通过 WSO2 请求第三方 API
 
-![](/image/screenshots/wso2/user/mind.png)
+```mermaid
+flowchart LR
+A(View) & B(VFM) ---> C([WSO2]) ---> D[[第三方系统A]] & E[[第三方系统B]] & F[[第三方系统C]]
+style A fill:#7b1fa2,color:#fff,stroke-width:0
+style B fill:#4caf50,color:#fff,stroke-width:0
+style C fill:#ff7300,color:#fff,stroke-width:0
+style D fill:#3a49ab,color:#fff,stroke-width:0
+style E fill:#3a49ab,color:#fff,stroke-width:0
+style F fill:#3a49ab,color:#fff,stroke-width:0
+```
 
 ## 1.创建Api
 
