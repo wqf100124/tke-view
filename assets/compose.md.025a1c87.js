@@ -15,7 +15,7 @@ import{_ as s,c as n,o as a,a as p}from"./app.40ad8642.js";const i=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">ports</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">80:80</span><span style="color:#89DDFF;">&quot;</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">restart</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">always</span></span>
-<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># Selenium\u670D\u52A1(Autotesting)</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># Selenium\u670D\u52A1(Autotest)</span></span>
 <span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#F07178;">selenium</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">image</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">selenium/standalone-edge</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">container_name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">selenium</span></span>
@@ -29,7 +29,7 @@ import{_ as s,c as n,o as a,a as p}from"./app.40ad8642.js";const i=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">4444:4444</span><span style="color:#89DDFF;">&quot;</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">7900:7900</span><span style="color:#89DDFF;">&quot;</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">shm_size</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#89DDFF;">&#39;</span><span style="color:#C3E88D;">2gb</span><span style="color:#89DDFF;">&#39;</span></span>
-<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># Dev2\u81EA\u52A8\u5316\u6D4B\u8BD5(Autotesting)</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># Dev2\u81EA\u52A8\u5316\u6D4B\u8BD5(Autotest)</span></span>
 <span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#F07178;">autotest</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">image</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">rtwadewang/autotest</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">container_name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">autotest</span></span>
@@ -39,7 +39,7 @@ import{_ as s,c as n,o as a,a as p}from"./app.40ad8642.js";const i=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">dev2:/home/tke/code</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">depends_on</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">selenium</span></span>
-<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># RC\u81EA\u52A8\u5316\u6D4B\u8BD5(Autotesting)</span></span>
+<span class="line"><span style="color:#89DDFF;">  </span><span style="color:#676E95;"># RC\u81EA\u52A8\u5316\u6D4B\u8BD5(Autotest)</span></span>
 <span class="line"><span style="color:#A6ACCD;">  </span><span style="color:#F07178;">autotest-rc</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">container_name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">autotest-rc</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">image</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">rtwadewang/autotest</span></span>
@@ -97,7 +97,7 @@ import{_ as s,c as n,o as a,a as p}from"./app.40ad8642.js";const i=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">image</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">wso2/wso2mi:4.1.0</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">container_name</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">mi</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">volumes</span><span style="color:#89DDFF;">:</span></span>
-<span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">/Users/wangqifei/tke/wso2/apps:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps</span></span>
+<span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#89DDFF;">-</span><span style="color:#A6ACCD;"> </span><span style="color:#C3E88D;">D:\\tke\\wso2\\carbonapps:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps</span></span>
 <span class="line"><span style="color:#A6ACCD;">    </span><span style="color:#F07178;">networks</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">      </span><span style="color:#F07178;">tke</span><span style="color:#89DDFF;">:</span></span>
 <span class="line"><span style="color:#A6ACCD;">        </span><span style="color:#F07178;">ipv4_address</span><span style="color:#89DDFF;">:</span><span style="color:#A6ACCD;"> </span><span style="color:#F78C6C;">172.16.1.90</span></span>
