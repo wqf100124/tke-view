@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as p}from"./app.55f9ca84.js";const i=JSON.parse('{"title":"\u642D\u5EFA\u73AF\u5883","description":"","frontmatter":{},"headers":[],"relativePath":"wso2/setup.md"}'),l={name:"wso2/setup.md"},o=p("",9),e=[o];function c(t,r,D,y,C,F){return a(),n("div",null,e)}const d=s(l,[["render",c]]);export{i as __pageData,d as default};
