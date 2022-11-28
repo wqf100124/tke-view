@@ -177,7 +177,7 @@ $ cd ~/Desktop/
 
 3.运行命令（创建容器同时在后台运行）
 ```sh
-$ docker-compose -p Tke up -d
+$ docker-compose -p tke up -d
 ```
 
 ## 常用命令

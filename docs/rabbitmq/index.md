@@ -31,7 +31,7 @@ $ cd ~/Desktop/
 
 3.创建并启动服务（`-d`参数可以让服务在后台运行）。
 ```sh
-$ docker-compose -p Tke -f ./tke.yml up -d
+$ docker-compose -p tke -f ./tke.yml up -d
 ```
 
 4.验证服务是否创建成功

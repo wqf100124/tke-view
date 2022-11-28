@@ -69,5 +69,5 @@ $ cd ~/Desktop/
 
 3.创建并启动服务。
 ```sh
-$ docker-compose -p Autotest -f ./autotest.yml up -d
+$ docker-compose -p autotest -f ./autotest.yml up -d
 ```

@@ -87,5 +87,5 @@ $ cd ~/Desktop/
 
 3.运行命令（创建容器同时在后台运行）
 ```sh
-$ docker-compose -p WSO2 -f ./wso2.yml up -d
+$ docker-compose -p wso2 -f ./wso2.yml up -d
 ```
