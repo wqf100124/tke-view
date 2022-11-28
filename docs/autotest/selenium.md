@@ -49,14 +49,14 @@ if($isServer){
 
 下面的几种方式都可以运行测试脚本
 
-1.运行文件路径为 `features/Example.feature` 的测试脚本
+1.运行包含 `@Example` 标签的测试脚本
 ```sh
-$ docker exec -it -w /home/tke/code/autotest/selenium autotest behat 'features/Example.feature'
+$ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags Example
 ```
 
-2.运行包含 `@Example` 标签的测试脚本
+2.运行文件路径为 `features/Example.feature` 的测试脚本
 ```sh
-$ docker exec -it -w /home/tke/code/autotest/selenium autotest behat --tags 'Example'
+$ docker exec -it -w /home/tke/code/autotest/selenium autotest behat features/Example.feature
 ```
 
 3.运行 `feature` 名称为 `Example` 的测试脚本
