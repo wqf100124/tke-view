@@ -31,7 +31,7 @@ services:
     ports:
       - "80:80"
     restart: always
-  # Selenium服务(Autotesting)
+  # Selenium服务(Autotest)
   selenium:
     image: selenium/standalone-edge
     container_name: selenium
@@ -45,7 +45,7 @@ services:
       - "4444:4444"
       - "7900:7900"
     shm_size: '2gb'
-  # Dev2自动化测试(Autotesting)
+  # Dev2自动化测试(Autotest)
   autotest:
     image: rtwadewang/autotest
     container_name: autotest
@@ -55,7 +55,7 @@ services:
       - dev2:/home/tke/code
     depends_on:
       - selenium
-  # RC自动化测试(Autotesting)
+  # RC自动化测试(Autotest)
   autotest-rc:
     container_name: autotest-rc
     image: rtwadewang/autotest
@@ -113,7 +113,7 @@ services:
     image: wso2/wso2mi:4.1.0
     container_name: mi
     volumes:
-      - /Users/wangqifei/tke/wso2/apps:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps
+      - D:\tke\wso2\carbonapps:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps
     networks:
       tke:
         ipv4_address: 172.16.1.90
