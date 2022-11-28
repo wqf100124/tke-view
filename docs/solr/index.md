@@ -7,10 +7,10 @@
 ## 搭建环境
 
 ::: tip 温馨提示：
-假如你的本地没有 `tke.yml` 配置文件，请先参阅：[本地开发环境](/view/)。
+假如你的本地没有 `docker-compose.yml` 配置文件，请先参阅：[本地开发环境](/view/)。
 :::
 
-1.编辑你的 `tke.yml` 文件，在 `service` 配置项中添加 RabbitMQ 的配置信息。
+1.编辑你的 `docker-compose.yml` 文件，在 `service` 配置项中添加 RabbitMQ 的配置信息。
 ```yaml{2-11}
 services:
   # Solr
@@ -26,14 +26,14 @@ services:
 ```
 完整配置请参考：[View Docker Compose](/compose)
 
-2.打开终端工具，并切换到 `tke.yml` 文件所在的目录。例如：
+2.打开终端工具，并切换到 `docker-compose.yml` 文件所在的目录。例如：
 ```sh
 $ cd ~/Desktop/
 ```
 
 3.创建并启动服务（`-d`参数可以让服务在后台运行）。
 ```sh
-$ docker-compose -p tke -f ./tke.yml up -d
+$ docker-compose -p tke up -d
 ```
 
 4.验证服务是否创建成功

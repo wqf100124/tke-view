@@ -2,7 +2,9 @@
 
 ## 创建 View 容器
 
-1.在本地创建一个名为 `tke.yml` 的文件，并复制粘贴以下内容。
+1.在本地创建一个名为 `docker-compose.yml` 的文件，并复制粘贴以下内容。
+
+以下配置仅包含了 View 容器。完整配置请参考：[View Docker Compose](/compose)
 ```yaml{32,39,46,53,60}
 version: "3"
 services:
@@ -69,14 +71,14 @@ volumes:
 - 注意替换代码路径。
 - 对于 [WSL2](https://learn.microsoft.com/zh-cn/windows/wsl/) 开发环境，应该使用 linux 中的项目路径如：`/var/tke/local`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
 
-2.打开终端工具，并切换到 `tke.yml` 文件所在的目录。例如：
+2.打开终端工具，并切换到 `docker-compose.yml` 文件所在的目录。例如：
 ```sh
 $ cd ~/Desktop/
 ```
 
 3.创建并启动服务（`-d`参数可以让服务在后台运行）。
 ```sh
-$ docker-compose -p tke -f ./tke.yml up -d
+$ docker-compose -p tke up -d
 ```
 
 4.验证服务是否创建成功。

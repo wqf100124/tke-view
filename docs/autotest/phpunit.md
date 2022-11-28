@@ -2,13 +2,18 @@
 
 > [PHPUnit](https://phpunit.de/) 是一个面向PHP程序员的测试框架，这是一个xUnit的体系结构的单元测试框架。
 
-## 初始化
+## 准备工作
 
-*注意：该操作会自动修改`autotest/phpunit/library/BaseBootstrap.php`底层文件*
+1.修改 `dev2` 代码的配置信息。请参考：[运行测试环境代码](/view/live)
+
+2.执行初始化脚本。
 
 ```sh
 $ docker exec -it autotest /run/phpunit.sh
 ```
+::: warning 注意：
+上面的脚本会修改底层文件 `autotest/phpunit/library/BaseBootstrap.php`，切勿提交到SVN!
+:::
 
 ## 测试命令
 
