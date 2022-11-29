@@ -15,10 +15,17 @@ style F fill:#3a49ab,color:#fff,stroke-width:0
 
 ## 1.创建Api
 
-打开API管理页面: [https://localhost:9443/publisher](https://localhost:9443/publisher)
+打开 API 管理页面并登录: [https://localhost:9443/publisher](https://localhost:9443/publisher)
+<br>
+账号: `admin`     
+密码: `admin`
 
+选择 `REST API` 类型的接口
 ![](/image/screenshots/wso2/user/3.png)
+
+点击 `Start From Scratch` 创建新的 API
 ![](/image/screenshots/wso2/user/4.png)
+填入接口信息
 ![](/image/screenshots/wso2/user/5.png)
 
 配置第三方接口的认证信息
