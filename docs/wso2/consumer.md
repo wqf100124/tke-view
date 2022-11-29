@@ -1,6 +1,6 @@
-# 服务消费者
+# 使用外部接口
 
-> View 通过 WSO2 请求第三方 API
+> View 通过 WSO2 请求第三方系统 API
 
 ```mermaid
 flowchart LR
@@ -40,7 +40,7 @@ App管理页面:[https://localhost:9443/devportal/applications](https://localhos
 ![](/image/screenshots/wso2/user/subscribe-1.png)
 ![](/image/screenshots/wso2/user/subscribe-2.png)
 
-## 5.创建OAuth配置文件
+## 5.在代码中配置认证信息
 
 手动创建: `core/.restfulapi.authentication.ini` 文件(注意文件名包含.号)，填入如下内容
 
@@ -55,7 +55,7 @@ consumerSecret="kvsoaXylTKa2X9HvCepn9bfrYyoa"
 gatewayRecourceUrl="https://172.16.1.94:8243"
 ```
 
-## 6.发送请求数据
+## 6.使用WSO2发送请求
 
 `core/web/wso2.php`
 
@@ -98,7 +98,7 @@ try {
 }
 ```
 
-## 7.处理响应数据
+## 7.处理WSO2响应数据
 创建处理文件: `core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
 
 *文件命名规范：<App名称>GatewayBizHandler.php*

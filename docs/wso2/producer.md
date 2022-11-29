@@ -1,6 +1,6 @@
-# 服务提供者
+# 对外提供接口
 
-> View 通过 WSO2 提供 API 给第三方使用
+> 第三方系统 通过 WSO2 请求 View API
 
 ```mermaid
 flowchart LR

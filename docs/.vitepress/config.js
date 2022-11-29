@@ -196,11 +196,11 @@ export default withMermaid(
                                 link: '/wso2/setup'
                             },
                             {
-                                text: '服务提供者',
+                                text: '对外提供接口',
                                 link: '/wso2/producer'
                             },
                             {
-                                text: '服务消费者',
+                                text: '使用外部接口',
                                 link: '/wso2/consumer'
                             },
                             {
