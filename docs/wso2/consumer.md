@@ -15,15 +15,15 @@ style F fill:#3a49ab,color:#fff,stroke-width:0
 
 ## 1.创建Api
 
-打开 API 管理页面并登录: [https://localhost:9443/publisher](https://localhost:9443/publisher)
+打开 Api 管理页面并登录: [https://localhost:9443/publisher](https://localhost:9443/publisher)
 <br>
 账号: `admin`     
 密码: `admin`
 
-选择 `REST API` 类型的接口
+选择【REST API】类型的接口
 ![](/image/screenshots/wso2/user/3.png)
 
-点击 `Start From Scratch` 创建新的 API
+点击【Start From Scratch】 创建新的 API
 ![](/image/screenshots/wso2/user/4.png)
 填入接口信息
 ![](/image/screenshots/wso2/user/5.png)
@@ -33,38 +33,47 @@ style F fill:#3a49ab,color:#fff,stroke-width:0
 
 ## 2.创建App
 
-App管理页面:[https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
+打开 App 管理页面: [https://localhost:9443/devportal/applications](https://localhost:9443/devportal/applications)
 
+点击【ADD NEW APPLICATION】按钮
 ![](/image/screenshots/wso2/user/7.png)
+填入信息并保存
 ![](/image/screenshots/wso2/user/8.png)
 
 ## 3.生成OAuth认证密钥
+切换到【Oauth2 Tokens】菜单栏
 ![](/image/screenshots/wso2/user/oauth-1.png)
+点击【GENERATE KEYS】生成新的认证密钥
 ![](/image/screenshots/wso2/user/oauth-2.png)
+查看新生成的密钥信息
 ![](/image/screenshots/wso2/user/oauth-3.png)
 
 ## 4.绑定Api和App
+切换到【Subscriptions】菜单栏，然后点击页面上的【+SUBSCRIBE APIS】按钮
 ![](/image/screenshots/wso2/user/subscribe-1.png)
+在弹出的页面中选择需要绑定的API，点击【SUBSCRIBE】按钮
 ![](/image/screenshots/wso2/user/subscribe-2.png)
 
-## 5.在代码中配置认证信息
+## 5.在View中使用
 
-手动创建: `core/.restfulapi.authentication.ini` 文件(注意文件名包含.号)，填入如下内容
+### 添加配置信息
 
-```ini
+在项目的 `core` 文件夹下新建一个名为: `.restfulapi.authentication.ini` 的文件（文件名以'.'号开始），并复制粘贴以下内容。
+```ini{5-6}
+;配置项名称
 [VIEW_DEMO_APPLICATION]
 ;WSO2的OAuth认证接口
 gatewayAuthUrl="https://172.16.1.94:9443/oauth2"
 ;WSO2的Oauth帐号信息
-consumerKey="xdv5SZLHEIR4Ux8jc14ugJLWDD4a"
-consumerSecret="kvsoaXylTKa2X9HvCepn9bfrYyoa"
+consumerKey="App Key"
+consumerSecret="App Secret"
 ;WSO2中的API接口地址
 gatewayRecourceUrl="https://172.16.1.94:8243"
 ```
 
-## 6.使用WSO2发送请求
+### 发送请求
 
-`core/web/wso2.php`
+在项目中新建一个 `core/web/wso2.php` 的测试文件，并复制粘贴以下代码。
 
 ```php
 <?php
@@ -82,11 +91,11 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/../sys/libs/logic/Util/Gateway/ViewGat
 
 use VIEW\Util\Gateway\ViewGateway;
 
-// .ini配置文件中配置名称
+// .ini配置文件中的 配置项名称
 CONST CONFIG_NAME = 'VIEW_DEMO_APPLICATION';
-// WSO2中创建的API名称
+// API名称
 CONST API_NAME = 'Demo';
-// API路径
+// API路径(Context)
 CONST API_URI = '/demo';
 // API版本
 CONST API_VERSION = '1.0';
@@ -105,7 +114,7 @@ try {
 }
 ```
 
-## 7.处理WSO2响应数据
+### 处理响应
 创建处理文件: `core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
 
 *文件命名规范：<App名称>GatewayBizHandler.php*
@@ -146,11 +155,21 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
 }
 ```
 
-## 8.接口调试
+## 6.接口调试
 
-获取AccessToken的接口
+### 获取AccessToken
+
+1.打开调试工具，使用 `POST` 方法请求URL: `https://localhost:9443/oauth2/token`
+<br>
+2.认证方式选择 `Basic Auth`，账号密码填写 OAuth2 的 `Key` 和 `Secret`
 ![](/image/screenshots/wso2/user/14.png)
+在请求的 `Body` 中添加 `grant_type:client_credentials` 信息
 ![](/image/screenshots/wso2/user/15.png)
 
-在View中测试
-![](/image/screenshots/wso2/user/16.png)
+### 请求API(WSO2直连)
+1.打开调试工具，使用 `POST` 方法请求URL: `https://localhost:8243/demo/1.0`
+<br>
+2.认证方式选择 `Bearer Token`，Token内容使用上面获取的 `access_token`
+
+### 请求API(View中使用WSO2)
+访问你的URL如: `https://localhost:8243/wso2.php`

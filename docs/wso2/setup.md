@@ -1,5 +1,7 @@
 # 搭建环境
 
+## 基础环境
+
 1.在本地创建一个名为 `wso2.yml` 的文件，并复制粘贴以下内容。
 ```yaml{21}
 version: "3"
@@ -62,3 +64,7 @@ $ cd ~/Desktop/
 ```sh
 $ docker-compose -p wso2 -f ./wso2.yml up -d
 ```
+
+## 配置 Postman
+
+如果你使用的调试工具是 [Postman](https://www.postman.com/)，可以下载并导入 [WSO2.postman_collection.json](/data/WSO2.postman_collection.json) 配置文件(使用 "另存为文件" 的方式下载)。该文件已经包含了基础的请求示例，方便本地开发。
