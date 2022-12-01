@@ -69,3 +69,8 @@ $ cd ~/Desktop/
 ```sh
 $ docker-compose -p autotest -f ./autotest.yml up -d
 ```
+
+4.使用 `docker ps` 命令验证容器是否创建成功
+```sh
+$ docker ps
+```

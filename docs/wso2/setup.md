@@ -65,6 +65,11 @@ $ cd ~/Desktop/
 $ docker-compose -p wso2 -f ./wso2.yml up -d
 ```
 
+4.使用 `docker ps` 命令验证容器是否创建成功
+```sh
+$ docker ps
+```
+
 ## 配置 Postman
 
 如果你使用的调试工具是 [Postman](https://www.postman.com/)，可以下载并导入 [WSO2.postman_collection.json](/tke-view/data/WSO2.postman_collection.json) 配置文件(使用 "另存为文件" 的方式下载)。该文件已经包含了基础的请求示例，方便本地开发。

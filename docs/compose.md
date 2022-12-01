@@ -31,40 +31,6 @@ services:
     ports:
       - "80:80"
     restart: always
-  # Selenium服务(Autotest)
-  selenium:
-    image: selenium/standalone-edge
-    container_name: selenium
-    networks:
-      tke:
-        ipv4_address: 172.16.1.44
-    environment:
-      - VNC_NO_PASSWORD=1
-      - SE_NODE_MAX_SESSIONS=5
-    ports:
-      - "4444:4444"
-      - "7900:7900"
-    shm_size: '2gb'
-  # Dev2自动化测试(Autotest)
-  autotest:
-    image: rtwadewang/autotest
-    container_name: autotest
-    networks:
-      - tke
-    volumes:
-      - dev2:/home/tke/code
-    depends_on:
-      - selenium
-  # RC自动化测试(Autotest)
-  autotest-rc:
-    container_name: autotest-rc
-    image: rtwadewang/autotest
-    networks:
-      - tke
-    volumes:
-      - rc:/home/tke/code
-    depends_on:
-      - selenium
   # RabbitMQ
   rabbitmq:
     image: rabbitmq:3.9-management-alpine
@@ -85,46 +51,6 @@ services:
         ipv4_address: 172.16.1.89
     ports:
       - "8983:8983"
-  # Api Manager(WSO2)
-  am:
-    image: wso2/wso2am:4.1.0-alpine
-    container_name: am
-    networks:
-      tke:
-        ipv4_address: 172.16.1.94
-    ports:
-      - "8280:8280"
-      - "8243:8243"
-      - "9443:9443"
-    extra_hosts:
-      - "hk.preview.test:172.16.1.80"
-      - "china.preview.test:172.16.1.80"
-      - "global.preview.test:172.16.1.80"
-  # Swagger Editor(WSO2)
-  sw:
-    image: swaggerapi/swagger-editor
-    container_name: sw
-    networks:
-      - tke
-    ports:
-      - "8080:8080"
-  # Micro Integrator(WSO2)
-  mi:
-    image: wso2/wso2mi:4.1.0
-    container_name: mi
-    volumes:
-      - D:\tke\wso2\carbonapps:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps
-    networks:
-      tke:
-        ipv4_address: 172.16.1.90
-    ports:
-      - "8290:8290"
-      - "8253:8253"
-      - "9164:9164"
-    extra_hosts:
-      - "hk.preview.test:172.16.1.80"
-      - "china.preview.test:172.16.1.80"
-      - "global.preview.test:172.16.1.80"
 networks:
   tke:
     name: tke
@@ -178,6 +104,11 @@ $ cd ~/Desktop/
 3.运行命令（创建容器同时在后台运行）
 ```sh
 $ docker-compose -p tke up -d
+```
+
+4.使用 `docker ps` 命令验证容器是否创建成功
+```sh
+$ docker ps
 ```
 
 ## 常用命令
