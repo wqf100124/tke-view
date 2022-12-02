@@ -13,23 +13,8 @@
 					"name": "对外提供接口",
 					"item": [
 						{
-							"name": "1.请求API接口(直连)",
+							"name": "请求View API(直连)",
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": [
-										{
-											"key": "password",
-											"value": "secret",
-											"type": "string"
-										},
-										{
-											"key": "username",
-											"value": "demo",
-											"type": "string"
-										}
-									]
-								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -59,11 +44,16 @@
 						}
 					],
 					"auth": {
-						"type": "bearer",
-						"bearer": [
+						"type": "basic",
+						"basic": [
 							{
-								"key": "token",
-								"value": "",
+								"key": "username",
+								"value": "API_DEMO",
+								"type": "string"
+							},
+							{
+								"key": "password",
+								"value": "123456",
 								"type": "string"
 							}
 						]
@@ -93,19 +83,19 @@
 					"name": "使用外部接口",
 					"item": [
 						{
-							"name": "1.获取AccessToken",
+							"name": "获取AccessToken",
 							"request": {
 								"auth": {
 									"type": "basic",
 									"basic": [
 										{
 											"key": "password",
-											"value": "",
+											"value": "Xh6_eLPWaPBbUMfkUld72GG6JL4a",
 											"type": "string"
 										},
 										{
 											"key": "username",
-											"value": "md6cmk4bUkESQ8hvT8OZZa8JwDIa",
+											"value": "Gyf9T2mZRqiyC7z7kw8_g8ngxnoa",
 											"type": "string"
 										}
 									]
@@ -136,7 +126,7 @@
 							"response": []
 						},
 						{
-							"name": "2.请求第三方接口(WSO2直连)",
+							"name": "请求WSO2 API(直连)",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -154,7 +144,7 @@
 							"response": []
 						},
 						{
-							"name": "3.请求第三方接口(View中使用WSO2)",
+							"name": "请求WSO2 API(View)",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -201,11 +191,45 @@
 							}
 						}
 					]
+				},
+				{
+					"name": "EI开发",
+					"item": [
+						{
+							"name": "测试API",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "demo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_EI}}/demo",
+									"host": [
+										"{{HOST_EI}}"
+									],
+									"path": [
+										"demo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			],
-			"auth": {
-				"type": "noauth"
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -378,9 +402,6 @@
 					]
 				}
 			],
-			"auth": {
-				"type": "noauth"
-			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -438,6 +459,10 @@
 			"key": "HOST_VIEW",
 			"value": "http://hk.preview.test",
 			"type": "string"
+		},
+		{
+			"key": "HOST_EI",
+			"value": "http://localhost:8290"
 		},
 		{
 			"key": "HOST_API_8280",
