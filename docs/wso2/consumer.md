@@ -61,15 +61,17 @@ style F fill:#3a49ab,color:#fff,stroke-width:0
 在项目的 `core` 文件夹下新建一个名为: `.restfulapi.authentication.ini` 的文件（文件名以'.'号开始），并复制粘贴以下内容。
 ```ini{5-6}
 ;配置项名称
-[VIEW_DEMO_APPLICATION]
+[APPLICATION_DEMO]
 ;WSO2的OAuth认证接口
 gatewayAuthUrl="https://172.16.1.94:9443/oauth2"
 ;WSO2的Oauth帐号信息
-consumerKey="App Key"
-consumerSecret="App Secret"
+consumerKey="Gyf9T2mZRqiyC7z7kw8_g8ngxnoa"
+consumerSecret="Xh6_eLPWaPBbUMfkUld72GG6JL4a"
 ;WSO2中的API接口地址
 gatewayRecourceUrl="https://172.16.1.94:8243"
 ```
+- 配置项名称对应 Application 的名称
+- consumerKey 对应 OAuth2 的 `Consumer Key` 和 `Consumer Secret`
 
 ### 发送请求
 
@@ -78,36 +80,31 @@ gatewayRecourceUrl="https://172.16.1.94:8243"
 ```php
 <?php
 
-define('NO_USER_REQUIRED', true);
-define('NO_PERMISSION_REQUIRED', true);
-ini_set("display_errors", true);
-error_reporting(E_ALL);
-ini_set('default_socket_timeout', 300);
-ini_set('soap.wsdl_cache_enabled', '0');
-ini_set('soap.wsdl_cache_ttl', '0');
+const NO_USER_REQUIRED       = true;
+const NO_PERMISSION_REQUIRED = true;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/../sys/libs/init.lib");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/../sys/libs/logic/Util/Gateway/ViewGateway.lib");
 
 use VIEW\Util\Gateway\ViewGateway;
 
-// .ini配置文件中的 配置项名称
-CONST CONFIG_NAME = 'VIEW_DEMO_APPLICATION';
+// .ini文件中的配置项名称
+const CONFIG_NAME = 'APPLICATION_DEMO';
 // API名称
-CONST API_NAME = 'Demo';
-// API路径(Context)
-CONST API_URI = '/demo';
+const API_NAME = 'Demo';
+// API路径(context)
+const API_URI = '/demo';
 // API版本
-CONST API_VERSION = '1.0';
+const API_VERSION = '1.0';
 
 try {
-
     $viewGateway = new ViewGateway(CONFIG_NAME, "");
 
     // 发送请求
     $result = $viewGateway->post(API_NAME, [], 0, null, null, API_VERSION, true, 2, API_URI);
-    if (!$result) {
-        echo 'request fail';
+
+    if (empty($result)) {
+        // 接口请求失败，记录日志
     }
 } catch (Exception $e) {
     var_dump($e);
@@ -143,9 +140,6 @@ class DemoGatewayBizHandler extends ViewGatewayBizHandlerBaseService
      * @param $version
      * @param $retutrnValue
      * @param $identifier
-     *
-     * @author wadewang
-     * @date 2022-02-25
      */
     public function onFinish($applicationName, $apiName, $requestMethod, $requestData, $version, $retutrnValue, $identifier)
     {
