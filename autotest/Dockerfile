@@ -3,8 +3,7 @@ LABEL author="rt.wadewang"
 LABEL description="View auto testing development environment."
 WORKDIR /home/tke/code/autotest
 COPY ./src /tmp
-RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
-    && apk update \
+RUN apk update \
     && chmod +x /tmp/install.sh \
     && /tmp/install.sh
 ENTRYPOINT ["/run/entrypoint.sh"]
