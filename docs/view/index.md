@@ -9,7 +9,7 @@
 version: "3"
 services:
   view:
-    image: rtwadewang/view
+    image: rtwadewang/view:1.0.1
     container_name: view
     volumes:
       - local:/home/tke/local

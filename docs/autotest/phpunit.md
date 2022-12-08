@@ -19,15 +19,12 @@ $ docker exec -it autotest /run/phpunit.sh
 
 1.进入容器
 ```sh
-$ docker exec -it autotest sh
+$ docker exec -it -w /home/tke/code/autotest/phpunit autotest sh
 ```
 
-2.进入目录(以sharp模块为例)
-```sh
-$ cd phpunit/sharp
-```
+2.执行测试命令
 
-3.执行测试命令
+以 `sharp/phpunit.xml` 配置为例：
 ```sh
-$ phpunit --configuration phpunit.xml --filter "testName"
+$ phpunit --colors=auto -c sharp/phpunit.xml --filter "ExampleTest"
 ```
