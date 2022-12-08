@@ -10,7 +10,7 @@ import{_ as s,c as a,o as n,a as l}from"./app.523600ac.js";const d=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">    -v </span><span style="color:#89DDFF;">&lt;</span><span style="color:#A6ACCD;">\u672C\u673Adev2\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&gt;</span><span style="color:#A6ACCD;">:/home/tke/dev2 ^</span></span>
 <span class="line"><span style="color:#A6ACCD;">    -v </span><span style="color:#89DDFF;">&lt;</span><span style="color:#A6ACCD;">\u672C\u673Arc\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&gt;</span><span style="color:#A6ACCD;">:/home/tke/rc ^</span></span>
 <span class="line"><span style="color:#A6ACCD;">    -v </span><span style="color:#89DDFF;">&lt;</span><span style="color:#A6ACCD;">\u672C\u673Alive\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&gt;</span><span style="color:#A6ACCD;">:/home/tke/live ^</span></span>
-<span class="line"><span style="color:#A6ACCD;">    rtwadewang/view</span></span>
+<span class="line"><span style="color:#A6ACCD;">    rtwadewang/view:1.0.1</span></span>
 <span class="line"></span></code></pre></div><p>MacOS/Linux</p><div class="language-sh"><button title="Copy Code" class="copy"></button><span class="lang">sh</span><pre class="shiki"><code><span class="line"><span style="color:#A6ACCD;">$ docker run -d \\</span></span>
 <span class="line"><span style="color:#A6ACCD;">    --name view \\</span></span>
 <span class="line"><span style="color:#A6ACCD;">    --network tke \\</span></span>
@@ -22,5 +22,5 @@ import{_ as s,c as a,o as n,a as l}from"./app.523600ac.js";const d=JSON.parse('{
 <span class="line"><span style="color:#A6ACCD;">    -v </span><span style="color:#89DDFF;">&lt;</span><span style="color:#A6ACCD;">\u672C\u673Adev2\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&gt;</span><span style="color:#A6ACCD;">:/home/tke/dev2 \\</span></span>
 <span class="line"><span style="color:#A6ACCD;">    -v </span><span style="color:#89DDFF;">&lt;</span><span style="color:#A6ACCD;">\u672C\u673Arc\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&gt;</span><span style="color:#A6ACCD;">:/home/tke/rc \\</span></span>
 <span class="line"><span style="color:#A6ACCD;">    -v </span><span style="color:#89DDFF;">&lt;</span><span style="color:#A6ACCD;">\u672C\u673Alive\u4EE3\u7801\u76EE\u5F55</span><span style="color:#89DDFF;">&gt;</span><span style="color:#A6ACCD;">:/home/tke/live \\</span></span>
-<span class="line"><span style="color:#A6ACCD;">    rtwadewang/view</span></span>
+<span class="line"><span style="color:#A6ACCD;">    rtwadewang/view:1.0.1</span></span>
 <span class="line"></span></code></pre></div>`,9),o=[p];function c(t,r,C,A,D,i){return n(),a("div",null,o)}const v=s(e,[["render",c]]);export{d as __pageData,v as default};
