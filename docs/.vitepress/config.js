@@ -93,15 +93,15 @@ export default withMermaid(
                         items: [
                             {
                                 text: '介绍',
-                                link: '/development/docker/'
+                                link: '/docker/'
                             },
                             {
                                 text: '安装',
-                                link: '/development/docker/setup'
+                                link: '/docker/setup'
                             },
                             {
                                 text: '基础命令',
-                                link: '/development/docker/command'
+                                link: '/docker/command'
                             },
                             {
                                 text: '常见问题',
