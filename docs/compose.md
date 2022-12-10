@@ -65,35 +65,35 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\local
+      device: local代码路径
   preview:
     name: preview
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\preview
+      device: dev代码路径
   dev2:
     name: dev2
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\dev2
+      device: dev2代码路径
   rc:
     name: rc
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\rc
+      device: rc代码路径
   live:
     name: live
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\live
+      device: live代码路径
 ```
 
 2.在终端中切换到 `docker-compose.yml` 文件所在的目录。例如：

@@ -49,14 +49,14 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\dev2
+      device: dev2代码路径
   rc:
     name: rc
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: D:\tke\rc
+      device: rc代码路径
 ```
 注意修改 `dev2` 和 `rc` 的代码目录
 
