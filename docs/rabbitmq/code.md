@@ -1,6 +1,8 @@
-#  代码示例
+# 代码示例
 
-##  生产者
+## 生产者
+
+> 把数据放入消息队列
 
 文件路径：`core/web/amqp.php`
 
@@ -38,7 +40,9 @@ try {
 }
 ```
 
-##  消费者
+## 消费者
+
+> 从消息队列中取出数据
 
 文件路径：`core/sys/libs/logic/Amqp/ExampleQueueHandler.php`
 

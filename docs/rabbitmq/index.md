@@ -2,7 +2,7 @@
 
 > [RabbitMQ](https://www.rabbitmq.com/) 是实现了高级消息队列协议（AMQP）的开源消息代理软件（亦称面向消息的中间件）。
 
-## 搭建环境
+## 开发环境
 
 ::: tip 温馨提示：
 假如你的本地没有 `docker-compose.yml` 配置文件，请先参阅：[本地开发环境](/view/)。
