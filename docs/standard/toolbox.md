@@ -49,7 +49,7 @@ public function showactivitylistAction()
 
 ### 表名
 
-小驼峰,使用下划线连接
+小写,使用下划线连接
 
 `unit` `contract_unit`
 
