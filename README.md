@@ -4,30 +4,27 @@
 
 ### Ubuntu
 
-```shell
-docker build -t rtwadewang/view:1.0.1 -t rtwadewang/view:latest --no-cache ./ubuntu
+```sh
+$ yarn build:ubuntu
 ```
 
 ### Alpine
 
-```shell
-docker build -t rtwadewang/view:1.0.1-alpine -t rtwadewang/view:alpine --no-cache ./alpine
+```sh
+$ yarn build:alpine
 ```
 
 ### Autotest
 
-```shell
-docker build -t rtwadewang/autotest:1.0.1 -t rtwadewang/autotest:latest --no-cache ./autotest
+```sh
+$ yarn build:autotest
 ```
 
-## 生成文档
+## 文档
 
-```shell
-# 安装依赖
-yarn install
-
-# 本地预览
-yarn docs:dev
+本地预览
+```sh
+$ yarn docs:dev
 ```
 
 ## 使用方法
