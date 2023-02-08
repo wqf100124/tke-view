@@ -1,7 +1,5 @@
-# dockerfile
 *.zip
 .DS_Store
-/.idea
 
 # Editor directories and files
 .idea
@@ -12,6 +10,6 @@
 *.sln
 *.sw?
 
-/node_modules
-/docs/.vitepress/.cache
-/docs/.vitepress/.temp
+node_modules
+docs/.vitepress/cache
+docs/.vitepress/temp
