@@ -75,7 +75,7 @@ gatewayRecourceUrl="https://172.16.1.94:8243"
 
 ### 发送请求
 
-在项目中新建一个 `core/web/wso2.php` 的测试文件，并复制粘贴以下代码。
+在项目中新建一个 `web/wso2.php` 的测试文件，并复制粘贴以下代码。
 
 ```php
 <?php
@@ -112,7 +112,7 @@ try {
 ```
 
 ### 处理响应
-创建处理文件: `core/sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
+创建处理文件: `sys/libs/logic/Util/Gateway/Handler/DemoGatewayBizHandler.php`
 
 *文件命名规范：<App名称>GatewayBizHandler.php*
 

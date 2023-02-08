@@ -6,11 +6,11 @@
 
 ## 本地环境
 
-以 `preview` 代码为例，其它环境请替换 `--user` 和 `-w` 参数。
+以 `local` 代码为例，其它环境请替换 `--user` 和 `-w` 参数。
 
 进入容器：
 ```sh
-$ docker exec --user preview -w /home/tke/preview/core -it view bash
+$ docker exec --user local -w /home/tke/local -it view bash
 ```
 
 创建队列：

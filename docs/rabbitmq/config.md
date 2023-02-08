@@ -7,15 +7,7 @@
 复制 `us` 文件夹中的 `mq` 文件夹到 `core` 目录
 
 ```sh
-$ cp -r ./usa/mq/ ./core/mq/
-```
-
-## ViewLogger 配置
-
-复制 `us` 文件夹中的 `ViewLoggerConfig.php` 文件到 `core` 目录
-
-```sh
-$ cp ./usa/ViewLoggerConfig.php ./core/ViewLoggerConfig.php
+$ cp -r ./sites/usa/mq/ ./local/mq/
 ```
 
 ## RabbitMQConfig.php

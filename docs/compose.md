@@ -17,9 +17,10 @@
 version: "3"
 services:
   view:
-    image: rtwadewang/view:1.0.1
+    image: rtwadewang/view:1.0.2
     container_name: view
     volumes:
+      - sites:/home/tke/sites
       - local:/home/tke/local
       - preview:/home/tke/preview
       - dev2:/home/tke/dev2
@@ -59,6 +60,13 @@ networks:
       config:
         - subnet: 172.16.1.0/24
 volumes:
+  sites:
+    name: sites
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: site站点路径
   local:
     name: local
     driver: local

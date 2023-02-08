@@ -4,25 +4,25 @@
 
 在运行php脚本如 `php sys/lib/test.php` 时会报错，这是因为这些脚本的代码中使用了类似 `$_ENV['HOME']` 的环境变量，所以需要使用 **特定用户** 进入容器。
 <br><br>
-例如：要执行 `preview` 环境中的脚本，可以用 `preview` 的用户身份进入容器：
+例如：要执行 `local` 环境中的脚本，可以用 `local` 的用户身份进入容器：
 ```sh
-$ docker exec --user preview -it view bash
+$ docker exec --user local -it view bash
 ```
 
-验证 `$HOME` 环境变量（输出 /home/tke/preview/core）
+验证 `$HOME` 环境变量（输出 /home/tke/preview）
 ```sh
 $ echo $HOME
 ```
 
 容器中的用户和其对应的目录
 
-| 用户名     | 用户目录                   |
-|---------|------------------------|
-| local   | /home/tke/local/core   |
-| preview | /home/tke/preview/core |
-| dev2    | /home/tke/dev2/core    |
-| rc      | /home/tke/rc/core      |
-| live    | /home/tke/live/core    |
+| 用户名     | 用户目录              |
+|---------|-------------------|
+| local   | /home/tke/local   |
+| preview | /home/tke/preview |
+| dev2    | /home/tke/dev2    |
+| rc      | /home/tke/rc      |
+| live    | /home/tke/live    |
 
 ## 2.如何让 Windows/macOs 系统区分大小写 (FOO ≠ foo)
 

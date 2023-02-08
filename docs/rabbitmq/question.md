@@ -11,7 +11,7 @@ $ docker exec view chmod -R 777 /var/log/View
 
 ## 消费进程报错
 
-`core/sys/libs/logic/Util/MQ/MessageProcessor.php`(约173行)
+`sys/libs/logic/Util/MQ/MessageProcessor.php`(约173行)
 
 查找并注释掉这个方法
 

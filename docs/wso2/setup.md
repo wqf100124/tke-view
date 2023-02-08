@@ -17,9 +17,9 @@ services:
       - "8243:8243"
       - "9443:9443"
     extra_hosts:
-      - hk.preview.test:172.16.1.80
-      - china.preview.test:172.16.1.80
-      - global.preview.test:172.16.1.80
+      - hk.local.test:172.16.1.80
+      - china.local.test:172.16.1.80
+      - global.local.test:172.16.1.80
   mi:
     image: wso2/wso2mi:4.1.0
     container_name: mi
@@ -33,9 +33,9 @@ services:
       - "8253:8253"
       - "9164:9164"
     extra_hosts:
-      - hk.preview.test:172.16.1.80
-      - china.preview.test:172.16.1.80
-      - global.preview.test:172.16.1.80
+      - hk.local.test:172.16.1.80
+      - china.local.test:172.16.1.80
+      - global.local.test:172.16.1.80
   sw:
     image: swaggerapi/swagger-editor
     container_name: sw

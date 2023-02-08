@@ -4,19 +4,15 @@
 
 1.在本地创建一个名为 `docker-compose.yml` 的文件，并复制粘贴以下内容。
 
-以下配置仅包含了 View 容器。完整配置请参考：[View Docker Compose](/compose)
-```yaml{32,39,46,53,60}
+```yaml{29,36}
 version: "3"
 services:
   view:
-    image: rtwadewang/view:1.0.1
+    image: rtwadewang/view:1.0.2
     container_name: view
     volumes:
+      - sites:/home/tke/sites
       - local:/home/tke/local
-      - preview:/home/tke/preview
-      # - dev2:/home/tke/dev2
-      # - rc:/home/tke/rc
-      # - live:/home/tke/live
     networks:
       tke:
         ipv4_address: 172.16.1.80
@@ -31,6 +27,13 @@ networks:
       config:
         - subnet: 172.16.1.0/24
 volumes:
+  sites:
+    name: sites
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: site站点路径
   local:
     name: local
     driver: local
@@ -38,35 +41,8 @@ volumes:
       type: none
       o: bind
       device: local代码路径
-  preview:
-    name: preview
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: dev代码路径
-  # dev2:
-  #   name: dev2
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     o: bind
-  #     device: dev2代码路径
-  # rc:
-  #   name: rc
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     o: bind
-  #     device: rc代码路径
-  # live:
-  #   name: live
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     o: bind
-  #     device: live代码路径
 ```
+以上配置仅包含 View 容器。完整配置请参考：[View Docker Compose](/compose)
 
 - 注意替换代码路径。
 - 对于 [WSL2](https://learn.microsoft.com/zh-cn/windows/wsl/) 开发环境，应该使用 linux 中的项目路径如：`/var/tke/local`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
@@ -97,6 +73,10 @@ $ docker-compose -p tke up -d
 127.0.0.1       hk.local.test
 127.0.0.1       china.local.test
 127.0.0.1       global.local.test
+```
+
+::: details 配置Dev/Dev2/RC/Live等环境（可选）:
+```ini
 # Preview站点
 127.0.0.1       hk.preview.test
 127.0.0.1       china.preview.test
@@ -114,5 +94,21 @@ $ docker-compose -p tke up -d
 127.0.0.1       china.live.test
 127.0.0.1       global.live.test
 ```
+:::
+
+## 项目初始化
+
+运行命令 `docker exec -it view /run/init.sh <local|preview|dev2|rc|live> <8ID>`
+
+以 local 环境为例:
+```sh
+$ docker exec -it view /run/init.sh local 80000570
+```
+
+注意替换8ID，它将被用于站点的自动登录。
+
+::: warning 警告：
+以上操作会修改 `login.php`、`tke_config.php`、`error.phtml` 等核心文件，这些文件仅可用于本地开发，切勿提交到！
+:::
 
 至此 Local 环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)

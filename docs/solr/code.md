@@ -2,7 +2,7 @@
 
 ## 1.配置数据源
 
-在目录`/core/sys/libs/SearchEngine/schema/solr`中创建项目目录，同时在该目录中创建`scope.properties`、`managed-schema.tmpl.xml`、`db-data-config.tmpl.xml`3个文件
+在目录`sys/libs/SearchEngine/schema/solr`中创建项目目录，同时在该目录中创建`scope.properties`、`managed-schema.tmpl.xml`、`db-data-config.tmpl.xml`3个文件
 
 示例:
 ![](/image/screenshots/solr/2.png)
@@ -15,7 +15,7 @@
 - `Field`用来定义集合字段名称。
 
 
-> 脚本`/core/sys/bin/RebuildSolrCollections.php`会在每天的23:00去批量更新集合数据的`deltaQuery`和`deltaImportQuery`。`deltaQuery`会搜索需要更新的数据，`deltaImportQuery`会将搜索结果更新到集合中。
+> 脚本`sys/bin/RebuildSolrCollections.php`会在每天的23:00去批量更新集合数据的`deltaQuery`和`deltaImportQuery`。`deltaQuery`会搜索需要更新的数据，`deltaImportQuery`会将搜索结果更新到集合中。
 
 ::: details 文件示例:
 ```xml
@@ -135,7 +135,7 @@ concept.scope=country
 
 ## 2.配置Bo文件
 
-在`/core/sys/libs/SearchEngine/Collections.xml`文件的`collections`中添加新的`collection`
+在`sys/libs/SearchEngine/Collections.xml`文件的`collections`中添加新的`collection`
 
 collection配置参数说明:
 
@@ -144,7 +144,7 @@ collection配置参数说明:
 | name	| 集合名称 |
 | category	| 使用范围 |
 | registedPlainObjectClassName	| 关联的BO文件的类名 |
-| registedPlainObjectClassPath	| 关联的BO文件路径，文件路径默认为`/web`。例如：文件路径是`/core/sys/libs/logic/Unit/Bo/Unit.php`， 则配置路径应为`/../sys/libs/logic/Unit/Bo/Unit.php`。|
+| registedPlainObjectClassPath	| 关联的BO文件路径，文件路径默认为`/web`。例如：文件路径是`sys/libs/logic/Unit/Bo/Unit.php`， 则配置路径应为`/../sys/libs/logic/Unit/Bo/Unit.php`。|
 
 field配置参数说明:
 

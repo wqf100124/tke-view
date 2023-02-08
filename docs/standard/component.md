@@ -2,7 +2,7 @@
 
 ## 日期选择
 
-类文件: `/core/sys/libs/ui.lib`, `/core/web/js/general.js`
+类文件: `sys/libs/ui.lib`, `web/js/general.js`
 
 ```php
 <?php
@@ -22,7 +22,7 @@ print dateChooser('frm_start_date', 'size:=8, onchange:=onChange(this)', $data['
 
 ## 导出Excel
 
-类文件: `core/sys/bin/exportdata.php`
+类文件: `sys/bin/exportdata.php`
 
 使用方法
 ```php
@@ -55,7 +55,7 @@ while($row);
 
 ## 导出PDF
 
-类文件: `/core/sys/libs/report.lib`, `/core/web/common/report.php`
+类文件: `sys/libs/report.lib`, `web/common/report.php`
 
 使用方法
 
@@ -65,7 +65,7 @@ while($row);
 
 ## 搜索Unit
 
-类文件: `/core/web/common/unit_list.php`
+类文件: `web/common/unit_list.php`
 
 ```php
 print textbox("frm_unit_id", "size:=45, readonly:=1");
@@ -75,7 +75,7 @@ print button("op", "onclick:=popup('/common/employee_list.php?openerFormElementN
 
 ## 搜索Salesman
 
-类文件: `/core/web/common/employee_list.php`
+类文件: `web/common/employee_list.php`
 
 ```php
 print textbox("frm_employee_id", "size:=45, readonly:=1");

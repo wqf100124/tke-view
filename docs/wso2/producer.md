@@ -15,7 +15,7 @@ style F fill:#3a49ab,color:#fff,stroke-width:0
 
 ## 1.创建接口
 
-在 `core/web/sharp/modules/api/controllers` 目录下创建一个名为 `DemoController.php` 的文件，复制并粘贴以下内容。
+在 `web/sharp/modules/api/controllers` 目录下创建一个名为 `DemoController.php` 的文件，复制并粘贴以下内容。
 ```php
 <?php
 

@@ -4,7 +4,7 @@
 
 > 把数据放入消息队列
 
-文件路径：`core/web/amqp.php`
+文件路径：`web/amqp.php`
 
 ```php
 <?php
@@ -44,7 +44,7 @@ try {
 
 > 从消息队列中取出数据
 
-文件路径：`core/sys/libs/logic/Amqp/ExampleQueueHandler.php`
+文件路径：`sys/libs/logic/Amqp/ExampleQueueHandler.php`
 
 ```php
 <?php

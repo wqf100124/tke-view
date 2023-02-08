@@ -4,7 +4,7 @@
 hidden、radio、checkbox等input以及select标签，必须使用封装的API写法
 :::
 
-参考文件: `core/sys/libs/ngcore/form.lib`
+参考文件: `sys/libs/ngform.lib`
 
 ## Button
 
@@ -96,7 +96,7 @@ NGForm::dropbox(
 
 ## 多语言翻译
 
-参考文件: `core/sys/libs/multilingual.lib`
+参考文件: `sys/libs/multilingual.lib`
 
 仅翻译
 ```php

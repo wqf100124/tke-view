@@ -33,7 +33,7 @@ export default withMermaid(
                     text: '开发环境',
                     items: [
                         {
-                            text: 'View',
+                            text: 'View开发环境',
                             link: '/view/'
                         },
                         {
@@ -112,15 +112,11 @@ export default withMermaid(
                 ],
                 '/view/': [
                     {
-                        text: 'View',
+                        text: 'View开发环境',
                         items: [
                             {
                                 text: '本地环境',
                                 link: '/view/'
-                            },
-                            {
-                                text: '运行测试环境代码',
-                                link: '/view/live'
                             },
                             {
                                 text: '基础命令',
