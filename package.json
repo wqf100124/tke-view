@@ -9,10 +9,13 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "build:ubuntu": "docker build -t rtwadewang/view:1.0.2 -t rtwadewang/view:latest --no-cache ./ubuntu",
+    "build:alpine": "docker build -t rtwadewang/view:1.0.2-alpine -t rtwadewang/view:alpine --no-cache ./alpine",
+    "build:autotest": "docker build -t rtwadewang/autotest:1.0.2 -t rtwadewang/autotest:latest --no-cache ./autotest"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.31",
+    "vitepress": "^1.0.0-alpha.45",
     "vitepress-plugin-mermaid": "^2.0.8",
     "vue": "^3.2.45"
   },
