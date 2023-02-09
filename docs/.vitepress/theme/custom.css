@@ -106,11 +106,11 @@
 
     --vp-c-text-code: var(--vp-c-indigo-soft);
 
-    --vp-c-brand: #00a497;
-    --vp-c-brand-light: #08b7a9;
-    --vp-c-brand-lighter: #0dcebe;
-    --vp-c-brand-dark: #029488;
-    --vp-c-brand-darker: #03877d;
+    --vp-c-brand: #673ab7;
+    --vp-c-brand-light: #7a4ccb;
+    --vp-c-brand-lighter: #875bd7;
+    --vp-c-brand-dark: #673ab7;
+    --vp-c-brand-darker: #5326a3;
 
     --vp-c-sponsor: #fd1d7c;
 }
@@ -333,10 +333,45 @@
     --vp-nav-height-desktop: 72px;
 }
 
+.vp-doc a {
+    color: var(--vp-c-brand-lighter);
+}
+
+/*.VPHomeHero .name, .VPHomeHero .text {*/
+/*    line-height: 56px;*/
+/*    font-size: 46px;*/
+/*}*/
+
+.VPHomeHero .name {
+    font-family: serif, math, cursive, fantasy;
+}
+
+/*.VPHomeHero .text {*/
+/*    font-weight: normal;*/
+/*    font-size: 18px;*/
+/*}*/
+
+/*.VPHomeHero .tagline {*/
+/*    font-size: 14px;*/
+/*}*/
+
 @media (min-width: 960px) {
     :root {
         --vp-nav-height: var(--vp-nav-height-desktop);
     }
+
+    /*.VPHomeHero .name {*/
+    /*    line-height: 80px;*/
+    /*    font-size: 72px;*/
+    /*}*/
+
+    /*.VPHomeHero .text {*/
+    /*    font-size: 30px;*/
+    /*}*/
+
+    /*.VPHomeHero .tagline {*/
+    /*    font-size: 24px;*/
+    /*}*/
 }
 
 /**
@@ -353,7 +388,7 @@
 
 :root {
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #07e8b2, #b24ee8);
+    --vp-home-hero-name-background: -webkit-linear-gradient(60deg, #db00ff, #03a9f4);
 
     --vp-home-hero-image-background-image: none;
     --vp-home-hero-image-filter: transparent;
@@ -364,18 +399,6 @@
     transition: color 0.25s, border-color 0.25s, background-color 0.25s, background 0.25s;
 }
 
-.VPHomeHero .VPButton.alt {
-    color: var(--vp-c-brand) !important;
-}
-
 /*.VPHomeHero .name {*/
-/*    font-size: 62px;*/
+/*    font-size: 68px;*/
 /*}*/
-
-.VPHomeHero .text {
-    font-size: 28px;
-}
-
-.VPHomeHero .tagline {
-    font-size: 20px;
-}

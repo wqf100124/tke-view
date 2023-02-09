@@ -7,8 +7,8 @@ hero:
     src: /image/hero.svg
     alt: logo
   name: View & Docker
-  text: 基于Docker构建的View本地开发环境
-  tagline: 速度更快、体验更好、开发更高效。
+  text: 进入容器化开发时代
+  tagline: 运行速度更快，开发效率更高
   actions:
     - theme: brand
       text: 快速开始 ->
