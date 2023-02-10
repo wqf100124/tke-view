@@ -9,7 +9,7 @@ export default withMermaid(
         lang: 'zh-CN',
         base: '/tke-view/',
         head: [
-            ['link', {rel: 'shortcut icon', href: '/tke-view/image/logo.svg'}]
+            ['link', {rel: 'shortcut icon', href: '/tke-view/image/favicon.svg'}]
         ],
         ignoreDeadLinks: true,
         lastUpdated: false,

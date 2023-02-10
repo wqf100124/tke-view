@@ -1,6 +1,6 @@
 ---
 layout: home
-title: View & Docker - 基于Docker构建的本地开发环境
+title: View & Docker - 进入容器化开发时代
 
 hero:
   image:

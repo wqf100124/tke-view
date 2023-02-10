@@ -107,8 +107,8 @@
     --vp-c-text-code: var(--vp-c-indigo-soft);
 
     --vp-c-brand: #673ab7;
-    --vp-c-brand-light: #7a4ccb;
-    --vp-c-brand-lighter: #875bd7;
+    --vp-c-brand-light: #784ac8;
+    --vp-c-brand-lighter: #8a5bda;
     --vp-c-brand-dark: #673ab7;
     --vp-c-brand-darker: #5326a3;
 
@@ -256,7 +256,7 @@
     --vp-button-brand-bg: var(--vp-c-brand-dark);
     --vp-button-brand-hover-border: var(--vp-c-brand-lighter);
     --vp-button-brand-hover-text: var(--vp-c-text-dark-1);
-    --vp-button-brand-hover-bg: var(--vp-c-brand);
+    --vp-button-brand-hover-bg: var(--vp-c-brand-light);
     --vp-button-brand-active-border: var(--vp-c-brand-lighter);
     --vp-button-brand-active-text: var(--vp-c-text-dark-1);
     --vp-button-brand-active-bg: var(--vp-button-brand-bg);
