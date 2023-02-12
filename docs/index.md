@@ -1,14 +1,14 @@
 ---
 layout: home
-title: View & Docker - 进入容器化开发时代
+title: View本地开发环境
 
 hero:
   image:
     src: /image/hero.svg
     alt: logo
   name: View & Docker
-  text: 进入容器化开发时代
-  tagline: 运行速度更快，开发效率更高
+  text: 容器化开发环境
+  tagline: 运行速度更快，开发效率更高。
   actions:
     - theme: brand
       text: 快速开始 ->

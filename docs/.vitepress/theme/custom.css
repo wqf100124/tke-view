@@ -106,11 +106,11 @@
 
     --vp-c-text-code: var(--vp-c-indigo-soft);
 
-    --vp-c-brand: #673ab7;
-    --vp-c-brand-light: #784ac8;
-    --vp-c-brand-lighter: #8a5bda;
-    --vp-c-brand-dark: #673ab7;
-    --vp-c-brand-darker: #5326a3;
+    --vp-c-brand: #4caf50;
+    --vp-c-brand-light: #59bc5d;
+    --vp-c-brand-lighter: #6bce6f;
+    --vp-c-brand-dark: #4caf50;
+    --vp-c-brand-darker: #3d9f41;
 
     --vp-c-sponsor: #fd1d7c;
 }
@@ -387,17 +387,26 @@
  * -------------------------------------------------------------------------- */
 
 :root {
+    /*--vp-home-hero-name-color: transparent;*/
+    /*--vp-home-hero-name-background: -webkit-linear-gradient(60deg, #db00ff, #03a9f4);*/
+
+    /*--vp-home-hero-image-background-image: none;*/
+    /*--vp-home-hero-image-filter: transparent;*/
+
+    /* 标题 */
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(60deg, #db00ff, #03a9f4);
+    --vp-home-hero-name-background: linear-gradient(135deg, #86d244, #03a9f4);
 
-    --vp-home-hero-image-background-image: none;
-    --vp-home-hero-image-filter: transparent;
+    /* 图标背景 */
+    --vp-home-hero-image-background-image: linear-gradient(135deg, rgb(134 210 68 / 30%), rgb(167 245 99 / 30%));
+    --vp-home-hero-image-filter: blur(96px);
 }
 
-.VPHomeHero .VPButton {
-    border: none !important;
-    transition: color 0.25s, border-color 0.25s, background-color 0.25s, background 0.25s;
-}
+
+/*.VPHomeHero .VPButton {*/
+/*    border: none !important;*/
+/*    transition: color 0.25s, border-color 0.25s, background-color 0.25s, background 0.25s;*/
+/*}*/
 
 /*.VPHomeHero .name {*/
 /*    font-size: 68px;*/

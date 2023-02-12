@@ -5,11 +5,11 @@ import { withMermaid } from "vitepress-plugin-mermaid";
 export default withMermaid(
     defineConfig({
         title: 'View & Docker',
-        description: '基于Docker构建的View系统本地开发环境',
+        description: '基于Docker构建的View本地开发环境',
         lang: 'zh-CN',
         base: '/tke-view/',
         head: [
-            ['link', {rel: 'shortcut icon', href: '/tke-view/image/favicon.svg'}]
+            ['link', {rel: 'shortcut icon', href: '/tke-view/image/logo.svg'}]
         ],
         ignoreDeadLinks: true,
         lastUpdated: false,
@@ -17,7 +17,7 @@ export default withMermaid(
             editLink: false,
             logo: {
                 light: '/image/logo.svg',
-                dark: '/image/logo-dark.svg',
+                dark: '/image/logo.svg',
             },
             socialLinks: [
                 {icon: 'github', link: 'https://github.com/wqf100124/tke-view'},
