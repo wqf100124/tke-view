@@ -2,6 +2,10 @@
 
 ## 创建 View 容器
 
+:::tip 提示
+在开始配置环境前，建议设置项目目录为 区分大小写 模式，参考：[https://learn.microsoft.com/zh-cn/windows/wsl/case-sensitivity](https://learn.microsoft.com/zh-cn/windows/wsl/case-sensitivity)
+:::
+
 1.在本地创建一个名为 `docker-compose.yml` 的文件，并复制粘贴以下内容。
 
 ```yaml{29,36}
@@ -44,8 +48,8 @@ volumes:
 ```
 以上配置仅包含 View 容器。完整配置请参考：[View Docker Compose](/compose)
 
-- 注意替换代码路径。
-- 对于 [WSL2](https://learn.microsoft.com/zh-cn/windows/wsl/) 开发环境，应该使用 linux 中的项目路径如：`/var/tke/local`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
+- site站点存放各个国家的配置文件，例如global,hk,china等。
+- 对于 [WSL2](https://learn.microsoft.com/zh-cn/windows/wsl/) 运行模式，应该使用 linux 中的项目路径如：`/var/tke/local`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
 
 2.打开终端工具，并切换到 `docker-compose.yml` 文件所在的目录。例如：
 ```sh
@@ -108,7 +112,7 @@ $ docker exec -it view /run/init.sh local 80000570
 注意替换8ID，它将被用于站点的自动登录。
 
 ::: warning 警告：
-以上操作会修改 `login.php`、`tke_config.php`、`error.phtml` 等核心文件，这些文件仅可用于本地开发，切勿提交到！
+以上操作会修改 `login.php`、`tke_config.php`、`error.phtml` 等核心文件，这些文件仅可用于本地开发，切勿提交版本库！
 :::
 
 至此 Local 环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
