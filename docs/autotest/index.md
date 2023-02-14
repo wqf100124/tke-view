@@ -1,7 +1,7 @@
 # 搭建环境
 
 1.在本地创建一个名为 `autotest.yml` 的文件，并复制粘贴以下内容。
-```yaml{48,55}
+```yaml{49,56,63}
 version: "3"
 services:
   selenium:
@@ -23,16 +23,17 @@ services:
     networks:
       - tke
     volumes:
-      - dev2:/home/tke/code
+      - autotest:/home/tke/autotest
+      - dev2:/home/tke/core
     depends_on:
       - selenium
   autotest-rc:
-    image: rtwadewang/autotest:1.0.2
     container_name: autotest-rc
+    image: rtwadewang/autotest:1.0.2
     networks:
       - tke
     volumes:
-      - rc:/home/tke/code
+      - autotest-rc:/home/tke/autotest
     depends_on:
       - selenium
 networks:
@@ -43,20 +44,27 @@ networks:
       config:
         - subnet: 172.16.1.0/24
 volumes:
+  autotest:
+    name: autotest
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: Dev2的Autotest目录
   dev2:
     name: dev2
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: dev2代码路径
-  rc:
-    name: rc
+      device: Dev2的代码目录
+  autotest-rc:
+    name: autotest-rc
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: rc代码路径
+      device: RC的Autotest目录
 ```
 注意修改 `dev2` 和 `rc` 的代码目录
 

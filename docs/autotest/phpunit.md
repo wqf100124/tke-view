@@ -19,7 +19,7 @@ $ docker exec -it autotest /run/phpunit.sh
 
 1.进入容器
 ```sh
-$ docker exec -it -w /home/tke/code/autotest/phpunit autotest sh
+$ docker exec -it -w /home/tke/autotest/phpunit autotest sh
 ```
 
 2.执行测试命令
