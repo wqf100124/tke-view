@@ -337,41 +337,10 @@
     color: var(--vp-c-brand-lighter);
 }
 
-/*.VPHomeHero .name, .VPHomeHero .text {*/
-/*    line-height: 56px;*/
-/*    font-size: 46px;*/
-/*}*/
-
-.VPHomeHero .name {
-    font-family: serif, math, cursive, fantasy;
-}
-
-/*.VPHomeHero .text {*/
-/*    font-weight: normal;*/
-/*    font-size: 18px;*/
-/*}*/
-
-/*.VPHomeHero .tagline {*/
-/*    font-size: 14px;*/
-/*}*/
-
 @media (min-width: 960px) {
     :root {
         --vp-nav-height: var(--vp-nav-height-desktop);
     }
-
-    /*.VPHomeHero .name {*/
-    /*    line-height: 80px;*/
-    /*    font-size: 72px;*/
-    /*}*/
-
-    /*.VPHomeHero .text {*/
-    /*    font-size: 30px;*/
-    /*}*/
-
-    /*.VPHomeHero .tagline {*/
-    /*    font-size: 24px;*/
-    /*}*/
 }
 
 /**
@@ -387,12 +356,6 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-    /*--vp-home-hero-name-color: transparent;*/
-    /*--vp-home-hero-name-background: -webkit-linear-gradient(60deg, #db00ff, #03a9f4);*/
-
-    /*--vp-home-hero-image-background-image: none;*/
-    /*--vp-home-hero-image-filter: transparent;*/
-
     /* 标题 */
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: linear-gradient(135deg, #5abc5d 10%, #0073ec 100%);
@@ -401,13 +364,3 @@
     --vp-home-hero-image-background-image: linear-gradient(135deg, rgb(134 210 68 / 20%), rgb(0 113 235 / 20%));
     --vp-home-hero-image-filter: blur(68px);
 }
-
-
-/*.VPHomeHero .VPButton {*/
-/*    border: none !important;*/
-/*    transition: color 0.25s, border-color 0.25s, background-color 0.25s, background 0.25s;*/
-/*}*/
-
-/*.VPHomeHero .name {*/
-/*    font-size: 68px;*/
-/*}*/
