@@ -20,11 +20,18 @@ if [ ! "$(ls -A $corePath)" ]; then
 fi
 
 # tke_config.php
-configCode='$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], "."));\n    $sPreUrl = $sPreUrl ?: "hk";\n    require_once(BASE_DIR . "\/..\/sites\/" . $sPreUrl . "\/config.php");'
-sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/sys/includes/tke_config.php
+if [ $1 = 'local' ]
+then
+  sed -i 's/\.\/".$sPreUrl/\.\/sites\/".$sPreUrl/' ${corePath}/sys/includes/tke_config.php
+else
+  configCode='$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], "."));\n    $sPreUrl = $sPreUrl ?: "hk";\n    require_once(BASE_DIR . "\/..\/sites\/" . $sPreUrl . "\/config.php");'
+  sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/sys/includes/tke_config.php
+fi
 sed -i '$s/?>/''/' ${corePath}/sys/includes/tke_config.php
 echo "update ${corePath}/sys/includes/tke_config.php";
 
+if [ $1 != 'local' ]
+then
 # http.lib
 rm ${corePath}/sys/libs/http.lib
 echo "<?php include('./ngcore/http.lib');" >> ${corePath}/sys/libs/http.lib
@@ -33,7 +40,9 @@ echo "update ${corePath}/sys/libs/http.lib";
 # login.php
 loginCode="\    // Use custom 8id automatic login\n    \$user = \$db->get(\"SELECT * FROM \`user\` WHERE \`ActiveDirectoryID\` = '${userId}' LIMIT 1\");\n    userLogin(\$user->id, \$user);\n    die();"
 sed -i "/UserInformationService as UserInformationService;/a\ \n${loginCode}" ${corePath}/web/login.php
+sed -i 's/use SystemAdmin\\User\\Service\\UserInformationService as UserInformationService;/use SystemAdmin\\User\\Service\\UserInformationService as UserInformationService ;/' ${corePath}/web/login.php
 echo "update ${corePath}/web/login.php";
+fi
 
 # ErrorController.php
 cp /run/init/ErrorController.php ${corePath}/web/sharp/modules/default/controllers/ErrorController.php
