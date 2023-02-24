@@ -42,6 +42,7 @@ apk add --no-cache \
     php7-pecl-mcrypt \
     php7-pecl-memcache \
     php7-pecl-memcached \
+    php7-pecl-mongodb \
     php7-pecl-msgpack \
     php7-mysqli \
     php7-openssl \

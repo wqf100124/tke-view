@@ -19,16 +19,21 @@ if [ ! "$(ls -A $corePath)" ]; then
     exit 1;
 fi
 
+configCode='$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], "."));\n    $sPreUrl = $sPreUrl ?: "hk";\n    require_once(BASE_DIR . "\/..\/sites\/" . $sPreUrl . "\/config.php");'
+
 # tke_config.php
 if [ $1 = 'local' ]
 then
   sed -i 's/\.\/".$sPreUrl/\.\/sites\/".$sPreUrl/' ${corePath}/sys/includes/tke_config.php
 else
-  configCode='$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], "."));\n    $sPreUrl = $sPreUrl ?: "hk";\n    require_once(BASE_DIR . "\/..\/sites\/" . $sPreUrl . "\/config.php");'
   sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/sys/includes/tke_config.php
 fi
 sed -i '$s/?>/''/' ${corePath}/sys/includes/tke_config.php
 echo "update ${corePath}/sys/includes/tke_config.php";
+
+# vivid/bootstrap/app.php
+sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/vivid/bootstrap/app.php
+echo "update ${corePath}/vivid/bootstrap/app.php";
 
 if [ $1 != 'local' ]
 then
