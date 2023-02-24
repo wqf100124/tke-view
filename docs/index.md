@@ -8,7 +8,7 @@ hero:
     alt: logo
   name: View & Docker
   text: 容器化开发环境
-  tagline: 运行速度更快，开发效率更高。
+  tagline: 长风破浪会有时，直挂云帆济沧海。
   actions:
     - theme: brand
       text: 快速开始 ->
