@@ -84,7 +84,7 @@ export default withMermaid(
             sidebar: {
                 '/docker/': [
                     {
-                        text: 'Docker开发环境',
+                        text: '配置Docker环境',
                         items: [
                             {
                                 text: '介绍',
@@ -93,6 +93,10 @@ export default withMermaid(
                             {
                                 text: '安装',
                                 link: '/docker/setup'
+                            },
+                            {
+                                text: 'WSL2',
+                                link: '/docker/wsl2'
                             },
                             {
                                 text: '基础命令',

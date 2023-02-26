@@ -14,7 +14,7 @@ hero:
       text: 快速开始 ->
       link: /view/
     - theme: alt
-      text: 安装Docker
+      text: 配置 Docker 环境
       link: /docker/setup
 
 features:
@@ -28,3 +28,4 @@ features:
     title: 轻松扩展
     details: 可集成RabbitMQ/Autotest/WSO2/Solr等开发中常用的第三方服务。
 ---
+

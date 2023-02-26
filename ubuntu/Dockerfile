@@ -5,11 +5,11 @@ ARG version="7.4"
 WORKDIR /home/tke
 COPY ./src /tmp
 RUN apt-get update \
-    && useradd -g root -d /home/tke/local/home/tke/autotest local \
-    && useradd -g root -d /home/tke/preview/home/tke/autotest preview \
-    && useradd -g root -d /home/tke/dev2/home/tke/autotest dev2 \
-    && useradd -g root -d /home/tke/rc/home/tke/autotest rc \
-    && useradd -g root -d /home/tke/live/home/tke/autotest live \
+    && useradd -g root -d /home/tke/local local \
+    && useradd -g root -d /home/tke/preview preview \
+    && useradd -g root -d /home/tke/dev2 dev2 \
+    && useradd -g root -d /home/tke/rc rc \
+    && useradd -g root -d /home/tke/live live \
     && chmod +x /tmp/install.sh \
     && /tmp/install.sh ${version}
 ENTRYPOINT ["/run/entrypoint.sh"]
