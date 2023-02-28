@@ -17,7 +17,7 @@
 version: "3"
 services:
   view:
-    image: rtwadewang/view:1.0.2
+    image: rtwadewang/view:1.0.3
     container_name: view
     volumes:
       - sites:/home/tke/sites
