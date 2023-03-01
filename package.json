@@ -15,7 +15,7 @@
     "build:autotest": "docker build -t rtwadewang/autotest:1.0.2 -t rtwadewang/autotest:latest --no-cache ./autotest"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.48",
+    "vitepress": "^1.0.0-alpha.49",
     "vitepress-plugin-mermaid": "^2.0.8",
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
     "vue": "^3.2.47"
