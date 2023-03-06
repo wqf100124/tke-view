@@ -1,4 +1,4 @@
-# 本地环境 <Badge type="tip" text="v1.0.3" />
+# 本地环境 <Badge type="tip" text="v1.0.4" />
 
 ::: warning 注意：
 从 `1.0.2` 版本开始，容器中的项目路径不再包含 `core` 目录，同时增加了 `sites` 目录用来放置国家配置文件。
@@ -34,7 +34,7 @@ preview
 version: "3"
 services:
   view:
-    image: rtwadewang/view:1.0.3
+    image: rtwadewang/view:1.0.4
     container_name: view
     volumes:
       - sites:/home/tke/sites
