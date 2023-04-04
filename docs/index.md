@@ -16,11 +16,9 @@ hero:
     - theme: alt
       text: 配置 Docker 环境
       link: /docker/setup
-
-
 ---
 
-<Brand text="宝剑锋从磨砺出，梅花香自苦寒来。"></Brand>
+<Brand text="TKE MOVE BEYOND"></Brand>
 
 <script setup>
 import Brand from './components/brand.vue';

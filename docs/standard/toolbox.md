@@ -1,8 +1,8 @@
-# VIEW develop team toolbox talk <Badge type="tip" text="v1.4" />
+# VIEW develop team toolbox talk <Badge type="tip" text="v1.6" />
 
 > 本文档的目的是简单地回顾开发规范，能让开发人员注意到那些在日常工作中很重要但又经常被忽略的点。为了达到这一目标，我们要求开发团队负责人在每次会议开始时与开发人员一起审阅文档中的主题，以加强开发规范。
 
-在线文档: [VIEW develop team toolbox talk v1.4.pptx](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards/VIEW%20develop%20team%20toolbox%20talk%20v1.4.pptx?d=wf3ae10c2fb114ee8b5855301a37c6a61&csf=1&web=1&e=dskURI)
+在线文档: [VIEW develop team toolbox talk v1.6.pptx](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/_layouts/15/Doc.aspx?sourcedoc=%7BFB6D98AF-AEF1-43E3-B507-7D96E159BD5E%7D&file=VIEW%20develop%20team%20toolbox%20talk%20v1.6_d.pptx&action=edit&mobileredirect=true)
 
 ## 1.命名规范(Naming Convention)
 
@@ -192,17 +192,16 @@ logger_error(
   - Contract
   - Unit Search
   - Employee/Salesman chooser
-- Controller/Drive Type/Model/Manufacture/Factory chooser
-- 公共页面
-   - 404
-   - Unauthorized access(403未授权)
-   - Exception(通用错误页面)
+  - Controller/Drive Type/Model/Manufacture/Factory chooser
+  - 公共页面(404、Unauthorized access(403未授权)、Exception(通用错误页面))
 - Branch pilot(某个功能在某个branch可以优先使用或者只能在country或者branch级别显示，通过设置日期来实现)
 - 如果新代码或逻辑块可以作为组件实现并且可能被其他人重用，就需要考虑构建它
 - 引入公共的第三方库，新库或新版本需经过SHARP团队的批准
   - TCPDF/SPOUT/PHPOffice/etc…
   - JQuery/Bootstrap/etc…
 - 鼓励引入库来解决常见问题，比如前端的datetime库(moment.js已经在混合开发中使用了)
+- :new: 对于所有新功能的开发和重构的模块需要使用 [Laravel](https://laravel.com/) 框架
+
 
 ## 11.VIEW代码(VIEW SNIPPET)
 
@@ -215,8 +214,7 @@ logger_error(
 - 所有的标签都应该添加静态多语言并且关联了合适的模块
 - 邮件API(是否在测试环境中直接向真实用户发送邮件)
 - 使用[SharePoint](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards)上的最新文档模板
-- 在PHP代码的CURL调用中显示超时时间，否则将导致请求无响应，对用户不友好。
-- :new: 保证执行的特性在测试环境和在生产环境是一致的。例如：不要在dev2中使用模拟页面来测试后台任务
+- 在PHP代码的CURL调用中显示超时时间，否则将导致请求无响应，对用户不友好
 
 错误示例：
 
@@ -237,9 +235,8 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 - 安全部署
   - 确保没有代码遗漏
   - 不包含差异对比工具的代码
-- :new: 代码部署必须遵循**dev->dev2->rc->live**的顺序
-- :new: 多关注那些状态比较特殊的补丁，比如一个patch持续了3个多月还没有部署
-- :new: 代码部署成功后要及时的去进行检验，并且跟进
+- 代码部署必须遵循**dev->dev2->live**的顺序
+- 多关注那些状态比较特殊的补丁，比如一个patch持续了3个多月还没有部署
 
 ## 13.VIEW开发环境和结构体系(VIEW ENVIRONMENT AND ARCHITECTURE)
 
@@ -262,3 +259,11 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 - 避免XSS注入，应该使用[NGForm](./html.md)封装的组件(例如: `text`、`textarea`、`select`…)
 - 按照规则将外部账户存放在单独的文件中
 
+## 15.交付的质量和测试(DELIVER QUALITY AND TEST)
+
+> 质量永远是最重要的
+
+- 代码部署live环境成功后要及时地去进行跟进和测试
+- 测试覆盖率(测试用例应该覆盖所有的更改，以达到100%的代码覆盖率)
+- :new: 对于像数据迁移等特殊任务，必须使用工具如excel在迁移前后进行完整的数据比较
+- 保证执行的方法在测试环境和生产环境是一致的。例如：不要在dev2中使用模拟页面来测试后台任务

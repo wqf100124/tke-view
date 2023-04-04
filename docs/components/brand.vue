@@ -1,6 +1,6 @@
 <template>
   <view v-show="visible">
-    <div id="chart" style="width: 100%; height: 80px;margin: 0 64px;"></div>
+    <div id="chart" style="width: 100%; height: 120px;margin: 60px auto 0;"></div>
   </view>
 </template>
 
@@ -21,20 +21,20 @@ const option = reactive({
     elements: [
       {
         type: 'text',
-        left: 'left',
+        left: 'center',
         top: 'center',
         style: {
           text: props.text,
-          fontSize: 36,
-          fontWeight: 'normal',
+          fontSize: 68,
+          fontWeight: 'bold',
           lineDash: [0, 200],
           lineDashOffset: 0,
           fill: 'transparent',
-          stroke: '#f35383',
+          stroke: '#bc41a0',
           lineWidth: 1
         },
         keyframeAnimation: {
-          duration: 3500,
+          duration: 3000,
           loop: false,
           keyframes: [
             {
@@ -55,7 +55,7 @@ const option = reactive({
             {
               percent: 1,
               style: {
-                fill: '#f35383'
+                fill: '#f16b09'
               }
             }
           ]
