@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.cf236b3d.js";const i=JSON.parse('{"title":"搭建环境","description":"","frontmatter":{},"headers":[],"relativePath":"autotest/index.md"}'),p={name:"autotest/index.md"},o=l("",10),e=[o];function t(c,r,D,y,C,A){return a(),n("div",null,e)}const d=s(p,[["render",t]]);export{i as __pageData,d as default};
