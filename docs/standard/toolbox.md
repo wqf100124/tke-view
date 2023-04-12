@@ -147,8 +147,8 @@ logger_error(
 
 - 总是包含自增字段`Id`，并且将它作为主键
 - 总是包含`CreatedBy`, `CreatedDate(UTC)`, `LastModifiedBy`, `LastModifiedDate(UTC)`等标准字段
-- 考虑是否需要状态字段(`IsDeleted`, `isActivated`...)，根据表的设计酌情使用软删除
-- 如果没有性能方面的要求，应该使用 **外键索引** 来保持数据一致性
+- 考虑是否需要状态字段(`IsDeleted`, `isActived`...)，根据表的设计酌情使用软删除
+- 如果没有性能方面的要求，应该使用 **[外键索引](https://www.runoob.com/sql/sql-foreignkey.html)** 来保持数据一致性
 
 `CreatedDate` 和 `LastModifiedDate` 字段规范
 ```sql
@@ -170,7 +170,7 @@ logger_error(
 - 使用slave(从库)进行导出操作
 - 必要时应该对查询的数据进行缓存，以提高的sql性能
 - 在更新子表数据时不要这样写: 删除所有，然后再插入，这是一种有风险的方法，因为一些字段的数据可能被删除，无法再恢复
-- :new: 当sql中有更新或删除操作时，在部署patch的时候应该经过 **特殊的team leader** 的批准，避免由于错误的sql语句导致大量数据出现问题。例如：大部分用户组被删除
+- :new: 当sql中有更新或删除操作时，在部署patch的时候应该经过 **特殊的 Team Leader** 的批准，避免由于错误的sql语句导致大量的数据出现问题。例如：大部分用户组被删除
 
 ## 9.UI设计(UI DESIGN)
 
