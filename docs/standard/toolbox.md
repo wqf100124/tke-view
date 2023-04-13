@@ -147,7 +147,7 @@ logger_error(
 
 - 总是包含自增字段`Id`，并且将它作为主键
 - 总是包含`CreatedBy`, `CreatedDate(UTC)`, `LastModifiedBy`, `LastModifiedDate(UTC)`等标准字段
-- 考虑是否需要状态字段(`IsDeleted`, `isActived`...)，根据表的设计酌情使用软删除
+- 考虑是否需要状态字段(`IsDeleted`, `isActive`...)，根据表的设计酌情使用软删除
 - 如果没有性能方面的要求，应该使用 **[外键索引](https://www.runoob.com/sql/sql-foreignkey.html)** 来保持数据一致性
 
 `CreatedDate` 和 `LastModifiedDate` 字段规范
@@ -159,17 +159,18 @@ logger_error(
 `CreatedDate` DATETIME DEFAULT CURRENT_TIMESTAMP,
 `LastModifiedDate` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 ```
+有关自动初始化和更新的更多信息，请查看MySQL网站上的 [时间初始化](https://dev.mysql.com/doc/refman/5.7/en/timestamp-initialization.html)
 
 ## 8.SQL语句(SQL STATEMENT)
 
 > SQL在业务中消耗的时间最多，如何去提高系统性能？
 
-- Group by 规则
-- 如果sql中用到了索引，应该使用explain去分析sql语句
+- [GROUP BY](https://dev.mysql.com/doc/refman/5.7/en/group-by-optimization.html) 规则
+- 如果sql中用到了索引，应该使用 [EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/using-explain.html) 去分析sql语句
 - 查询时需要考虑数据量，评估1年、3年、5年后的性能(特别是report)
 - 使用slave(从库)进行导出操作
 - 必要时应该对查询的数据进行缓存，以提高的sql性能
-- 在更新子表数据时不要这样写: 删除所有，然后再插入，这是一种有风险的方法，因为一些字段的数据可能被删除，无法再恢复
+- 在更新 **子表** 数据时不要这样写: 删除所有，然后再插入。因为数据一旦删除，就无法再恢复
 - :new: 当sql中有更新或删除操作时，在部署patch的时候应该经过 **特殊的 Team Leader** 的批准，避免由于错误的sql语句导致大量的数据出现问题。例如：大部分用户组被删除
 
 ## 9.UI设计(UI DESIGN)
@@ -178,7 +179,7 @@ logger_error(
 
 - 按照VIEW标准UI模板设计新页面，具体可以参考: [VIEW_UI_standard_web](https://tech.tkeasia.com/tk_VIEW_UI_standard_web_2.53/formelements.html)
 - 注意页面上元素的对齐方式(数字-右，字符串-左)
-- 遵循`system setting`的日期和货币格式(十进制，千位分隔符)，以支持全球化
+- 遵循 `system setting` 中设置的日期和货币格式(十进制，千位分隔符)，以支持全球化
 - 在一次操作中尽可能地计算和保存单击次数
 - 新页面的设计和Review应该让UI设计师参与
 
