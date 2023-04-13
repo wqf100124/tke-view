@@ -16,8 +16,8 @@
   },
   "devDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "echarts": "^5.4.1",
-    "vitepress": "^1.0.0-alpha.50",
+    "echarts": "^5.4.2",
+    "vitepress": "^1.0.0-alpha.65",
     "vitepress-plugin-mermaid": "^2.0.8",
     "vue": "^3.2.47"
   },
