@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as l,Q as o}from"./chunks/framework.db0ccc71.js";const D=JSON.parse('{"title":"Solr 全文搜索","description":"","frontmatter":{},"headers":[],"relativePath":"solr/index.md"}'),n={name:"solr/index.md"},e=o("",13),p=[e];function t(c,r,i,h,y,d){return a(),l("div",null,p)}const A=s(n,[["render",t]]);export{D as __pageData,A as default};

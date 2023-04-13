@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as e,Q as l}from"./chunks/framework.db0ccc71.js";const D=JSON.parse('{"title":"基本命令","description":"","frontmatter":{},"headers":[],"relativePath":"rabbitmq/command.md"}'),o={name:"rabbitmq/command.md"},p=l("",22),n=[p];function t(c,r,i,C,y,d){return a(),e("div",null,n)}const u=s(o,[["render",t]]);export{D as __pageData,u as default};

@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a,a as r}from"./app.7105f564.js";const u=JSON.parse('{"title":"UI标准","description":"","frontmatter":{},"headers":[],"relativePath":"standard/ui.md"}'),s={name:"standard/ui.md"},_=r("",3),n=[_];function o(c,d,i,l,p,h){return t(),a("div",null,n)}const f=e(s,[["render",o]]);export{u as __pageData,f as default};

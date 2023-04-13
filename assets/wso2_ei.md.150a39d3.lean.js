@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as o,Q as n}from"./chunks/framework.db0ccc71.js";const u=JSON.parse('{"title":"EI开发","description":"","frontmatter":{},"headers":[],"relativePath":"wso2/ei.md"}'),l={name:"wso2/ei.md"},p=n("",34),e=[p];function t(c,r,D,F,y,i){return a(),o("div",null,e)}const C=s(l,[["render",t]]);export{u as __pageData,C as default};

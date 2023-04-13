@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as o,Q as t}from"./chunks/framework.db0ccc71.js";const u=JSON.parse('{"title":"PHPUnit","description":"","frontmatter":{},"headers":[],"relativePath":"autotest/phpunit.md"}'),p={name:"autotest/phpunit.md"},e=t("",13),n=[e];function l(c,r,i,C,h,d){return a(),o("div",null,n)}const D=s(p,[["render",l]]);export{u as __pageData,D as default};

@@ -1,0 +1,1 @@
+import{_ as a,o as s,c as e,Q as n}from"./chunks/framework.db0ccc71.js";const _=JSON.parse('{"title":"安装 Java JDK 并配置 JAVA_HOME","description":"","frontmatter":{},"headers":[],"relativePath":"notes/java.md"}'),o={name:"notes/java.md"},t=n("",18),l=[t];function p(c,r,i,d,h,u){return s(),e("div",null,l)}const m=a(o,[["render",p]]);export{_ as __pageData,m as default};

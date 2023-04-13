@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as o,Q as r}from"./chunks/framework.db0ccc71.js";const k=JSON.parse('{"title":"安装","description":"","frontmatter":{},"headers":[],"relativePath":"docker/setup.md"}'),a={name:"docker/setup.md"},i=r("",8),l=[i];function s(n,c,d,p,u,h){return t(),o("div",null,l)}const m=e(a,[["render",s]]);export{k as __pageData,m as default};

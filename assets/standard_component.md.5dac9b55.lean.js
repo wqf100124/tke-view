@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,Q as o}from"./chunks/framework.db0ccc71.js";const i=JSON.parse('{"title":"公共组件","description":"","frontmatter":{},"headers":[],"relativePath":"standard/component.md"}'),l={name:"standard/component.md"},p=o("",25),t=[p];function e(c,D,r,F,y,C){return a(),n("div",null,t)}const d=s(l,[["render",e]]);export{i as __pageData,d as default};
