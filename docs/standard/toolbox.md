@@ -197,11 +197,11 @@ logger_error(
   - 公共页面(404、Unauthorized access(403未授权)、Exception(通用错误页面))
 - Branch pilot(某个功能在某个branch可以优先使用或者只能在country或者branch级别显示，通过设置日期来实现)
 - 如果新代码或逻辑块可以作为组件实现并且可能被其他人重用，就需要考虑构建它
-- 引入公共的第三方库，新库或新版本需经过SHARP团队的批准
-  - TCPDF/SPOUT/PHPOffice/etc…
-  - JQuery/Bootstrap/etc…
-- 鼓励引入库来解决常见问题，比如前端的datetime库(moment.js已经在混合开发中使用了)
-- :new: 对于所有新功能的开发和重构的模块需要使用 [Laravel](https://laravel.com/) 框架
+- 引入公共的第三方库，新库或新版本时需经过Sharp团队的批准
+  - [TCPDF](https://tcpdf.org/)/[SPOUT](https://opensource.box.com/spout/)/[PHPOffice](https://github.com/PHPOffice/PHPWord)/…
+  - [JQuery](https://jquery.com/)/[Bootstrap](https://getbootstrap.com/)/[DataTables](https://datatables.net/)/…
+- 鼓励引入库来解决常见问题，比如前端的datetime库(moment.js已经在开发中使用了)
+- :new: 对于所有新功能的开发和重构需要使用 [Laravel](https://laravel.com/) 框架
 
 
 ## 11.VIEW代码(VIEW SNIPPET)
@@ -209,13 +209,13 @@ logger_error(
 > VIEW代码中需要注意的一些细节
 
 - 在日期/时间相关的业务逻辑中，要特别考虑时区/夏令时等相关因素的影响
-- 日期、时间、货币的格式(千位分隔符等)
+- 注意日期、时间、货币的格式(千位分隔符等)
 - 不要在PHP代码调试中使用echo，因为它会将内容输出到页面中，从而影响其他人的使用
 - Azure环境中的session有效期为5分钟，尽可能的提高页面性能
 - 所有的标签都应该添加静态多语言并且关联了合适的模块
-- 邮件API(是否在测试环境中直接向真实用户发送邮件)
-- 使用[SharePoint](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards)上的最新文档模板
-- 在PHP代码的CURL调用中显示超时时间，否则将导致请求无响应，对用户不友好
+- 邮件API(不能在测试环境中直接向真实用户发送邮件)
+- 使用 [SharePoint](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards) 上的最新文档模板
+- 在使用CURL请求时，应该设置和显示超时时间，否则将导致请求无响应，对用户不友好
 
 错误示例：
 
@@ -226,18 +226,18 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 
 ## 12.开发和部署(DEVOPS AND DEPLOYMENT)
 
-如何使部署和reload(dev2, rc)更加稳定和高效?
+> 如何使部署和reload(dev2, rc)更加稳定和高效？
 
 - 不要在测试环境中进行调试，确定需要调试的话应该采用适当的方法
 - 使用devops工具进行部署(文件差异对比工具，reload机制等)
-- 确保patch与开发操作工具兼容
+- 确保devops上的patch信息填写正确(Make the patch compatible with dev ops tool)
 - Dev2数据库reload的时候，应该通过sql脚本，而不是PHP代码去部署sql
 - 测试覆盖率(测试用例应该覆盖所有的更改，以实现100%的代码覆盖率)
 - 安全部署
   - 确保没有代码遗漏
-  - 不包含差异对比工具的代码
-- 代码部署必须遵循**dev->dev2->live**的顺序
-- 多关注那些状态比较特殊的补丁，比如一个patch持续了3个多月还没有部署
+  - 不要提交无效的代码
+- 代码部署必须遵循 `dev->dev2->live` 的顺序
+- 多关注那些状态比较特殊的Patch，比如一个Patch持续了3个多月还没有部署
 
 ## 13.VIEW开发环境和结构体系(VIEW ENVIRONMENT AND ARCHITECTURE)
 
