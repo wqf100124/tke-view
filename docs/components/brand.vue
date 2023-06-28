@@ -26,11 +26,11 @@ const option = reactive({
         style: {
           text: props.text,
           fontSize: 68,
-          fontWeight: 'bold',
-          lineDash: [0, 200],
+          fontWeight: '600',
+          lineDash: [0, 300],
           lineDashOffset: 0,
           fill: 'transparent',
-          stroke: '#bc41a0',
+          stroke: '#ffffff',
           lineWidth: 1
         },
         keyframeAnimation: {
@@ -42,7 +42,7 @@ const option = reactive({
               style: {
                 fill: 'transparent',
                 lineDashOffset: 200,
-                lineDash: [200, 0]
+                lineDash: [300, 0]
               }
             },
             {
@@ -55,7 +55,7 @@ const option = reactive({
             {
               percent: 1,
               style: {
-                fill: '#f16b09'
+                fill: '#ffffff'
               }
             }
           ]

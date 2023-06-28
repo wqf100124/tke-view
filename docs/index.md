@@ -18,7 +18,7 @@ hero:
       link: /docker/setup
 ---
 
-<Brand text="TKE MOVE BEYOND"></Brand>
+<Brand text="MOVE BEYOND"></Brand>
 
 <script setup>
 import Brand from './components/brand.vue';
