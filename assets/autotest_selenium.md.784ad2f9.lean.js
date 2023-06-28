@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as e,Q as l}from"./chunks/framework.db0ccc71.js";const d=JSON.parse('{"title":"Selenium","description":"","frontmatter":{},"headers":[],"relativePath":"autotest/selenium.md"}'),n={name:"autotest/selenium.md"},o=l("",35),p=[o];function t(r,c,i,D,y,C){return a(),e("div",null,p)}const h=s(n,[["render",t]]);export{d as __pageData,h as default};

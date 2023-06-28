@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,Q as l}from"./chunks/framework.db0ccc71.js";const i=JSON.parse('{"title":"代码示例","description":"","frontmatter":{},"headers":[],"relativePath":"rabbitmq/code.md"}'),p={name:"rabbitmq/code.md"},o=l("",9),e=[o];function t(c,D,r,y,F,C){return n(),a("div",null,e)}const E=s(p,[["render",t]]);export{i as __pageData,E as default};

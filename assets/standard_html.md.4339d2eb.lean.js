@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,Q as l}from"./chunks/framework.db0ccc71.js";const A=JSON.parse('{"title":"Html标签","description":"","frontmatter":{},"headers":[],"relativePath":"standard/html.md"}'),p={name:"standard/html.md"},o=l("",23),e=[o];function t(c,D,r,F,y,C){return a(),n("div",null,e)}const h=s(p,[["render",t]]);export{A as __pageData,h as default};

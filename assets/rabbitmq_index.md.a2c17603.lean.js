@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as e,Q as n}from"./chunks/framework.db0ccc71.js";const D=JSON.parse('{"title":"RabbitMQ","description":"","frontmatter":{},"headers":[],"relativePath":"rabbitmq/index.md"}'),o={name:"rabbitmq/index.md"},l=n("",13),p=[l];function t(c,r,i,d,h,y){return a(),e("div",null,p)}const b=s(o,[["render",t]]);export{D as __pageData,b as default};

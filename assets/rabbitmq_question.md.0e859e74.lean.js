@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as e,Q as o}from"./chunks/framework.db0ccc71.js";const u=JSON.parse('{"title":"常见问题","description":"","frontmatter":{},"headers":[],"relativePath":"rabbitmq/question.md"}'),n={name:"rabbitmq/question.md"},t=o("",9),l=[t];function p(c,r,i,d,h,C){return s(),e("div",null,l)}const y=a(n,[["render",p]]);export{u as __pageData,y as default};

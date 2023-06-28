@@ -1,1 +1,0 @@
-import{_ as i,o as l,c as e,Q as a}from"./chunks/framework.db0ccc71.js";const f=JSON.parse('{"title":"介绍","description":"","frontmatter":{},"headers":[],"relativePath":"view/info.md"}'),t={name:"view/info.md"},r=a("",6),s=[r];function o(c,n,d,m,p,h){return l(),e("div",null,s)}const u=i(t,[["render",o]]);export{f as __pageData,u as default};

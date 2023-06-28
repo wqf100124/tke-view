@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,Q as o}from"./chunks/framework.db0ccc71.js";const i=JSON.parse('{"title":"项目配置","description":"","frontmatter":{},"headers":[],"relativePath":"rabbitmq/config.md"}'),p={name:"rabbitmq/config.md"},l=o("",13),e=[l];function t(c,D,r,F,y,C){return a(),n("div",null,e)}const u=s(p,[["render",t]]);export{i as __pageData,u as default};

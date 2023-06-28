@@ -1,1 +1,0 @@
-import{_ as e,o,c as r,Q as a}from"./chunks/framework.db0ccc71.js";const p=JSON.parse('{"title":"Docker","description":"","frontmatter":{},"headers":[],"relativePath":"docker/index.md"}'),t={name:"docker/index.md"},c=a("",7),n=[c];function i(d,s,l,k,_,h){return o(),r("div",null,n)}const b=e(t,[["render",i]]);export{p as __pageData,b as default};

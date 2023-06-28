@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as e,Q as n}from"./chunks/framework.db0ccc71.js";const D=JSON.parse('{"title":"基础命令","description":"","frontmatter":{},"headers":[],"relativePath":"view/command.md"}'),o={name:"view/command.md"},l=n("",12),t=[l];function p(c,r,i,C,d,h){return a(),e("div",null,t)}const A=s(o,[["render",p]]);export{D as __pageData,A as default};
