@@ -6,4 +6,4 @@ COPY ./src /tmp
 RUN apk update \
     && chmod +x /tmp/install.sh \
     && /tmp/install.sh
-ENTRYPOINT ["/run/entrypoint.sh"]
+CMD ["/bin/sh", "-c", "/run/entrypoint.sh"]

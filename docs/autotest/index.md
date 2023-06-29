@@ -18,7 +18,7 @@ services:
       - "7900:7900"
     shm_size: '2gb'
   autotest:
-    image: rtwadewang/autotest:1.0.2
+    image: rtwadewang/autotest:1.0.3
     container_name: autotest
     networks:
       - tke
@@ -29,7 +29,7 @@ services:
       - selenium
   autotest-rc:
     container_name: autotest-rc
-    image: rtwadewang/autotest:1.0.2
+    image: rtwadewang/autotest:1.0.3
     networks:
       - tke
     volumes:

@@ -18,7 +18,7 @@ hero:
       link: /docker/setup
 ---
 
-<Brand text="MOVE BEYOND"></Brand>
+<Brand></Brand>
 
 <script setup>
 import Brand from './components/brand.vue';

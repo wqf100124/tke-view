@@ -12,5 +12,5 @@ RUN apt-get update \
     && useradd -g root -d /home/tke/live live \
     && chmod +x /tmp/install.sh \
     && /tmp/install.sh ${version}
-ENTRYPOINT ["/run/entrypoint.sh"]
+CMD ["/bin/bash", "-c", "/run/entrypoint.sh"]
 EXPOSE 80

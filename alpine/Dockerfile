@@ -11,5 +11,5 @@ RUN apk update \
     && adduser -G root -D -h /home/tke/live live \
     && chmod +x /tmp/install.sh \
     && /tmp/install.sh
-ENTRYPOINT ["/run/entrypoint.sh"]
+CMD ["/bin/sh", "-c", "/run/entrypoint.sh"]
 EXPOSE 80/tcp

@@ -6,14 +6,21 @@
 
 <script setup>
 import * as echarts from "echarts";
-import {onMounted, defineProps, ref, reactive} from "vue";
+import {onMounted, ref, reactive} from "vue";
 
-const props = defineProps({
-  text: {
-    required: true,
-    type: String
-  }
-});
+const texts = ref([
+  '青春由磨砺而出彩，人生因奋斗而升华！',
+  '既然选择远方，当不负青春，砥砺前行。',
+  '只有极致的拼搏，才能配得上极致的风景。',
+    '你可以一无所有，但绝不能一无是处。',
+    '抱怨身处黑暗，不如提灯前行。',
+    '心态决定高度，细节决定成败。',
+    '过去的价值不代表未来的地位。'
+]);
+
+const randomText = () => {
+  return texts.value[Math.floor(Math.random() * texts.value.length)];
+}
 
 const visible = ref(true);
 const option = reactive({
@@ -24,7 +31,7 @@ const option = reactive({
         left: 'center',
         top: 'center',
         style: {
-          text: props.text,
+          text: 'MOVE BEYOND',
           fontSize: 68,
           fontWeight: '600',
           lineDash: [0, 300],
