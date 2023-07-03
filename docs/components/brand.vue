@@ -37,7 +37,7 @@ const option = reactive({
           lineDash: [0, 300],
           lineDashOffset: 0,
           fill: 'transparent',
-          stroke: '#ffffff',
+          stroke: '#f16b08',
           lineWidth: 1
         },
         keyframeAnimation: {
@@ -62,7 +62,7 @@ const option = reactive({
             {
               percent: 1,
               style: {
-                fill: '#ffffff'
+                fill: '#f16b08'
               }
             }
           ]

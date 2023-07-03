@@ -52,7 +52,7 @@ export default withMermaid(
                             link: '/solr/'
                         },
                         {
-                            text: 'View Docker Compose',
+                            text: 'Docker Compose',
                             link: '/compose'
                         },
                     ],
@@ -63,8 +63,6 @@ export default withMermaid(
                         {text: '开发规范(Toolbox)', link: '/standard/toolbox'},
                         {text: 'Html标签', link: '/standard/html'},
                         {text: 'UI标准', link: '/standard/ui'},
-                        {text: '公共组件', link: '/standard/component'},
-                        {text: '数据库操作', link: '/standard/db'},
                     ],
                 },
                 // {
@@ -258,8 +256,6 @@ export default withMermaid(
                             {text: '开发规范(Toolbox)', link: '/standard/toolbox'},
                             {text: 'Html标签', link: '/standard/html'},
                             {text: 'UI标准', link: '/standard/ui'},
-                            {text: '公共组件', link: '/standard/component'},
-                            {text: '数据库操作', link: '/standard/db'},
                         ]
                     }
                 ],
