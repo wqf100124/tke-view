@@ -20,7 +20,7 @@ $ php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
 
 消费队列：
 ```sh
-$ php sys/libs/logic/Util/MQ/MessageProcessor.php usa TopicKey
+$ php sys/libs/logic/Util/MQ/MessageProcessor.php hk DemoTopic
 ```
 
 ## 测试环境
@@ -34,21 +34,21 @@ Dev环境的MQ消费进程每天凌晨都会自动停止，所以在Dev环境测
 - [Dev环境Jenkins](https://jenkins.tkeasia.com/job/Dev_For_Once_Scripts/build)
 - [Dev2环境Jenkins](https://jenkins.tkeasia.com/job/Dev2%20Deploy%20For%20Once%20Scripts/build)
 
-打开上面的链接，在 `ScriptNameList` 输入框中粘贴以下命令并运行（注意替换 TopicKey）。
+打开上面的链接，在 `ScriptNameList` 输入框中粘贴以下命令并运行（注意替换 Topic）。
 
-以 usa 为例：
+以 Italy 国家为例：
 
 启动消费进程：
 ```
-usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:TopicKey
+italy:::sys/libs/logic/Util/MQ/ConsumeMediator.php:start:DemoTopic
 ```
 
 停止消费进程：
 ```
-usa:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:TopicKey
+italy:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:DemoTopic
 ```
 
 查看消费进程（使用JumpServer）：
 ```sh
-$ ps -ef | grep TopicKey
+$ ps -ef | grep DemoTopic
 ```

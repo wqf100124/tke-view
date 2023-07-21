@@ -49,7 +49,7 @@ $rabbitMQConfig = [
     "MQVendor": "rabbitmq",
     "WaitForConfirmTimeout": 5,
     "Topics": {
-        "ExampleTopicKey": {
+        "DemoTopic": {
             "JSONSchema": "",
             "Producer": {
                 "Route": "QueueRoute",
@@ -63,11 +63,11 @@ $rabbitMQConfig = [
                 "PoolSize": 1,
                 "SleepSeconds": 60,
                 "Handlers": [
-                    "\VIEW\Amqp\ExampleQueueHandler"
+                    "\\VIEW\\Amqp\\DemoQueueHandler"
                 ],
                 "RunTime": ["00:00-23:59"]
             }
-        },
+        }
     }
 }
 ```

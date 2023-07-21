@@ -9,7 +9,7 @@
 :::
 
 1.编辑你的 `docker-compose.yml` 文件，在 `service` 配置项中添加 RabbitMQ 的配置信息。
-```yaml{2-11}
+```yaml{1}
 services:
   # RabbitMQ
   rabbitmq:

@@ -21,22 +21,22 @@ try {
     // 消息处理类型
     $type = in_array($_GET['type'], ['unpredictable', 'retry']) ? $_GET['type'] : 'normal';
 
-    foreach (range(1, 3) as $number) {
+    foreach (range(1, 3) as $id) {
         // 构建消息体
         $message = new Message([
-            'id'      => $number,
+            'id'      => $id,
             'type'    => $type,
-            'content' => 'example',
+            'content' => 'Example Message.',
             'time'    => time()
         ]);
 
         // 分发消息到队列
-        (MessageDispatcher::getInstance())->dispatch('ExampleTopicKey', $message);
+        (MessageDispatcher::getInstance())->dispatch('DemoTopic', $message);
     }
 
     echo "success!";
-} catch (Exception $e) {
-    echo $e->getMessage();
+} catch (\Throwable $t) {
+    echo $t->getMessage();
 }
 ```
 
@@ -44,7 +44,7 @@ try {
 
 > 从消息队列中取出数据
 
-文件路径：`sys/libs/logic/Amqp/ExampleQueueHandler.php`
+文件路径：`sys/libs/logic/Amqp/DemoQueueHandler.php`
 
 ```php
 <?php
@@ -56,7 +56,7 @@ use VIEW\Util\MQ\Exception\UnRecoverableException;
 use VIEW\Util\MQ\Message;
 use VIEW\Util\MQ\MessageHandler;
 
-class ExampleQueueHandler implements MessageHandler
+class DemoQueueHandler implements MessageHandler
 {
     /**
      * 队列消息处理
