@@ -56,10 +56,17 @@ sed -i "s/request_order = \"GP\"/request_order = \"GPC\"/g" /etc/php/${1}/apache
 sed -i "s/max_execution_time = 30/max_execution_time = 1800/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT/error_reporting = E_ALL/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/register_argc_argv = Off/register_argc_argv = On/g" /etc/php/${1}/apache2/php.ini
-sed -i "s/post_max_size = 8M/post_max_size = 150M/g" /etc/php/${1}/apache2/php.ini
+sed -i "s/post_max_size = 8M/post_max_size = 200M/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/enable_dl = Off/enable_dl = On/g" /etc/php/${1}/apache2/php.ini
-sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 150M/g" /etc/php/${1}/apache2/php.ini
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 200M/g" /etc/php/${1}/apache2/php.ini
+
+if [ $1 == '8.2' ]
+then
+mv /tmp/php_pdflib_820_nts.so /usr/lib/php/20220829/pdflib.so
+else
 mv /tmp/php_pdflib_740_nts.so /usr/lib/php/20190902/pdflib.so
+fi
+
 echo "extension=pdflib.so" >> /etc/php/${1}/apache2/php.ini
 ln --force /etc/php/${1}/apache2/php.ini /etc/php/${1}/cli/php.ini
 # ---------- composer ----------
