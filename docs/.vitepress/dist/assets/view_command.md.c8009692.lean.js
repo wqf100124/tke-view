@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as o,Q as e}from"./chunks/framework.26d96b30.js";const F=JSON.parse('{"title":"基础命令","description":"","frontmatter":{},"headers":[],"relativePath":"view/command.md","filePath":"view/command.md"}'),n={name:"view/command.md"},l=e("",12),p=[l];function t(c,r,i,d,y,E){return a(),o("div",null,p)}const v=s(n,[["render",t]]);export{F as __pageData,v as default};

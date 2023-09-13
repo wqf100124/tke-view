@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "2739063b-7900-4afd-895d-ae5c219ac5d3",
+		"name": "WSO2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2501878"
+	},
+	"item": [
+		{
+			"name": "本地开发环境",
+			"item": [
+				{
+					"name": "对外提供接口",
+					"item": [
+						{
+							"name": "请求View API(直连)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{HOST_VIEW}}/sharp/api/demo",
+									"host": [
+										"{{HOST_VIEW}}"
+									],
+									"path": [
+										"sharp",
+										"api",
+										"demo"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "error",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "basic",
+						"basic": [
+							{
+								"key": "username",
+								"value": "API_DEMO",
+								"type": "string"
+							},
+							{
+								"key": "password",
+								"value": "123456",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "使用外部接口",
+					"item": [
+						{
+							"name": "获取AccessToken",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Xh6_eLPWaPBbUMfkUld72GG6JL4a",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "Gyf9T2mZRqiyC7z7kw8_g8ngxnoa",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_TOKEN}}/oauth2/token",
+									"host": [
+										"{{HOST_TOKEN}}"
+									],
+									"path": [
+										"oauth2",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "请求WSO2 API(直连)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_API}}/demo/1.0",
+									"host": [
+										"{{HOST_API}}"
+									],
+									"path": [
+										"demo",
+										"1.0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "请求WSO2 API(View)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_VIEW}}/wso2.php",
+									"host": [
+										"{{HOST_VIEW}}"
+									],
+									"path": [
+										"wso2.php"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "EI开发",
+					"item": [
+						{
+							"name": "测试API",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "demo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST_EI}}/demo",
+									"host": [
+										"{{HOST_EI}}"
+									],
+									"path": [
+										"demo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Dev测试环境",
+			"item": [
+				{
+					"name": "AP",
+					"item": [
+						{
+							"name": "1.获取AccessToken",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_EA_DEV}}/token",
+									"host": [
+										"{{HOST_EA_DEV}}"
+									],
+									"path": [
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "EA",
+					"item": [
+						{
+							"name": "1.获取AccessToken",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST_EA_DEV}}/token",
+									"host": [
+										"{{HOST_EA_DEV}}"
+									],
+									"path": [
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer"
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST_API",
+			"value": "https://localhost:8243",
+			"type": "string"
+		},
+		{
+			"key": "HOST_TOKEN",
+			"value": "https://localhost:9443",
+			"type": "string"
+		},
+		{
+			"key": "HOST_VIEW",
+			"value": "http://hk.preview.test",
+			"type": "string"
+		},
+		{
+			"key": "HOST_EI",
+			"value": "http://localhost:8290"
+		},
+		{
+			"key": "HOST_API_8280",
+			"value": "http://localhost:8280",
+			"type": "string"
+		},
+		{
+			"key": "HOST_AP_DEV",
+			"value": "https://apiapdev.fos.tkeasia.com",
+			"type": "string"
+		},
+		{
+			"key": "HOST_EA_DEV",
+			"value": "https://apieadev.tkeview.com",
+			"type": "string"
+		},
+		{
+			"key": "HOST_EA_LIVE",
+			"value": "https://apina.tkeview.com",
+			"type": "string"
+		}
+	]
+}

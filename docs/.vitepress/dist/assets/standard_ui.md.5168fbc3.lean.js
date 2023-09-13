@@ -1,0 +1,1 @@
+import{_ as t,o as a,c as e,Q as r}from"./chunks/framework.26d96b30.js";const u=JSON.parse('{"title":"UI标准","description":"","frontmatter":{},"headers":[],"relativePath":"standard/ui.md","filePath":"standard/ui.md"}'),s={name:"standard/ui.md"},_=r("",3),o=[_];function n(c,i,d,l,p,m){return a(),e("div",null,o)}const f=t(s,[["render",n]]);export{u as __pageData,f as default};
