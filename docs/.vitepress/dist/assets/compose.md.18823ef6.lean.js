@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,Q as p}from"./chunks/framework.26d96b30.js";const v=JSON.parse('{"title":"Docker Compose","description":"","frontmatter":{},"headers":[],"relativePath":"compose.md","filePath":"compose.md"}'),l={name:"compose.md"},o=p("",23),e=[o];function c(t,r,E,y,i,d){return n(),a("div",null,e)}const h=s(l,[["render",c]]);export{v as __pageData,h as default};

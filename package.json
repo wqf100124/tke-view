@@ -6,6 +6,7 @@
   "author": "rt.wadewang@rayootech.com",
   "license": "ISC",
   "repository": "git@github.com:wqf100124/tke-view.git",
+  "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
@@ -17,12 +18,12 @@
   },
   "devDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "echarts": "^5.4.2",
-    "vitepress": "^1.0.0-beta.3",
-    "vitepress-plugin-mermaid": "^2.0.8",
+    "echarts": "^5.4.3",
+    "vitepress": "^1.0.0-rc.12",
+    "vitepress-plugin-mermaid": "^2.0.14",
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "mermaid": "9.1.7"
+    "mermaid": "10.4.0"
   }
 }
