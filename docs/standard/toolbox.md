@@ -1,8 +1,8 @@
-# VIEW develop team toolbox talk <Badge type="tip" text="v1.6" />
+# VIEW develop team toolbox talk <Badge type="tip" text="v1.9" />
 
 > 本文档的目的是简单地回顾开发规范，能让开发人员注意到那些在日常工作中很重要但又经常被忽略的点。为了达到这一目标，我们要求开发团队负责人在每次会议开始时与开发人员一起审阅文档中的主题，以加强开发规范。
 
-在线文档: [VIEW develop team toolbox talk v1.6.pptx](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/_layouts/15/Doc.aspx?sourcedoc=%7BFB6D98AF-AEF1-43E3-B507-7D96E159BD5E%7D&file=VIEW%20develop%20team%20toolbox%20talk%20v1.6_d.pptx&action=edit&mobileredirect=true)
+在线文档: [VIEW develop team toolbox talk v1.9.pptx](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/_layouts/15/Doc.aspx?sourcedoc=%7B6BEE0BD3-9A4F-4858-BFE9-F67F673FAFEC%7D&file=VIEW%20develop%20team%20toolbox%20talk%20v1.9.pptx&action=edit&mobileredirect=true)
 
 ## 1.命名规范(Naming Convention)
 
@@ -171,7 +171,12 @@ logger_error(
 - 使用slave(从库)进行导出操作
 - 必要时应该对查询的数据进行缓存，以提高的sql性能
 - 在更新 **子表** 数据时不要这样写: 删除所有，然后再插入。因为数据一旦删除，就无法再恢复
-- :new: 当sql中有更新或删除操作时，在部署patch的时候应该经过 **特殊的 Team Leader** 的批准，避免由于错误的sql语句导致大量的数据出现问题。例如：大部分用户组被删除
+- :new: 当SQL中有更新或删除的操作时，在部署patch的时候应该经过 **特殊的 Team Leader** 的批准，同时要和 **BI团队** 进行沟通。避免由于错误的sql语句导致大量的数据出现问题。例如：大部分用户组被删除
+- :new: 如果没有特别的需求，尽量避免在SELECT查询语句中去使用 `更新锁`，因为这可能会导致数据库锁。
+  示例如下：
+```sql
+SELECT * FROM `vfm_assadocketnumber` WHERE `branch_name` = 'CD' FOR UPDATE;
+```
 
 ## 9.UI设计(UI DESIGN)
 
@@ -180,8 +185,9 @@ logger_error(
 - 按照VIEW标准UI模板设计新页面，具体可以参考: [VIEW_UI_standard_web](https://tech.tkeasia.com/tk_VIEW_UI_standard_web_2.53/formelements.html)
 - 注意页面上元素的对齐方式(数字-右，字符串-左)
 - 遵循 `system setting` 中设置的日期和货币格式(十进制，千位分隔符)，以支持全球化
-- 在一次操作中尽可能地计算和保存单击次数
+- 在页面操作中应该尽可能地减少用户的点击次数
 - 新页面的设计和Review应该让UI设计师参与
+- :new: 如果你不知道如何为一个功能设计UI，那就让 **SWAT团队** 参与进来吧
 
 ## 10.VIEW公共组件和库(GENERIC VIEW COMPONENT AND LIBRARIES)
 
@@ -201,8 +207,7 @@ logger_error(
   - [TCPDF](https://tcpdf.org/)/[SPOUT](https://opensource.box.com/spout/)/[PHPOffice](https://github.com/PHPOffice/PHPWord)/…
   - [JQuery](https://jquery.com/)/[Bootstrap](https://getbootstrap.com/)/[DataTables](https://datatables.net/)/…
 - 鼓励引入库来解决常见问题，比如前端的datetime库(moment.js已经在开发中使用了)
-- :new: 对于所有新功能的开发和重构需要使用 [Laravel](https://laravel.com/) 框架
-
+- 对于所有新功能的开发和重构需要使用 [Laravel](https://laravel.com/) 框架
 
 ## 11.VIEW代码(VIEW SNIPPET)
 
@@ -216,6 +221,8 @@ logger_error(
 - 邮件API(不能在测试环境中直接向真实用户发送邮件)
 - 使用 [SharePoint](https://tke.sharepoint.com/:p:/r/sites/tkeapitapplication/view/Shared%20Documents/Guidelines%20and%20Standards) 上的最新文档模板
 - 在使用CURL请求时，应该设置和显示超时时间，否则将导致请求无响应，对用户不友好
+- 遵循通用的方法来实现通用的功能，而不是编写自己的代码，以确保该特性对所有模块都是通用的，例如页面的加载动画。
+- :new: 所有CR类型的ITCM必须提供`FS`或`TS`，并且所有设计的更改必须要得到TKE领导的认可，同时及时的更新对应文件文件。不要在ITCM中上传不相关或空的文件模板。
 
 错误示例：
 
@@ -266,5 +273,8 @@ day = this.commonService.dateformat(new Date(new Date(day.replace(/\-/g, "/")).g
 
 - 代码部署live环境成功后要及时地去进行跟进和测试
 - 测试覆盖率(测试用例应该覆盖所有的更改，以达到100%的代码覆盖率)
-- :new: 对于像数据迁移等特殊任务，必须使用工具如excel在迁移前后进行完整的数据比较
+- 对于像数据迁移等特殊任务，必须使用工具如excel在迁移前后进行完整的数据比较
+- 在测试阶段应该检测异常和捕获错误，并采取相应的措施去解决。
 - 保证执行的方法在测试环境和生产环境是一致的。例如：不要在dev2中使用模拟页面来测试后台任务
+- 测试的时候应该对所更改的逻辑进行完整的流程测试，因为功能影响可能是向上或向下。
+- 对于公共模块的更改，如header或footer，应该通知对应模块的负责人员进行更改并要求他们去进行适当的测试。
