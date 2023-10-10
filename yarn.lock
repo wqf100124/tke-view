@@ -318,12 +318,30 @@
   dependencies:
     "@types/ms" "*"
 
+"@types/linkify-it@*":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/linkify-it/-/linkify-it-3.0.3.tgz#15a0712296c5041733c79efe233ba17ae5a7587b"
+  integrity sha512-pTjcqY9E4nOI55Wgpz7eiI8+LzdYnw3qxXCfHyBDdPbYvbyLgWLJGh8EdPvqawwMK1Uo1794AUkkR38Fr0g+2g==
+
+"@types/markdown-it@^13.0.1":
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@types/markdown-it/-/markdown-it-13.0.2.tgz#1557e77789fc86e93fd4b8f0f8f8535ec97a8518"
+  integrity sha512-Tla7hH9oeXHOlJyBFdoqV61xWE9FZf/y2g+gFVwQ2vE1/eBzjUno5JCd3Hdb5oATve5OF6xNjZ/4VIZhVVx+hA==
+  dependencies:
+    "@types/linkify-it" "*"
+    "@types/mdurl" "*"
+
 "@types/mdast@^3.0.0":
   version "3.0.12"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.12.tgz#beeb511b977c875a5b0cc92eab6fcac2f0895514"
   integrity sha512-DT+iNIRNX884cx0/Q1ja7NyUPpZuv0KPyL5rGNxm1WC1OtHstl7n4Jb7nk+xacNShQMbczJjt8uFzznpp6kYBg==
   dependencies:
     "@types/unist" "^2"
+
+"@types/mdurl@*":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/mdurl/-/mdurl-1.0.3.tgz#d0aefccdd1a96f4bec76047d6b314601f0b0f3de"
+  integrity sha512-T5k6kTXak79gwmIOaDF2UUQXFbnBE0zBUzF20pz7wDYu0RQMzWg+Ml/Pz50214NsFHBITkoi5VtdjFZnJ2ijjA==
 
 "@types/ms@*":
   version "0.7.31"
@@ -1014,10 +1032,10 @@ mdast-util-to-string@^3.1.0:
   dependencies:
     "@types/mdast" "^3.0.0"
 
-mermaid@10.4.0:
-  version "10.4.0"
-  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-10.4.0.tgz#f89bf0ada161cbbe4dba2776e805119f7245a102"
-  integrity sha512-4QCQLp79lvz7UZxow5HUX7uWTPJOaQBVExduo91tliXC7v78i6kssZOPHxLL+Xs30KU72cpPn3g3imw/xm/gaw==
+mermaid@10.5.0:
+  version "10.5.0"
+  resolved "https://registry.yarnpkg.com/mermaid/-/mermaid-10.5.0.tgz#e90512a65b5c6e29bd86cd04ce45aa31da2be76d"
+  integrity sha512-9l0o1uUod78D3/FVYPGSsgV+Z0tSnzLBDiC9rVzvelPxuO80HbN1oDr9ofpPETQy9XpypPQa26fr09VzEPfvWA==
   dependencies:
     "@braintree/sanitize-url" "^6.0.1"
     "@types/d3-scale" "^4.0.3"
@@ -1375,20 +1393,21 @@ vite@^4.4.9:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitepress-plugin-mermaid@^2.0.14:
-  version "2.0.14"
-  resolved "https://registry.yarnpkg.com/vitepress-plugin-mermaid/-/vitepress-plugin-mermaid-2.0.14.tgz#da96c9a2cd6c374006f14feb78011b3e2ad8d94a"
-  integrity sha512-W3MEzrOB0xH8cSsc3ztliVPldTTr8TPZ4KGqC0uNmRKNbwsqT2Tl96R4ZXgqARLLawcb+0vyjU9wnOALRYTdxQ==
+vitepress-plugin-mermaid@^2.0.15:
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/vitepress-plugin-mermaid/-/vitepress-plugin-mermaid-2.0.15.tgz#32c48cacfe660129fb35b5ea7fb102cf3f43c7b7"
+  integrity sha512-63tTqK4WvYXSnT1jY+Ex0htUCb4XGQmHeIexvqZHkVOBruFiDFG0f+ishLnS1F+1IYkVkyYHacv7PDX3wUP9hQ==
   optionalDependencies:
     "@mermaid-js/mermaid-mindmap" "^9.3.0"
 
-vitepress@^1.0.0-rc.12:
-  version "1.0.0-rc.12"
-  resolved "https://registry.yarnpkg.com/vitepress/-/vitepress-1.0.0-rc.12.tgz#474fbbc248aad02cf27246badc266dd0ebadc3e2"
-  integrity sha512-mZknN5l9lgbBjXwumwdOQQDM+gPivswFEykEQeenY0tv7eocS+bb801IpFZT3mFV6YRhSddmbutHlFgPPADjEg==
+vitepress@^1.0.0-rc.20:
+  version "1.0.0-rc.20"
+  resolved "https://registry.yarnpkg.com/vitepress/-/vitepress-1.0.0-rc.20.tgz#a5570f929c52cef010da26039cf9122c11e160a1"
+  integrity sha512-CykMUJ8JLxLcGWek0ew3wln4RYbsOd1+0YzXITTpajggpynm2S331TNkJVOkHrMRc6GYe3y4pS40GfgcW0ZwAw==
   dependencies:
     "@docsearch/css" "^3.5.2"
     "@docsearch/js" "^3.5.2"
+    "@types/markdown-it" "^13.0.1"
     "@vue/devtools-api" "^6.5.0"
     "@vueuse/core" "^10.4.1"
     "@vueuse/integrations" "^10.4.1"
