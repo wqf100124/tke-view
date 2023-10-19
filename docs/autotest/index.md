@@ -5,7 +5,7 @@
 version: "3"
 services:
   selenium:
-    image: selenium/standalone-edge
+    image: selenium/standalone-edge:4.3.0
     container_name: selenium
     networks:
       tke:
