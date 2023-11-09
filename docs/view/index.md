@@ -4,28 +4,27 @@
 从 `2.0.0` 版本开始，支持 `PHP8.2` 的环境！
 :::
 
-[//]: # (::: warning 注意：)
+::: warning 注意：
+容器中的项目目录不包含 `core` 目录，`sites` 目录用来放置不同国家下的配置文件。
+:::
 
-[//]: # (从 `1.0.2` 版本开始，容器中的项目路径不再包含 `core` 目录，同时增加了 `sites` 目录用来放置国家配置文件。)
-
-[//]: # (:::)
-
-新的目录结构如下：
+目录结构如下：
 ```ini
-sites
-  global
-  hk
-  china
-  ...
-local
-  sys
-  web
-  ...
-preview
-  sys
-  web
-  ...
-...
+/home/tke/
+    sites/
+        global
+        hk
+        china
+        ...
+    local/
+        sys
+        web
+        ...
+    preview/
+        sys
+        web
+        ...
+    ...
 ```
 
 ## 创建 View 容器
@@ -105,14 +104,14 @@ $ docker-compose -p tke up -d
 127.0.0.1       hk.local.test
 127.0.0.1       china.local.test
 127.0.0.1       global.local.test
-```
-
-::: details 配置Dev/Dev2/RC/Live等环境（可选）:
-```ini
 # Preview站点
 127.0.0.1       hk.preview.test
 127.0.0.1       china.preview.test
 127.0.0.1       global.preview.test
+```
+
+::: details 配置Dev2/RC等环境（可选）:
+```ini
 # Dev2站点
 127.0.0.1       hk.dev2.test
 127.0.0.1       china.dev2.test
