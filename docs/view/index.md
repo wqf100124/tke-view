@@ -1,11 +1,11 @@
-# 本地环境 <Badge type="tip" text="v1.0.5" />
+# 本地环境 <Badge type="tip" text="v2.0.0" />
 
 ::: tip 提示：
-从 `2.0.0` 版本开始，支持 `PHP8.2` 的环境！
+从 `2.0.0` 版本开始，PHP升级至 `PHP8.2`，如需使用 `PHP7.4` 的环境，可以使用 `1.0.5` 或其以下版本的镜像！
 :::
 
 ::: warning 注意：
-容器中的项目目录不包含 `core` 目录，`sites` 目录用来放置不同国家下的配置文件。
+映射项目路径时不要包含 `core` 目录，`sites` 目录用来放置各个国家的配置文件，为多个环境所共享。
 :::
 
 目录结构如下：
@@ -39,7 +39,7 @@
 version: "3"
 services:
   view:
-    image: rtwadewang/view:1.0.5
+    image: rtwadewang/view:2.0.0
     container_name: view
     volumes:
       - sites:/home/tke/sites
