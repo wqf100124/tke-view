@@ -7,7 +7,7 @@
 version: "3"
 services:
   am:
-    image: wso2/wso2am:4.1.0
+    image: wso2/wso2am:4.0.0
     container_name: am
     networks:
       tke:
@@ -21,10 +21,10 @@ services:
       - china.local.test:172.16.1.80
       - global.local.test:172.16.1.80
   mi:
-    image: wso2/wso2mi:4.1.0
+    image: wso2/wso2mi:4.0.0
     container_name: mi
     volumes:
-      - 本机EI导出目录:/home/wso2carbon/wso2mi-4.1.0/repository/deployment/server/carbonapps
+      - 本机EI导出目录:/home/wso2carbon/wso2mi-4.0.0/repository/deployment/server/carbonapps
     networks:
       tke:
         ipv4_address: 172.16.1.90
