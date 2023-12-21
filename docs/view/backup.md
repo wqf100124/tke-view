@@ -23,7 +23,7 @@ $ docker run -d ^
     -v <本机dev2代码目录>:/home/tke/dev2 ^
     -v <本机rc代码目录>:/home/tke/rc ^
     -v <本机live代码目录>:/home/tke/live ^
-    rtwadewang/view:2.0.0
+    rtwadewang/view:2.0.1
 ```
 
 MacOS/Linux
@@ -39,5 +39,5 @@ $ docker run -d \
     -v <本机dev2代码目录>:/home/tke/dev2 \
     -v <本机rc代码目录>:/home/tke/rc \
     -v <本机live代码目录>:/home/tke/live \
-    rtwadewang/view:2.0.0
+    rtwadewang/view:2.0.1
 ```

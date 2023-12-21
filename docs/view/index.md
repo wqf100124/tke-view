@@ -1,4 +1,4 @@
-# 本地环境 <Badge type="tip" text="v2.0.0" />
+# 本地环境 <Badge type="tip" text="v2.0.1" />
 
 ::: tip 提示：
 从 `2.0.0` 版本开始，PHP升级至 `PHP8.2`，如需使用 `PHP7.4` 的环境，可以使用 `1.0.5` 或其以下版本的镜像！
@@ -39,7 +39,7 @@
 version: "3"
 services:
   view:
-    image: rtwadewang/view:2.0.0
+    image: rtwadewang/view:2.0.1
     container_name: view
     volumes:
       - sites:/home/tke/sites
