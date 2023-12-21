@@ -26,6 +26,7 @@ php${1}-memcached \
 php${1}-mongodb \
 php${1}-mysql \
 php${1}-sqlite3 \
+php${1}-xdebug \
 php${1}-xml \
 php${1}-xmlrpc \
 php${1}-redis \
