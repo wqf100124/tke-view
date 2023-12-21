@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 LABEL author="rt.wadewang"
 LABEL description="View local development environment."
-ARG version="7.4"
+ARG version="8.2"
 WORKDIR /home/tke
 COPY ./src /tmp
 RUN apt-get update \
