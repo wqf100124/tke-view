@@ -59,8 +59,7 @@ sed -i "s/post_max_size = 8M/post_max_size = 200M/g" /etc/php/${1}/apache2/php.i
 sed -i "s/enable_dl = Off/enable_dl = On/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 200M/g" /etc/php/${1}/apache2/php.ini
 # XDEBUG
-mv /tmp/xdebug.ini /etc/php/${1}/cli/conf.d/20-xdebug.ini
-
+mv /tmp/xdebug.ini /etc/php/${1}/mods-available/xdebug.ini
 if [ $1 == '8.2' ]
 then
 mv /tmp/php_pdflib_820_nts.so /usr/lib/php/20220829/pdflib.so
