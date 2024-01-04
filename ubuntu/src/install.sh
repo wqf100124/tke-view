@@ -49,8 +49,6 @@ apt-get install -y memcached
 # ---------- php.ini ----------
 sed -i "s/;date.timezone =/date.timezone = Asia\/Shanghai/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/display_errors = Off/display_errors = On/g" /etc/php/${1}/apache2/php.ini
-sed -i "s/;mbstring.internal_encoding =/mbstring.internal_encoding = \"UTF-8\"/g" /etc/php/${1}/apache2/php.ini
-sed -i "s/;mbstring.http_output =/mbstring.http_output = \"UTF-8\"/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/short_open_tag = Off/short_open_tag = On/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/variables_order = \"GPCS\"/variables_order = \"EGPCS\"/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/request_order = \"GP\"/request_order = \"GPC\"/g" /etc/php/${1}/apache2/php.ini
@@ -60,6 +58,8 @@ sed -i "s/register_argc_argv = Off/register_argc_argv = On/g" /etc/php/${1}/apac
 sed -i "s/post_max_size = 8M/post_max_size = 200M/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/enable_dl = Off/enable_dl = On/g" /etc/php/${1}/apache2/php.ini
 sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 200M/g" /etc/php/${1}/apache2/php.ini
+# XDEBUG
+mv /tmp/xdebug.ini /etc/php/${1}/cli/conf.d/20-xdebug.ini
 
 if [ $1 == '8.2' ]
 then
