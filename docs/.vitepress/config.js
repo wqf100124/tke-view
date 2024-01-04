@@ -65,6 +65,10 @@ export default withMermaid(
                         {text: 'UI标准', link: '/standard/ui'},
                     ],
                 },
+                {
+                    text: '更新日志',
+                    link: '/changelog',
+                },
                 // {
                 //     text: '开发笔记',
                 //     link: '/notes/',
@@ -120,7 +124,7 @@ export default withMermaid(
                                 link: '/view/command'
                             },
                             {
-                                text: '配合IDE使用',
+                                text: 'IDE配置/Xdebug',
                                 link: '/view/ide'
                             },
                             {

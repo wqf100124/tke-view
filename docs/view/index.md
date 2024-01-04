@@ -39,7 +39,7 @@
 version: "3"
 services:
   view:
-    image: rtwadewang/view:2.0.1
+    image: rtwadewang/view:2.0.2
     container_name: view
     volumes:
       - sites:/home/tke/sites
