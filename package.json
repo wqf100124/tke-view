@@ -12,7 +12,7 @@
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "build:ubuntu": "docker build -t rtwadewang/view:2.0.2 -t rtwadewang/view:latest --no-cache ./ubuntu",
-    "build:alpine": "docker build -t rtwadewang/view:1.0.5-alpine -t rtwadewang/view:alpine --no-cache ./alpine",
+    "build:alpine": "docker build -t rtwadewang/view:2.0.2-alpine -t rtwadewang/view:alpine --no-cache ./alpine",
     "build:autotest": "docker build -t rtwadewang/autotest:1.0.3 -t rtwadewang/autotest:latest --no-cache ./autotest"
   },
   "devDependencies": {

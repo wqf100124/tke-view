@@ -17,75 +17,74 @@ sed -i "s/#LoadModule expires_module/LoadModule expires_module/g" /etc/apache2/h
 mv /tmp/vhost/* /etc/apache2/conf.d/
 # ---------- php ----------
 apk add --no-cache \
-    php7 \
-    php7-apache2 \
-    php7-pecl-amqp \
-    php7-pecl-ast \
-    php7-bcmath \
-    php7-bz2 \
-    php7-calendar \
-    php7-ctype \
-    php7-curl \
-    php7-dom \
-    php7-exif \
-    php7-ffi \
-    php7-fileinfo \
-    php7-ftp \
-    php7-gd \
-    php7-gettext \
-    php7-gmp \
-    php7-iconv \
-    php7-imap \
-    php7-json \
-    php7-ldap \
-    php7-mbstring \
-    php7-pecl-mcrypt \
-    php7-pecl-memcache \
-    php7-pecl-memcached \
-    php7-pecl-mongodb \
-    php7-pecl-msgpack \
-    php7-mysqli \
-    php7-openssl \
-    php7-pcntl \
-    php7-pdo_mysql \
-    php7-pdo_sqlite \
-    php7-phar \
-    php7-posix \
-    php7-session \
-    php7-shmop \
-    php7-simplexml \
-    php7-sockets \
-    php7-sodium \
-    php7-sysvmsg \
-    php7-xml \
-    php7-xmlrpc \
-    php7-xmlreader \
-    php7-xmlwriter \
-    php7-xsl \
-    php7-pecl-redis \
-    php7-soap \
-    php7-sqlite3 \
-    php7-sysvsem \
-    php7-tokenizer \
-    php7-zip
-# php7-opcache php7-pecl-ssh2
+    php \
+    php82-apache2 \
+    php82-pecl-amqp \
+    php82-pecl-ast \
+    php82-bcmath \
+    php82-bz2 \
+    php82-calendar \
+    php82-ctype \
+    php82-curl \
+    php82-dom \
+    php82-exif \
+    php82-ffi \
+    php82-fileinfo \
+    php82-ftp \
+    php82-gd \
+    php82-gettext \
+    php82-gmp \
+    php82-iconv \
+    php82-imap \
+    php82-json \
+    php82-ldap \
+    php82-mbstring \
+    php82-pecl-mcrypt \
+    php82-pecl-memcache \
+    php82-pecl-memcached \
+    php82-pecl-mongodb \
+    php82-pecl-msgpack \
+    php82-mysqli \
+    php82-openssl \
+    php82-pcntl \
+    php82-pdo_mysql \
+    php82-pdo_sqlite \
+    php82-phar \
+    php82-posix \
+    php82-session \
+    php82-shmop \
+    php82-simplexml \
+    php82-sockets \
+    php82-sodium \
+    php82-sysvmsg \
+    php82-xml \
+    php82-xmlreader \
+    php82-xmlwriter \
+    php82-xsl \
+    php82-pecl-redis \
+    php82-soap \
+    php82-sqlite3 \
+    php82-sysvsem \
+    php82-tokenizer \
+    php82-zip
+# php82-opcache php82-pecl-ssh2
 # ---------- php.ini ----------
-sed -i "s/;date.timezone =/date.timezone = Asia\/Shanghai/g" /etc/php7/php.ini
-sed -i "s/display_errors = Off/display_errors = On/g" /etc/php7/php.ini
-# sed -i "s/;mbstring.func_overload = 0/mbstring.func_overload = 7/g" /etc/php7/php.ini
-sed -i "s/;mbstring.internal_encoding =/mbstring.internal_encoding = \"UTF-8\"/g" /etc/php7/php.ini
-sed -i "s/;mbstring.http_output =/mbstring.http_output = \"UTF-8\"/g" /etc/php7/php.ini
-sed -i "s/short_open_tag = Off/short_open_tag = On/g" /etc/php7/php.ini
-sed -i "s/variables_order = \"GPCS\"/variables_order = \"EGPCS\"/g" /etc/php7/php.ini
-sed -i "s/request_order = \"GP\"/request_order = \"GPC\"/g" /etc/php7/php.ini
-sed -i "s/max_execution_time = 30/max_execution_time = 1800/g" /etc/php7/php.ini
-sed -i "s/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT/error_reporting = E_ALL/g" /etc/php7/php.ini
-sed -i "s/register_argc_argv = Off/register_argc_argv = On/g" /etc/php7/php.ini
-sed -i "s/post_max_size = 8M/post_max_size = 150M/g" /etc/php7/php.ini
-sed -i "s/enable_dl = Off/enable_dl = On/g" /etc/php7/php.ini
-sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 150M/g" /etc/php7/php.ini
-mv /tmp/php_pdflib.so /usr/lib/php7/modules/pdflib.so
-echo "extension=pdflib.so" >> /etc/php7/conf.d/00_pdflib.ini
+sed -i "s/;date.timezone =/date.timezone = Asia\/Shanghai/g" /etc/php82/php.ini
+sed -i "s/display_errors = Off/display_errors = On/g" /etc/php82/php.ini
+# sed -i "s/;mbstring.func_overload = 0/mbstring.func_overload = 7/g" /etc/php82/php.ini
+sed -i "s/;mbstring.internal_encoding =/mbstring.internal_encoding = \"UTF-8\"/g" /etc/php82/php.ini
+sed -i "s/;mbstring.http_output =/mbstring.http_output = \"UTF-8\"/g" /etc/php82/php.ini
+sed -i "s/short_open_tag = Off/short_open_tag = On/g" /etc/php82/php.ini
+sed -i "s/variables_order = \"GPCS\"/variables_order = \"EGPCS\"/g" /etc/php82/php.ini
+sed -i "s/request_order = \"GP\"/request_order = \"GPC\"/g" /etc/php82/php.ini
+sed -i "s/max_execution_time = 30/max_execution_time = 1800/g" /etc/php82/php.ini
+sed -i "s/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT/error_reporting = E_ALL/g" /etc/php82/php.ini
+sed -i "s/register_argc_argv = Off/register_argc_argv = On/g" /etc/php82/php.ini
+sed -i "s/post_max_size = 8M/post_max_size = 150M/g" /etc/php82/php.ini
+sed -i "s/enable_dl = Off/enable_dl = On/g" /etc/php82/php.ini
+sed -i "s/upload_max_filesize = 2M/upload_max_filesize = 150M/g" /etc/php82/php.ini
+mv /tmp/php_pdflib_820_nts.so /usr/lib/php82/modules/pdflib.so
+echo "extension=pdflib.so" >> /etc/php82/conf.d/00_pdflib.ini
 # ---------- composer ----------
 php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
 php composer-setup.php --install-dir=/usr/bin --filename=composer;

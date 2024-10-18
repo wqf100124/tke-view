@@ -1,4 +1,4 @@
-FROM alpine:3.15
+FROM alpine:3.19
 LABEL author="rt.wadewang"
 LABEL description="View local development environment."
 WORKDIR /home/tke
