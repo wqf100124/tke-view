@@ -1,18 +1,13 @@
 #!/bin/sh
-# /run/init.sh local 80000110
+# /run/init.sh 80000110
 
 if [ ! $1 ]; then
-    echo '缺少环境参数，支持:local/preview/dev2/rc/live';
-    exit 1;
-fi
-
-if [ ! $2 ]; then
     echo '缺少8ID参数';
     exit 1;
 fi
 
-corePath=/home/tke/${1}
-userId=${2}
+corePath=/opt/tk
+userId=${1}
 
 if [ ! "$(ls -A $corePath)" ]; then
     echo "${corePath}目录不存在，请确认是否已经映射代码到容器中";
