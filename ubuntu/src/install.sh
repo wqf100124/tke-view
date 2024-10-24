@@ -48,6 +48,8 @@ cp /etc/apache2/mods-available/proxy_fcgi.load /etc/apache2/mods-enabled/
 cp /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/
 echo "ServerName localhost:80" >> /etc/apache2/apache2.conf
 chown -R 777 /run/apache2
+rm /etc/apache2/sites-enabled/000-default.conf
+mv /tmp/sites/* /etc/apache2/sites-enabled
 # ---------- memcached ----------
 apt-get install -y memcached
 # ---------- php.ini ----------
