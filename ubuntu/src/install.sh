@@ -7,32 +7,40 @@ dpkg-reconfigure -f noninteractive tzdata
 # ---------- php ----------
 apt-get install -y software-properties-common
 add-apt-repository -y ppa:ondrej/php
-apt-get update
 apt-get install -y \
-php${1} \
-php${1}-fpm \
-php${1}-amqp \
-php${1}-ast \
-php${1}-bcmath \
-php${1}-bz2 \
-php${1}-curl \
-php${1}-gd \
-php${1}-gmp \
-php${1}-imap \
-php${1}-ldap \
-php${1}-mbstring \
-php${1}-mcrypt \
-php${1}-memcache \
-php${1}-memcached \
-php${1}-mongodb \
-php${1}-mysql \
-php${1}-sqlite3 \
-php${1}-xdebug \
-php${1}-xml \
-php${1}-xmlrpc \
-php${1}-soap \
-php${1}-solr \
-php${1}-zip
+php"${1}" \
+php"${1}"-fpm \
+php"${1}"-amqp \
+php"${1}"-ast \
+php"${1}"-bcmath \
+php"${1}"-bz2 \
+php"${1}"-curl \
+php"${1}"-gd \
+php"${1}"-gmp \
+php"${1}"-imap \
+php"${1}"-ldap \
+php"${1}"-mbstring \
+php"${1}"-mcrypt \
+php"${1}"-memcache \
+php"${1}"-memcached \
+php"${1}"-mongodb \
+php"${1}"-mysql \
+php"${1}"-sqlite3 \
+php"${1}"-xdebug \
+php"${1}"-xml \
+php"${1}"-xmlrpc \
+php"${1}"-soap \
+php"${1}"-solr \
+php"${1}"-zip
+# ---------- php.ini ----------
+mv /tmp/php.ini /etc/php/"${1}"/cli/php.ini
+mv /tmp/www.conf /etc/php/"${1}"/fpm/pool.d/www.conf
+cp -f /etc/php/"${1}"/cli/php.ini /etc/php/"${1}"/fpm/php.ini
+sed -i "s/{version}/${1}/g" /etc/php/"${1}"/fpm/pool.d/www.conf
+mv /tmp/xdebug.ini /etc/php/"${1}"/mods-available/xdebug.ini
+mv /tmp/pdflib.ini /etc/php/"${1}"/fpm/conf.d/
+cp /etc/php/"${1}"/fpm/conf.d/pdflib.ini /etc/php/"${1}"/cli/conf.d/
+mv /tmp/php_pdflib_820_nts.so /usr/lib/php/20220829/pdflib.so
 # ---------- apache2 ----------
 apt-get install -y apache2
 mv /tmp/apache2.conf /etc/apache2/apache2.conf
@@ -50,13 +58,6 @@ rm /etc/apache2/sites-enabled/000-default.conf
 mv /tmp/sites/* /etc/apache2/sites-enabled
 # ---------- memcached ----------
 apt-get install -y memcached
-# ---------- php.ini ----------
-mv /tmp/php.ini /etc/php/${1}/cli/php.ini
-mv /tmp/www.conf /etc/php/${1}/fpm/pool.d/www.conf
-cp -f /etc/php/${1}/cli/php.ini /etc/php/${1}/fpm/php.ini
-sed -i "s/{version}/${1}/g" /etc/php/${1}/fpm/pool.d/www.conf
-# XDEBUG
-mv /tmp/xdebug.ini /etc/php/${1}/mods-available/xdebug.ini
 # ---------- composer ----------
 php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"
 php composer-setup.php --install-dir=/usr/bin --filename=composer;
