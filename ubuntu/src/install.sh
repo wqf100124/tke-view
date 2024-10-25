@@ -46,8 +46,6 @@ cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/
 cp /etc/apache2/mods-available/expires.load /etc/apache2/mods-enabled/
 cp /etc/apache2/mods-available/proxy_fcgi.load /etc/apache2/mods-enabled/
 cp /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/
-echo "ServerName localhost:80" >> /etc/apache2/apache2.conf
-chown -R 777 /run/apache2
 rm /etc/apache2/sites-enabled/000-default.conf
 mv /tmp/sites/* /etc/apache2/sites-enabled
 # ---------- memcached ----------
@@ -64,10 +62,6 @@ php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');
 php composer-setup.php --install-dir=/usr/bin --filename=composer;
 rm composer-setup.php
 # ---------- init ----------
-mv /tmp/htdocs /var/www/htdocs
-chmod -R 777 /var/www/htdocs
-rm /etc/apache2/sites-enabled/000-default.conf
-mv /tmp/vhost/* /etc/apache2/sites-enabled
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 sed -i "s/{version}/${1}/g" /run/entrypoint.sh
 chmod +x /run/entrypoint.sh
