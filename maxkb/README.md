@@ -4,7 +4,12 @@
 
 构建镜像
 ```shell
-docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb .
+docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb-alpine .
+```
+
+```
+docker run -it --name maxkb -v ~/web/app/ai/MaxKB-main:/opt/maxkb -p 8000:8000 python:3.11-alpine sh
+docker run -it --name maxkb-dev -v ~/web/app/ai/MaxKB-main:/opt/maxkb registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb bash
 ```
 
 创建 docker-compose.yaml 文件
