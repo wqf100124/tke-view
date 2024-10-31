@@ -43,8 +43,7 @@ cp /etc/php/"${1}"/fpm/conf.d/pdflib.ini /etc/php/"${1}"/cli/conf.d/
 mv /tmp/php_pdflib_820_nts.so /usr/lib/php/20220829/pdflib.so
 # ---------- apache2 ----------
 apt-get install -y apache2
-mv /tmp/apache2.conf /etc/apache2/apache2.conf
-sed -i "s/{version}/${1}/g" /etc/apache2/apache2.conf
+mv /tmp/httpd.conf /etc/apache2/apache2.conf
 cp /etc/apache2/mods-available/allowmethods.load /etc/apache2/mods-enabled/
 cp /etc/apache2/mods-available/ext_filter.load /etc/apache2/mods-enabled/
 cp /etc/apache2/mods-available/include.load /etc/apache2/mods-enabled/
