@@ -1,6 +1,6 @@
 #!/bin/sh
 
 #创建venv
-python -m venv /opt/code/venv
+python -m venv /opt/maxkb/venv
 #激活 venv
-source /opt/code/venv/bin/activate
+source /opt/maxkb/venv/bin/activate
