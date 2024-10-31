@@ -4,7 +4,7 @@
 
 构建镜像
 ```shell
-docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb ./src
+docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb ./
 ```
 
 创建 docker-compose.yaml 文件

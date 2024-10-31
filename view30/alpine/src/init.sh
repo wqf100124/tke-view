@@ -1,18 +1,13 @@
 #!/bin/sh
-# /run/init.sh local 80000110
+# /run/init.sh 80000110
 
 if [ ! $1 ]; then
-    echo '缺少环境参数，支持:local/preview/dev2/rc/live';
-    exit 1;
-fi
-
-if [ ! $2 ]; then
     echo '缺少8ID参数';
     exit 1;
 fi
 
-corePath=/home/tke/${1}
-userId=${2}
+corePath=/opt/tk
+userId=${1}
 
 if [ ! "$(ls -A $corePath)" ]; then
     echo "${corePath}目录不存在，请确认是否已经映射代码到容器中";
@@ -22,12 +17,7 @@ fi
 configCode='$sPreUrl = substr($_SERVER["HTTP_HOST"], 0, strpos($_SERVER["HTTP_HOST"], "."));\n    $sPreUrl = $sPreUrl ?: "hk";\n    require_once(BASE_DIR . "\/..\/sites\/" . $sPreUrl . "\/config.php");'
 
 # tke_config.php
-if [ $1 = 'local' ]
-then
-  sed -i 's/\.\/".$sPreUrl/\.\/sites\/".$sPreUrl/' ${corePath}/sys/includes/tke_config.php
-else
-  sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/sys/includes/tke_config.php
-fi
+sed -i "s/require_once(BASE_DIR . \"\/config.php\");/${configCode}/g" ${corePath}/sys/includes/tke_config.php
 sed -i '$s/?>/''/' ${corePath}/sys/includes/tke_config.php
 echo "update ${corePath}/sys/includes/tke_config.php";
 
@@ -35,8 +25,6 @@ echo "update ${corePath}/sys/includes/tke_config.php";
 sed -i "s/require_once(BASE_DIR . \"\/..\/\".\$sPreUrl . \"\/config.php\");/require_once(BASE_DIR . \"\/..\/sites\/\".\$sPreUrl . \"\/config.php\");/g" ${corePath}/vivid/bootstrap/app.php
 echo "update ${corePath}/vivid/bootstrap/app.php";
 
-if [ $1 != 'local' ]
-then
 # http.lib
 rm ${corePath}/sys/libs/http.lib
 echo "<?php include('./ngcore/http.lib');" >> ${corePath}/sys/libs/http.lib
@@ -47,7 +35,6 @@ loginCode="\    // Use custom 8id automatic login\n    \$user = \$db->get(\"SELE
 sed -i "/UserInformationService as UserInformationService;/a\ \n${loginCode}" ${corePath}/web/login.php
 sed -i 's/use SystemAdmin\\User\\Service\\UserInformationService as UserInformationService;/use SystemAdmin\\User\\Service\\UserInformationService as UserInformationService ;/' ${corePath}/web/login.php
 echo "update ${corePath}/web/login.php";
-fi
 
 # ErrorController.php
 cp /run/init/ErrorController.php ${corePath}/web/sharp/modules/default/controllers/ErrorController.php

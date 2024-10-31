@@ -3,7 +3,7 @@ LABEL author="rt.wadewang"
 LABEL description="View local development environment."
 ARG version="8.2"
 WORKDIR /home/tke
-COPY ./src /tmp
+COPY src /tmp
 RUN apt-get update \
     && useradd -g root -d /home/tke/local local \
     && useradd -g root -d /home/tke/preview preview \

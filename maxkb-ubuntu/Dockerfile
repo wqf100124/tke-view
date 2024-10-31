@@ -5,12 +5,11 @@ WORKDIR /opt/maxkb
 COPY src/init.sh /run
 COPY src/poetry.lock /opt/maxkb
 COPY src/pyproject.toml /opt/maxkb
-RUN apk update \
+RUN apt-get update \
     && apt-get install -y nodejs npm \
     && pip install --upgrade pip \
     && pip install poetry django pillow pyyaml djangorestframework drf-yasg django-filter django-apscheduler django-celery-beat psycopg2 \
     && poetry install \
-    && apt-get remove --yes software-properties-common \
     && apt-get autoremove --yes \
     && apt-get clean \
     && rm -rf /tmp/* /var/lib/apt/lists/* \

@@ -1,14 +1,10 @@
 FROM alpine:3.19
 LABEL author="rt.wadewang"
 LABEL description="View local development environment."
-WORKDIR /home/tke
-COPY ./src /tmp
+WORKDIR /opt/tk
+COPY src /tmp
 RUN apk update \
-    && adduser -G root -D -h /home/tke/local local \
-    && adduser -G root -D -h /home/tke/preview preview \
-    && adduser -G root -D -h /home/tke/dev2 dev2 \
-    && adduser -G root -D -h /home/tke/rc rc \
-    && adduser -G root -D -h /home/tke/live live \
+    && adduser -G root -D -h /opt/tk tk \
     && chmod +x /tmp/install.sh \
     && /tmp/install.sh
 CMD ["/bin/sh", "-c", "/run/entrypoint.sh"]
