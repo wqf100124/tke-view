@@ -63,6 +63,7 @@ apk add --no-cache \
 # ---------- php.ini ----------
 mv /tmp/php.ini /etc/php82/php.ini
 mv /tmp/php_pdflib_820_nts.so /usr/lib/php82/modules/pdflib.so
+mv /tmp/pdflib.ini /etc/php82/conf.d/pdflib.ini
 # ---------- php-fpm ----------
 mv /tmp/www.conf /etc/php82/php-fpm.d/www.conf
 # ---------- composer ----------
