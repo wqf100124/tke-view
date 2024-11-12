@@ -58,8 +58,10 @@ apk add --no-cache \
     php82-sqlite3 \
     php82-sysvsem \
     php82-tokenizer \
+    php82-pecl-xhprof \
     php82-zip
 # php82-opcache php82-pecl-ssh2
+apk add --no-cache graphviz
 # ---------- php.ini ----------
 mv /tmp/php.ini /etc/php82/php.ini
 mv /tmp/php_pdflib_820_nts.so /usr/lib/php82/modules/pdflib.so
