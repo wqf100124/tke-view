@@ -1,10 +1,10 @@
 FROM python:3.11
 LABEL author="rt.wadewang"
 LABEL description="View MaxKb development environment."
-WORKDIR /opt/maxkb
+WORKDIR /opt/maxkb/app
 COPY src/init.sh /run
-COPY src/poetry.lock /opt/maxkb
-COPY src/pyproject.toml /opt/maxkb
+COPY src/poetry.lock .
+COPY src/pyproject.toml .
 RUN apt-get update \
     && apt-get install -y nodejs npm \
     && pip install --upgrade pip \
