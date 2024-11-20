@@ -9,6 +9,8 @@ RUN apt-get update \
     && apt-get install -y nodejs npm \
     && pip install --upgrade pip \
     && pip install poetry django pillow pyyaml djangorestframework drf-yasg django-filter django-apscheduler django-celery-beat psycopg2 \
+    && python -m venv /opt/maxkb/app/venv  \
+    && source /opt/maxkb/app/venv/bin/activate\
     && poetry install \
     && apt-get autoremove --yes \
     && apt-get clean \

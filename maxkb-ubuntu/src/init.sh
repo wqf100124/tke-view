@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #创建venv
 python -m venv /opt/maxkb/app/venv
