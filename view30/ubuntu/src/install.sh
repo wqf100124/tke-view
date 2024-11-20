@@ -31,7 +31,9 @@ php"${1}"-xml \
 php"${1}"-xmlrpc \
 php"${1}"-soap \
 php"${1}"-solr \
+php"${1}"-xhprof \
 php"${1}"-zip
+apt-get install -y graphviz
 # ---------- php.ini ----------
 mv /tmp/php.ini /etc/php/"${1}"/cli/php.ini
 mv /tmp/www.conf /etc/php/"${1}"/fpm/pool.d/www.conf
