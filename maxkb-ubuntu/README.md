@@ -1,12 +1,15 @@
 # MAXKB开发环境
 
-
-
 构建镜像
 ```shell
-docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb ./maxkb-ubuntu
+docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb-1.0 ./maxkb-ubuntu
 ```
+
+
+
 1.
+docker run -it --name maxkb -v ~/web/app/ai/maxkb:/opt/maxkb/app -p 8080:8080 registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb bash
+
 docker run -it --name maxkb -v D:\web\apps\ai\maxkb:/opt/maxkb/app -p 8080:8080 registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb bash
 2.
 /run/init.sh
@@ -27,12 +30,12 @@ services:
       ai:
         ipv4_address: 172.16.2.80
   # Postgresql
-  rabbitmq:
-    image: rabbitmq:3.9-management-alpine
-    container_name: rabbitmq
+  pgsql15:
+    image: pgvector/pgvector:pg15
+    container_name: pgsql-15
     networks:
       tke:
-        ipv4_address: 172.16.1.56
+        ipv4_address: 172.16.2.54
     ports:
       - "5432:5432"
 volumes:
