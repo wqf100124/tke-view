@@ -2,7 +2,7 @@
 
 构建镜像
 ```shell
-docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb-1.0 ./maxkb-ubuntu
+docker build --no-cache -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:maxkb-1.0 ./maxkb-ubuntu
 ```
 
 
