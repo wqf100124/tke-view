@@ -51,14 +51,14 @@ Integration Studio 和 Visual Studio Code 都可以用来做EI开发，两个工
 
 1.进入MI容器
 
-```sh
-$ docker exec -it mi sh
+```shell
+docker exec -it mi sh
 ```
 
 2.查看密钥(`key_password`配置项的值)
 
-```sh
-$ cat /home/wso2carbon/wso2mi-4.1.0/conf/deployment.toml
+```shell
+cat /home/wso2carbon/wso2mi-4.1.0/conf/deployment.toml
 ```
 
 示例：
@@ -77,8 +77,8 @@ key_password = "wso2carbon"
 ```
 
 3.运行加密命令
-```sh
-$ /home/wso2carbon/wso2mi-4.1.0/bin/ciphertool.sh -Dconfigure
+```shell
+/home/wso2carbon/wso2mi-4.1.0/bin/ciphertool.sh -Dconfigure
 ```
 输入密钥: 即`key_password`配置项的值，默认为: `wso2carbon`
 

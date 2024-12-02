@@ -6,21 +6,19 @@
 
 ## 本地环境
 
-以 `local` 代码为例，其它环境请替换 `--user` 和 `-w` 参数。
-
 进入容器：
-```sh
-$ docker exec --user local -w /home/tke/local -it view bash
+```shell
+docker exec --user tk -w /opt/tk -it dev bash
 ```
 
 创建队列：
-```sh
-$ php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
+```shell
+php sys/libs/logic/Util/MQ/Misc/RabbitMQUtility.php QueueName QueueRoute
 ```
 
 消费队列：
-```sh
-$ php sys/libs/logic/Util/MQ/MessageProcessor.php hk DemoTopic
+```shell
+php sys/libs/logic/Util/MQ/MessageProcessor.php hk DemoTopic
 ```
 
 ## 测试环境
@@ -49,6 +47,6 @@ italy:::sys/libs/logic/Util/MQ/ConsumeMediator.php:stop:DemoTopic
 ```
 
 查看消费进程（使用JumpServer）：
-```sh
-$ ps -ef | grep DemoTopic
+```shell
+ps -ef | grep DemoTopic
 ```

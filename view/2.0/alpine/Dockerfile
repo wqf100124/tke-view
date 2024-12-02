@@ -2,7 +2,7 @@ FROM alpine:3.19
 LABEL author="rt.wadewang"
 LABEL description="View local development environment."
 WORKDIR /home/tke
-COPY ./src /tmp
+COPY src /tmp
 RUN apk update \
     && adduser -G root -D -h /home/tke/local local \
     && adduser -G root -D -h /home/tke/preview preview \

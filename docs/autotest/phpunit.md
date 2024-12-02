@@ -8,8 +8,8 @@
 
 2.执行初始化脚本。
 
-```sh
-$ docker exec -it autotest /run/phpunit.sh
+```shell
+docker exec -it autotest /run/phpunit.sh
 ```
 ::: warning 注意：
 上面的脚本会修改底层文件 `autotest/phpunit/library/BaseBootstrap.php`，切勿提交到SVN!
@@ -18,13 +18,13 @@ $ docker exec -it autotest /run/phpunit.sh
 ## 测试命令
 
 1.进入容器
-```sh
-$ docker exec -it -w /home/tke/autotest/phpunit autotest sh
+```shell
+docker exec -it -w /home/tke/autotest/phpunit autotest sh
 ```
 
 2.执行测试命令
 
 以 `sharp/phpunit.xml` 配置为例：
-```sh
-$ phpunit --colors=auto -c sharp/phpunit.xml --filter "ExampleTest"
+```shell
+phpunit --colors=auto -c sharp/phpunit.xml --filter "ExampleTest"
 ```

@@ -6,8 +6,8 @@
 
 复制 `us` 文件夹中的 `mq` 文件夹到 `core` 目录
 
-```sh
-$ cp -r ./sites/usa/mq/ ./local/mq/
+```shell
+cp -r ./sites/usa/mq/ ./local/mq/
 ```
 
 ## RabbitMQConfig.php

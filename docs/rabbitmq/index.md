@@ -25,13 +25,13 @@ services:
 完整配置请参考：[View Docker Compose](/compose) 
 
 2.打开终端工具，并切换到 `docker-compose.yml` 文件所在的目录。例如：
-```sh
-$ cd ~/Desktop/
+```shell
+cd ~/Desktop/
 ```
 
 3.创建并启动服务（`-d`参数可以让服务在后台运行）。
-```sh
-$ docker-compose -p tke up -d
+```shell
+docker-compose -p tke up -d
 ```
 
 4.验证服务是否创建成功
@@ -45,8 +45,8 @@ $ docker-compose -p tke up -d
 [//]: # ()
 [//]: # (创建rabbitmq服务容器)
 
-[//]: # (```sh)
+[//]: # (```shell)
 
-[//]: # ($ docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine)
+[//]: # (docker run -d --name rabbitmq --restart no --network tke --ip 172.16.1.56 -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management-alpine)
 
 [//]: # (```)

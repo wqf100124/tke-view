@@ -1,49 +1,55 @@
-# 本地环境 <Badge type="tip" text="v2.0.1" />
+# 本地环境 <Badge type="tip" text="v3.0.0" />
+
+## 使用说明
 
 ::: tip 提示：
-从 `2.0.0` 版本开始，PHP升级至 `PHP8.2`，如需使用 `PHP7.4` 的环境，可以使用 `1.0.5` 或其以下版本的镜像！
+从 `3.0` 版本开始，项目环境使用了 `apache` + `php-fpm` 的方式，同时每个容器内仅支持运行单个环境的代码，如果需要同时跑多个环境的代码，可以创建不同的容器！
 :::
 
-::: warning 注意：
-映射项目路径时不要包含 `core` 目录，`sites` 目录用来放置各个国家的配置文件，为多个环境所共享。
-:::
+容器中的目录说明：
+| 用户名 | 用户目录 |
+|------------|-----------------------|
+| /opt/sites | 国家配置文件，例如global,hk |
+| /opt/tk | View代码目录 |
 
-目录结构如下：
-```ini
-/home/tke/
-    sites/
-        global
-        hk
-        china
-        ...
-    local/
-        sys
-        web
-        ...
-    preview/
-        sys
-        web
-        ...
-    ...
+## 创建容器
+
+### 使用Docker run命令
+
+运行local代码
+```shell
+docker run -d --name local --restart always -v D:/tke/local:/opt/tk -v D:/tke/sites:/opt/sites -p 80:80 registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.0
 ```
 
-## 创建 View 容器
+:::warning 提示
+如果使用的是windows环境，在开始配置环境前，建议设置项目目录为 区分大小写 模式，参考：[https://learn.microsoft.com/zh-cn/windows/wsl/case-sensitivity](https://learn.microsoft.com/zh-cn/windows/wsl/case-sensitivity)。
 
-:::tip 提示
-在开始配置环境前，建议设置项目目录为 区分大小写 模式，参考：[https://learn.microsoft.com/zh-cn/windows/wsl/case-sensitivity](https://learn.microsoft.com/zh-cn/windows/wsl/case-sensitivity)
+如果使用的是 [WSL](https://learn.microsoft.com/zh-cn/windows/wsl/) 环境，应该把代码放到linux系统中，同时使用 linux 的项目路径如：`/var/tke/dev`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
 :::
+
+尝试访问：[http://localhost](http://localhost)
+
+::: details 运行Dev/Dev2/RC等环境（可选）
+不同环境分配不同的端口号即可
+```shell
+docker run -d --name dev --restart always -v D:/tke/dev:/opt/tk -v D:/tke/sites:/opt/sites -p 8001:80 registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.0
+```
+
+尝试访问：[http://localhost:8001](http://localhost:8001)
+:::
+
+### 使用Docker Compose命令
 
 1.在本地创建一个名为 `docker-compose.yml` 的文件，并复制粘贴以下内容。
 
-```yaml{29,36}
-version: "3"
+```yaml{28,35}
 services:
-  view:
-    image: rtwadewang/view:2.0.2
-    container_name: view
+  local:
+    image: registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.0
+    container_name: local
     volumes:
-      - sites:/home/tke/sites
-      - local:/home/tke/local
+      - sites:/opt/sites
+      - local:/opt/tk
     networks:
       tke:
         ipv4_address: 172.16.1.80
@@ -71,21 +77,18 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: local代码路径如：D:/tke/local
+      device: dev代码路径如：D:/tke/local
 ```
-以上配置仅包含 View 容器。完整配置请参考：[View Docker Compose](/compose)
-
-- site站点存放各个国家的配置文件，例如global,hk,china等。
-- 对于 [WSL2](https://learn.microsoft.com/zh-cn/windows/wsl/) 运行模式，应该使用 linux 中的项目路径如：`/var/tke/local`。参考: [Docker Desktop WSL 2 backend on Windows](https://docs.docker.com/desktop/windows/wsl/)
+以上配置仅包含 local 环境的容器。完整配置请参考：[View Docker Compose](/compose)
 
 2.打开终端工具，并切换到 `docker-compose.yml` 文件所在的目录。例如：
-```sh
-$ cd ~/Desktop/
+```shell
+cd ~/Desktop/
 ```
 
 3.创建并启动服务（`-d`参数可以让服务在后台运行）。
-```sh
-$ docker-compose -p tke up -d
+```shell
+docker-compose -p tke up -d
 ```
 
 4.验证服务是否创建成功。
@@ -120,26 +123,18 @@ $ docker-compose -p tke up -d
 127.0.0.1       hk.rc.test
 127.0.0.1       china.rc.test
 127.0.0.1       global.rc.test
-# Live站点
-127.0.0.1       hk.live.test
-127.0.0.1       china.live.test
-127.0.0.1       global.live.test
 ```
 :::
 
 ## 项目初始化
 
-运行命令 `docker exec -it view /run/init.sh <local|preview|dev2|rc|live> <8ID>`
+运行命令 `docker exec -it local /run/init.sh <你的8ID>`
 
-以 local 环境为例:
-```sh
-$ docker exec -it view /run/init.sh local 80000570
+例如
+```shell
+docker exec -it local /run/init.sh 80000570
 ```
 
-注意替换8ID，它将被用于站点的自动登录。
+8ID用于代码自动登录。
 
-::: warning 警告：
-以上操作会修改 `login.php`、`tke_config.php`、`error.phtml` 等核心文件，这些文件仅可用于本地开发，切勿提交版本库！
-:::
-
-至此 Local 环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)
+至此本地环境已经搭建好了，尝试访问: [http://hk.local.test](http://hk.local.test)

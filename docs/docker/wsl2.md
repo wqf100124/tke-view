@@ -18,22 +18,22 @@ wsl --set-default-version 2
 参考：[官方手册](https://docs.microsoft.com/zh-cn/windows/wsl/reference)
 
 查看运行中的系统
-```sh
+```shell
 wsl -l --running
 ```
 
 启动
-```sh
+```shell
 wsl -d alpine
 ```
 
 停止
-```sh
+```shell
 wsl -t alpine
 ```
 
 移除
-```sh
+```shell
 wsl --unregister alpine
 ```
 
@@ -55,13 +55,13 @@ wsl --unregister alpine
 示例：https://dl-cdn.alpinelinux.org/alpine/v3.15/releases/x86_64/alpine-minirootfs-3.15.0-x86_64.tar.gz
 
 导入该镜像
-```sh
+```shell
 wsl --import alpine D:\wsl\alpine ./alpine-minirootfs-3.14.0-x86_64.tar.gz
 ```
 
 #### 运行
 
-```sh
+```shell
 wsl -d alpine
 ```
 
@@ -69,7 +69,7 @@ wsl -d alpine
 
 1.安装glibc扩展，参考文档: [alpine-pkg-glibc](https://github.com/sgerrand/alpine-pkg-glibc)
 
-```sh
+```shell
 cd /tmp
 wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.33-r0/glibc-2.33-r0.apk
@@ -78,17 +78,10 @@ apk add glibc-2.33-r0.apk
 
 2.在 Docker 面板中打开 alpine 开关，重启！
 
-#### 加速
-
-替换国内源并更新依赖包
-```sh
-sed -i "s/dl-cdn.alpinelinux.org/mirrors.cloud.tencent.com/g" /etc/apk/repositories & apk update
-```
-
 #### 验证
 
 输入以下命令验证 docker 是否配置成功
-```sh
+```shell
 docker ps
 ```
 

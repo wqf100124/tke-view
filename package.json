@@ -11,20 +11,20 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "build:ubuntu": "docker build -t rtwadewang/view:2.0.2 --no-cache view20/ubuntu",
-    "build:alpine": "docker build -t rtwadewang/view:2.0.2-alpine --no-cache view20/alpine",
-    "build:ubuntu-3.0": "docker build -t rtwadewang/view:3.0.0 -t rtwadewang/view:latest --no-cache view30/ubuntu",
-    "build:alpine-3.0": "docker build -t rtwadewang/view:3.0.0-alpine -t rtwadewang/view:alpine --no-cache view30/alpine",
+    "build:ubuntu": "docker build -t rtwadewang/view:2.0.2 --no-cache view/2.0/ubuntu",
+    "build:alpine": "docker build -t rtwadewang/view:2.0.2-alpine --no-cache view/2.0/alpine",
+    "build:ubuntu-3.0": "docker build -t rtwadewang/view:3.0.0 -t rtwadewang/view:latest --no-cache view/3.0/ubuntu",
+    "build:alpine-3.0": "docker build -t rtwadewang/view:3.0.0-alpine -t rtwadewang/view:alpine --no-cache view/3.0/alpine",
     "build:autotest": "docker build -t rtwadewang/autotest:1.0.3 -t rtwadewang/autotest:latest --no-cache ./autotest"
   },
   "devDependencies": {
     "@mermaid-js/mermaid-mindmap": "^9.3.0",
-    "echarts": "^5.4.3",
-    "vitepress": "^1.0.0-rc.20",
-    "vitepress-plugin-mermaid": "^2.0.15",
+    "echarts": "^5.5.1",
+    "vitepress": "^1.5.0",
+    "vitepress-plugin-mermaid": "^2.0.17",
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "mermaid": "10.5.0"
+    "mermaid": "11.0.0-alpha.1"
   }
 }

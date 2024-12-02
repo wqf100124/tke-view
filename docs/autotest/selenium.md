@@ -48,8 +48,8 @@ if($isServer){
 ## 测试命令
 
 1.进入容器
-```sh
-$ docker exec -it -w /home/tke/autotest/selenium autotest sh
+```shell
+docker exec -it -w /home/tke/autotest/selenium autotest sh
 ```
 
 2.执行测试命令
@@ -57,18 +57,18 @@ $ docker exec -it -w /home/tke/autotest/selenium autotest sh
 下面的几种方式都可以运行测试脚本
 
 运行包含 `@Example` 标签的测试脚本
-```sh
-$ behat --tags Example
+```shell
+behat --tags Example
 ```
 
 运行文件路径为 `features/Example.feature` 的测试脚本
-```sh
-$ behat features/Example.feature
+```shell
+behat features/Example.feature
 ```
 
 运行 `feature` 名称为 `Example` 的测试脚本
-```sh
-$ behat --name 'Example'
+```shell
+behat --name 'Example'
 ```
 
 ## 监听调试过程

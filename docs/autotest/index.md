@@ -69,16 +69,16 @@ volumes:
 注意修改 `dev2` 和 `rc` 的代码目录
 
 2.在终端中切换到 `autotest.yml` 文件所在的目录。例如：
-```sh
-$ cd ~/Desktop/
+```shell
+cd ~/Desktop/
 ```
 
 3.创建并启动服务。
-```sh
-$ docker-compose -p autotest -f ./autotest.yml up -d
+```shell
+docker-compose -p autotest -f ./autotest.yml up -d
 ```
 
 4.使用 `docker ps` 命令验证容器是否创建成功
-```sh
-$ docker ps
+```shell
+docker ps
 ```

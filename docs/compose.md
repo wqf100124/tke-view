@@ -14,23 +14,30 @@
 :::
 
 ```yaml{2}
-version: "3"
 services:
-  view:
-    image: rtwadewang/view:2.0.2
-    container_name: view
+  local:
+    image: registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.0
+    container_name: local
     volumes:
-      - sites:/home/tke/sites
-      - local:/home/tke/local
-      - preview:/home/tke/preview
-      - dev2:/home/tke/dev2
-      - rc:/home/tke/rc
-      - live:/home/tke/live
+      - sites:/opt/sites
+      - local:/opt/tk
     networks:
       tke:
         ipv4_address: 172.16.1.80
     ports:
       - "80:80"
+    restart: always
+  dev:
+    image: registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.0
+    container_name: local
+    volumes:
+      - sites:/opt/sites
+      - dev:/opt/tk
+    networks:
+      tke:
+        ipv4_address: 172.16.1.81
+    ports:
+      - "8000:80"
     restart: always
   # RabbitMQ
   rabbitmq:
@@ -74,75 +81,54 @@ volumes:
       type: none
       o: bind
       device: local代码路径如：D:/tke/local
-  preview:
-    name: preview
+  dev:
+    name: dev
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: dev代码路径如：D:/tke/preview
-  dev2:
-    name: dev2
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: dev2代码路径如：D:/tke/dev2
-  rc:
-    name: rc
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: rc代码路径如：D:/tke/rc
-  live:
-    name: live
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: live代码路径如：D:/tke/live
+      device: dev代码路径如：D:/tke/dev
 ```
 
 2.在终端中切换到 `docker-compose.yml` 文件所在的目录。例如：
-```sh
-$ cd ~/Desktop/
+```shell
+cd ~/Desktop/
 ```
 
 3.运行命令（创建容器同时在后台运行）
-```sh
-$ docker-compose -p tke up -d
+```shell
+docker-compose -p tke up -d
 ```
 
 4.使用 `docker ps` 命令验证容器是否创建成功
-```sh
-$ docker ps
+```shell
+docker ps
 ```
 
 ## 常用命令
 
 查看正在运行的容器
 
-```sh
-$ docker compose ps
+```shell
+docker compose ps
 ```
 
 停止服务
-```sh
-$ docker compose stop
+```shell
+docker compose stop
 ```
 
 删除容器
-```sh 
-$ docker compose down
+```shell 
+docker compose down
 ```
 
 删除容器同时清除数据
-```sh 
-$ docker compose down --volumes
+```shell 
+docker compose down --volumes
 ```
 
 查看更多可用命令
-```sh
-$ docker compose --help
+```shell
+docker compose --help
 ```

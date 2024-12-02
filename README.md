@@ -4,27 +4,27 @@
 
 ### Ubuntu
 
-```sh
-$ yarn build:ubuntu
+```shell
+yarn build:ubuntu
 ```
 
 ### Alpine
 
-```sh
-$ yarn build:alpine
+```shell
+yarn build:alpine
 ```
 
 ### Autotest
 
-```sh
-$ yarn build:autotest
+```shell
+yarn build:autotest
 ```
 
 ## 文档
 
 本地预览
-```sh
-$ yarn docs:dev
+```shell
+yarn docs:dev
 ```
 
 ## 使用方法

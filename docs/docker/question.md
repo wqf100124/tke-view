@@ -10,7 +10,7 @@
 
 以管理员身份打开PowerShell，启用Hyper-V
 
-```sh
+```shell
 dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
 ```
 
@@ -18,7 +18,7 @@ dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
 
 以管理员身份打开PowerShell，启用Hypervisor
 
-```sh
+```shell
 bcdedit /set hypervisorlaunchtype auto
 ```
 

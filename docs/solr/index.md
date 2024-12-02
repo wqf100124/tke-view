@@ -27,13 +27,13 @@ services:
 完整配置请参考：[View Docker Compose](/compose)
 
 2.打开终端工具，并切换到 `docker-compose.yml` 文件所在的目录。例如：
-```sh
-$ cd ~/Desktop/
+```shell
+cd ~/Desktop/
 ```
 
 3.创建并启动服务（`-d`参数可以让服务在后台运行）。
-```sh
-$ docker-compose -p tke up -d
+```shell
+docker-compose -p tke up -d
 ```
 
 4.验证服务是否创建成功
@@ -43,8 +43,8 @@ $ docker-compose -p tke up -d
 
 [//]: # (创建solr服务容器)
 
-[//]: # (```sh)
+[//]: # (```shell)
 
-[//]: # ($ docker run -d --name solr --network tke --ip 172.16.1.89 -p 8983:8983 solr solr-precreate view)
+[//]: # (docker run -d --name solr --network tke --ip 172.16.1.89 -p 8983:8983 solr solr-precreate view)
 
 [//]: # (```)

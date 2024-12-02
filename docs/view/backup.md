@@ -4,15 +4,15 @@
 1.打开一个终端窗口
 
 2.使用下面的 `docker network create` 命令在Docker中创建类型为 `bridge` 的网络:
-```sh
-$ docker network create --subnet=172.16.1.0/24 tke
+```shell
+docker network create --subnet=172.16.1.0/24 tke
 ```
 
 3.使用下面的 `docker run` 命令将其作为Docker中的容器运行:
 
 Windows
-```sh
-$ docker run -d ^
+```shell
+docker run -d ^
     --name view ^
     --network tke ^
     --ip 172.16.1.80 ^
@@ -27,8 +27,8 @@ $ docker run -d ^
 ```
 
 MacOS/Linux
-```sh
-$ docker run -d \
+```shell
+docker run -d \
     --name view \
     --network tke \
     --ip 172.16.1.80 \

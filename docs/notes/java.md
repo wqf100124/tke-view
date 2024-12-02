@@ -7,13 +7,13 @@
 ## MacOs
 
 1.查找 `JAVA_HOME` 路径
-```sh
-$ /usr/libexec/java_home
+```shell
+/usr/libexec/java_home
 ```
 
 2.编辑 `~/.zshrc` 文件
-```sh
-$ vim ~/.zshrc
+```shell
+vim ~/.zshrc
 ```
 
 3.添加到环境变量
@@ -22,13 +22,13 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home
 ```
 
 4.让配置立即生效
-```sh
-$ source ~/.zshrc
+```shell
+source ~/.zshrc
 ```
 
 5.查看已插入的 `JAVA_HOME`
-```sh
-$  echo $JAVA_HOME
+```shell
+ echo $JAVA_HOME
 ```
 
 ## Windows

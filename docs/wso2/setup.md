@@ -56,18 +56,18 @@ networks:
 - 容器启动过程大约需要2~3分钟，耐心等待即可。
 
 2.在终端中切换到 `wso2.yml` 文件所在的目录。例如：
-```sh
-$ cd ~/Desktop/
+```shell
+cd ~/Desktop/
 ```
 
 3.运行命令（创建容器同时在后台运行）
-```sh
-$ docker-compose -p wso2 -f ./wso2.yml up -d
+```shell
+docker-compose -p wso2 -f ./wso2.yml up -d
 ```
 
 4.使用 `docker ps` 命令验证容器是否创建成功
-```sh
-$ docker ps
+```shell
+docker ps
 ```
 
 ## 配置 Postman

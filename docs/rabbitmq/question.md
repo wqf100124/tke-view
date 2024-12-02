@@ -5,8 +5,8 @@
 执行消费命令时出现 `Fatal error: Uncaught RuntimeException: The file could not be opened. Check permissions.`
 
 设置日志目录权限即可
-```sh
-$ docker exec view chmod -R 777 /var/log/View
+```shell
+docker exec view chmod -R 777 /var/log/View
 ```
 
 ## 消费进程报错
