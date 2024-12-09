@@ -39,8 +39,10 @@ printf "\033[32m Updated vivid/app/Exceptions/Handler.php \033[0m\n"
 printf "\033[32m 初始化操作完成 \033[0m\n"
 printf "\033[33m 警告，以上文件仅用于本地开发，请勿提交到Git仓库!\033[0m\n"
 cat << EOF
-可以运行以下命令来忽略这些文件的更改：
-git update-index --skip-worktree sys/includes/tke_config.ph sys/libs/http.lib web/login.php vivid/app/Exceptions/Handler.php
+
+可以运行下面的命令来忽略这些文件的更改：
+git update-index --skip-worktree 文件1 文件2 ...
+
 如果要重新提交更改，请运行以下命令：
-git update-index --no-skip-worktree sys/includes/tke_config.ph sys/libs/http.lib web/login.php vivid/app/Exceptions/Handler.php
+git update-index --no-skip-worktree 文件1 文件2 ...
 EOF
