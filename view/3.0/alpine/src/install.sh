@@ -74,12 +74,10 @@ php composer-setup.php --install-dir=/usr/bin --filename=composer;
 rm composer-setup.php
 # ---------- memcached ----------
 apk add --no-cache memcached
-# ---------- project directory ----------
+# ---------- init ----------
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 chmod +x /run/entrypoint.sh
 chmod -R 777 /var/log
-# ---------- init ----------
-mv /tmp/init /run/init
 mv /tmp/init.sh /run/init.sh
 chmod +x /run/init.sh
 # ---------- clear works ----------

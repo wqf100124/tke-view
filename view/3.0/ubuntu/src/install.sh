@@ -67,6 +67,8 @@ rm composer-setup.php
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 sed -i "s/{version}/${1}/g" /run/entrypoint.sh
 chmod +x /run/entrypoint.sh
+mv /tmp/init.sh /run/init.sh
+chmod +x /run/init.sh
 # ---------- clear works ----------
 apt-get remove --yes software-properties-common
 apt-get autoremove --yes
