@@ -19,6 +19,7 @@ apk add --no-cache \
     php82-calendar \
     php82-ctype \
     php82-curl \
+    php82-pecl-xdebug \
     php82-dom \
     php82-exif \
     php82-ffi \
