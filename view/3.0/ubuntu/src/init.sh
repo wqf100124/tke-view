@@ -30,7 +30,7 @@ echo "<?php include('./ngcore/http.lib');" >> sys/libs/http.lib
 printf "\033[32mModified sys/libs/http.lib \033[0m\n"
 
 # login.php
-loginCode="\    // Use custom 8id automatic login\n    \$user = \$db->get(\"SELECT id FROM \`user\` WHERE \`ActiveDirectoryID\` = '${user8ID}' LIMIT 1\");\n    userLogin(\$user->id);\n    die();"
+loginCode="\    // Use custom 8id automatic login\n    \$user = \$db->get(\"SELECT id FROM \`user\` WHERE \`ActiveDirectoryID\` = '${user8ID}' LIMIT 1\");\n    if (empty(\$user)) die('User ${user8ID} not exists, check web/login.php file.');\n    userLogin(\$user->id);\n    die();"
 sed -i "/UserInformationService as UserInformationService;/a\ \n${loginCode}" web/login.php
 sed -i 's/use SystemAdmin\\User\\Service\\UserInformationService as UserInformationService;/use SystemAdmin\\User\\Service\\UserInformationService as UserInformationService ;/' web/login.php
 printf "\033[32mModified web/login.php \033[0m\n"
@@ -49,4 +49,10 @@ git update-index --skip-worktree 文件1 文件2 ...
 
 如果需要恢复对这些文件的跟踪，请运行以下命令：
 git update-index --no-skip-worktree 文件1 文件2 ...
+
+在切换到其它分支的时候，可以先暂存更改：
+git stash
+
+切换回来的时候，再重新应用暂存的更改：
+git stash pop
 EOF
