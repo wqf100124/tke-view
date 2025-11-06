@@ -44,6 +44,7 @@ apk add --no-cache \
     php82-pdo_sqlite \
     php82-phar \
     php82-posix \
+    php82-pecl-redis \
     php82-session \
     php82-shmop \
     php82-simplexml \
