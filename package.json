@@ -1,6 +1,6 @@
 {
   "name": "tke-view",
-  "version": "2.0.2",
+  "version": "4.0.0",
   "description": "View local development environment.",
   "main": "index.js",
   "author": "rt.wadewang@rayootech.com",
