@@ -13,10 +13,9 @@
     "docs:serve": "vitepress serve docs",
     "build:ubuntu": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:2.0.2 --no-cache view/2.0/ubuntu",
     "build:alpine": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:2.0.2-alpine --no-cache view/2.0/alpine",
-    "build:ubuntu-3.0.1": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.1 --no-cache view/3.0/ubuntu",
-    "build:alpine-3.0.1": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:3.0.1-alpine -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:alpine --no-cache view/3.0/alpine",
-    "build:ubuntu-4.0.0": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:latest --no-cache view/4.0/ubuntu",
-    "build:alpine-4.0.0": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0-alpine -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:alpine --no-cache view/4.0/alpine",
+    "build:4.0.0": "docker buildx build --platform linux/amd64,linux/arm64 --build-arg PHP_VERSION=8.2 --build-arg PHP_EXTENSION_DIR_VERSION=20220829 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0 --push view/debian",
+    "check:4.0.0": "docker buildx imagetools inspect registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0",
+    "build:5.0.0": "docker buildx build --platform linux/amd64,linux/arm64 --build-arg PHP_VERSION=8.4 --build-arg PHP_EXTENSION_DIR_VERSION=20240924 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:5.0.0 --push view/debian",
     "build:autotest": "docker build -t rtwadewang/autotest:1.0.3 -t rtwadewang/autotest:latest --no-cache ./autotest"
   },
   "devDependencies": {
