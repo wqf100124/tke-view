@@ -101,12 +101,9 @@ apk add --no-cache redis
 # echo "root:123456" | chpasswd
 # ---------- project directory ----------
 mv /tmp/htdocs /var/www/htdocs
-mv /tmp/entrypoint.sh /run/entrypoint.sh
-chmod +x /run/entrypoint.sh
-chmod -R 777 /var/log
-# ---------- init ----------
-mv /tmp/init /run/init
 mv /tmp/init.sh /run/init.sh
-chmod +x /run/init.sh
+mv /tmp/entrypoint.sh /run/entrypoint.sh
+chmod +x /run/entrypoint.sh /run/init.sh
+chmod -R 777 /var/log
 # ---------- clear works ----------
 rm -rf /var/cache/apk/* /root/.cache /tmp/*
