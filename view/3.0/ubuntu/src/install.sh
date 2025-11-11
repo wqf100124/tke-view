@@ -25,6 +25,7 @@ php"${1}"-memcache \
 php"${1}"-memcached \
 php"${1}"-mongodb \
 php"${1}"-mysql \
+php"${1}"-redis \
 php"${1}"-sqlite3 \
 php"${1}"-xdebug \
 php"${1}"-xml \
@@ -64,11 +65,10 @@ php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');
 php composer-setup.php --install-dir=/usr/bin --filename=composer;
 rm composer-setup.php
 # ---------- init ----------
+mv /tmp/init.sh /run/init.sh
 mv /tmp/entrypoint.sh /run/entrypoint.sh
 sed -i "s/{version}/${1}/g" /run/entrypoint.sh
-chmod +x /run/entrypoint.sh
-mv /tmp/init.sh /run/init.sh
-chmod +x /run/init.sh
+chmod +x /run/entrypoint.sh /run/init.sh
 # ---------- clear works ----------
 apt-get remove --yes software-properties-common
 apt-get autoremove --yes

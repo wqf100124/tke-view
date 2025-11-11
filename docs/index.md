@@ -1,14 +1,13 @@
 ---
 layout: home
-title: View本地开发环境
+title: View containerized development environment
 
 hero:
   image:
     src: /image/hero.svg
     alt: logo
-  name: View & Docker
-  text: 容器化开发环境
-  tagline: 长风破浪会有时，直挂云帆济沧海。
+  name: Containerization
+  tagline: View local development of containerization
   actions:
     - theme: brand
       text: 快速开始 ->

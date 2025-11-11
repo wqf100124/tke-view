@@ -45,6 +45,7 @@ apk add --no-cache \
     php82-pdo_sqlite \
     php82-phar \
     php82-posix \
+    php82-pecl-redis \
     php82-session \
     php82-shmop \
     php82-simplexml \
@@ -76,10 +77,9 @@ rm composer-setup.php
 # ---------- memcached ----------
 apk add --no-cache memcached
 # ---------- init ----------
-mv /tmp/entrypoint.sh /run/entrypoint.sh
-chmod +x /run/entrypoint.sh
-chmod -R 777 /var/log
 mv /tmp/init.sh /run/init.sh
-chmod +x /run/init.sh
+mv /tmp/entrypoint.sh /run/entrypoint.sh
+chmod +x /run/entrypoint.sh /run/init.sh
+chmod -R 777 /var/log
 # ---------- clear works ----------
 rm -rf /var/cache/apk/* /root/.cache /tmp/*

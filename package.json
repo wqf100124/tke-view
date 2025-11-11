@@ -11,20 +11,16 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "build:ubuntu": "docker build -t rtwadewang/view:2.0.2 --no-cache view/2.0/ubuntu",
-    "build:alpine": "docker build -t rtwadewang/view:2.0.2-alpine --no-cache view/2.0/alpine",
-    "build:ubuntu-3.0": "docker build -t rtwadewang/view:3.0.0 -t rtwadewang/view:latest --no-cache view/3.0/ubuntu",
-    "build:alpine-3.0": "docker build -t rtwadewang/view:3.0.0-alpine -t rtwadewang/view:alpine --no-cache view/3.0/alpine",
+    "build:ubuntu": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:2.0.2 --no-cache view/2.0/ubuntu",
+    "build:alpine": "docker build -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:2.0.2-alpine --no-cache view/2.0/alpine",
+    "build:4.0.0": "docker buildx build --platform linux/amd64,linux/arm64 --build-arg PHP_VERSION=8.2 --build-arg PHP_EXTENSION_DIR_VERSION=20220829 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0 --push view/debian",
+    "check:4.0.0": "docker buildx imagetools inspect registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0",
+    "build:5.0.0": "docker buildx build --platform linux/amd64,linux/arm64 --build-arg PHP_VERSION=8.4 --build-arg PHP_EXTENSION_DIR_VERSION=20240924 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:5.0.0 --push view/debian",
     "build:autotest": "docker build -t rtwadewang/autotest:1.0.3 -t rtwadewang/autotest:latest --no-cache ./autotest"
   },
   "devDependencies": {
-    "@mermaid-js/mermaid-mindmap": "^9.3.0",
     "echarts": "^5.5.1",
     "vitepress": "^1.5.0",
-    "vitepress-plugin-mermaid": "^2.0.17",
     "vue": "^3.5.13"
-  },
-  "dependencies": {
-    "mermaid": "11.4.1"
   }
 }

@@ -5,13 +5,15 @@
 ### Ubuntu
 
 ```shell
-yarn build:ubuntu
-```
+# 构建多架构镜像（推荐）
+docker buildx build --platform linux/amd64,linux/arm64 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0 --push view/debian
 
-### Alpine
+# 构建单架构镜像
+# 仅构建 amd64 版本
+docker buildx build --platform linux/amd64 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0-amd64 view/debian
 
-```shell
-yarn build:alpine
+# 仅构建 arm64 版本
+docker buildx build --platform linux/arm64 -t registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0-arm64 view/debian
 ```
 
 ### Autotest
