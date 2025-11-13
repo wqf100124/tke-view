@@ -19,7 +19,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY src /tmp/
 
 # 合并所有系统操作到一个RUN指令中
-RUN sed -i 's|http://deb.debian.org|http://mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources && \
+RUN useradd -m -d /opt/tk -s /bin/bash -c "TK User" tk && \
+    usermod -aG root tk && \
+    sed -i 's|http://deb.debian.org|http://mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources && \
     sed -i 's|http://security.debian.org|http://mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -75,8 +77,6 @@ RUN sed -i 's|http://deb.debian.org|http://mirrors.aliyun.com|g' /etc/apt/source
     cp /etc/apache2/mods-available/proxy_fcgi.load /etc/apache2/mods-enabled/ && \
     cp /etc/apache2/mods-available/proxy.load /etc/apache2/mods-enabled/ && \
     rm /etc/apache2/sites-enabled/000-default.conf && \
-    useradd -m -d /opt/tk -s /bin/bash -c "TK User" tk && \
-    usermod -aG root tk && \
     apt-get autoremove --yes && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.cache /composer-setup.php
