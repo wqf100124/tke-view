@@ -29,7 +29,7 @@ services:
     restart: always
   dev:
     image: registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0
-    container_name: local
+    container_name: dev
     volumes:
       - sites:/opt/sites
       - dev:/opt/tk
