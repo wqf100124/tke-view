@@ -79,7 +79,7 @@ RUN useradd -m -d /opt/tk -s /bin/bash -c "TK User" tk && \
     rm /etc/apache2/sites-enabled/000-default.conf && \
     apt-get autoremove --yes && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.cache /composer-setup.php
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /root/.cache /opt/tk/composer-setup.php
 
 # ---------- php.ini 及相关配置 ----------
 COPY src/php.ini /etc/php/${PHP_VERSION}/cli/php.ini
@@ -96,11 +96,20 @@ COPY src/pdflib.ini /etc/php/${PHP_VERSION}/fpm/conf.d/pdflib.ini
 COPY src/httpd.conf /etc/apache2/apache2.conf
 COPY src/sites /etc/apache2/sites-enabled/
 
+# ---------- behat ----------
+COPY src/autotest/behat-3.27.0.phar /usr/bin/behat
+
+# ---------- phpunit ----------
+COPY src/autotest/phpunit-11.5.45.phar /usr/bin/phpunit
+
 # ---------- init ----------
 COPY src/entrypoint.sh /run/entrypoint.sh
 COPY src/init.sh /run/init.sh
-RUN sed -i "s/{VERSION}/${PHP_VERSION}/g" /run/entrypoint.sh && \
-    chmod +x /run/entrypoint.sh /run/init.sh
+COPY src/autotest/init.sh /run/autotest.sh
+RUN chmod +x /usr/bin/behat && \
+    chmod +x /usr/bin/phpunit && \
+    sed -i "s/{VERSION}/${PHP_VERSION}/g" /run/entrypoint.sh && \
+    chmod +x /run/entrypoint.sh /run/init.sh /run/autotest.sh
 
 CMD ["/run/entrypoint.sh"]
 EXPOSE 80
