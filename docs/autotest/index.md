@@ -18,22 +18,22 @@ services:
       - "7900:7900"
     shm_size: '2gb'
   autotest:
-    image: rtwadewang/autotest:1.0.3
+    image: registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0
     container_name: autotest
     networks:
       - tke
     volumes:
-      - autotest:/home/tke/autotest
-      - dev2:/home/tke/core
+      - autotest:/opt/autotest
+      - dev2:/opt/tk
     depends_on:
       - selenium
   autotest-rc:
     container_name: autotest-rc
-    image: rtwadewang/autotest:1.0.3
+    image: registry.cn-hangzhou.aliyuncs.com/tke-view/view:4.0.0
     networks:
       - tke
     volumes:
-      - autotest-rc:/home/tke/autotest
+      - autotest-rc:/opt/autotest
     depends_on:
       - selenium
 networks:

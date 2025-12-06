@@ -49,7 +49,7 @@ if($isServer){
 
 1.进入容器
 ```shell
-docker exec -it -w /home/tke/autotest/selenium autotest sh
+docker exec -it -w /opt/autotest/selenium autotest sh
 ```
 
 2.执行测试命令

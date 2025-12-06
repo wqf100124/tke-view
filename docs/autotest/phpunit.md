@@ -9,7 +9,7 @@
 2.执行初始化脚本。
 
 ```shell
-docker exec -it autotest /run/phpunit.sh
+docker exec -it autotest /run/autotest.sh
 ```
 ::: warning 注意：
 上面的脚本会修改底层文件 `autotest/phpunit/library/BaseBootstrap.php`，切勿提交到SVN!
@@ -19,7 +19,7 @@ docker exec -it autotest /run/phpunit.sh
 
 1.进入容器
 ```shell
-docker exec -it -w /home/tke/autotest/phpunit autotest sh
+docker exec -it -w /opt/autotest/phpunit autotest sh
 ```
 
 2.执行测试命令

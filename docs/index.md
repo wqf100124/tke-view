@@ -6,7 +6,7 @@ hero:
   image:
     src: /image/hero.svg
     alt: logo
-  name: Containerization
+  name: 容器化开发环境
   tagline: View local development of containerization
   actions:
     - theme: brand
