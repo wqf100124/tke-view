@@ -275,53 +275,55 @@ export default defineConfig({
         }
       ]
     },
-    algolia: {
-      appId: 'UX50ABTIAM',
-      apiKey: '0130e0698793aef5074149337d077b36',
-      indexName: 'tke-view',
-      placeholder: '输入关键词搜索',
-      translations: {
-        button: {
-          buttonText: '搜索文档',
-          buttonAriaLabel: '搜索文档',
+    search: {
+      provider: 'algolia',
+      options: {appId: 'UX50ABTIAM',
+        apiKey: '0130e0698793aef5074149337d077b36',
+        indexName: 'tke-view',
+        placeholder: '输入关键词搜索',
+        translations: {
+          button: {
+            buttonText: '搜索文档',
+            buttonAriaLabel: '搜索文档',
+          },
+          modal: {
+            searchBox: {
+              resetButtonTitle: '清除查询内容',
+              resetButtonAriaLabel: '清除查询内容',
+              cancelButtonText: '取消',
+              cancelButtonAriaLabel: '取消',
+            },
+            startScreen: {
+              recentSearchesTitle: 'Recent',
+              noRecentSearchesText: '暂无内容',
+              saveRecentSearchButtonTitle: '保存搜索记录',
+              removeRecentSearchButtonTitle: '从历史记录中删除',
+              favoriteSearchesTitle: '收藏',
+              removeFavoriteSearchButtonTitle: '移除收藏',
+            },
+            errorScreen: {
+              titleText: '获取搜索结果失败',
+              helpText: '请检查你的网络连接是否正常.',
+            },
+            footer: {
+              selectText: '搜索',
+              selectKeyAriaLabel: '输入关键词',
+              navigateText: '移动',
+              navigateUpKeyAriaLabel: '向上',
+              navigateDownKeyAriaLabel: '向下',
+              closeText: '关闭',
+              closeKeyAriaLabel: 'Escape 键',
+              searchByText: 'View & Docker',
+            },
+            noResultsScreen: {
+              noResultsText: '没有匹配的内容',
+              suggestedQueryText: '尝试搜索',
+              reportMissingResultsText: '确认该搜索有结果?',
+              reportMissingResultsLinkText: '让我们知道.',
+            },
+          },
         },
-        modal: {
-          searchBox: {
-            resetButtonTitle: '清除查询内容',
-            resetButtonAriaLabel: '清除查询内容',
-            cancelButtonText: '取消',
-            cancelButtonAriaLabel: '取消',
-          },
-          startScreen: {
-            recentSearchesTitle: 'Recent',
-            noRecentSearchesText: '暂无内容',
-            saveRecentSearchButtonTitle: '保存搜索记录',
-            removeRecentSearchButtonTitle: '从历史记录中删除',
-            favoriteSearchesTitle: '收藏',
-            removeFavoriteSearchButtonTitle: '移除收藏',
-          },
-          errorScreen: {
-            titleText: '获取搜索结果失败',
-            helpText: '请检查你的网络连接是否正常.',
-          },
-          footer: {
-            selectText: '搜索',
-            selectKeyAriaLabel: '输入关键词',
-            navigateText: '移动',
-            navigateUpKeyAriaLabel: '向上',
-            navigateDownKeyAriaLabel: '向下',
-            closeText: '关闭',
-            closeKeyAriaLabel: 'Escape 键',
-            searchByText: 'View & Docker',
-          },
-          noResultsScreen: {
-            noResultsText: '没有匹配的内容',
-            suggestedQueryText: '尝试搜索',
-            reportMissingResultsText: '确认该搜索有结果?',
-            reportMissingResultsLinkText: '让我们知道.',
-          },
-        },
-      },
+      }
     },
     footer: {
       message: 'Released under the MIT License.',
