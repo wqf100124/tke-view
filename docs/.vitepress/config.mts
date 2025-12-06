@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'View & Containerization',
+  title: 'View & Container',
   description: 'View local development of containerization',
   lang: 'zh-CN',
   base: '/tke-view/',

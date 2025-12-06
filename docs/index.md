@@ -7,7 +7,7 @@ hero:
     src: /image/hero.svg
     alt: logo
   name: 容器化开发环境
-  tagline: View local development of containerization
+  tagline: 长风破浪会有时，直挂云帆济沧海。
   actions:
     - theme: brand
       text: 快速开始 ->

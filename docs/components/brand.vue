@@ -52,7 +52,7 @@ const option = reactive({
         style: {
           text: selectedText,
           fontSize: 36,
-          fontWeight: '600',
+          fontWeight: 'normal',
           lineDash: [0, 300],
           lineDashOffset: 0,
           fill: 'transparent',
@@ -60,7 +60,7 @@ const option = reactive({
           lineWidth: 1
         },
         keyframeAnimation: {
-          duration: 3000,
+          duration: 2000,
           loop: false,
           keyframes: [
             {
